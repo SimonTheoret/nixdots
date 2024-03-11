@@ -328,7 +328,7 @@
       gitc = "git commit -m";
       gits = "git status";
       gitp = "git push";
-      updated = "sudo nixos-rebuild switch --flake $HOME/dotfiles/#nixosDesktop";
+      updated = "sudo nixos-rebuild switch --flake $HOME/dotfiles/nix/#nixosDesktop";
       sec = "$EDITOR $HOME/dotfiles/nix/nixos/configuration.nix";
       hupdates = "home-manager switch --flake $HOME/dotfiles/home-manager/#simon";
       hme =

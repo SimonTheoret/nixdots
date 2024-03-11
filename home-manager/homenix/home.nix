@@ -55,10 +55,23 @@
     # '')
   ];
 
-  # programs.git = {
-  #   enable = true;
-  #   contents
-  # }
+  programs.git = {
+    enable = true;
+    userName = "Simon Théorêt";
+    userEmail = "simonteoret@hotmail.com";
+    extraConfig = {
+          credential.helper = "${
+              pkgs.git.override { withLibsecret = true; }
+            }/bin/git-credential-libsecret";
+          init = {
+            defaultBranch = "main";
+          };
+          diff = {
+            tool = "kitty";
+            guitool = "kitty.gui";
+          };
+        };
+  };
 
   programs.eza = {
     enable = true;
@@ -200,12 +213,6 @@
   #Picom
   services.picom.enable = true;
 
-  # Synxthing
-  # services.syncthing = nable = true;
-  #       user = "myusername";
-  #       dataDir = "/home/myusername/Documents";    # Default folder for new synced folders
-  #       configDir = "/home/myusername/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
-  #   };
 
   #Starship
   programs.starship = {

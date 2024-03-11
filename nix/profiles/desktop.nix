@@ -4,6 +4,10 @@
 
 {
 
+
+  imports = [ # Include the results of the hardware scan.
+    ../nixos/hardware-configuration.nix
+  ];
   # Nvidia drivers
   # Enable OpenGL
   hardware.opengl = {

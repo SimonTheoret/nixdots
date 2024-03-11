@@ -1,0 +1,10 @@
+return {
+    "phaazon/hop.nvim",
+    version = 'v2',
+    config = function()
+        require('hop').setup({ multi_windows = false })
+    end,
+    keys = {
+        {"<leader>w", ":HopWord<CR>", desc = " Hop on word"}
+    }
+}

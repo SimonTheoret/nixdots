@@ -1,0 +1,27 @@
+return {
+    'mfussenegger/nvim-dap',
+    dependencies = { 'rcarriga/nvim-dap-ui',
+        'theHamsta/nvim-dap-virtual-text',
+        "mfussenegger/nvim-dap-python" },
+    config = function()
+        require("dapui").setup()
+    end,
+    lazy = true,
+    keys = {
+        { "<leader>dtb", ":lua require'dap'.toggle_breakpoint() <CR>",                                                                                  desc = "Toggle breakpoint" },
+        { "<leader>dc",  ":lua require'dap'.continue()<CR>",                                                                                            desc = "DAP continue" },
+        { "<leader>di",  ":lua require'dap'.step_into()<CR>",                                                                                           desc = "DAP step into" },
+        { "<leader>do",  ":lua require'dap'.step_over()<CR>",                                                                                           desc = "DAP step over" },
+        { "<leader>dpl", ":lua require'dap'.repl.open()<CR>",                                                                                           desc = "DAP open RELP" },
+        { '<Leader>dh',  function() require('dap.ui.widgets').hover() end,                                                                              desc = "DAP hover" },
+        { '<Leader>dp',  function() require('dap.ui.widgets').preview() end,                                                                            desc = "DAP preview" },
+        { '<Leader>df',  function()
+            local widgets = require('dap.ui.widgets')
+            widgets.centered_float(widgets.frames)
+        end,                                                                                                                                            desc = "DAP frames" },
+        { '<Leader>ds',  function()
+            local widgets = require('dap.ui.widgets')
+            widgets.centered_float(widgets.scopes)
+        end,                                                                                                                                            desc = "DAP scopes" }
+    }
+}

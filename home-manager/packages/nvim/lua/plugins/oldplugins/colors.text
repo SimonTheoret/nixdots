@@ -1,0 +1,177 @@
+return {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = function()
+        require("catppuccin").setup({
+            flavour = "latte",
+            term_colors = true,
+            transparent_background = true,
+            styles = { keywords = { "bold" } },
+            integrations = {
+                cmp = true,
+                barbecue = {
+                    dim_dirname = true,
+                    bold_basename = true,
+                    dim_context = false,
+                },
+                nvimtree = true,
+                indent_blankline = {
+                    enabled = true,
+                },
+                telescope = true,
+                harpoon = true,
+                hop = true,
+                dap = {
+                    enabled = true,
+                    enable_ui = true
+                },
+                mason = true,
+                neotest = true,
+                treesitter = true,
+                lsp_trouble = true,
+                which_key = true,
+                native_lsp = {
+                    enabled = true,
+                    virtual_text = {
+                        errors = { "italic" },
+                        hints = { "italic" },
+                        warnings = { "italic" },
+                        information = { "italic" },
+                    },
+                    underlines = {
+                        errors = { "underline" },
+                        hints = { "underline" },
+                        warnings = { "underline" },
+                        information = { "underline" },
+                    },
+                }
+            }
+        })
+        vim.cmd.colorscheme "catppuccin"
+    end
+}
+-- return {
+--     'marko-cerovac/material.nvim',
+--     priority = 1000,
+--     config   = function()
+--         require("material").setup({
+--             contrast = {
+--                 terminal = true,
+--                 sidebars = true,
+--                 floating_windows = true,
+--                 cursor_line = true
+--             },
+--             styles = {
+--                 comments = { italic = true },
+--                 strings = { italic = true },
+--                 keywords = { underline = true },
+--                 functions = { bold = true }
+--             },
+--             plugins = { -- Uncomment the plugins that you use to highlight them
+--                 -- Available plugins:
+--                 "dap",
+--                 -- "dashboard",
+--                 -- "gitsigns",
+--                 "hop",
+--                 "indent-blankline",
+--                 -- "lspsaga",
+--                 -- "mini",
+--                 -- "neogit",
+--                 "neorg",
+--                 "nvim-cmp",
+--                 "nvim-navic",
+--                 "nvim-tree",
+--                 "nvim-web-devicons",
+--                 -- "sneak",
+--                 "telescope",
+--                 "trouble",
+--                 "which-key",
+--             },
+--             disable = {
+--                 background = true, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+--                 term_colors = true, -- Prevent the theme from setting terminal colors
+--             },
+--             high_visibility = {
+--                 darker = true
+--             }
+--         })
+--         vim.cmd 'colorscheme material'
+--     end
+-- }
+-- return {
+--     "loctvl842/monokai-pro.nvim",
+--     priority = 1000,
+--     config = function()
+--         require("monokai-pro").setup({
+--             transparent_background = true,
+--             terminal_colors = true,
+--             devicons = true,
+--             styles = {
+--                 comment = { italic = true },
+--                 keyword = { italic = true }, -- any other keyword
+--                 type = { italic = true }, -- (preferred) int, long, char, etc
+--                 storageclass = { italic = true }, -- static, register, volatile, etc
+--                 structure = { italic = true }, -- struct, union, enum, etc
+--                 parameter = { italic = true }, -- parameter pass in function
+--                 annotation = { italic = true },
+--                 tag_attribute = { italic = true }, -- attribute of tag in reactjs
+--             },
+--             filter = 'classic',
+--             background_clear = {
+--                 "float_win",
+--                 "toggleterm",
+--                 "telescope",
+--                 "which-key",
+--             }
+--         })
+--         vim.cmd([[colorscheme monokai-pro]])
+--     end,
+-- }
+
+-- UGLY
+-- return {
+--     "sainnhe/sonokai",
+--     config = function()
+--         require("sonokai").setup()
+--         vim.opt.sonokai_style = 'andromeda'
+--         vim.opt.sonokai_better_performance = 1
+
+--         vim.cmd([[colorscheme sonokai]])
+--     end
+-- }
+
+-- Lazy says NOO
+-- return {
+-- 'ofirgall/ofirkai.nvim',
+--     config = require('ofirkai').setup {
+--         scheme = require('ofirkai').scheme,
+--         remove_italics = false,
+--     }
+-- }
+
+-- Just yeuk
+-- return {
+--     "cpea2506/one_monokai.nvim",
+--     config = function() require("one_monokai").setup({
+--         -- your options
+--         transparent = true
+--     })
+--     end
+-- }
+
+-- Monokai-pro is better
+-- return {
+--     'tanvirtin/monokai.nvim',
+--     config = function ()
+--         require('monokai').setup {italics = false}
+--     end
+-- }
+
+-- Opacity = 1...
+-- return {
+--     'https://gitlab.com/__tpb/monokai-pro.nvim',
+--     config = function()
+--         vim.cmd [[colorscheme monokai-pro]]
+--         vim.g.monokaipro_transparent = true
+--     end
+-- }

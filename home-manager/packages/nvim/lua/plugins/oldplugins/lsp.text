@@ -1,0 +1,151 @@
+return {
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        lazy = true,
+        config = function()
+            -- This is where you modify the settings for lsp-zero
+            -- Note: autocompletion settings will not take effect
+
+            require('lsp-zero.settings').preset({})
+        end
+    },
+
+    -- Autocompletion
+    {
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        dependencies = {
+            { 'hrsh7th/nvim-cmp' },                                                    -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },                                                -- Required
+            { 'hrsh7th/cmp-buffer' },                                                  -- Optional
+            { 'hrsh7th/cmp-path' },                                                    -- Optional
+            { 'saadparwaiz1/cmp_luasnip' },                                            -- Optional
+            { 'hrsh7th/cmp-nvim-lua' },                                                -- Optional
+            { 'hrsh7th/cmp-nvim-lsp-signature-help' },                                 -- Snippets
+            { 'L3MON4D3/LuaSnip',                   build = "make install_jsregexp" }, -- Required
+            { 'rafamadriz/friendly-snippets' }, { 'amarakon/nvim-cmp-buffer-lines' },
+            { 'hrsh7th/cmp-cmdline' }, { 'hrsh7th/cmp-omni' },
+            { "kdheepak/cmp-latex-symbols" }, { 'ray-x/cmp-treesitter' }
+        },
+        config = function()
+            -- Here is where you configure the autocompletion settings.
+            -- The arguments for .extend() have the same shape as `manage_nvim_cmp`:
+            -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
+
+            require('lsp-zero.cmp').extend()
+
+            -- And you can configure cmp even more, if you want to.
+        end
+    },
+
+    -- LSP
+    {
+        'neovim/nvim-lspconfig',
+        cmd = 'LspInfo',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            {
+                'williamboman/mason.nvim',
+                build = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
+            },
+        },
+        config = function()
+            -- This is where all the LSP shenanigans will live
+
+            local lsp = require('lsp-zero').preset({ name = 'recommended' })
+
+            lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({ buffer = bufnr })
+                vim.keymap.set('n',
+                    '<leader>rnm',
+                    '<cmd>lua vim.lsp.buf.rename()<CR>',
+                    { buffer = true, desc = "Rename" }
+                )
+                vim.keymap.set(
+                    'n',
+                    '<leader>for',
+                    '<cmd>LspZeroFormat<cr>',
+                    { buffer = true, desc = "Format Buffer" }
+                )
+                vim.keymap.set(
+                    'n',
+                    "gl",
+                    function() vim.diagnostic.open_float() end,
+                    { buffer = true, desc = "Open diagnostic float" }
+                )
+            end)
+            require("neodev").setup({
+                library = { plugins = { "nvim-dap-ui" }, types = true }
+            })
+
+            -- (Optional) Configure lua language server for neovim
+            require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+            require('lspconfig').pyright.setup({
+                venvPath = "/home/simon/.cache/pypoetry/virtualenvs"
+            })
+            lsp.setup()
+
+            local cmp = require('cmp')
+            local cmp_action = require('lsp-zero.cmp').action()
+            require('lsp-zero.cmp').extend()
+            require('luasnip.loaders.from_vscode').lazy_load()
+            cmp.setup({
+                sources = {
+                    {
+                        name = "nvim_lua",
+                    }, {
+                        name = 'path',
+                    }, {
+                        name = 'nvim_lsp',
+                    },
+                    {
+                        name = 'buffer',
+                        keyword_length = 3,
+                    },
+                    {
+                        name = 'omni',
+                        keyword_length = 3,
+                    },
+                    {
+                        name = 'luasnip',
+                        keyword_length = 2,
+                    },
+                    {
+                        name = 'nvim_lsp_signature_help',
+                    },
+                    {
+                        name = 'nvim-cmp-buffer-lines',
+                    }, { name = 'cmp-cmdline' },
+                    {
+                        name = 'orgmode',
+                    }, {
+                        name = 'treesitter',
+                    },
+                    {
+                        name = 'latex_symbols',
+                        option = { strategy = 2 },
+                    },
+                    {
+                        name = 'neorg',
+                    }
+                },
+                mapping = {
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                    ['<C-g>'] = cmp_action.luasnip_jump_backward(),
+                    ['<Tab>'] = cmp_action.luasnip_supertab(),
+                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                },
+                preselect = 'item',
+                completion = { completeopt = 'menu,menuone,noinsert' },
+            })
+        end
+    }
+}

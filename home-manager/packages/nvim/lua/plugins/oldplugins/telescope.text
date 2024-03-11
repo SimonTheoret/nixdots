@@ -1,0 +1,39 @@
+return {
+    'nvim-telescope/telescope.nvim',
+    name = 'telescope',
+    tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-fzf-native.nvim',
+        'nvim-lua/popup.nvim',
+        'jvgrootveld/telescope-zoxide' },
+    config = function()
+        require('telescope').setup({})
+        require('telescope').load_extension('fzf')
+        require('telescope').load_extension('zoxide')
+    end,
+    keys =
+    {
+        { '<leader>ff', function() require('telescope.builtin').find_files() end,       desc = "Telescope find files" },
+
+        { '<leader>fg', function() require('telescope.builtin').live_grep() end,        desc = "Telescope live grep" },
+
+        { '<leader>fd', function() require('telescope.builtin').git_files() end,        desc = "Telescope git files" },
+
+        { '<leader>fb', function() require('telescope.builtin').buffers() end,          desc = "Telescope buffers" },
+
+        { '<leader>fh', function() require('telescope.builtin').help_tags() end,        desc = "Telescope help tags" },
+
+        { '<leader>fk', function() require('telescope.builtin').keymaps() end,          desc = "Telescope keymaps" },
+
+        { '<leader>fv', function() require('telescope.builtin').vim_options() end,      desc = "Telescope vim options" },
+
+        { '<leader>fc', function() require('telescope.builtin').commands() end,         desc = "Telescope commands" },
+
+        { '<leader>fz', function() require("telescope").extensions.zoxide.list() end,   desc = 'Telescope zoxide' },
+
+        { '<leader>ft', ':TodoTelescope<CR>',                                           desc = "Telescope todos" },
+
+        { '<leader>fn', function() require('telescope').extensions.notify.notify() end, desc = "Telescope notifications" }
+    },
+    lazy = true
+}

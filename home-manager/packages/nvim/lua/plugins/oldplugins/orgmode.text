@@ -1,0 +1,47 @@
+return {
+    'nvim-orgmode/orgmode',
+    config = function()
+        -- Load custom treesitter grammar for org filetype
+        require('orgmode').setup_ts_grammar()
+
+        require('orgmode').setup({
+            -- à modifier:
+            org_agenda_files = { "/home/simon/org/agenda/*.org" },
+            org_default_notes_file = '/home/simon/org/agenda/todo.org', -- fichier par défaut pour capture de tâches
+            org_highlight_latex_and_related = "native",
+            org_capture_templates = {
+                i = {
+                    description = 'Idée rapides',
+                    template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?',
+                    target = '~/org/notes/journal.org',
+                    headline = "Idées rapides"
+                },
+
+                r = {
+                    description = 'Évènements récurrents',
+                    template = '*** %?\n SCHEDULED: %t',
+                    target = '~/org/agenda/calendar.org',
+                    headline = 'Récurrent'
+                },
+
+                u = {
+                    description = 'Évènements uniques',
+                    template = '*** %?\n SCHEDULED: %t',
+                    target = '~/org/agenda/calendar.org',
+                    headline = 'Unique'
+                },
+                h = {
+                    description = 'Tutorial org-mode',
+                    template = '',
+                    target = '~/org/notes/org_mode_tuto.org',
+                },
+                b = {
+                    description = 'Bouffe',
+                    template = '\n** %<%Y-%m-%d> %<%A>\n*** %U\n%?',
+                    target = '~/org/notes/journal_bouffe.org',
+                },
+            }
+        })
+    end,
+    lazy = false
+}

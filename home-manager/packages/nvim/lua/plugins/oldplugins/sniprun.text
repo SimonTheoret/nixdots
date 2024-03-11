@@ -1,0 +1,46 @@
+return {
+    'michaelb/sniprun',
+    build = 'bash ./install.sh',
+    config = function()
+        require("sniprun").setup({
+            repl_enable = { 'Python3_original' },
+            display = { "Terminal", "VirtualText" },
+            display_options = {
+                terminal_width = 45,
+            },
+        })
+    end,
+    keys = {
+        {
+            "<leader>rl",
+            function() require("sniprun").run() end,
+            desc = "Sniprun run line",
+        },
+        {
+            "<leader>rs",
+            function() require("sniprun").run('v') end,
+            desc = "Sniprun run selection",
+            mode = "v"
+        },
+        {
+            "<leader>ss",
+            function() require("sniprun.display").close_all() end,
+            desc = "Sniprun close all",
+        },
+        {
+            "<leader>rf",
+            ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>",
+            desc = "Sniprun run file",
+        },
+        {
+            "<leader>srr",
+            function() require("sniprun").reset() end,
+            desc = "Sniprun stop and reset",
+        },
+        {
+            "<leader>scr",
+            function() require("sniprun").clear_repl() end,
+            desc = "Sniprun clear repl",
+        }
+    }
+}

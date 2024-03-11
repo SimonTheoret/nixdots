@@ -1,0 +1,23 @@
+return {
+    'lukas-reineke/headlines.nvim',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+        vim.cmd [[highlight Headline guibg=#21262d]]
+        vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
+        vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
+
+        require("headlines").setup {
+            markdown = {
+                headline_highlights = { "Headline"},
+                fat_headline_lower_string = "▃",
+                fat_headline_upper_string = "▃",
+            },
+            org = {
+                headline_highlights = { "Headline"},
+                fat_headlines = false,
+                fat_headline_lower_string = "▃",
+                fat_headline_upper_string = "▃",
+            }
+        }
+    end
+}

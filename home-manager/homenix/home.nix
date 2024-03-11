@@ -26,7 +26,6 @@
     yarn
     ripgrep
     nixfmt
-    lua-language-server
     btop
     discord
     feh
@@ -36,6 +35,8 @@
     maim
     trashy
     nil
+    lua-language-server
+    marksman
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

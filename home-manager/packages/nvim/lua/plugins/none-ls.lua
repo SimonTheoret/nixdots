@@ -26,8 +26,6 @@ return {
                         "--profile", "black"
                     }
                 }),
-                -- markdown
-                null_ls.builtins.formatting.mdformat,
                 -- nix
                 null_ls.builtins.formatting.nixfmt
             }

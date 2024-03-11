@@ -23,7 +23,7 @@
       nixosConfigurations.nixosDesktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixos/configuration.nix
+          ./nixfiles/configuration.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
           ./profiles/desktop.nix
@@ -32,7 +32,7 @@
       nixosConfigurations.nixoslaptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixos/configuration.nix
+          ./nixfiles/configuration.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
           ./profiles/laptop.nix

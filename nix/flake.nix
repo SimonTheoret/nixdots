@@ -23,19 +23,19 @@
       nixosConfigurations.nixosDesktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nix/nixos/configuration.nix
+          ./nixos/configuration.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
-          ./nix/profiles/desktop.nix
+          ./profiles/desktop.nix
         ];
       };
       nixosConfigurations.nixoslaptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nix/nixos/configuration.nix
+          ./nixos/configuration.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
-          ./nix/profiles/laptop.nix
+          ./profiles/laptop.nix
         ];
       };
 

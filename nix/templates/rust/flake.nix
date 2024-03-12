@@ -46,7 +46,6 @@
             rust-analyzer
           ];
         };
-        shellHook = ''zsh'';
       });
     };
 }

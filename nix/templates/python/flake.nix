@@ -23,7 +23,6 @@
           packages = with pkgs;
             [ python virtualenv nodePackages_latest.pyright ruff-lsp]
             ++ (with pkgs.pythonPackages; [ pip ]);
-          shellHook = "zsh";
         };
       });
     };

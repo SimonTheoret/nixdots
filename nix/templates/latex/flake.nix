@@ -18,8 +18,6 @@
             texlab
             tectonic
           ];
-
-        shellHook = ''zsh'';
         };
       });
     };

@@ -14,7 +14,6 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [ lua lua-language-server ];
-          shellHook = "zsh";
         };
       });
     };

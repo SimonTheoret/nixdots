@@ -35,8 +35,8 @@
     maim
     trashy
     nil
-    lua-language-server
-    marksman
+    lua-language-server # needed, at least until direnv!
+    marksman # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -56,23 +56,22 @@
     # '')
   ];
 
+  services.syncthing.enable = true;
 
   programs.git = {
     enable = true;
     userName = "Simon Théorêt";
     userEmail = "simonteoret@hotmail.com";
     extraConfig = {
-          credential.helper = "${
-              pkgs.git.override { withLibsecret = true; }
-            }/bin/git-credential-libsecret";
-          init = {
-            defaultBranch = "main";
-          };
-          diff = {
-            tool = "kitty";
-            guitool = "kitty.gui";
-          };
-        };
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+      init = { defaultBranch = "main"; };
+      diff = {
+        tool = "kitty";
+        guitool = "kitty.gui";
+      };
+    };
   };
 
   programs.eza = {
@@ -209,16 +208,14 @@
     };
   };
 
-
   services.ssh-agent.enable = true;
   programs.ssh = {
-  enable = true;
-  addKeysToAgent = "yes";
+    enable = true;
+    addKeysToAgent = "yes";
   };
 
   #Picom
   services.picom.enable = true;
-
 
   #Starship
   programs.starship = {
@@ -310,9 +307,7 @@
     };
   };
 
-  services.dunst = {
-    enable = true;
-  };
+  services.dunst = { enable = true; };
 
   #Neovim
   programs.neovim = {
@@ -334,9 +329,11 @@
       gitc = "git commit -m";
       gits = "git status";
       gitp = "git push";
-      updated = "sudo nixos-rebuild switch --flake $HOME/dotfiles/nix/#nixosDesktop";
+      updated =
+        "sudo nixos-rebuild switch --flake $HOME/dotfiles/nix/#nixosDesktop";
       sec = "$EDITOR $HOME/dotfiles/nix/nixos/configuration.nix";
-      hupdates = "home-manager switch --flake $HOME/dotfiles/home-manager/#simon";
+      hupdates =
+        "home-manager switch --flake $HOME/dotfiles/home-manager/#simon";
       hme =
         "$EDITOR ${config.home.homeDirectory}/.config/home-manager/homenix/home.nix";
       rm = "trash";
@@ -424,7 +421,11 @@
             always = false;
             notification = false;
           }
-          #{command = "syncthing"; always = false; notification = false;}
+          {
+            command = "syncthing --no-browser";
+            always = false;
+            notification = false;
+          }
           {
             command = "xset r rate 160 90";
             always = true;

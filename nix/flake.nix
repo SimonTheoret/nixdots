@@ -17,6 +17,19 @@
     # with with `self`, which is the directory of this flake in the store.
 
     let
+
+      # shell config part 1
+      supportedSystems =
+        [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      forEachSupportedSystem = f:
+        nixpkgs.lib.genAttrs supportedSystems
+        (system: f { pkgs = import nixpkgs { inherit system; }; });
+      pkgsForSystem = system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
@@ -39,5 +52,10 @@
         ];
       };
 
+      # shell config part 2 starts here
+      devShells = forEachSupportedSystem ({ pkgs }: {
+        default = pkgs.mkShell { packages = with pkgs; [ nil nixfmt ]; };
+      });
+      # shell config part 2 ends here
     };
 }

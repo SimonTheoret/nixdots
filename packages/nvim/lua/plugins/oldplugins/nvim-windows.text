@@ -1,9 +1,0 @@
-return {
-    'https://gitlab.com/yorickpeterse/nvim-window.git',
-    config = true,
-    keys = {
-        { "<leader>ew",
-            ":lua require('nvim-window').pick()<CR>",
-            desc = "Hop windows" },
-    }
-}

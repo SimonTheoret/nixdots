@@ -56,6 +56,12 @@
     # '')
   ];
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
+  };
+
   services.syncthing.enable = true;
 
   programs.git = {

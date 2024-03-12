@@ -37,7 +37,6 @@
     nil
     lua-language-server
     marksman
-    libsecret
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -56,6 +55,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
 
   programs.git = {
     enable = true;
@@ -211,6 +211,10 @@
 
 
   services.ssh-agent.enable = true;
+  programs.ssh = {
+  enable = true;
+  addKeysToAgent = "yes";
+  };
 
   #Picom
   services.picom.enable = true;

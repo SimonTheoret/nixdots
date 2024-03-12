@@ -6,7 +6,7 @@
 
 
   imports = [ # Include the results of the hardware scan.
-    ../nixfiles/hardware-configuration.nix
+    ./hardware-configuration-desktop.nix
   ];
   # Nvidia drivers
   # Enable OpenGL
@@ -51,6 +51,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.pulseaudio.enable = true;
   # Enable the X11 windowing system and i3.
   services.xserver.enable = true;
   services.xserver.desktopManager.xterm.enable = false;

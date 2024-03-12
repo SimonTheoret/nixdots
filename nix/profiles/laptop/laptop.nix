@@ -3,6 +3,9 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration-laptop.nix
+  ];
 
   networking.networkmanager.enable =
     true; # Easiest to use and most distros use this by default.

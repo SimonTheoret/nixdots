@@ -482,7 +482,7 @@
   home.file = {
     "./.config/nvim/" = {
       source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/dotfiles/home-manager/packages/nvim";
+        "${config.home.homeDirectory}/dotfiles/packages/nvim";
       recursive = true;
     };
   };

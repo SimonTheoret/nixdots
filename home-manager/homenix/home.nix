@@ -25,7 +25,6 @@
     autotiling
     yarn
     ripgrep
-    nixfmt
     btop
     discord
     feh
@@ -34,7 +33,6 @@
     playerctl
     maim
     trashy
-    nil
     lua-language-server # needed, at least until direnv!
     marksman # needed, at least until direnv !
     # pkgs.redshift

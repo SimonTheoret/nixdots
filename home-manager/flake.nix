@@ -10,7 +10,7 @@
 
   outputs = { self, home-manager, nixpkgs, utils }:
     let
-
+      # shell config part 1
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forEachSupportedSystem = f:
@@ -21,7 +21,8 @@
           inherit system;
           config.allowUnfree = true;
         };
-
+      # shell ocnfig part 1 ends here
+      
       mkHomeConfiguration = args:
         home-manager.lib.homeManagerConfiguration (rec {
           modules = [ (import ./homenix/home.nix) ] ++ (args.modules or [ ]);
@@ -32,11 +33,13 @@
 
     in utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ]
     (system: rec { legacyPackages = pkgsForSystem system; }) // {
-      #
+      
 
+      # shell config part 2 starts here
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell { packages = with pkgs; [ nil nixfmt ]; };
       });
+      # shell config part 2 ends here
 
       #
       # non-system suffixed items should go here

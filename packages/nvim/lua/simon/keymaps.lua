@@ -5,9 +5,6 @@ local vmap = vim.keymap
 vmap.set("v", "J", ":m '>+1<CR>gv=gv")
 vmap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Cursor stays in place during moving line
-vmap.set("n", "J", "mzJ`z")
-
 -- Cursor is centered during Ctrl+u/Ctrl+d
 vmap.set("n", "<C-d>", "<C-d>zz")
 vmap.set("n", "<C-u>", "<C-u>zz")
@@ -54,7 +51,12 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
-vmap.set("n", "<leader>cln", [[:%s/\s\+$//e<cr>]], { desc = "Clean trailing whitespaces" })
+
+vmap.set("n", "<leader>cln", function()
+    local search = "%s/\\s\\+$//e"
+    vim.cmd(search)
+    vim.cmd("noh")
+end, { desc = "Clean trailing whitespaces" })
 
 vim.api.nvim_set_keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]],
     { desc = "Open link in browser" })

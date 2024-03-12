@@ -37,6 +37,7 @@
     nil
     lua-language-server
     marksman
+    libsecret
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

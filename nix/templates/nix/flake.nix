@@ -13,7 +13,12 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ nil nixfmt ];
+          packages = with pkgs; [
+            nil
+            nixfmt
+            nodePackages_latest.bash-language-server
+            shfmt
+          ];
         };
       });
     };

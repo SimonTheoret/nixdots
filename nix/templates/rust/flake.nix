@@ -44,6 +44,8 @@
             cargo-edit
             cargo-watch
             rust-analyzer
+            nodePackages_latest.bash-language-server
+            shfmt
           ];
         };
       });

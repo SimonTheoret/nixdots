@@ -13,7 +13,11 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ marksman ];
+          packages = with pkgs; [
+            marksman
+            nodePackages_latest.bash-language-server
+            shfmt
+          ];
         };
       });
     };

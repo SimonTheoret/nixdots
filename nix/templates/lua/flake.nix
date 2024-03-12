@@ -13,7 +13,12 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ lua lua-language-server ];
+          packages = with pkgs; [
+            lua
+            lua-language-server
+            nodePackages_latest.bash-language-server
+            shfmt
+          ];
         };
       });
     };

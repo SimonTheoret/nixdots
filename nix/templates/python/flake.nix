@@ -21,8 +21,14 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs;
-            [ python virtualenv nodePackages_latest.pyright ruff-lsp]
-            ++ (with pkgs.pythonPackages; [ pip ]);
+            [
+              python
+              virtualenv
+              nodePackages_latest.pyright
+              ruff-lsp
+              nodePackages_latest.bash-language-server
+              shfmt
+            ] ++ (with pkgs.pythonPackages; [ pip ]);
         };
       });
     };

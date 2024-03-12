@@ -27,7 +27,10 @@ return {
                     }
                 }),
                 -- nix
-                null_ls.builtins.formatting.nixfmt
+                null_ls.builtins.formatting.nixfmt,
+
+                -- bash
+                null_ls.builtins.formatting.shfmt,
             }
         })
     end,

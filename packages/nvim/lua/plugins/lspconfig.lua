@@ -52,6 +52,7 @@ return {
                 },
             },
         }
+        -- Lua lsp
         lspconfig.lua_ls.setup({
             on_attach = on_attach,
             capabilities = capabilities,
@@ -90,6 +91,9 @@ return {
         -- markdown
         lspconfig.marksman.setup({})
 
+
+        -- bash lsp
+        lspconfig.bashls.setup({})
 
         vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "diagnostic" })
         vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = "loclist" })

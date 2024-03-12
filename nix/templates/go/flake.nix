@@ -24,6 +24,9 @@
 
             # https://github.com/golangci/golangci-lint
             golangci-lint
+
+            nodePackages_latest.bash-language-server
+            shfmt
           ];
         };
       });

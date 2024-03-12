@@ -17,6 +17,8 @@
             texlive.combined.scheme-full
             texlab
             tectonic
+            nodePackages_latest.bash-language-server
+            shfmt
           ];
         };
       });

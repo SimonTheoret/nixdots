@@ -82,7 +82,7 @@
     enable = true;
     icons = true;
     git = true;
-    enableAliases = true;
+    enableZshIntegration = true;
   };
 
   programs.kitty = {

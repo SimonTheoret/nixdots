@@ -33,8 +33,8 @@
     playerctl
     maim
     trashy
-    lua-language-server # needed, at least until direnv!
-    marksman # needed, at least until direnv !
+    pandoc
+     # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

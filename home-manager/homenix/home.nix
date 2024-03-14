@@ -34,7 +34,7 @@
     maim
     trashy
     pandoc
-    glow
+    obsidian
      # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly

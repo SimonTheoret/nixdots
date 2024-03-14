@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Nixos config flake"; #Cute
 
   nixConfig = {
     substituers =

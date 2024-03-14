@@ -35,6 +35,7 @@
     trashy
     pandoc
     obsidian
+    sshfs
      # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -217,6 +218,9 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
+    extraConfig = ''Match all
+        ServerAliveInterval 60
+        ServerAliveCountMax 5'';
   };
 
   #Picom

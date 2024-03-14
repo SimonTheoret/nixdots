@@ -34,6 +34,7 @@
     maim
     trashy
     pandoc
+    glow
      # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -501,7 +502,7 @@
   #  /etc/profiles/per-user/simon/etc/profile.d/hm-session-vars.sh
   #
 
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = { EDITOR = "nvim"; BROWSER = "firefox";};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

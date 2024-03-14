@@ -2,7 +2,7 @@
 
 
 -- remap for neorg + textwidht, foldlevel, conceallevel
-vim.api.nvim_create_autocmd({ "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = { "*.norg" },
     callback = function(_)
         vim.api.nvim_buf_set_keymap(0, "n", "<tab>", "za", { desc = "Toggle fold" }) -- cute remap for neorg
@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 })
 
 -- markdown files set textwidth, conceallevel
-vim.api.nvim_create_autocmd({ "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = { "*.markdown", "*.md" },
     callback = function(_)
         vim.bo.textwidth = 80
@@ -27,23 +27,5 @@ vim.api.nvim_create_autocmd({ "BufNewFile" }, {
     pattern = { "*.sh" },
     callback = function(_)
         vim.api.nvim_buf_set_lines(0, 0, 0, true, { "#!/usr/bin/env sh" })
-    end
-})
-
-
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-    pattern = { "*.md", "*.markdown" },
-    callback = function(_)
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>pt", ":MarkdownPreviewToggle<CR>",
-            { desc = "Toggle markdown preview" })
-
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>pp", ":MarkdownPreview<CR>",
-            { desc = "Preview markdown" })
-
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>pp", ":MarkdownPreviewStop<CR>",
-            { desc = "Stop preview markdown" })
-
-        vim.g.mkdp_filetypes = { "markdown" }
-        vim.g.mkdp_theme = { "dark" }
     end
 })

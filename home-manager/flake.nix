@@ -45,7 +45,7 @@
       # nixosModules.home = import ./homenix/home.nix; # attr set or list
 
       homeConfigurations.simon = mkHomeConfiguration {
-        modules = [ "./profiles/i3-desktop.nix" ];
+        modules = [ ./profiles/i3-desktop.nix ];
         extraSpecialArgs = { };
       };
 

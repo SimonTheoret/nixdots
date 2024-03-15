@@ -52,7 +52,7 @@
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = inputs;
-            home-manager.users.simon = import ./home-manager/profiles/sway/;
+            home-manager.users.simon = import ./home-manager/profiles/sway;
           }
         ];
       };
@@ -71,7 +71,7 @@
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = inputs;
-            home-manager.users.simon = import ./home-manager/profiles/i3/;
+            home-manager.users.simon = import ./home-manager/profiles/i3;
           }
         ];
       };

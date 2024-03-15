@@ -115,6 +115,6 @@
 
   programs.swaylock.enable = true;
   services.swayidle.enable = true;
-  # services.dbus.enable = true;
-
+  
+  programs.bemenu.enable = true;
 }

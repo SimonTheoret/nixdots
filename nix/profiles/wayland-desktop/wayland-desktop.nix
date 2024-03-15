@@ -64,6 +64,11 @@
   environment.systemPackages = with pkgs; [ ];
 
   xdg.portal = {
+    config = {
+      common = {
+        default = "wlr";
+      };
+    };
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy

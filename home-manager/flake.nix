@@ -22,10 +22,10 @@
           config.allowUnfree = true;
         };
       # shell ocnfig part 1 ends here
-      
+
       mkHomeConfiguration = args:
         home-manager.lib.homeManagerConfiguration (rec {
-          modules = [ (import ./homenix/home.nix) ] ++ (args.modules or [ ]);
+          modules = (args.modules or [ ]);
           pkgs = pkgsForSystem (args.system or "x86_64-linux");
         } // {
           inherit (args) extraSpecialArgs;
@@ -33,7 +33,6 @@
 
     in utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ]
     (system: rec { legacyPackages = pkgsForSystem system; }) // {
-      
 
       # shell config part 2 starts here
       devShells = forEachSupportedSystem ({ pkgs }: {
@@ -43,10 +42,12 @@
 
       #
       # non-system suffixed items should go here
-      nixosModules.home = import ./homenix/home.nix; # attr set or list
+      # nixosModules.home = import ./homenix/home.nix; # attr set or list
 
-      homeConfigurations.simon =
-        mkHomeConfiguration { extraSpecialArgs = { }; };
+      homeConfigurations.simon = mkHomeConfiguration {
+        modules = [ "./profiles/i3-desktop.nix" ];
+        extraSpecialArgs = { };
+      };
 
       # homeConfigurations.server = mkHomeConfiguration {
       #   extraSpecialArgs = {

@@ -365,6 +365,7 @@
         keybindings = lib.mkOptionDefault {
           "Mod4+m" = "exec kitty";
           "Mod4+g" = "exec firefox";
+          "Mod4+n" = "exec obsidian";
           "Mod4+q" = "kill";
           "Mod4+h" = "focus left";
           "Mod4+j" = "focus down";

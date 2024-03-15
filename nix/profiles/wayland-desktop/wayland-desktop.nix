@@ -58,6 +58,9 @@
 
   # environment.pathsToLink = [ "/libexec" ];
 
+
+  services.xserver.videoDrivers = [ "nvidia" ]; # or "nvidiaLegacy470 etc.
+
   security.polkit.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -3,12 +3,20 @@
 {
   imports = [ ../../home-common.nix ];
 
-  home.packages = with pkgs; [ flashfocus autotiling mako ];
+  home.packages = with pkgs; [
+    flashfocus
+    autotiling
+    mako
+    rofi-wayland
+    wl-clipboard
+    kanshi
+  ];
 
   wayland.windowManager.sway = {
     enable = true;
     systemd.xdgAutostart = true;
     wrapperFeatures.gtk = true;
+    xwayland = true;
     config = rec {
       input = {
         "type:keyboard" = {
@@ -23,6 +31,7 @@
       };
       modifier = "Mod4";
       # Use kitty as default terminal
+      menu = "rofi -show drun";
       terminal = "kitty";
       keybindings = lib.mkOptionDefault {
         "Mod4+m" = "exec kitty";
@@ -39,27 +48,27 @@
         "Mod4+Shift+l" = "move right";
         "Mod4+o" = "exec swaymsg input type:keyboard xkb_switch_layout next";
         # "Mod4+Shift+o" = "exec swaymsg input type:keyboard xkb_layout us";
-        "Mod4+1" = "workspace number $ws1";
-        "Mod4+2" = "workspace number $ws2";
-        "Mod4+3" = "workspace number $ws3";
-        "Mod4+4" = "workspace number $ws4";
-        "Mod4+5" = "workspace number $ws5";
-        "Mod4+6" = "workspace number $ws6";
-        "Mod4+7" = "workspace number $ws7";
-        "Mod4+8" = "workspace number $ws8";
-        "Mod4+9" = "workspace number $ws9";
-        "Mod4+0" = "workspace number $ws10";
+        # "Mod4+1" = "workspace number $ws1";
+        # "Mod4+2" = "workspace number $ws2";
+        # "Mod4+3" = "workspace number $ws3";
+        # "Mod4+4" = "workspace number $ws4";
+        # "Mod4+5" = "workspace number $ws5";
+        # "Mod4+6" = "workspace number $ws6";
+        # "Mod4+7" = "workspace number $ws7";
+        # "Mod4+8" = "workspace number $ws8";
+        # "Mod4+9" = "workspace number $ws9";
+        # "Mod4+0" = "workspace number $ws10";
         # Move around workspaces
-        "Mod4+Shift+1" = "move container to workspace number $ws1";
-        "Mod4+Shift+2" = "move container to workspace number $ws2";
-        "Mod4+Shift+3" = "move container to workspace number $ws3";
-        "Mod4+Shift+4" = "move container to workspace number $ws4";
-        "Mod4+Shift+5" = "move container to workspace number $ws5";
-        "Mod4+Shift+6" = "move container to workspace number $ws6";
-        "Mod4+Shift+7" = "move container to workspace number $ws7";
-        "Mod4+Shift+8" = "move container to workspace number $ws8";
-        "Mod4+Shift+9" = "move container to workspace number $ws9";
-        "Mod4+Shift+0" = "move container to workspace number $ws10";
+        # "Mod4+Shift+1" = "move container to workspace number $ws1";
+        # "Mod4+Shift+2" = "move container to workspace number $ws2";
+        # "Mod4+Shift+3" = "move container to workspace number $ws3";
+        # "Mod4+Shift+4" = "move container to workspace number $ws4";
+        # "Mod4+Shift+5" = "move container to workspace number $ws5";
+        # "Mod4+Shift+6" = "move container to workspace number $ws6";
+        # "Mod4+Shift+7" = "move container to workspace number $ws7";
+        # "Mod4+Shift+8" = "move container to workspace number $ws8";
+        # "Mod4+Shift+9" = "move container to workspace number $ws9";
+        # "Mod4+Shift+0" = "move container to workspace number $ws10";
         # Volume
         "XF86AudioRaiseVolume" =
           "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
@@ -94,27 +103,66 @@
           command = "shuf -e -n1 ~/Images/nixart/* | xargs feh --bg-fill";
           always = true;
         }
+        {
+          command = "kanshi";
+          always = true;
+        }
       ];
       defaultWorkspace = "worskapce $ws1";
     };
     extraConfig = ''
-      set $ws1 "1"
-      set $ws2 "2"
-      set $ws3 "3"
-      set $ws4 "4"
-      set $ws5 "5"
-      set $ws6 "6"
-      set $ws7 "7"
-      set $ws8 "8"
-      set $ws9 "9"
-      set $ws10 "10"
-      workspace $ws1 output DP-2
-      workspace $ws2 output DP-0
-      workspace $ws3 output HDMI-1'';
+      # set $ws1 "1"
+      # set $ws2 "2"
+      # set $ws3 "3"
+      # set $ws4 "4"
+      # set $ws5 "5"
+      # set $ws6 "6"
+      # set $ws7 "7"
+      # set $ws8 "8"
+      # set $ws9 "9"
+      # set $ws10 "10"
+      workspace 1 output DP-2
+      workspace 2 output DP-0
+      workspace 3 output HDMI-1'';
   };
 
   programs.swaylock.enable = true;
   services.swayidle.enable = true;
-  
-  programs.bemenu.enable = true;
+  services.kanshi = {
+    systemdTarget = "";
+    enable = true;
+    profiles = {
+      "3screens" = {
+        outputs = [
+          {
+            # criteria = "ASUSTek COMPUTER INC VG278 N3LMQS172460";
+            criteria = "DP-1";
+            adaptiveSync = true;
+            mode = "1920x1080@164.917Hz";
+            status = "enable";
+            transform = "normal";
+            position = "1080,280";
+          }
+
+          {
+            criteria = "HDMI-A-1";
+            adaptiveSync = true;
+            mode = "1920x1080@120Hz";
+            status = "enable";
+            transform = "270";
+            position = "0,0";
+          }
+
+          {
+            criteria = "DP-2";
+            adaptiveSync = true;
+            mode = "1920x1080@144.001";
+            status = "enable";
+            transform = "90";
+            position = "3000,0";
+          }
+        ];
+      };
+    };
+  };
 }

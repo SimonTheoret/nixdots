@@ -3,11 +3,24 @@
 {
   imports = [ ../../home-common.nix ];
 
-  home.packages = with pkgs; [ flashfocus ];
+  home.packages = with pkgs; [ flashfocus autotiling mako ];
 
   wayland.windowManager.sway = {
     enable = true;
+    systemd.xdgAutostart = true;
+    wrapperFeatures.gtk = true;
     config = rec {
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "ca(multix),ca(eng)";
+          repeat_rate = "90";
+          repeat_delay = "160";
+        };
+      };
+      window = {
+        border = 0;
+        titlebar = false;
+      };
       modifier = "Mod4";
       # Use kitty as default terminal
       terminal = "kitty";
@@ -24,8 +37,8 @@
         "Mod4+Shift+j" = "move down";
         "Mod4+Shift+k" = "move up";
         "Mod4+Shift+l" = "move right";
-        "Mod4+o" = "exec setxkbmap -layout ca multix";
-        "Mod4+Shift+o" = "exec setxkbmap -layout us";
+        "Mod4+o" = "exec swaymsg input type:keyboard xkb_switch_layout next";
+        # "Mod4+Shift+o" = "exec swaymsg input type:keyboard xkb_layout us";
         "Mod4+1" = "workspace number $ws1";
         "Mod4+2" = "workspace number $ws2";
         "Mod4+3" = "workspace number $ws3";
@@ -68,27 +81,18 @@
         {
           command = "flashfocus";
           always = false;
-          notification = false;
         }
         {
           command = "syncthing --no-browser";
           always = false;
-          notification = false;
         }
         {
-          command = "xset r rate 160 90";
-          always = true;
-          notification = false;
-        }
-        {
-          command = "setxkbmap -layout ca multix";
-          always = true;
-          notification = false;
+          command = "autotiling";
+          always = false;
         }
         {
           command = "shuf -e -n1 ~/Images/nixart/* | xargs feh --bg-fill";
           always = true;
-          notification = false;
         }
       ];
       defaultWorkspace = "worskapce $ws1";
@@ -110,5 +114,7 @@
   };
 
   programs.swaylock.enable = true;
-  programs.swayidle.enable = true;
+  services.swayidle.enable = true;
+  # services.dbus.enable = true;
+
 }

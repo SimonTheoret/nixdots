@@ -80,6 +80,7 @@
     man-pages
     man-pages-posix
     zip
+    git
   ];
 
   programs.zsh.enable = true;

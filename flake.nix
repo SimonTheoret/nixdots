@@ -37,20 +37,41 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      nixosConfigurations.nixosDesktop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixosDesktopSway = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./nix/nixfiles/common-config.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
-          ./profiles/desktop/desktop.nix
+
+          ./nix/profiles/wayland-desktop/wayland-desktop.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = inputs;
-            home-manager.users.ryan = import ./home-manager/flake.nix;
+            home-manager.users.simon = import ./home-manager/profiles/sway/;
+          }
+        ];
+      };
+      nixosConfigurations.nixosDesktopi3 = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nix/nixfiles/common-config.nix
+
+          { nix.settings.trusted-users = [ "simon" ]; }
+
+          ./nix/profiles/i3-desktop/i3-desktop.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = inputs;
+            home-manager.users.simon = import ./home-manager/profiles/i3/;
           }
         ];
       };
@@ -60,7 +81,7 @@
           ./nix/nixfiles/common-config.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
-          ./profiles/laptop/laptop.nix
+          ./nix/profiles/laptop/laptop.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -68,7 +89,7 @@
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = inputs;
-            home-manager.users.ryan = import ./home-manager/flake.nix;
+            home-manager.users.simon = import ./home-manager;
           }
         ];
       };

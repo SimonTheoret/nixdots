@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake"; #Cute
+  description = "Nixos config flake"; # Cute
 
   nixConfig = {
     substituers =
@@ -10,9 +10,13 @@
     ];
   };
 
-  inputs = { nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; };
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     # once the inputs are resolved, they're passed to the function `outputs` along
     # with with `self`, which is the directory of this flake in the store.
 
@@ -36,19 +40,36 @@
       nixosConfigurations.nixosDesktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixfiles/common-config.nix
+          ./nix/nixfiles/common-config.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
           ./profiles/desktop/desktop.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = inputs;
+            home-manager.users.ryan = import ./home-manager/flake.nix;
+          }
         ];
       };
       nixosConfigurations.nixoslaptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixfiles/common-config.nix
+          ./nix/nixfiles/common-config.nix
 
           { nix.settings.trusted-users = [ "simon" ]; }
           ./profiles/laptop/laptop.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = inputs;
+            home-manager.users.ryan = import ./home-manager/flake.nix;
+          }
         ];
       };
 

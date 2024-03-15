@@ -3,7 +3,7 @@
 # config for my i3-desktop.nix
 {
   # every specific config should import the common home.nix
-  imports = import ["../homenix/home.nix"];
+  imports = import [../homenix/common.nix];
 
   home.packages = with pkgs; [
     flashfocus

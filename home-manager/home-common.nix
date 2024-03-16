@@ -312,11 +312,16 @@
         "${config.home.homeDirectory}/dotfiles/packages/nvim";
       recursive = true;
     };
-    # "/home/simon/.config/emacs/" = {
-    #   source = ../packages/emacs;
-    #   # source = "${config.home.homeDirectory}/dotfiles/packages/emacs";
-    #   recursive = true;
-    # };
+    "/home/simon/.config/emacs/conf" = {
+      # source = ../packages/emacs/conf;
+      source = "${config.home.homeDirectory}/dotfiles/packages/emacs/conf";
+      recursive = true;
+    };
+    "home/simon/.config/emacs/init.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/init.el";
+    "home/simon/.config/emacs/doom-molokai-sick-theme.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/doom-molokai-sick-theme.el";
+    "home/simon/.config/emacs/early-init.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/early-init.el";
+    "home/simon/.config/emacs/packages.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/packages.el";
+    "home/simon/.config/emacs/true.png".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/true.png";
   };
 
   # Home Manager can also manage your environment variables through

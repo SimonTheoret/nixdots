@@ -35,15 +35,16 @@
     sshfs
 
     # Pythoh
-    PythonFull
+    python3Full
     virtualenv
     nodePackages_latest.pyright
     ruff-lsp
     isort
 
     # Rust
-    rustToolchain
-    openssl
+    rustc
+    cargo
+    rustfmt
     pkg-config
     cargo-deny
     cargo-edit

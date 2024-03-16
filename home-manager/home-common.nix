@@ -289,8 +289,7 @@
       gitc = "git commit -m";
       gits = "git status";
       gitp = "git push";
-      update =
-        "sudo nixos-rebuild switch --flake ";
+      update = "sudo nixos-rebuild switch --flake ";
       # sec = "$EDITOR $HOME/dotfiles/nix/nixos/configuration.nix";
       # hupdates =
       #   "home-manager switch --flake $HOME/dotfiles/home-manager/#simon";
@@ -303,7 +302,6 @@
   #Zoxide
   programs.zoxide = { enable = true; };
 
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -312,16 +310,34 @@
         "${config.home.homeDirectory}/dotfiles/packages/nvim";
       recursive = true;
     };
-    "/home/simon/.config/emacs/conf" = {
+    "${config.home.homeDirectory}/.config/emacs/conf" = {
       # source = ../packages/emacs/conf;
-      source = "${config.home.homeDirectory}/dotfiles/packages/emacs/conf";
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/dotfiles/packages/emacs/conf";
       recursive = true;
     };
-    "home/simon/.config/emacs/init.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/init.el";
-    "home/simon/.config/emacs/doom-molokai-sick-theme.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/doom-molokai-sick-theme.el";
-    "home/simon/.config/emacs/early-init.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/early-init.el";
-    "home/simon/.config/emacs/packages.el".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/packages.el";
-    "home/simon/.config/emacs/true.png".source = "${config.home.homeDirectory}/dotfiles/packages/emacs/true.png";
+
+    "${config.home.homeDirectory}/.config/emacs/init.el" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/dotfiles/packages/emacs/init.el";
+      recursive = false;
+    };
+
+    "${config.home.homeDirectory}/.config/emacs/doom-molokai-sick-theme.el".source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles/packages/emacs/doom-molokai-sick-theme.el";
+
+    "${config.home.homeDirectory}/.config/emacs/early-init.el".source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles/packages/emacs/early-init.el";
+
+    "${config.home.homeDirectory}/.config/emacs/packages.el".source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles/packages/emacs/packages.el";
+
+    "${config.home.homeDirectory}/.config/emacs/true.png".source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles/packages/emacs/true.png";
   };
 
   # Home Manager can also manage your environment variables through

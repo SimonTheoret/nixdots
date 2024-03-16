@@ -33,6 +33,9 @@
     pandoc
     obsidian
     sshfs
+    emacs29
+    emacs-all-the-icons-fonts
+    emacsPackages.all-the-icons-nerd-fonts
     # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -300,6 +303,7 @@
   #Zoxide
   programs.zoxide = { enable = true; };
 
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -308,6 +312,11 @@
         "${config.home.homeDirectory}/dotfiles/packages/nvim";
       recursive = true;
     };
+    # "/home/simon/.config/emacs/" = {
+    #   source = ../packages/emacs;
+    #   # source = "${config.home.homeDirectory}/dotfiles/packages/emacs";
+    #   recursive = true;
+    # };
   };
 
   # Home Manager can also manage your environment variables through

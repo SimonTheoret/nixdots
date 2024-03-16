@@ -43,3 +43,4 @@
   (treesit-font-lock-recompute-features))
 
 (add-hook 'python-mode-hook #'set-python-colors)
+(add-hook 'python-ts-mode-hook #'set-python-colors)

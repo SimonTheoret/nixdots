@@ -81,17 +81,12 @@
     man-pages-posix
     zip
     git
-    emacs
+    emacs29
   ];
 
   programs.zsh.enable = true;
   users.users.simon.shell = pkgs.zsh;
   nixpkgs.config.allowUnfree = true;
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -33,9 +33,51 @@
     pandoc
     obsidian
     sshfs
+
+    # Pythoh
+    PythonFull
+    virtualenv
+    nodePackages_latest.pyright
+    ruff-lsp
+    isort
+
+    # Rust
+    rustToolchain
+    openssl
+    pkg-config
+    cargo-deny
+    cargo-edit
+    cargo-watch
+    rust-analyzer
+
+    # LaTeX
+    texlive.combined.scheme-full
+
+    # Emacs
     emacs29
     emacs-all-the-icons-fonts
     emacsPackages.all-the-icons-nerd-fonts
+
+    # Nix
+    nil
+    nixfmt
+
+    # Lua
+    lua
+    lua-language-server
+
+    # Go
+    go
+    gotools # goimports, godoc, etc.
+    golangci-lint # https://github.com/golangci/golangci-lint
+
+    # bash
+    nodePackages_latest.bash-language-server
+    shfmt
+
+    # Markdown
+    marksman
+
     # needed, at least until direnv !
     # pkgs.redshift
     # # Adds the 'hello' command to your environment. It prints a friendly

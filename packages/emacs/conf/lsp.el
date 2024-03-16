@@ -96,7 +96,6 @@
 
 
 ;; Latex
-<<<<<<< HEAD
 (use-package
   lsp-latex
   :init (setq lsp-latex-forward-search-executable "zathura")
@@ -109,8 +108,6 @@
   :config
   (setq-default lsp-go-use-gofumpt t))
 
-(use-package go-guru
-=======
 (use-package lsp-latex
   :init
   (setq lsp-latex-forward-search-executable "zathura")

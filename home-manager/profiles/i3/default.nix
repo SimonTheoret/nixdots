@@ -94,7 +94,7 @@
           "Mod4+9" = "workspace number $ws9";
           "Mod4+0" = "workspace number $ws10";
           "Mod4+w" = "exec emacsclient -nc";
-          "Mod4+W" = "exec emacs --daemon";
+          "Mod4+Shift+w" = "exec emacs --daemon";
           # Move around workspaces
           "Mod4+Shift+1" = "move container to workspace number $ws1";
           "Mod4+Shift+2" = "move container to workspace number $ws2";

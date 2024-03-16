@@ -33,8 +33,9 @@
     pandoc
     obsidian
     sshfs
+    nerdfonts
 
-    # Pythoh
+    # Python
     python3Full
     virtualenv
     nodePackages_latest.pyright
@@ -57,7 +58,9 @@
     # Emacs
     emacs29
     emacs-all-the-icons-fonts
-    emacsPackages.all-the-icons-nerd-fonts
+    # emacsPackages.all-the-icons-nerd-fonts
+    emacsPackages.vterm
+    emacsPackages.pdf-tools
 
     # Nix
     nil
@@ -138,7 +141,7 @@
       italic_font = "VictorMono NFM SemiBold Italic";
       bold_italic_font = "VictorMono NFM Bold Italic";
       font_size = 9;
-      background_opacity = 1;
+      background_opacity = "0.80";
       background_blur = 32;
     };
     keybindings = {
@@ -166,7 +169,7 @@
       "kitty_mod+9" = "goto_tab 9";
     };
     shellIntegration.enableZshIntegration = true;
-    theme = "Tokyo Night";
+    theme = "Molokai";
   };
 
   programs.zathura = {

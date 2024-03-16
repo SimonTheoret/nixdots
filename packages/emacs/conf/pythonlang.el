@@ -10,10 +10,10 @@
   ;; (setq pyvenv-mode-line-indicator '(pyvenv-virtual-env-name ("[venv:" pyvenv-virtual-env-name "] ")))
   )
 
-(use-package pyenv-mode
-  :init
-  (pyenv-mode))
-
+;; (use-package pyenv-mode
+;;   :init
+;;   (pyenv-mode))
+;;
 
 (use-package pip-requirements)
 

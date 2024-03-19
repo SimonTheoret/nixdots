@@ -34,6 +34,7 @@
     obsidian
     sshfs
     nerdfonts
+    fd
 
     # Python
     python3Full

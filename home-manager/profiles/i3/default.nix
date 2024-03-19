@@ -164,11 +164,11 @@
             always = true;
             notification = false;
           }
-	  {
-	  command = "emacs --daemon";
-	  true = false;
-	  notification = false;
-	  }
+          {
+            command = "emacs --daemon";
+            always = false;
+            notification = false;
+          }
         ];
         defaultWorkspace = "workspace $ws1";
       };

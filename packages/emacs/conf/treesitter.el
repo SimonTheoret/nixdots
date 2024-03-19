@@ -44,3 +44,6 @@
 
 (add-hook 'python-mode-hook #'set-python-colors)
 (add-hook 'python-ts-mode-hook #'set-python-colors)
+
+(use-package nix-ts-mode
+  :mode "\\.nix\\'")

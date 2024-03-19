@@ -138,6 +138,8 @@
   '("Toggle heading" . org-toggle-heading)
   "<leader> m t i"
   '("Toggle item" . org-toggle-item)
+  "<leader m t t"
+  '("Toggle todo" . org-todo)
   ;; Archive
   "<leader> m a d"
   '("Archive subtree" . org-archive-subtree-default)

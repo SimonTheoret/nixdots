@@ -1,15 +1,14 @@
 ;; -*- lexical-binding: t -*- 
 
-(use-package apheleia :init (apheleia-global-mode +1)
+(use-package format-all
+  :commands format-all-mode
+  :hook (prog-mode . format-all-mode)
   :config
-  (setf (alist-get 'isort apheleia-formatters)
-	'("isort" "--stdout" "--profile" "black"))
-  (setf (alist-get 'flake8 apheleia-formatters)
-	'("flake8"
-          "--tee"
-          "--extend-ignore"
-          "E203"
-          "--max-line-length"
-          "88"))
-  (setf (alist-get 'python-mode apheleia-mode-alist)
-	'(isort flake8 black)))
+  (setq-default format-all-formatters
+                '(("Rust"     (rustfmt))
+                  ("Shell" (shfmt "-i" "4" "-ci"))
+		  ("Go" (gofumpt))
+		  ("Python" (ruff "format"))
+		  ))
+  
+  )

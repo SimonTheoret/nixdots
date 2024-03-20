@@ -140,6 +140,8 @@
   '("Toggle item" . org-toggle-item)
   "<leader> m t t"
   '("Toggle todo" . org-todo)
+  "<leader> m i t"
+  '("Insert heading/checkbox" . org-insert-todo-heading)
   ;; Archive
   "<leader> m a d"
   '("Archive subtree" . org-archive-subtree-default)

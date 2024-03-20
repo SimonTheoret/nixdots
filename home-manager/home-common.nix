@@ -41,7 +41,9 @@
     virtualenv
     nodePackages_latest.pyright
     ruff-lsp
+    ruff
     isort
+    ruff
 
     # Rust
     rustc
@@ -75,6 +77,7 @@
     go
     gotools # goimports, godoc, etc.
     golangci-lint # https://github.com/golangci/golangci-lint
+    gofumpt
 
     # bash
     nodePackages_latest.bash-language-server

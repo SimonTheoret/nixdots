@@ -41,7 +41,6 @@
     virtualenv
     nodePackages_latest.pyright
     ruff-lsp
-    ruff
     isort
     ruff
 

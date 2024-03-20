@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*- 
 
 
+
 ;; Makes emacs good looking
 
 ;; Smooth scrolling
@@ -24,7 +25,7 @@
 ;; (use-package all-the-icons
 ;;   :if (display-graphic-p))
 
-;; (use-package all-the-icons-completion
+
 ;;   :init
 ;;   (all-the-icons-completion-mode)
 ;;   (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup))

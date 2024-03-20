@@ -52,7 +52,9 @@
   ;; (lsp-ui-peek-enable)
   ;; (lsp-ui-doc-enable)
   (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-position 'bottom)
+  (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-include-signature t)
+  (setq lsp-ui-doc-max-height 8)
   ;; :global/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace))
 ;; :config

@@ -323,10 +323,7 @@
   };
 
   #Neovim
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
+  programs.neovim = { enable = true; };
 
   #Zsh
   programs.zsh = {
@@ -343,12 +340,8 @@
       gits = "git status";
       gitp = "git push";
       update = "sudo nixos-rebuild switch --flake ";
-      # sec = "$EDITOR $HOME/dotfiles/nix/nixos/configuration.nix";
-      # hupdates =
-      #   "home-manager switch --flake $HOME/dotfiles/home-manager/#simon";
-      # hme =
-      #   "$EDITOR ${config.home.homeDirectory}/.config/home-manager/homenix/home.nix";
       rm = "trash";
+      ect = "emacsclient -nt";
     };
   };
 
@@ -410,7 +403,7 @@
   #
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "emacsclient";
     BROWSER = "firefox";
   };
 

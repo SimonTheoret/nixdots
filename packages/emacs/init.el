@@ -41,5 +41,5 @@
 (config-load-file-no-extension "shellenv")
 (config-load-file-no-extension "format")
 (config-load-file-no-extension "utils")
-;; (config-load-file-no-extension "compi")
+(config-load-file-no-extension "compi")
 (config-load-file-no-extension "spelling")

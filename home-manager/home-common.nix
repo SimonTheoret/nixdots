@@ -63,6 +63,9 @@
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm
     emacsPackages.pdf-tools
+    # isync
+    # msmtp
+    # notmuch
 
     # Nix
     nil

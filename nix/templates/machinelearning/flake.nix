@@ -1,31 +1,49 @@
 {
-  description = "A Nix-flake-based Python development environment";
+  description = "Python 3.XX development environment for Machine Learning";
+  outputs = { self, nixpkgs }:
+    let
+      pyVersion = "11";
+      overlays = [
+        (final: prev: { # Makes it easier to change python version, and its related packages.
+          python = prev."python${toString pyVersion}Full";
+          pythonPackages = prev."python${toString pyVersion}Packages";
+        })
+      ];
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        config.cudaSupport = true;
+      };
+    in {
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          cudatoolkit
+          linuxPackages.nvidia_x11
+          cudaPackages.cudnn
+          libGLU
+          libGL
+          xorg.libXi
+          xorg.libXmu
+          freeglut
+          xorg.libXext
+          xorg.libX11
+          xorg.libXv
+          xorg.libXrandr
+          zlib
+          ncurses5
+          stdenv.cc
+          binutils
+          python
+          pythonPackages.pip
+          # pythonPackages.numpy
+          # pythonPackages.pytorch-bin
+          pythonPackages.virtualenv
+        ];
 
-  inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+        shellHook = ''
+          export LD_LIBRARY_PATH="${pkgs.linuxPackages.nvidia_x11}/lib"
+        '';
+      };
     };
-  };
-
-outputs = { self, nixpkgs, flake-utils, poetry2nix }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
-        pkgs = nixpkgs.legacyPackages.${system};
-        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication;
-      in
-      {
-        packages = {
-          myapp = mkPoetryApplication { projectDir = self; };
-          default = self.packages.${system}.myapp;
-        };
-
-        devShells.default = pkgs.mkShell {
-          inputsFrom = [ self.packages.${system}.myapp ];
-          packages = with pkgs; [ poetry pythonFull];
-        };
-      });
 }

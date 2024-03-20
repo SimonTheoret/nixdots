@@ -17,8 +17,7 @@
    (lsp-mode . lsp-enable-which-key-integration)
    (LaTeX-mode . lsp)
    (sh-mode . lsp)
-   (nix-mode . lsp)
-   )
+   (nix-mode . lsp))
   :commands lsp
   :general-config
   (general-def
@@ -106,13 +105,15 @@
   :hook (tex-mode . lsp) (latex-mode . lsp) (LaTeX-mode . lsp))
 
 ;; Go
-(use-package go-mode :config (setq-default lsp-go-use-gofumpt t))
+(use-package
+  go-mode
+  :config (setq-default lsp-go-use-gofumpt t)
+  :hook (go-mode . flycheck-golangci-lint-setup)
+  (go-mode . go-guru-hl-identifier-mode))
 
 (use-package go-eldoc :hook (go-mode . go-eldoc-setup))
 
-(use-package
-  flycheck-golangci-lint
-  :hook (go-mode . flycheck-golangci-lint-setup))
+(use-package flycheck-golangci-lint)
 
 (eval-after-load
     'flycheck
@@ -122,10 +123,7 @@
   lsp-latex
   :init (setq lsp-latex-forward-search-executable "zathura")
   (setq lsp-latex-forward-search-args
-	'("--synctex-forward" "%l:1:%f" "%p"))
-  :hook (go-mode . go-guru-hl-identifier-mode))
+	'("--synctex-forward" "%l:1:%f" "%p")))
 
 ;; Nix
 (use-package nix-mode :mode "\\.nix\\'")
-
-

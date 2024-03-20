@@ -34,3 +34,5 @@
   :hook
   (python-ts-mode . anaconda-mode)
   (python-ts-mode . anaconda-eldoc-mode))
+
+(use-package poetry)

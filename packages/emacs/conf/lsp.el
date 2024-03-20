@@ -85,7 +85,6 @@
      (require 'lsp-pyright)
      (lsp)))) ; or lsp-deferred
 
-
 ;; Rust
 (use-package
   rustic
@@ -93,7 +92,6 @@
   (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
   :custom
   (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer")))
-
 
 ;; Latex
 (use-package
@@ -108,13 +106,6 @@
   :config
   (setq-default lsp-go-use-gofumpt t))
 
-(use-package lsp-latex
-  :init
-  (setq lsp-latex-forward-search-executable "zathura")
-  (setq lsp-latex-forward-search-args '("--synctex-forward" "%l:1:%f" "%p"))
-  :hook
-  (go-mode . go-guru-hl-identifier-mode))
-
 (use-package go-eldoc
   :hook
   (go-mode . go-eldoc-setup))
@@ -124,3 +115,11 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
+
+(use-package lsp-latex
+  :init
+  (setq lsp-latex-forward-search-executable "zathura")
+  (setq lsp-latex-forward-search-args '("--synctex-forward" "%l:1:%f" "%p"))
+  :hook
+  (go-mode . go-guru-hl-identifier-mode))
+

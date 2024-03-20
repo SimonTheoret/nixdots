@@ -43,3 +43,4 @@
 (config-load-file-no-extension "utils")
 (config-load-file-no-extension "compi")
 (config-load-file-no-extension "spelling")
+(config-load-file-no-extension "envir")

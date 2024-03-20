@@ -4,5 +4,6 @@
   :init
   (envrc-global-mode)
   :general-config
-  (general-def 'normal
-    "<leader> e e" #'envrc-reload))
+  (general-def :states
+    'normal
+    "<leader> e e" '("Reload env vars" . envrc-reload)))

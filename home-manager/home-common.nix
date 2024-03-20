@@ -341,7 +341,7 @@
       gitp = "git push";
       update = "sudo nixos-rebuild switch --flake ";
       rm = "trash";
-      ect = "emacsclient -nt";
+      ect = "emacsclient -t";
     };
   };
 

@@ -79,6 +79,7 @@
     # bash
     nodePackages_latest.bash-language-server
     shfmt
+    shellcheck
 
     # Markdown
     marksman

@@ -14,7 +14,11 @@
    ;; Do not add rust-ts-mode. Rustic starts automatically.
    (go-ts-mode . lsp)
    ;; if you want which-key integration
-   (lsp-mode . lsp-enable-which-key-integration) (LaTeX-mode . lsp))
+   (lsp-mode . lsp-enable-which-key-integration)
+   (LaTeX-mode . lsp)
+   (sh-mode . lsp)
+   (nix-mode . lsp)
+   )
   :commands lsp
   :general-config
   (general-def
@@ -102,24 +106,26 @@
   :hook (tex-mode . lsp) (latex-mode . lsp) (LaTeX-mode . lsp))
 
 ;; Go
-(use-package go-mode
-  :config
-  (setq-default lsp-go-use-gofumpt t))
+(use-package go-mode :config (setq-default lsp-go-use-gofumpt t))
 
-(use-package go-eldoc
-  :hook
-  (go-mode . go-eldoc-setup))
+(use-package go-eldoc :hook (go-mode . go-eldoc-setup))
 
-(use-package flycheck-golangci-lint
+(use-package
+  flycheck-golangci-lint
   :hook (go-mode . flycheck-golangci-lint-setup))
 
-(eval-after-load 'flycheck
+(eval-after-load
+    'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
 
-(use-package lsp-latex
-  :init
-  (setq lsp-latex-forward-search-executable "zathura")
-  (setq lsp-latex-forward-search-args '("--synctex-forward" "%l:1:%f" "%p"))
-  :hook
-  (go-mode . go-guru-hl-identifier-mode))
+(use-package
+  lsp-latex
+  :init (setq lsp-latex-forward-search-executable "zathura")
+  (setq lsp-latex-forward-search-args
+	'("--synctex-forward" "%l:1:%f" "%p"))
+  :hook (go-mode . go-guru-hl-identifier-mode))
+
+;; Nix
+(use-package nix-mode :mode "\\.nix\\'")
+
 

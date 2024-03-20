@@ -19,8 +19,6 @@
   # Set your time zone.
   time.timeZone = "America/Montreal";
 
-
-
   # Automation
   nix.optimise.automatic = true;
   nix.settings.auto-optimise-store = true;
@@ -31,8 +29,6 @@
     dates = "weekly";
     options = "--delete-older-than-30d";
   };
-
-
 
   fonts.fontconfig.enable = true;
 
@@ -63,7 +59,6 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
   };
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

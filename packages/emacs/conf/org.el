@@ -92,8 +92,13 @@
     '("Roam insert node " . org-roam-node-insert)
     "<leader> n r c"
     '("Roam capture" . org-roam-capture)
-    "<leader> n r j"
-    '("Roam dailies capture " . org-roam-dailies-capture-today))
+    "<leader> n r c"
+    '("Dailies capture today" . org-roam-dailies-capture-today)
+    "<leader> n r t"
+    '("Dailies goto yesterday" . org-roam-dailies-goto-today)
+    "<leader> n r y"
+    '("Dailies goto yesterday" . org-roam-dailies-goto-yesterday)
+    )
   :config
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template

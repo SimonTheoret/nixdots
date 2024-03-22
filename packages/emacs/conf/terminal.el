@@ -3,11 +3,12 @@
 
 (use-package
   vterm
-  ;; :general
-  ;; (general-def
-  ;;   :states 'normal
-  ;;   "<leader> t t" '("Open vterm" . vterm)
-  ;;   )
+  :general
+  (general-def
+    :states 'normal
+    "<leader> t o" '("Open vterm other window" . vterm-other-window)
+    "<leader> t h" '("Open vterm here" . vterm)
+    )
   )
 
 (use-package

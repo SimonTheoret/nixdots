@@ -10,15 +10,15 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   :hook
   ( ;; replace XXX-mode with concrete major-mode(e. g. python--tsmode)
-   (python-ts-mode . lsp)
+   (python-ts-mode . lsp-deferred)
    ;; Do not add rust-ts-mode. Rustic starts automatically.
-   (go-ts-mode . lsp)
+   (go-ts-mode . lsp-deferred)
    ;; if you want which-key integration
    (lsp-mode . lsp-enable-which-key-integration)
-   (LaTeX-mode . lsp)
-   (sh-mode . lsp)
-   (nix-mode . lsp))
-  :commands lsp
+   (LaTeX-mode . lsp-deferred)
+   (sh-mode . lsp-deferred)
+   (nix-mode . lsp-deferred))
+  :commands (lsp lsp-deferred)
   :general-config
   (general-def
     :states
@@ -74,21 +74,20 @@
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
   (setq lsp-use-plists t))
 
-(add-hook 'lsp-mode-hook #'lsp-optim)
+(lsp-optim)
 
 ;; Python
 (use-package
   lsp-pyright
   :after lsp-mode
-  :init
-  (setq lsp-pyright-diagnostic-mode "workspace")
-  (setq lsp-pyright-multi-root nil)
+  ;; :init
+  ;; (setq lsp-pyright-diagnostic-mode "workspace")
   :hook
   (python-ts-mode
    .
    (lambda ()
      (require 'lsp-pyright)
-     (lsp)))) ; or lsp-deferred
+     (lsp-deferred)))) ; or lsp-deferred
 
 ;; Rust
 (use-package
@@ -104,7 +103,7 @@
   :init (setq lsp-latex-forward-search-executable "zathura")
   (setq lsp-latex-forward-search-args
 	'("--synctex-forward" "%l:1:%f" "%p"))
-  :hook (tex-mode . lsp) (latex-mode . lsp) (LaTeX-mode . lsp))
+  :hook (tex-mode . lsp-deferred) (latex-mode . lsp-deferred) (LaTeX-mode . lsp-deferred))
 
 ;; Go
 (use-package

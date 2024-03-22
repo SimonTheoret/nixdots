@@ -7,6 +7,7 @@
   (lsp-mode . flycheck-mode)) 
 
 (use-package consult-lsp
+  :after lsp-mode
   :general
   (general-def
     'normal

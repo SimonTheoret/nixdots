@@ -3,7 +3,7 @@
 (use-package
  format-all
  :commands format-all-mode
- :hook (prog-mode . format-all-mode)
+ ;; :hook (prog-mode . format-all-mode)
  :config
  (setq-default format-all-formatters
                '(("Rust" (rustfmt))

@@ -12,8 +12,8 @@
   (general-def
     'normal
     "<leader> c l" '("List diagnostics" . consult-lsp-diagnostics)
-    "<leader> s i" '("Search symbols in workspace" . consult-lsp-symbols)
-    "<leader> s j" '("Search symbol in file" . consult-lsp-file-symbols)
+    "<leader> c s i" '("Search symbols in workspace" . consult-lsp-symbols)
+    "<leader> c s j" '("Search symbol in file" . consult-lsp-file-symbols)
     ))
 
 (use-package flycheck-hl-todo

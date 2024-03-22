@@ -16,7 +16,7 @@
   };
   #
   # # Load nvidia driver for Xorg and Wayland
-  # # services.xserver.videoDrivers = [ "nvidia" ]; # or "nvidiaLegacy470 etc.
+  services.xserver.videoDrivers = [ "nouveau" ]; # or "nvidiaLegacy470 etc.
   #
   hardware.nvidia = {
   #

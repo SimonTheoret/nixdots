@@ -63,6 +63,7 @@
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm
     emacsPackages.pdf-tools
+    jansson # library for json (emacs lsp)
     # isync
     # msmtp
     # notmuch

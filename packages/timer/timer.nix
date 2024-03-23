@@ -1,6 +1,6 @@
 # Timer.nix.
 # Building the timer application, a simple pomodoro gui app written in Rust.
-{ lib, stdenv, fetchFromGitHub, rustc, cargo, rustPlatform, git, cmake, libgcc}:
+{ lib, stdenv, fetchFromGitHub, rustc, cargo, rustPlatform, git, cmake, libgcc, xorg, pkg-config}:
 
 rustPlatform.buildRustPackage rec {
   pname = "timer";
@@ -15,7 +15,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-rl44TKQ2AjMBSlGLdNoDikXJAPjA20J3Xeo2HAqSvVg=";
 
-  nativeBuildInputs = [cargo rustc git cmake libgcc];
+  nativeBuildInputs = [cargo rustc git cmake libgcc xorg.libX11 xorg.libXi xorg.libXrandr xorg.libXcursor pkg-config];
+  buildInputs = [xorg.libX11 xorg.libXi xorg.libXrandr xorg.libXcursor pkg-config];
 
 #   installPhase = ''
 #     ls

@@ -13,8 +13,8 @@
 ;; font
 ;; (set-frame-font "JetBrainsMono Nerd Font Mono 100" nil t)
 (if (string= "laptop" (system-name))
-    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-10"))
-  (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-12")))
+    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-9"))
+  (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-11")))
 
 ;; (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-11"))
 

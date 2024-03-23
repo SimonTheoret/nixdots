@@ -76,8 +76,6 @@
 (general-def
   :states
   'normal
-  "<tab>"
-  '("Jump pairs" . evil-jump-item)
   "TAB"
   '("Jump pairs" . evil-jump-item)
   "<leader> e b"

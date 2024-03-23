@@ -16,6 +16,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
+  imports = [../packages/timer/timer.nix];
+
   home.packages = with pkgs; [
     firefox
     nodePackages_latest.npm
@@ -35,27 +37,28 @@
     sshfs
     nerdfonts
     fd
+    timer
 
     # Python
-    python3Full
-    virtualenv
-    nodePackages_latest.pyright
-    ruff-lsp
-    isort
-    ruff
+    # python3Full
+    # virtualenv
+    # nodePackages_latest.pyright
+    # ruff-lsp
+    # isort
+    # ruff
 
     # Rust
-    rustc
-    cargo
-    rustfmt
-    pkg-config
-    cargo-deny
-    cargo-edit
-    cargo-watch
-    rust-analyzer
+    # rustc
+    # cargo
+    # rustfmt
+    # pkg-config
+    # cargo-deny
+    # cargo-edit
+    # cargo-watch
+    # rust-analyzer
 
     # LaTeX
-    texlive.combined.scheme-full
+    # texlive.combined.scheme-full
 
     # Emacs
     emacs29
@@ -69,26 +72,26 @@
     # notmuch
 
     # Nix
-    nil
-    nixfmt
+    # nil
+    # nixfmt
 
     # Lua
-    lua
-    lua-language-server
+    # lua
+    # lua-language-server
 
     # Go
-    go
-    gotools # goimports, godoc, etc.
-    golangci-lint # https://github.com/golangci/golangci-lint
-    gofumpt
+    # go
+    # gotools # goimports, godoc, etc.
+    # golangci-lint # https://github.com/golangci/golangci-lint
+    # gofumpt
 
     # bash
-    nodePackages_latest.bash-language-server
-    shfmt
-    shellcheck
+    # nodePackages_latest.bash-language-server
+    # shfmt
+    # shellcheck
 
     # Markdown
-    marksman
+    # marksman
 
     # needed, at least until direnv !
     # pkgs.redshift

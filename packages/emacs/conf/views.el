@@ -14,7 +14,7 @@
 (use-package
   persp-mode
   :custom
-  (persp-keymap-prefix (kbd "<leader> <tab>"))
+  (persp-keymap-prefix (kbd "<leader> TAB"))
   (persp-auto-save-opt 0)
   (persp-auto-resume-time -1)
   (persp-nil-name "main")

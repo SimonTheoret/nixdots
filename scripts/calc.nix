@@ -1,29 +1,11 @@
 { pkgs ? import <nixpkgs> { } }:
-pkgs.writeShellApplication {
+let pythonpkgs = with pkgs.python311Packages; [ numpy matplotlib scipy ];
+in pkgs.stdenv.mkDerivation {
   name = "calc";
-
-  runtimeInputs = with pkgs; [
-    Python311
-    python311Packages.numpy
-    Python311Packages.scipy
-    python311Packages.matplotlib
-    python311Packages.tkinter
-  ];
-
-  text = ''
-    #!/usr/bin/env python3
-
-    import numpy as np
-    import scipy, math
-    import matplotlib.pyplot as plt
-    import IPython
-    import matplotlib
-    import tkinter
-    matplotlib.use("TkAgg")
-
-    print('This is scientific calculator.')
-    print('numpy is np and matplotlib.pyplot plt')
-
-    IPython.embed()
+  propagatedBuildInputs = [ pkgs.python311Full ] ++ pythonpkgs;
+  dontUnpack = true;
+  installPhase = ''
+    mkdir -p $out/bin/calc
+    install -Dm755 ${./calc.py} $out/bin/calc
   '';
 }

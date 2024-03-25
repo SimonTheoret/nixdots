@@ -54,11 +54,11 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.simon = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
-  };
+  
+    users.users.simon.isNormalUser = true;
+    users.users.simon.extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    users.users.simon.packages = with pkgs; [ ];
+  
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

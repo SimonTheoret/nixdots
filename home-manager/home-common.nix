@@ -17,7 +17,6 @@
   # environment.
 
   home.packages = with pkgs; [
-    firefox
     nodePackages_latest.npm
     bat
     yarn
@@ -124,9 +123,6 @@
     userName = "Simon Théorêt";
     userEmail = "simonteoret@hotmail.com";
     extraConfig = {
-      credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
       init = { defaultBranch = "main"; };
       diff = {
         tool = "kitty";
@@ -142,87 +138,9 @@
     enableZshIntegration = true;
   };
 
-  programs.kitty = {
-    enable = true;
-    settings = {
-      font_family = "FiraCode Nerd Font Mono";
-      bold_font = "FiraCode Nerd Font Mono Bold";
-      italic_font = "VictorMono NFM SemiBold Italic";
-      bold_italic_font = "VictorMono NFM Bold Italic";
-      font_size = 9;
-      background_opacity = "0.80";
-      background_blur = 32;
-    };
-    keybindings = {
-      "kitty_mod+k" = "scroll_line_up";
-      "kitty_mod+j" = "scroll_line_down";
-      "kitty_mod+u" = "scroll_page_up";
-      "kitty_mod+d" = "scroll_page_down";
-      "kitty_mod+enter" = "launch --cwd=current";
-      "alt+w" = "close_window";
-      "alt+k" = "next_window";
-      "alt+j" = "previous_window";
-      "alt+l" = "next_tab";
-      "alt+h" = "previous_tab";
-      "alt+t" = "new_tab_with_cwd";
-      "alt+q" = "close_tab";
-      "alt+r+t" = "set_tab_title";
-      "kitty_mod+1" = "goto_tab 1";
-      "kitty_mod+2" = "goto_tab 2";
-      "kitty_mod+3" = "goto_tab 3";
-      "kitty_mod+4" = "goto_tab 4";
-      "kitty_mod+5" = "goto_tab 5";
-      "kitty_mod+6" = "goto_tab 6";
-      "kitty_mod+7" = "goto_tab 7";
-      "kitty_mod+8" = "goto_tab 8";
-      "kitty_mod+9" = "goto_tab 9";
-    };
-    shellIntegration.enableZshIntegration = true;
-    theme = "Molokai";
-  };
+  programs.kitty = import ../packages/kitty/kitty.nix;
 
-  programs.zathura = {
-    enable = true;
-    options = {
-      selection-clipboard = "clipboard";
-      sandbox = "none";
-      synctex = "true";
-      notification-error-bg = "#f7768e";
-      notification-error-fg = "#c0caf5";
-      notification-warning-bg = "#e0af68";
-      notification-warning-fg = "#414868";
-      notification-bg = "#1a1b26";
-      notification-fg = "#c0caf5";
-      completion-bg = "#1a1b26";
-      completion-fg = "#a9b1d6";
-      completion-group-bg = "#1a1b26";
-      completion-group-fg = "#a9b1d6";
-      completion-highlight-bg = "#414868";
-      completion-highlight-fg = "#c0caf5";
-      index-bg = "#1a1b26";
-      index-fg = "#c0caf5";
-      index-active-bg = "#414868";
-      index-active-fg = "#c0caf5";
-      inputbar-bg = "#1a1b26";
-      inputbar-fg = "#c0caf5";
-      statusbar-bg = "#1a1b26";
-      statusbar-fg = "#c0caf5";
-      highlight-color = "#e0af68";
-      highlight-active-color = "#9ece6a";
-      default-bg = "#1a1b26";
-      default-fg = "#c0caf5";
-      render-loading = "true";
-      render-loading-fg = "#1a1b26";
-      render-loading-bg = "#c0caf5";
-      recolor-lightcolor = "#1a1b26";
-      recolor-darkcolor = "#c0caf5";
-    };
-    extraConfig = ''
-      #tokyonight color scheme
-      set recolor
-      set recolor-keephue
-    '';
-  };
+  programs.zathura = import ../packages/zathura/zathura.nix;
 
   services.ssh-agent.enable = true;
   programs.ssh = {
@@ -234,118 +152,26 @@
               ServerAliveCountMax 5'';
   };
 
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+      name = "default";
+      isDefault = true;
+    };
+  };
+
+
   #Starship
   programs.starship = {
     enable = true;
-    settings = {
-      aws = { symbol = "  "; };
-      buf = { symbol = " "; };
-      c = { symbol = " "; };
-      conda = { symbol = " "; };
-      crystal = { symbol = " "; };
-      dart = { symbol = " "; };
-      directory = { read_only = " 󰌾"; };
-      docker_context = { symbol = " "; };
-      elixir = { symbol = " "; };
-      elm = { symbol = " "; };
-      fennel = { symbol = " "; };
-      fossil_branch = { symbol = " "; };
-      git_branch = { symbol = " "; };
-      golang = { symbol = " "; };
-      guix_shell = { symbol = " "; };
-      haskell = { symbol = " "; };
-      haxe = { symbol = " "; };
-      hg_branch = { symbol = " "; };
-      hostname = { ssh_symbol = " "; };
-      java = { symbol = " "; };
-      julia = { symbol = " "; };
-      kotlin = { symbol = " "; };
-      lua = { symbol = " "; };
-      memory_usage = { symbol = "󰍛 "; };
-      meson = { symbol = "󰔷 "; };
-      nim = { symbol = "󰆥 "; };
-      nix_shell = { symbol = " "; };
-      nodejs = { symbol = " "; };
-      ocaml = { symbol = " "; };
-      os.disabled = false;
-      os.symbols = {
-        Alpaquita = " ";
-        Alpine = " ";
-        Amazon = " ";
-        Android = " ";
-        Arch = " ";
-        Artix = " ";
-        CentOS = " ";
-        Debian = " ";
-        DragonFly = " ";
-        Emscripten = " ";
-        EndeavourOS = " ";
-        Fedora = " ";
-        FreeBSD = " ";
-        Garuda = "󰛓 ";
-        Gentoo = " ";
-        HardenedBSD = "󰞌 ";
-        Illumos = "󰈸 ";
-        Linux = " ";
-        Mabox = " ";
-        Macos = " ";
-        Manjaro = " ";
-        Mariner = " ";
-        MidnightBSD = " ";
-        Mint = " ";
-        NetBSD = " ";
-        NixOS = " ";
-        OpenBSD = "󰈺 ";
-        openSUSE = " ";
-        OracleLinux = "󰌷 ";
-        Pop = " ";
-        Raspbian = " ";
-        Redhat = " ";
-        RedHatEnterprise = " ";
-        Redox = "󰀘 ";
-        Solus = "󰠳 ";
-        SUSE = " ";
-        Ubuntu = " ";
-        Unknown = " ";
-        Windows = "󰍲 ";
-      };
-
-      package = { symbol = "󰏗 "; };
-      perl = { symbol = " "; };
-      php = { symbol = " "; };
-      pijul_channel = { symbol = " "; };
-      python = { symbol = " "; };
-      rlang = { symbol = "󰟔 "; };
-      ruby = { symbol = " "; };
-      rust = { symbol = " "; };
-      scala = { symbol = " "; };
-      swift = { symbol = " "; };
-      zig = { symbol = " "; };
-    };
+    settings = import ../packages/starship/starship.nix;
   };
 
   #Neovim
   programs.neovim = { enable = true; };
 
   #Zsh
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableAutosuggestions = true;
-    syntaxHighlighting = { enable = true; };
-    shellAliases = {
-      cd = "z";
-      gitg =
-        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
-      gita = "git add";
-      gitc = "git commit -m";
-      gits = "git status";
-      gitp = "git push";
-      update = "sudo nixos-rebuild switch --flake ";
-      rm = "trash";
-      ect = "emacsclient -t";
-    };
-  };
+  programs.zsh = import ../packages/zsh/zsh.nix;
 
   #Zoxide
   programs.zoxide = { enable = true; };

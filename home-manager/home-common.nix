@@ -16,27 +16,26 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-
   home.packages = with pkgs; [
     firefox
     nodePackages_latest.npm
     bat
     yarn
-   ripgrep
-   btop
-   discord
-   feh
-   thunderbird
-   tldr
-   playerctl
-   maim
-   trashy
-   pandoc
-   obsidian
-   sshfs
-   nerdfonts
-   fd
-   (pkgs.callPackage ../packages/timer/timer.nix { })
+    ripgrep
+    btop
+    discord
+    feh
+    thunderbird
+    tldr
+    playerctl
+    maim
+    trashy
+    pandoc
+    obsidian
+    sshfs
+    nerdfonts
+    fd
+    (pkgs.callPackage ../packages/timer/timer.nix { })
 
     # Python
     # python3Full

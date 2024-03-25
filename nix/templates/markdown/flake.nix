@@ -16,6 +16,7 @@
           packages = with pkgs; [
             marksman
             nodePackages_latest.bash-language-server
+            shellcheck
             shfmt
           ];
         };

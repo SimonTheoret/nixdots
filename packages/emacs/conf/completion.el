@@ -14,6 +14,7 @@
     "<backtab>" (lambda () (interactive) (company-complete-common-or-cycle -1))
     "S-TAB" (lambda () (interactive) (company-complete-common-or-cycle -1))
     "TAB" #'company-complete-common-or-cycle
+    "<tab>" #'company-complete-common-or-cycle
     "RET" #'newline
     "<return>" #'newline
     "C-<return>" #'company-complete))
@@ -21,7 +22,6 @@
 ;; (evil-global-set-key 'insert (kbd "TAB") 'company-select-next)
 ;; (evil-global-set-key 'insert (kbd "S-TAB") 'company-select-previous)
 ;; (evil-global-set-key 'insert (kbd "C-RET") 'company-complete-common))
-
 
 ;; (with-eval-after-load 'company
 ;;   (general-def (

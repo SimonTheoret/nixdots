@@ -44,9 +44,15 @@
             binutils
             python
             pythonPackages.pip
-            # pythonPackages.numpy
-            # pythonPackages.pytorch-bin
             pythonPackages.virtualenv
+            nodePackages_latest.pyright
+            ruff-lsp
+            nodePackages_latest.bash-language-server
+            shellcheck
+            shfmt
+            isort
+            nixfmt
+            nil 
           ];
 
           shellHook = ''

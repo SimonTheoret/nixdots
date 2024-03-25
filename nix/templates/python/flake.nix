@@ -31,12 +31,17 @@
           packages = with pkgs;
             [
               python
-              virtualenv
+              pythonPackages.pip
+              pythonPackages.virtualenv
               nodePackages_latest.pyright
               ruff-lsp
               nodePackages_latest.bash-language-server
+              shellcheck
               shfmt
               isort
+              nixfmt
+              nil
+              
             ] ++ (with pkgs.pythonPackages; [ pip ]);
         };
       });

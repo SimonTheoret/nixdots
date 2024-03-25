@@ -17,6 +17,7 @@
             lua
             lua-language-server
             nodePackages_latest.bash-language-server
+            shellcheck
             shfmt
           ];
         };

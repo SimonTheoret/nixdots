@@ -96,7 +96,15 @@
 
       # shell config part 2 starts here
       devShells = forEachSupportedSystem ({ pkgs }: {
-        default = pkgs.mkShell { packages = with pkgs; [ nil nixfmt lua lua-language-server ]; };
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nil
+            nixfmt
+            nodePackages_latest.bash-language-server
+            shellcheck
+            shfmt
+          ];
+        };
       });
       # shell config part 2 ends here
     };

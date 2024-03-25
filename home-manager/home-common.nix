@@ -68,6 +68,8 @@
     # msmtp
     # notmuch
 
+    (import ../scripts/calc.nix {inherit pkgs;})
+
     # Nix
     # nil
     # nixfmt

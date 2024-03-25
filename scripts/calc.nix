@@ -1,22 +1,29 @@
-{pkgs, ...}:
-{
-     writeShellScriptBinBang = import [../lib/scripting.nix].writeShellScriptNix;
-   calc = writeShellScriptBinBang "calc" ''
-#!/usr/bin/env python3
+{ pkgs ? import <nixpkgs> { } }:
+pkgs.writeShellApplication {
+  name = "calc";
 
-import numpy as np
-import scipy, math
-import matplotlib.pyplot as plt
-import IPython
-import matplotlib
-import tkinter
-matplotlib.use("TkAgg")
+  runtimeInputs = with pkgs; [
+    Python311
+    python311Packages.numpy
+    Python311Packages.scipy
+    python311Packages.matplotlib
+    python311Packages.tkinter
+  ];
 
-print('This is scientific calculator.')
-print('numpy is np and matplotlib.pyplot plt')
+  text = ''
+    #!/usr/bin/env python3
 
-IPython.embed()
-''
+    import numpy as np
+    import scipy, math
+    import matplotlib.pyplot as plt
+    import IPython
+    import matplotlib
+    import tkinter
+    matplotlib.use("TkAgg")
+
+    print('This is scientific calculator.')
+    print('numpy is np and matplotlib.pyplot plt')
+
+    IPython.embed()
+  '';
 }
-}
-# {}

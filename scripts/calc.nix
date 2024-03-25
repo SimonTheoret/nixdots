@@ -5,8 +5,6 @@ in pkgs.stdenv.mkDerivation {
   propagatedBuildInputs = [ pkgs.python311Full ] ++ pythonpkgs;
   dontUnpack = true;
   installPhase = ''
-    mkdir -p $out/bin
-    install -Dm755 ${./calc.py} $out/bin
-    echo "$out/bin"
+    install -Dm755 ${./calc.py} $out/bin/calc
   '';
 }

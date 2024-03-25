@@ -7,5 +7,6 @@ in pkgs.stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin/calc
     install -Dm755 ${./calc.py} $out/bin/calc
+    echo "$out/bin"
   '';
 }

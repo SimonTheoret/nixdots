@@ -55,11 +55,11 @@
     '("Find reference" . lsp-ui-peek-find-references)
     "<leader> c r r"
     '("Rename" . lsp-rename)
-    "<leader> c w r"
-    '("LSP Workspace remove" . lsp-workspace-folders-remove)
+    "<leader> c w d"
+    '("LSP Workspace delete" . lsp-workspace-folders-remove)
     "<leader> c w a"
     '("LSP Workspace add" . lsp-workspace-folders-add)
-    "<leader> c w r l"
+    "<leader> c w r"
     '("LSP restart workspace" . lsp-workspace-restart)
     )
   )

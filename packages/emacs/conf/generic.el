@@ -48,8 +48,6 @@
 ;; a no-brainer to switch it on.
 (setq redisplay-dont-pause t)
 
-;; elimiate 'file~'
-(setq make-backup-files nil)
 (add-hook 'text-mode-hook #'auto-fill-mode)
 
 (use-package gcmh

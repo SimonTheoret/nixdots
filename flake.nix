@@ -89,7 +89,7 @@
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = inputs;
-            home-manager.users.simon = import ./home-manager;
+            home-manager.users.simon = import ./home-manager/profiles/i3;
           }
         ];
       };

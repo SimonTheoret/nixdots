@@ -50,10 +50,6 @@
 
 (add-hook 'text-mode-hook #'auto-fill-mode)
 
-(use-package gcmh
-  :config
-  (gcmh-mode 1))
-
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory (format "%sbackups" user-emacs-directory) t)
 

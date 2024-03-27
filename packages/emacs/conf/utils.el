@@ -27,3 +27,7 @@ user-emacs-directory/conf/*.el --force`"
 ;;   ;; (shell-command (concat "mkdir" default-directory "/" str)
 ;;   (message "%s" (concat "mkdir" default-directory "/" dirstr)
 ;; 	   ))
+
+(use-package gcmh
+  :config
+  (gcmh-mode 1))

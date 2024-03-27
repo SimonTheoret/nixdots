@@ -1,56 +1,30 @@
 {
-  description = "A Nix-flake-based Rust development environment";
+  description = "A rust development shell";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url      = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-utils.url  = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
-    let
-      overlays = [
-        rust-overlay.overlays.default
-        (final: prev: {
-          rustToolchain =
-            let
-              rust = prev.rust-bin;
-            in
-            if builtins.pathExists ./rust-toolchain.toml then
-              rust.fromRustupToolchainFile ./rust-toolchain.toml
-            else if builtins.pathExists ./rust-toolchain then
-              rust.fromRustupToolchainFile ./rust-toolchain
-            else
-              rust.stable.latest.default.override {
-                extensions = [ "rust-src" "rustfmt" ];
-              };
-        })
-      ];
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit overlays system; };
-      });
-    in
-    {
-      devShells = forEachSupportedSystem ({ pkgs }: {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            rustToolchain
-            openssl
-            pkg-config
-            cargo-deny
-            cargo-edit
-            cargo-watch
-            rust-analyzer
-            nodePackages_latest.bash-language-server
-            shellcheck
-            shfmt
-            nil
-            nixfmt
-          ];
+  outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        overlays = [ (import rust-overlay) ];
+        pkgs = import nixpkgs {
+          inherit system overlays;
         };
-      });
-    };
+        rust = pkgs.rust-bin.stable.latest.default.override {
+              extensions = ["rust-src" "rust-analyzer" "clippy"];
+              targets = [];
+            };
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = [rust] ++ (with pkgs;[
+            pkg-config
+          ]);
+        };
+      }
+    );
 }

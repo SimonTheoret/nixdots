@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 
 ;; Generic goodies
@@ -27,7 +27,7 @@
 (setq blink-cursor-mode t)
 ;; (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-;; Display relative line numbers in every buffer 
+;; Display relative line numbers in every buffer
 ;; (global-display-line-numbers-mode nil)
 ;; (setq display-line-numbers-type 'relative)
 
@@ -55,3 +55,12 @@
 (use-package gcmh
   :config
   (gcmh-mode 1))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory (format "%sbackups" user-emacs-directory) t)
+
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(format "%sbackups" user-emacs-directory) t)))

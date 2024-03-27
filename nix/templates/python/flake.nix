@@ -34,6 +34,7 @@
               pythonPackages.pip
               pythonPackages.virtualenv
               nodePackages_latest.pyright
+              ruff
               ruff-lsp
               nodePackages_latest.bash-language-server
               shellcheck

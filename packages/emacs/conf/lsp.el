@@ -19,8 +19,24 @@
    (sh-mode . lsp-deferred)
    (nix-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
+  :config
+  
+  (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-lens-enable t)
+  (lsp-signature-mode t)
+  ;; (lsp-ui-peek-enable)
+  ;; (lsp-ui-doc-enable)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-include-signature t)
+  (setq lsp-ui-doc-max-height 8)
+  ;; :global/:workspace/:file
+  (setq lsp-modeline-diagnostics-scope :workspace)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-idle-delay 0.500)
   :general-config
-  (general-def
+   (general-def
     :states
     'normal
     "<leader> c d"
@@ -42,24 +58,12 @@
     "<leader> c w r"
     '("LSP Workspace remove" . lsp-workspace-folders-remove)
     "<leader> c w a"
-    '("LSP Workspace add" . lsp-workspace-folders-add)))
+    '("LSP Workspace add" . lsp-workspace-folders-add)
+    "<leader> c w r l"
+    '("LSP restart workspace" . lsp-workspace-restart)
+    )
+  )
 
-(with-eval-after-load 'lsp-mode
-  (setq lsp-ui-sideline-show-code-actions t)
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-lens-enable t)
-  (lsp-signature-mode t)
-  ;; (lsp-ui-peek-enable)
-  ;; (lsp-ui-doc-enable)
-  (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-position 'top)
-  (setq lsp-ui-doc-include-signature t)
-  (setq lsp-ui-doc-max-height 8)
-  ;; :global/:workspace/:file
-  (setq lsp-modeline-diagnostics-scope :workspace))
-;; :config
-;; (setq lsp-modeline-diagnostics-enable t)
-;; (setq lsp-modeline-diagnostics-scope :workspace))
 
 (use-package all-the-icons)
 
@@ -71,7 +75,7 @@
 
 (defun lsp-optim ()
   (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq read-process-output-max (* 4 (* 1024 1024))) ;; 1mb
   (setq lsp-use-plists t))
 
 (lsp-optim)

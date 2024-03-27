@@ -87,7 +87,10 @@
   "<leader> s d"
   '("Search current dir" . consult-ripgrep)
   "<leader> s f"
-  '("Search file" . consult-fd))
+  '("Search file" . consult-fd)
+  "<leader> s m"
+  '("Consult IMenu" . consult-imenu)
+  )
 
 (use-package
   embark

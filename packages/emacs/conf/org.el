@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 ;;;;;;;;; org-mode ;;;;;;;;
 
@@ -73,7 +73,7 @@
 ;; (set-face-background 'fringe (face-attribute 'default :background))
 
 
-;; org roam v2 
+;; org roam v2
 (use-package
   org-roam
   :custom (org-roam-directory (file-truename "~/org/roam"))
@@ -128,6 +128,33 @@
   "<leader> n a f"
   '("Org agenda file" . org-cycle-agenda-files))
 
+(defun test-if-line-starts-with-char (char)
+  "Tests if the line under the pointer starts with a char (string)
+  character. If so, this function returns t. Else, it returns nil."
+  (let* (
+	 (myLine
+	  (buffer-substring-no-properties
+	   (line-beginning-position)
+	   (line-end-position)))
+	 (firstChar (substring myLine 0 ( + (-(length myLine)) 1)))
+	 )
+    (if (string-equal firstChar char)
+	't
+      nil)
+    ))
+
+(defun demote-heading-or-evil-default ()
+  (interactive)
+  (if (test-if-line-starts-with-char "*")
+      (org-demote-subtree)
+    (evil-shift-left-line 1)))
+
+(defun promote-heading-or-evil-default ()
+  (interactive)
+  (if (test-if-line-starts-with-char "*")
+      (org-promote-subtree)
+    (evil-shift-right-line 1)))
+
 
 (general-def
   :states 'normal
@@ -147,6 +174,8 @@
   '("Toggle todo" . org-todo)
   "<leader> m i t"
   '("Insert heading/checkbox" . org-insert-todo-heading)
+  "<leader> m i h"
+  '("Insert heading" . org-insert-heading)
   ;; Archive
   "<leader> m a d"
   '("Archive subtree" . org-archive-subtree-default)
@@ -162,7 +191,17 @@
   '("Follow link" . org-open-at-point)
   ;; Latex
   "<leader> m m p"
-  '("Org store link" . org-latex-preview))
+  '("Org store link" . org-latex-preview)
+  )
+
+(general-def
+  :states 'insert
+  :keymaps 'org-mode-map
+  "C-d"
+  '("Promote or move left" . (lambda () (interactive) (promote-heading-or-evil-default)))
+  "C-t"
+  '("Demote or move right" . (lambda () (interactive) (demote-heading-or-evil-default)))
+  )
 
 
 ;; Org capture templates

@@ -50,3 +50,8 @@
 
 ;; elimiate 'file~'
 (setq make-backup-files nil)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+
+(use-package gcmh
+  :config
+  (gcmh-mode 1))

@@ -95,7 +95,7 @@
       };
 
       # shell config part 2 starts here
-      devShells = forEachSupportedSystem ({ pkgs }: {
+      devShells = forEachSupportedSystem ({ pkgs }: { # Shell for editing my dotfiles
         default = pkgs.mkShell {
           packages = with pkgs; [
             nil

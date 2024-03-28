@@ -64,6 +64,7 @@
     emacsPackages.vterm
     emacsPackages.pdf-tools
     jansson # library for json (emacs lsp)
+    librsvg # for viewing svg images
     # isync
     # msmtp
     # notmuch

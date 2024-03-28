@@ -97,9 +97,7 @@
 (use-package
   rustic
   :init
-  (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
-  :custom
-  (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer")))
+  (setq-default lsp-rust-analyzer-cargo-watch-command "clippy"))
 
 ;; Latex
 (use-package

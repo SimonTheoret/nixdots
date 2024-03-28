@@ -69,9 +69,9 @@
 
 ;; optionally
 ;; By default, lsp-mode automatically activates lsp-ui unless lsp-auto-configure is set to nil.
-(use-package lsp-ui :commands lsp-ui-mode)
+;; (use-package lsp-ui :commands lsp-ui-mode)
 
-;; LSP optimizations
+;;LSP optimizations
 
 (defun lsp-optim ()
   (setq gc-cons-threshold 100000000)

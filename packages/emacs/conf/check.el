@@ -11,7 +11,6 @@
   :general
   (general-def
     'normal
-    "<leader> c l" '("List diagnostics" . consult-lsp-diagnostics)
     "<leader> c s i" '("Search symbols in workspace" . consult-lsp-symbols)
     "<leader> c s j" '("Search symbol in file" . consult-lsp-file-symbols)
     ))
@@ -26,3 +25,10 @@
   :init
   (global-hl-todo-mode))
 
+(use-package consult-flycheck
+  :general
+  (general-def
+    'normal
+    "<leader> c l" '("List diagnostics" . consult-flycheck)
+    )
+  )

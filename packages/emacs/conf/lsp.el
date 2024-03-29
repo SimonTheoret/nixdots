@@ -39,29 +39,31 @@
    (general-def
     :states
     'normal
-    "<leader> c d"
+    :prefix "<leader> c" 
+    :prefix-command 'Code
+    "d"
     '("Find definition" . lsp-find-definition)
-    "<leader> c a"
+    "a"
     '("Execute action" . lsp-execute-code-action)
-    "<leader> c i"
+    "i"
     '("Find implementation" . lsp-find-implementation)
-    "<leader> c t"
+    "t"
     '("Find type def" . lsp-find-type-definition)
-    "<leader> c D"
+    "D"
     '("Find declaration" . lsp-find-declaration)
-    "<leader> c k"
+    "k"
     '("Find declaration" . lsp-describe-thing-at-point)
-    "<leader> c r f"
+    "r f"
     '("Find reference" . lsp-ui-peek-find-references)
-    "<leader> c r r"
+    "r r"
     '("Rename" . lsp-rename)
-    "<leader> c w d"
+    "w d"
     '("LSP Workspace delete" . lsp-workspace-folders-remove)
-    "<leader> c w a"
+    "w a"
     '("LSP Workspace add" . lsp-workspace-folders-add)
-    "<leader> c w r"
+    "w r"
     '("LSP restart workspace" . lsp-workspace-restart)
-    "<leader> c e l"
+    "e l"
     '("Errors list" . list-flycheck-errors)
     )
   )

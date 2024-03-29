@@ -12,7 +12,6 @@
 
   ;; Show more candidates
   (setq vertico-count 15)
-
   :general-config
   (:keymaps
    'vertico-map
@@ -82,13 +81,15 @@
 (general-def
   :states
   'normal
-  "<leader> s g"
+  :prefix "<leader> s"
+  :prefix-command 'Search
+  "g"
   '("Filter search current dir" . lgrep)
-  "<leader> s d"
+  "d"
   '("Search current dir" . consult-ripgrep)
-  "<leader> s f"
+  "f"
   '("Search file" . consult-fd)
-  "<leader> s m"
+  "m"
   '("Consult IMenu" . consult-imenu)
   )
 
@@ -97,8 +98,11 @@
 
   :general
   (general-def
-    :states 'normal "<leader> a a" '("embark act" . embark-act)
-    "<leader> a d" '("embark dwim" . embark-dwim)) ;; alternative for `describe-bindings'
+    :states 'normal
+    :prefix "<leader> a"
+    :prefix-command 'Actions
+    "a" '("Embark act" . embark-act)
+    "d" '("Embark dwim" . embark-dwim)) ;; alternative for `describe-bindings'
 
   :init
 

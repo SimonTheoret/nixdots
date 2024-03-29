@@ -9,7 +9,12 @@
   programs.autorandr = import ../../../packages/autorandr/autorandr.nix;
 
   #Picom
-  services.picom.enable = true;
+  services.picom = {
+    enable = true;
+    vSync = true;
+    backend = "xrender";
+    settings = { unredir-if-possible = false; };
+  };
 
   #dunst notifications
   services.dunst = { enable = true; };

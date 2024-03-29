@@ -61,6 +61,8 @@
     '("LSP Workspace add" . lsp-workspace-folders-add)
     "<leader> c w r"
     '("LSP restart workspace" . lsp-workspace-restart)
+    "<leader> c e l"
+    '("Errors list" . list-flycheck-errors)
     )
   )
 
@@ -69,7 +71,7 @@
 
 ;; optionally
 ;; By default, lsp-mode automatically activates lsp-ui unless lsp-auto-configure is set to nil.
-;; (use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui :commands lsp-ui-mode)
 
 ;;LSP optimizations
 

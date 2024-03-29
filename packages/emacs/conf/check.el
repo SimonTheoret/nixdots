@@ -2,7 +2,7 @@
 
 (use-package flycheck
   :custom
-  (flycheck-highlighting-mode nil)
+  (flycheck-highlighting-mode nil) ;; remove highlighting
   :hook
   (lsp-mode . flycheck-mode)) 
 
@@ -29,6 +29,6 @@
   :general
   (general-def
     'normal
-    "<leader> c l" '("List diagnostics" . consult-flycheck)
+    "<leader> c e s" '("Search errors" . consult-flycheck)
     )
   )

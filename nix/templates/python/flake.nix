@@ -31,8 +31,6 @@
           packages = with pkgs;
             [
               python
-              pythonPackages.pip
-              pythonPackages.virtualenv
               nodePackages_latest.pyright
               ruff
               ruff-lsp
@@ -43,7 +41,7 @@
               nixfmt
               nil
               
-            ] ++ (with pkgs.pythonPackages; [ pip ]);
+            ] ++ (with pkgs.pythonPackages; [ pip virtualenv ]);
         };
       });
     };

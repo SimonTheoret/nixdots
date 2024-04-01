@@ -126,6 +126,6 @@
       set $ws10 "10"
       workspace $ws1 output DP-2
       workspace $ws2 output DP-0
-      workspace $ws3 output HDMI-1'';
+      workspace $ws3 output HDMI-0'';
   };
 }

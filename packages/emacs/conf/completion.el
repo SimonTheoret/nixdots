@@ -17,12 +17,11 @@
     "<tab>" #'company-complete-common-or-cycle
     "RET" #'newline
     "<return>" #'newline
-    "C-<return>" #'company-complete))
+    "C-<return>" #'company-complete-selection))
 
 ;; (evil-global-set-key 'insert (kbd "TAB") 'company-select-next)
 ;; (evil-global-set-key 'insert (kbd "S-TAB") 'company-select-previous)
 ;; (evil-global-set-key 'insert (kbd "C-RET") 'company-complete-common))
-
 ;; (with-eval-after-load 'company
 ;;   (general-def (
 ;; 		:states 'insert

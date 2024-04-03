@@ -34,10 +34,10 @@
               nodePackages_latest.pyright
               ruff
               ruff-lsp
+              isort
               nodePackages_latest.bash-language-server
               shellcheck
               shfmt
-              isort
               nixfmt
               nil
               

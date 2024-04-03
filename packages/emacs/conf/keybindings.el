@@ -72,28 +72,45 @@
   which-key
   :config (which-key-mode) (setq which-key-idle-delay 0.2))
 
+(general-def
+  :states
+  'normal
+  :prefix "<leader> e"
+  :prefix-command 'Eval
+  "b"
+  '("eval buffer" . eval-buffer)
+  )
+(general-def
+  :states
+  'visual
+  :prefix "<leader> e"
+  :prefix-command 'Eval
+  "r"
+  '("eval region" . eval-region))
+
+(general-def
+  :states
+  'normal
+  :prefix "<leader> q"
+  :prefix-command 'Quit
+  "c" 
+  '("Close frame" . delete-frame)
+  "r" 
+  '("Restart emacs" . restart-emacs)
+  "K" 
+  '("Kill emacs" . save-buffers-kill-emacs)
+  )
+
 
 (general-def
   :states
   'normal
   "TAB"
   '("Jump pairs" . evil-jump-item)
-  "<leader> e b"
-  '("eval buffer" . eval-buffer)
-  "<leader> c c c"
-  '("compile" . compile)
-  "<leader> c c r"
-  '("recompile" . recompile)
-  "<leader> q c" 
-  '("Close frame" . delete-frame)
-  "<leader> q r" 
-  '("Restart emacs" . restart-emacs)
-  "<leader> q K" 
-  '("Kill emacs" . save-buffers-kill-emacs)
   )
 
-(general-def
-  :states 'visual "<leader> e r" '("eval region" . eval-region))
+;; (general-def
+;;   :states 'visual "<leader> e r" '("eval region" . eval-region))
 
 ;; Evil commands (:<yourcommandhere>)
 ;; :q should kill the current buffer rather than quitting emacs entirely

@@ -20,7 +20,7 @@
    (nix-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :config
-  
+
   (setq lsp-ui-sideline-show-code-actions t)
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-lens-enable t)
@@ -36,10 +36,10 @@
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-idle-delay 0.500)
   :general-config
-   (general-def
+  (general-def
     :states
     'normal
-    :prefix "<leader> c" 
+    :prefix "<leader> c"
     :prefix-command 'Code
     "d"
     '("Find definition" . lsp-find-definition)
@@ -98,10 +98,15 @@
      (lsp-deferred)))) ; or lsp-deferred
 
 ;; Rust
-(use-package
-  rustic
+(use-package rustic
+  :straight (rustic :type git :host github :repo "brotzeit/rustic" :branch "rustic-ts-mode") ;; Gives treesitter integration
+;;   :mode "\\.rs\\'"
+  :hook
+  (rust-mode . rustic-mode)
   :init
-  (setq-default lsp-rust-analyzer-cargo-watch-command "clippy"))
+  (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
+  (setq-default lsp-rust-analyzer-callable-modifier-face)
+  (setq rust-mode-treesitter-derive t))
 
 ;; Latex
 (use-package

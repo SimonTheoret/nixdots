@@ -73,15 +73,31 @@
 ;; (set-face-background 'fringe (face-attribute 'default :background))
 
 
+(general-def
+  :states
+  'normal
+  :prefix "<leader> n c"
+  :prefix-command 'Capture
+  "c c"
+  '("Org capture" . org-capture))
+
+(general-def
+  :states
+  'normal
+  :prefix "<leader> n a"
+  :prefix-command 'Agenda
+  "a a"
+  '("Org agenda" . org-agenda)
+  "a f"
+  '("Org agenda file" . org-cycle-agenda-files))
+
 ;; org roam v2
-(use-package
-  org-roam
+(use-package org-roam
   :custom (org-roam-directory (file-truename "~/org/roam"))
   :general
-  (general-def
-
+  (general-def  
     :states 'normal
-    :prefix "<leader> n r"
+    :prefix "<leader> n r" ;; This prefix definition must be placed AFTER the definition of the Org prefix
     :prefix-command 'Roam
     "l"
     '("Roam buffer toggle" . org-roam-buffer-toggle)
@@ -98,8 +114,7 @@
     "t"
     '("Dailies goto yesterday" . org-roam-dailies-goto-today)
     "y"
-    '("Dailies goto yesterday" . org-roam-dailies-goto-yesterday)
-    )
+    '("Dailies goto yesterday" . org-roam-dailies-goto-yesterday))
   :config
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template
@@ -119,17 +134,6 @@
       :target (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n")))))
 
 
-(general-def
-  :states
-  'normal
-  :prefix "<leader> n"
-  :prefix-command 'Org
-  "a a"
-  '("Org agenda" . org-agenda)
-  "c c"
-  '("Org capture" . org-capture)
-  "a f"
-  '("Org agenda file" . org-cycle-agenda-files))
 
 
 (defun test-if-line-starts-with-char (char)

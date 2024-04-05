@@ -32,7 +32,8 @@
   ;; (setq lsp-ui-doc-include-signature t)
   ;; (setq lsp-ui-doc-max-height 8)
   ;; :global/:workspace/:file
-  (setq lsp-modeline-diagnostics-scope :workspace)
+  ;; (setq lsp-modeline-diagnostics-scope :workspace)
+  (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-idle-delay 0.500)
   :general-config

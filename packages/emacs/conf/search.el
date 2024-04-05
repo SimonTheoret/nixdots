@@ -78,20 +78,6 @@
   (interactive)
   (ido-find-file-in-dir user-emacs-directory))
 
-(general-def
-  :states
-  'normal
-  :prefix "<leader> s"
-  :prefix-command 'Search
-  "g"
-  '("Filter search current dir" . lgrep)
-  "d"
-  '("Search current dir" . consult-ripgrep)
-  "f"
-  '("Search file" . consult-fd)
-  "m"
-  '("Consult IMenu" . consult-imenu)
-  )
 
 (use-package
   embark
@@ -131,3 +117,30 @@
 (use-package
   embark-consult
   :hook (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package browse-at-remote)
+
+(use-package tldr)
+
+(general-def
+  :states
+  'normal
+  :prefix "<leader> s"
+  :prefix-command 'Search
+  "g"
+  '("Filter search current dir" . lgrep)
+  "d"
+  '("Search current dir" . consult-ripgrep)
+  "f"
+  '("Search file" . consult-fd)
+  "m"
+  '("Consult IMenu" . consult-imenu)
+  "r"
+  '("Search file on remote" . browse-at-remote)
+  "t"
+  '("Tldr command" . tldr)
+  "w"
+  '("Manual with woman" . woman)
+  "m"
+  '("Manual with woman" . man)
+  )

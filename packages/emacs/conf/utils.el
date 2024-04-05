@@ -28,6 +28,16 @@ user-emacs-directory/conf/*.el --force`"
 ;;   (message "%s" (concat "mkdir" default-directory "/" dirstr)
 ;; 	   ))
 
-(use-package gcmh
-  :config
-  (gcmh-mode 1))
+;; (use-package gcmh
+;;   :config
+;;   (gcmh-mode 1))
+
+(use-package crux
+  :general-config
+  (general-def
+    :states 'normal
+    :prefix "<leader> o"
+    :prefix-command 'Open
+    "e" '("Open current file in external app" . crux-open-with)
+    "u" '("View URL content" . crux-view-url)
+    ))

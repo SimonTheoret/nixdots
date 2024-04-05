@@ -63,6 +63,7 @@
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm
     emacsPackages.pdf-tools
+    ispell
     jansson # library for json (emacs lsp)
     librsvg # for viewing svg images
     # isync

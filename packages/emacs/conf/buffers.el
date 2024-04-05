@@ -3,8 +3,10 @@
 
 (general-def
   :states 'normal
-  "<leader> b i" '("Ibuffer" . ibuffer)
-  "<leader> b l" '("Buffer list" . consult-buffer))
+  :prefix "<leader> b"
+  :prefix-command 'Buffers
+  "i" '("Ibuffer" . ibuffer)
+  "l" '("Buffer list" . consult-buffer))
 
 
 (use-package popwin

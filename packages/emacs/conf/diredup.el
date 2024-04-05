@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 
 ;; Makes dired goooood
@@ -27,14 +27,20 @@
 (general-def
   :states
   'normal
-  "<leader> f f"
+  :prefix "<leader> f"
+  :prefix-command 'Files
+  "f"
   '("Find files" . ido-find-file)
-  "<leader> f p"
+  "p"
   '("Search conf" . search-emacs-dir)
-  "<leader> f d"
+  "d"
   '("Create dir" . make-directory)
-  "<leader> f D"
+  "D"
   '("Delete directory" . delete-directory)
-  "<leader> f r"
+  "r f"
   '("Remove file" . delete-file)
+  "c"
+  '("Copy current file" . crux-copy-file-preserve-attributes)
+  "r r"
+  '("Rename current file" . crux-rename-file-and-buffer)
   )

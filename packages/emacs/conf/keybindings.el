@@ -72,6 +72,8 @@
   which-key
   :config (which-key-mode) (setq which-key-idle-delay 0.2))
 
+(use-package expreg)
+
 (general-def
   :states
   'normal
@@ -101,7 +103,6 @@
   '("Kill emacs" . save-buffers-kill-emacs)
   )
 
-
 (general-def
   :states
   'normal
@@ -118,6 +119,21 @@
 ;; Need to type out :quit to close emacs
 (evil-ex-define-cmd "quit" 'evil-quit)
 
+(general-def
+  :states 'normal
+  :prefix "<leader> r"
+  :prefix-command 'Region
+  "e"
+  '("Expand region" . expreg-expand)
+  "c"
+  '("Contract region" . expreg-contract)
+  )
+
+;; (general-def
+;;   :states
+;;   :prefix "<leader> m"
+;;   :prefix-command 'Local
+;;   )
 
 ;; combine evil join and evil fill and move
 ;; (defun join-and-fill ()

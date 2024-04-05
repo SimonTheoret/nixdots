@@ -81,22 +81,23 @@
   (general-def
 
     :states 'normal
-
-    "<leader> n r l"
+    :prefix "<leader> n r"
+    :prefix-command 'Roam
+    "l"
     '("Roam buffer toggle" . org-roam-buffer-toggle)
-    "<leader> n r f"
+    "f"
     '("Roam find node" . org-roam-node-find)
-    "<leader> n r g"
+    "g"
     '("Roam graph" . org-roam-graph)
-    "<leader> n r i"
+    "i"
     '("Roam insert node " . org-roam-node-insert)
-    "<leader> n r c"
+    "c"
     '("Roam capture" . org-roam-capture)
-    "<leader> n r c"
+    "c"
     '("Dailies capture today" . org-roam-dailies-capture-today)
-    "<leader> n r t"
+    "t"
     '("Dailies goto yesterday" . org-roam-dailies-goto-today)
-    "<leader> n r y"
+    "y"
     '("Dailies goto yesterday" . org-roam-dailies-goto-yesterday)
     )
   :config
@@ -121,12 +122,15 @@
 (general-def
   :states
   'normal
-  "<leader> n a a"
+  :prefix "<leader> n"
+  :prefix-command 'Org
+  "a a"
   '("Org agenda" . org-agenda)
-  "<leader> n c c"
+  "c c"
   '("Org capture" . org-capture)
-  "<leader> n a f"
+  "a f"
   '("Org agenda file" . org-cycle-agenda-files))
+
 
 (defun test-if-line-starts-with-char (char)
   "Tests if the line under the pointer starts with a char (string)
@@ -159,40 +163,46 @@
 (general-def
   :states 'normal
   :keymaps 'org-mode-map
-
+  :prefix "<leader> m"
+  :prefix-command 'Org-ft
   ;; Org nodes
-  "<leader> m n n"
+  "n n"
   '("New node" . org-id-get-create)
   ;; Toggling
-  "<leader> m t c"
+  "t c"
   '("Toggle checkbox" . org-toggle-checkbox)
-  "<leader> m t h"
+  "t h"
   '("Toggle heading" . org-toggle-heading)
-  "<leader> m t i"
+  "t i"
   '("Toggle item" . org-toggle-item)
-  "<leader> m t t"
+  "t t"
   '("Toggle todo" . org-todo)
-  "<leader> m i t"
+  "i t"
   '("Insert heading/checkbox" . org-insert-todo-heading)
-  "<leader> m i h"
+  "i h"
   '("Insert heading" . org-insert-heading)
   ;; Archive
-  "<leader> m a d"
+  "a d"
   '("Archive subtree" . org-archive-subtree-default)
   ;; Ctrl-c ctrl-c magic
-  "<leader> m c c"
+  "c c"
   '("Org ctrl-c" . org-ctrl-c-ctrl-c)
   ;; Links
-  "<leader> m l s"
+  "l s"
   '("Org store link" . org-store-link)
-  "<leader> m l i"
+  "l i"
   '("Org store link" . org-insert-link)
-  "<return>"
-  '("Follow link" . org-open-at-point)
   ;; Latex
-  "<leader> m m p"
+  "m p"
   '("Org store link" . org-latex-preview)
   )
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  "<return>"
+  '("Follow link" . org-open-at-point))
+
 
 (general-def
   :states 'insert

@@ -1,15 +1,7 @@
 ;; -*- lexical-binding: t -*- 
 
 
-(use-package
-  vterm
-  :general
-  (general-def
-    :states 'normal
-    "<leader> t o" '("Open vterm other window" . vterm-other-window)
-    "<leader> t h" '("Open vterm here" . vterm)
-    )
-  )
+(use-package vterm)
 
 (use-package
   vterm-toggle
@@ -29,14 +21,16 @@
      ;;display-buffer-in-direction/direction/dedicated is added in emacs27
      ;;(direction . bottom)
      ;;(dedicated . t) ;dedicated is supported in emacs27
-     (reusable-frames . visible) (window-height . 0.3)))
-  :general
-  (general-def
-    :states
-    'normal
-    "<leader> t t"
-    '("Toggle vterm" . vterm-toggle)))
+     (reusable-frames . visible) (window-height . 0.3))))
 
+(general-def
+    :states 'normal
+    :prefix "<leader> t"
+    :prefix-command 'Term
+    "o" '("Open vterm other window" . vterm-other-window)
+    "h" '("Open vterm here" . vterm)
+   "t" '("Toggle vterm" . vterm-toggle))
+    
 
 ;; (defun vterm-toggle-smart ()
 ;;   "Toggle vterm in a smart way."

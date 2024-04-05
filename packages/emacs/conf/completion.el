@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 ;; Makes emacs write code in my place
 
@@ -49,12 +49,14 @@
   :init
   (yas-global-mode 1)
   :general
-  (general-def :states 'normal  "<leader> i s" '("Insert snippet" . yas-insert-snippet)))
+  (general-def
+    :states 'normal
+    :prefix "<leader> i"
+    :prefix-command 'Insert
+    "s" '("Insert snippet" . yas-insert-snippet)))
 ;; :config
 ;; (evil-global-set-key 'normal (kbd "<leader> i s") 'yas-insert-snippet))
 
 (use-package doom-snippets
   :after yasnippet
   :straight (doom-snippets :type git :host github :repo "doomemacs/snippets" :files ("*.el" "*")))
-
-

@@ -28,38 +28,55 @@
   ;; (lsp-ui-peek-enable)
   ;; (lsp-ui-doc-enable)
   ;; (setq lsp-ui-doc-show-with-cursor t)
-  ;; (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-position 'at-point)
   ;; (setq lsp-ui-doc-include-signature t)
   ;; (setq lsp-ui-doc-max-height 8)
   ;; :global/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-idle-delay 0.500)
-  :general-config
-  (general-def
-    :states
-    'normal
-    :prefix "<leader> c"
-    :prefix-command 'Code
-    "d"
-    '("Find definition" . lsp-find-definition)
-    "a"
-    '("Execute action" . lsp-execute-code-action)
-    "i"
-    '("Find implementation" . lsp-find-implementation)
-    "t"
-    '("Find type def" . lsp-find-type-definition)
-    "D"
-    '("Find declaration" . lsp-find-declaration)
-    "k"
-    '("Find declaration" . lsp-describe-thing-at-point)
-    "r"
-    '("Find reference" . lsp-ui-peek-find-references)
-    "n"
-    '("Rename" . lsp-rename)
-    "f"
-    '("Format buffer" . format-all-buffer)
-    ))
+  )
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
+
+(general-def
+  :states
+  'normal
+  :prefix "<leader> c"
+  :prefix-command 'Code
+  "d"
+  '("Find definition" . lsp-ui-peek-find-definitions)
+  "a"
+  '("Execute action" . lsp-execute-code-action)
+  "i"
+  '("Find implementation" . lsp-find-implementation)
+  "t"
+  '("Find type def" . lsp-find-type-definition)
+  "D"
+  '("Find declaration" . lsp-find-declaration)
+  "b"
+  '("Open doc in buffer" . lsp-describe-thing-at-point)
+  "k"
+  '("Describe" . lsp-ui-doc-glance)
+  "r"
+  '("Find reference" . lsp-ui-peek-find-references)
+  "n"
+  '("Rename" . lsp-rename)
+  "f"
+  '("Format buffer" . format-all-buffer)
+  )
+
+;; (defun smart-lsp-ui-doc ()
+;;   (interactive)
+;;   (if lsp-ui-doc-frame-mode
+;;       ((lsp-ui-doc-show)
+;;        (lsp-ui-doc-focus-frame)
+;;        (lsp-ui-doc-enable nil))
+;;     ((lsp-ui-doc-hide)
+;;      (setq lsp-ui-doc-enable t))
+;;     )
+;;   )
 
 (general-def
   :states
@@ -95,6 +112,9 @@
   :after lsp-mode
   :init
   (setq lsp-pyright-diagnostic-mode "workspace")
+  (setq lsp-pyright-venv-path ".")
+  (setq lsp-pyright-venv-directory ".venv")
+  (setq lsp-pyright-multi-root nil)
   :hook
   (python-ts-mode
    .

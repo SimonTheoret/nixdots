@@ -86,16 +86,16 @@
   'normal
   :prefix "<leader> n a"
   :prefix-command 'Agenda
-  "a a"
+  "a"
   '("Org agenda" . org-agenda)
-  "a f"
+  "f"
   '("Org agenda file" . org-cycle-agenda-files))
 
 ;; org roam v2
 (use-package org-roam
   :custom (org-roam-directory (file-truename "~/org/roam"))
   :general
-  (general-def  
+  (general-def
     :states 'normal
     :prefix "<leader> n r" ;; This prefix definition must be placed AFTER the definition of the Org prefix
     :prefix-command 'Roam
@@ -119,7 +119,7 @@
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template
 	(concat
-         "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+        "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol)
@@ -167,39 +167,71 @@
 (general-def
   :states 'normal
   :keymaps 'org-mode-map
-  :prefix "<leader> m"
-  :prefix-command 'Org-ft
-  ;; Org nodes
+  :prefix "<localleader> c"
+  :prefix-command 'Ctrl-c
+  "c"
+  '("Org ctrl-c" . org-ctrl-c-ctrl-c))
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> m"
+  :prefix-command 'Math
+  "p"
+  '("Org preview latex" . org-latex-preview))
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> n"
+  :prefix-command 'Node
   "n n"
-  '("New node" . org-id-get-create)
-  ;; Toggling
-  "t c"
-  '("Toggle checkbox" . org-toggle-checkbox)
-  "t h"
-  '("Toggle heading" . org-toggle-heading)
-  "t i"
-  '("Toggle item" . org-toggle-item)
-  "t t"
-  '("Toggle todo" . org-todo)
-  "i t"
-  '("Insert heading/checkbox" . org-insert-todo-heading)
-  "i h"
-  '("Insert heading" . org-insert-heading)
-  ;; Archive
-  "a d"
-  '("Archive subtree" . org-archive-subtree-default)
-  ;; Ctrl-c ctrl-c magic
-  "c c"
-  '("Org ctrl-c" . org-ctrl-c-ctrl-c)
-  ;; Links
-  "l s"
+  '("New node" . org-id-get-create))
+
+
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> l"
+  :prefix-command 'Link
+  "s"
   '("Org store link" . org-store-link)
-  "l i"
-  '("Org store link" . org-insert-link)
-  ;; Latex
-  "m p"
-  '("Org store link" . org-latex-preview)
-  )
+  "i"
+  '("Org store link" . org-insert-link))
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> a"
+  :prefix-command 'Archive
+  "d"
+  '("Archive subtree" . org-archive-subtree-default))
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> i"
+  :prefix-command 'Insert 
+  "t"
+  '("Insert heading/checkbox" . org-insert-todo-heading)
+  "h"
+  '("Insert heading" . org-insert-heading))
+
+(general-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  :prefix "<localleader> t"
+  :prefix-command 'Toggling 
+  "c"
+  '("Toggle checkbox" . org-toggle-checkbox)
+  "h"
+  '("Toggle heading" . org-toggle-heading)
+  "i"
+  '("Toggle item" . org-toggle-item)
+  "t"
+  '("Toggle todo" . org-todo))
+
 
 (general-def
   :states 'normal

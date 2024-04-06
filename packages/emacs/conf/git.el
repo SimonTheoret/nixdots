@@ -13,8 +13,9 @@
     :prefix "<leader> g"
     :prefix-command 'Git
     "/" '("Magit" . magit)
-    "s"   '("Magit status" . magit-status)
-    "l"   '("Magit status" . magit-log)
+    "s" '("Magit status" . magit-status)
+    "l" '("Magit status" . magit-log)
+    "t" '("Git TimeMachine" . git-timemachine)
     ))
 
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh) ;;compatibility with diff-hl

@@ -32,8 +32,7 @@
   ;; (setq lsp-ui-doc-include-signature t)
   ;; (setq lsp-ui-doc-max-height 8)
   ;; :global/:workspace/:file
-  ;; (setq lsp-modeline-diagnostics-scope :workspace)
-  (setq lsp-modeline-diagnostics-enable nil)
+  (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-idle-delay 0.500)
   :general-config
@@ -54,21 +53,26 @@
     '("Find declaration" . lsp-find-declaration)
     "k"
     '("Find declaration" . lsp-describe-thing-at-point)
-    "r f"
+    "r"
     '("Find reference" . lsp-ui-peek-find-references)
-    "r r"
+    "n"
     '("Rename" . lsp-rename)
-    "w d"
-    '("LSP Workspace delete" . lsp-workspace-folders-remove)
-    "w a"
-    '("LSP Workspace add" . lsp-workspace-folders-add)
-    "w r"
-    '("LSP restart workspace" . lsp-workspace-restart)
-    "e l"
-    '("Errors list" . list-flycheck-errors)
-    )
-  )
+    "f"
+    '("Format buffer" . format-all-buffer)
+    ))
 
+(general-def
+  :states
+  'normal
+  :prefix "<leader> c w"
+  :prefix-command 'Workspace
+  "d"
+  '("LSP Workspace delete" . lsp-workspace-folders-remove)
+  "a"
+  '("LSP Workspace add" . lsp-workspace-folders-add)
+  "r"
+  '("LSP restart workspace" . lsp-workspace-restart)
+  )
 
 (use-package all-the-icons)
 
@@ -89,8 +93,8 @@
 (use-package
   lsp-pyright
   :after lsp-mode
-  ;; :init
-  ;; (setq lsp-pyright-diagnostic-mode "workspace")
+  :init
+  (setq lsp-pyright-diagnostic-mode "workspace")
   :hook
   (python-ts-mode
    .
@@ -101,7 +105,7 @@
 ;; Rust
 (use-package rustic
   :straight (rustic :type git :host github :repo "brotzeit/rustic" :branch "rustic-ts-mode") ;; Gives treesitter integration
-;;   :mode "\\.rs\\'"
+  ;;   :mode "\\.rs\\'"
   :hook
   (rust-mode . rustic-mode)
   :init

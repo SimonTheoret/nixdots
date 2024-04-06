@@ -1,7 +1,9 @@
 ;; -*- lexical-binding: t -*- 
 
 
-(use-package vterm)
+(use-package vterm
+  :config
+  (setq vterm-kill-buffer-on-exit t))
 
 (use-package
   vterm-toggle

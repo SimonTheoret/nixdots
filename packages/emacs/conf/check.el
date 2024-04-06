@@ -7,13 +7,7 @@
   (lsp-mode . flycheck-mode)) 
 
 (use-package consult-lsp
-  :after lsp-mode
-  :general
-  (general-def
-    'normal
-    "<leader> c s i" '("Search symbols in workspace" . consult-lsp-symbols)
-    "<leader> c s j" '("Search symbol in file" . consult-lsp-file-symbols)
-    ))
+  :after lsp-mode)
 
 (use-package flycheck-hl-todo
   :defer 5 ; Need to be initialized after the rest of checkers
@@ -25,10 +19,22 @@
   :init
   (global-hl-todo-mode))
 
-(use-package consult-flycheck
-  :general
-  (general-def
-    'normal
-    "<leader> c e s" '("Search errors" . consult-flycheck)
-    )
+(use-package consult-flycheck)
+
+(general-def
+  :states 'normal
+  :prefix "<leader> c e"
+  :prefix-command 'Errors
+  "l" '("Search buffer errors" . consult-flycheck)
+  "b" '("Buffer errors" . list-flycheck-errors)
+  "s" '("Search workspace errors" . consult-lsp-diagnostics)
+  "e" '("Workspace errors" . lsp-ui-flycheck-list)
+  )
+
+(general-def ;; Search keybindings
+  :states 'normal
+  :prefix "<leader> c s"
+  :prefix-command 'SearchCode
+    "i" '("Search symbols in workspace" . consult-lsp-symbols)
+    "j" '("Search symbol in file" . consult-lsp-file-symbols)
   )

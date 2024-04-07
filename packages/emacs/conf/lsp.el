@@ -11,13 +11,13 @@
   :hook
   ( ;; replace XXX-mode with concrete major-mode(e. g. python--tsmode)
    (python-ts-mode . lsp-deferred)
-   ;; Do not add rust-ts-mode. Rustic starts automatically.
    (go-ts-mode . lsp-deferred)
    ;; if you want which-key integration
    (lsp-mode . lsp-enable-which-key-integration)
    (LaTeX-mode . lsp-deferred)
    (sh-mode . lsp-deferred)
-   (nix-mode . lsp-deferred))
+   (nix-mode . lsp-deferred)
+   (rustic-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :config
 
@@ -139,9 +139,6 @@
   :after lsp-mode
   :init
   (setq lsp-pyright-diagnostic-mode "workspace")
-  (setq lsp-pyright-venv-path ".")
-  (setq lsp-pyright-venv-directory ".venv")
-  (setq lsp-pyright-multi-root nil)
   :hook
   (python-ts-mode
    .
@@ -155,7 +152,7 @@
   ;;   :mode "\\.rs\\'"
   :hook
   (rust-mode . rustic-mode)
-  (rustic-mode . lsp)
+  ;; (rustic-mode . lsp)
   :init
   (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
   (setq rust-mode-treesitter-derive t))

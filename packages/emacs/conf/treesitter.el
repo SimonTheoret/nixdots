@@ -27,6 +27,11 @@
 	(rust-mode . rustic-mode)
 	(go-mode . go-ts-mode)))
 
+(defun set-font-level-ts (level)
+  "Modify font lock level in Tree-sitter."
+  (interactive "nEnter level: ")
+  (setq treesit-font-lock-level level)
+  (treesit-font-lock-recompute-features))
 
 (defun set-python-colors ()
   (setq treesit-font-lock-feature-list

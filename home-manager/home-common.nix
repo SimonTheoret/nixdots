@@ -67,11 +67,12 @@
     jansson # library for json (emacs lsp)
     librsvg # for viewing svg images
     isync
-    # msmtp
-    # notmuch
+    msmtp
+    notmuch
 
-    (pkgs.callPackage ../scripts/calc.nix {inherit pkgs;})
+    (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 
+    gnupg
     # Nix
     # nil
     # nixfmt
@@ -164,6 +165,17 @@
     };
   };
 
+  programs.mbsync = {
+    enable = true;
+    # extraConfig = "Remove Both";
+  };
+  programs.msmtp.enable = true;
+  programs.notmuch = {
+    enable = true;
+    hooks = { preNew = "mbsync --all"; };
+  };
+
+  accounts.email = (import ../packages/emails/accounts.nix) { lib = pkgs.lib; };
 
   #Starship
   programs.starship = {

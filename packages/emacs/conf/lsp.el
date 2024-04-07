@@ -37,8 +37,15 @@
   (setq lsp-idle-delay 0.500)
   )
 
-(with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
+;; Make the help buffer smaller
+(add-to-list 'display-buffer-alist
+             '((lambda (buffer _) (with-current-buffer buffer
+                               (seq-some (lambda (mode)
+                                           (derived-mode-p mode))
+                                         '(help-mode))))
+               (display-buffer-reuse-window display-buffer-below-selected)
+               (reusable-frames . visible)
+               (window-height . 0.33)))
 
 (general-def
   :states
@@ -66,6 +73,26 @@
   "f"
   '("Format buffer" . format-all-buffer)
   )
+
+;; This function filters any diagnostics coming from the virtual env of python
+
+(setf lsp-diagnostic-filter (lambda (param work) ;; params is the hash map containing the diagnostics for a single buffer
+			      ;; (message "%s" param)
+			      (if (string-match (regexp-quote ".venv/") (plist-get param :uri) )
+				  (plist-put param :diagnostics [])
+				param
+				)
+			      ))
+
+
+;; source:
+;; (setf lsp-diagnostic-filter (lambda (param work)
+;; 			      (puthash "diagnostics"
+;; 				       (cl-remove-if (lambda (diag) (gethash "tags" diag))
+;; 						     (gethash "diagnostics" param))
+;; 				       param)
+;; 			      param))
+
 
 ;; (defun smart-lsp-ui-doc ()
 ;;   (interactive)

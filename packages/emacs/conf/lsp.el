@@ -155,9 +155,9 @@
   ;;   :mode "\\.rs\\'"
   :hook
   (rust-mode . rustic-mode)
+  (rustic-mode . lsp)
   :init
   (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
-  (setq-default lsp-rust-analyzer-callable-modifier-face)
   (setq rust-mode-treesitter-derive t))
 
 ;; Latex

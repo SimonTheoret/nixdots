@@ -66,7 +66,7 @@
     ispell
     jansson # library for json (emacs lsp)
     librsvg # for viewing svg images
-    # isync
+    isync
     # msmtp
     # notmuch
 

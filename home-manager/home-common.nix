@@ -63,12 +63,15 @@
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm
     emacsPackages.pdf-tools
+    emacsPackages.mu4e
     ispell
     jansson # library for json (emacs lsp)
     librsvg # for viewing svg images
     isync
     msmtp
-    notmuch
+    # notmuch # Remove this,
+    mu # or remove that ?
+    meson # Needed to build mu4e in emacs
 
     (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 

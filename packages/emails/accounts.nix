@@ -11,6 +11,7 @@
     mbsync = {
       enable = true;
       create = "maildir";
+      expunge = "both";
     };
     msmtp.enable = true;
     notmuch.enable = true;

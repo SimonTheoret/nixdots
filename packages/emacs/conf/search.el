@@ -133,7 +133,7 @@
   '("Search current dir" . consult-ripgrep)
   "f"
   '("Search file" . consult-fd)
-  "m"
+  "i"
   '("Consult IMenu" . consult-imenu)
   "r"
   '("Search file on remote" . browse-at-remote)

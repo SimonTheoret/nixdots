@@ -35,7 +35,9 @@
         "Mod4+9" = "workspace number $ws9";
         "Mod4+0" = "workspace number $ws10";
         "Mod4+w" = "exec emacsclient -nc";
+        "mod4+u" = "exec emacsclient -nc -s utils";
         "Mod4+Shift+w" = "exec emacs --daemon";
+        "Mod4+Shift+u" = "exec emacs --daemon=utils";
         # Move around workspaces
         "Mod4+Shift+1" = "move container to workspace number $ws1";
         "Mod4+Shift+2" = "move container to workspace number $ws2";
@@ -49,9 +51,9 @@
         "Mod4+Shift+0" = "move container to workspace number $ws10";
         # Volume
         "XF86AudioRaiseVolume" =
-          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
+          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status";
         "XF86AudioLowerVolume" =
-          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
+          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status";
         "XF86AudioMute" =
           "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
         "XF86AudioMicMute" =
@@ -107,6 +109,11 @@
         }
         {
           command = "emacs --daemon";
+          always = false;
+          notification = false;
+        }
+        {
+          command = "emacs --daemon=utils";
           always = false;
           notification = false;
         }

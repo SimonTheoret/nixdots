@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t -*- 
 
 (use-package flycheck
-  :custom
-  (flycheck-highlighting-mode nil) ;; remove highlighting
+  ;; :custom
+  ;; (flycheck-highlighting-mode nil) ;; remove highlighting
   :hook
   (lsp-mode . flycheck-mode)) 
 
@@ -29,6 +29,8 @@
   "b" '("Buffer errors" . list-flycheck-errors)
   "s" '("Search workspace errors" . consult-lsp-diagnostics)
   "e" '("Workspace errors" . lsp-ui-flycheck-list)
+  "x" '("Explain error here" . flycheck-explain-error-at-point)
+  "p" '("Display errors here" . flycheck-display-error-at-point)
   )
 
 (general-def ;; Search keybindings

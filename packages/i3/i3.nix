@@ -35,9 +35,9 @@
         "Mod4+9" = "workspace number $ws9";
         "Mod4+0" = "workspace number $ws10";
         "Mod4+w" = "exec emacsclient -nc";
-        "mod4+u" = "exec emacsclient -nc -s utils";
+        # "mod4+u" = "exec emacsclient -nc -s utils";
         "Mod4+Shift+w" = "exec emacs --daemon";
-        "Mod4+Shift+u" = "exec emacs --daemon=utils";
+        # "Mod4+Shift+u" = "exec emacs --daemon=utils";
         # Move around workspaces
         "Mod4+Shift+1" = "move container to workspace number $ws1";
         "Mod4+Shift+2" = "move container to workspace number $ws2";
@@ -112,11 +112,11 @@
           always = false;
           notification = false;
         }
-        {
-          command = "emacs --daemon=utils";
-          always = false;
-          notification = false;
-        }
+        # {
+        #   command = "emacs --daemon=utils";
+        #   always = false;
+        #   notification = false;
+        # }
       ];
       defaultWorkspace = "workspace $ws1";
     };

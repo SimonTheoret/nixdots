@@ -16,6 +16,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
+  let
+    myemacs = pkgs.emacs.overrideAttrs(finalAttrs: previousAttrs: {
+      withXwidgets = true;
+    });
+  in
   home.packages = with pkgs; [
     nodePackages_latest.npm
     bat
@@ -72,37 +77,12 @@
     # notmuch # Remove this,
     mu # or remove that ?
     meson # Needed to build mu4e in emacs
+    aspellDicts.fr
+    aspellDicts.en
 
     (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 
     gnupg
-    # Nix
-    # nil
-    # nixfmt
-
-    # Lua
-    # lua
-    # lua-language-server
-
-    # Go
-    # go
-    # gotools # goimports, godoc, etc.
-    # golangci-lint # https://github.com/golangci/golangci-lint
-    # gofumpt
-
-    # bash
-    # nodePackages_latest.bash-language-server
-    # shfmt
-    # shellcheck
-
-    # Markdown
-    # marksman
-
-    # needed, at least until direnv !
-    # pkgs.redshift
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

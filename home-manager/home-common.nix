@@ -16,11 +16,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  let
-    myemacs = pkgs.emacs.overrideAttrs(finalAttrs: previousAttrs: {
-      withXwidgets = true;
-    });
-  in
   home.packages = with pkgs; [
     nodePackages_latest.npm
     bat
@@ -29,13 +24,13 @@
     btop
     discord
     feh
-    thunderbird
+    # thunderbird
     tldr
     playerctl
     maim
     trashy
     pandoc
-    obsidian
+    # obsidian
     sshfs
     nerdfonts
     fd
@@ -63,7 +58,7 @@
     # texlive.combined.scheme-full
 
     # Emacs
-    emacs29
+    emacs29-gtk3
     emacs-all-the-icons-fonts
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm

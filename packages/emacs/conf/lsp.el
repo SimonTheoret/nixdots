@@ -152,6 +152,7 @@
   ;;   :mode "\\.rs\\'"
   :hook
   (rust-mode . rustic-mode)
+  (rust-ts-mode . rustic-mode)
   ;; (rustic-mode . lsp)
   :init
   (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")

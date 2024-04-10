@@ -27,6 +27,17 @@
 (general-def
   :states
   'normal
+  :prefix "<leader> f r"
+  :prefix-command 'Modify
+  "r"
+  '("Rename current file" . crux-rename-file-and-buffer)
+  "f"
+  '("Remove file" . delete-file)
+  )
+
+(general-def
+  :states
+  'normal
   :prefix "<leader> f"
   :prefix-command 'Files
   "f"
@@ -37,10 +48,6 @@
   '("Create dir" . make-directory)
   "D"
   '("Delete directory" . delete-directory)
-  "r f"
-  '("Remove file" . delete-file)
   "c"
   '("Copy current file" . crux-copy-file-preserve-attributes)
-  "r r"
-  '("Rename current file" . crux-rename-file-and-buffer)
   )

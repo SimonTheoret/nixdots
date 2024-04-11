@@ -42,6 +42,7 @@
     '("Mu4e" . mu4e)))
 
 (use-package mu4e-alert
+  :after mu4e
   :hook
   ((after-init . mu4e-alert-enable-notifications)
    (after-init . mu4e-alert-enable-mode-line-display))
@@ -49,4 +50,9 @@
   (mu4e-alert-set-default-style 'notifications))
 
 (use-package mu4e-views
-  :straight (mu4e-views :type git :host github :repo "lordpretzel/mu4e-views"))
+  :after mu4e
+ :straight (mu4e-views :type git :host github :repo "lordpretzel/mu4e-views")
+  :config
+  (setq mu4e-views-default-view-method "html-nonblock") ;; make xwidgets default
+  (mu4e-views-mu4e-use-view-msg-method "html-nonblock") ;; select the default
+  )

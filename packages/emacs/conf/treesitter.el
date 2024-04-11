@@ -25,6 +25,7 @@
 (setq major-mode-remap-alist
       '((python-mode . python-ts-mode)
 	(rust-mode . rustic-mode)
+	(rust-ts-mode . rustic-mode)
 	(go-mode . go-ts-mode)))
 
 (defun set-font-level-ts (level)
@@ -62,5 +63,3 @@
 
 (add-hook 'rustic-mode-hook #'set-rust-colors)
 (add-hook 'rustic-ts-mode-hook #'set-rust-colors)
-;; (use-package nix-ts-mode
-;;   :mode "\\.nix\\'")

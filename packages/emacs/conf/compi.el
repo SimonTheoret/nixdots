@@ -5,6 +5,8 @@
 
 (add-hook 'python-ts-mode-hook (apply-partially #'change-compile-command "python -m "))
 (add-hook 'rustic-mode-hook (apply-partially #'change-compile-command "cargo "))
+(add-hook 'rust-ts-mode-hook (apply-partially #'change-compile-command "cargo "))
+(add-hook 'rust-mode-hook (apply-partially #'change-compile-command "cargo "))
 (add-hook 'go-ts-mode (apply-partially #'change-compile-command "go "))
 (add-hook 'sh-mode (apply-partially #'change-compile-command "bash "))
 

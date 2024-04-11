@@ -58,7 +58,7 @@
     # texlive.combined.scheme-full
 
     # Emacs
-    emacs29-gtk3
+    emacs-gtk
     emacs-all-the-icons-fonts
     # emacsPackages.all-the-icons-nerd-fonts
     emacsPackages.vterm
@@ -92,6 +92,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  home.sessionVariables = { WEBKIT_DISABLE_COMPOSITING_MODE = 1; };
 
   programs.direnv = {
     enable = true;

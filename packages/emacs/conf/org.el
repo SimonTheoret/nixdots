@@ -54,6 +54,12 @@
 (add-hook 'org-mode-hook #'org--set-latex-scale)
 
 
+;; (add-hook 'org-mode-hook  #'rust-org-src-lang)
+
+;; (defun rust-org-src-lang ()
+;;   (add-to-list 'org-src-lang-modes '("rust" . rustic) )
+;;   )
+
 (use-package
   org-modern
   :after org
@@ -302,3 +308,4 @@
     plain
     (file+headline "~/org/agenda/agenda.org" "Projets")
     "** %?")))
+

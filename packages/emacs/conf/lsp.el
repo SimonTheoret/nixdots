@@ -17,7 +17,8 @@
    (LaTeX-mode . lsp-deferred)
    (sh-mode . lsp-deferred)
    (nix-mode . lsp-deferred)
-   (rustic-mode . lsp-deferred))
+   (rustic-mode . lsp-deferred)
+   )
   :commands (lsp lsp-deferred)
   :config
 
@@ -147,16 +148,24 @@
      (lsp-deferred)))) ; or lsp-deferred
 
 ;; Rust
+
+(use-package rust-mode ;; This mode is only here to make rustic use treesitter!
+  :init
+  (setq rust-mode-treesitter-derive t)
+  )
+
 (use-package rustic
-  :straight (rustic :type git :host github :repo "brotzeit/rustic" :branch "rustic-ts-mode") ;; Gives treesitter integration
+  ;; :straight (rustic :type git :host github :repo "brotzeit/rustic" :branch "rustic-ts-mode") ;; Gives treesitter integration
   ;;   :mode "\\.rs\\'"
-  :hook
-  (rust-mode . rustic-mode)
-  (rust-ts-mode . rustic-mode)
+  ;; :hook
+  ;; (rust-mode . rustic-mode)
   ;; (rustic-mode . lsp)
   :init
   (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
-  (setq rust-mode-treesitter-derive t))
+  ;; (setq rust-mode-treesitter-derive t)
+  ;; (add-to-list 'org-src-lang-modes '("rust" . rustic) )
+  )
+
 
 ;; Latex
 (use-package

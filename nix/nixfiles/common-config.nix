@@ -9,6 +9,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   networking.hostName = "nixosDesktop"; # Define your hostname.
 
@@ -27,8 +28,9 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than-30d";
+    options = "--delete-older-than 30d";
   };
+
 
   fonts.fontconfig.enable = true;
 
@@ -54,11 +56,10 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  
-    users.users.simon.isNormalUser = true;
-    users.users.simon.extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    users.users.simon.packages = with pkgs; [ ];
-  
+
+  users.users.simon.isNormalUser = true;
+  users.users.simon.extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  users.users.simon.packages = with pkgs; [ ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

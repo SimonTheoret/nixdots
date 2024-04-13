@@ -99,7 +99,7 @@
 
 ;; org roam v2
 (use-package org-roam
-  :custom (org-roam-directory (file-truename "~/org/roam"))
+  :custom (org-roam-directory  "~/org/roam")
   :general
   (general-def
     :states 'normal
@@ -118,18 +118,22 @@
     "c"
     '("Dailies capture today" . org-roam-dailies-capture-today)
     "t"
-    '("Dailies goto yesterday" . org-roam-dailies-goto-today)
+    '("Today dailies" . org-roam-dailies-goto-today)
     "y"
-    '("Dailies goto yesterday" . org-roam-dailies-goto-yesterday))
+    '("Yesterday dailies" . org-roam-dailies-goto-yesterday)
+    "s"
+    '("Search roam dir" . consult-org-roam-search)
+    )
   :config
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template
 	(concat
-        "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+         "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol)
   (setq org-roam-dailies-directory "org/daily")
+  (setq org-roam-completion-everywhere t)
 
   (setq
    org-roam-dailies-capture-templates
@@ -140,7 +144,13 @@
       :target (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n")))))
 
 
+(use-package org-contrib)
 
+(use-package consult-org-roam
+  :after org-roam
+  :custom
+  ;; Use `ripgrep' for searching with `consult-org-roam-search'
+  (consult-org-roam-grep-func #'consult-ripgrep))
 
 (defun test-if-line-starts-with-char (char)
   "Tests if the line under the pointer starts with a char (string)
@@ -191,7 +201,7 @@
   :keymaps 'org-mode-map
   :prefix "<localleader> n"
   :prefix-command 'Node
-  "n n"
+  "n"
   '("New node" . org-id-get-create))
 
 
@@ -218,7 +228,7 @@
   :states 'normal
   :keymaps 'org-mode-map
   :prefix "<localleader> i"
-  :prefix-command 'Insert 
+  :prefix-command 'Insert
   "t"
   '("Insert heading/checkbox" . org-insert-todo-heading)
   "h"
@@ -228,7 +238,7 @@
   :states 'normal
   :keymaps 'org-mode-map
   :prefix "<localleader> t"
-  :prefix-command 'Toggling 
+  :prefix-command 'Toggling
   "c"
   '("Toggle checkbox" . org-toggle-checkbox)
   "h"
@@ -254,7 +264,6 @@
   "C-t"
   '("Demote or move right" . (lambda () (interactive) (demote-heading-or-evil-default)))
   )
-
 
 ;; Org capture templates
 (setq
@@ -308,4 +317,3 @@
     plain
     (file+headline "~/org/agenda/agenda.org" "Projets")
     "** %?")))
-

@@ -67,10 +67,10 @@
     ispell
     jansson # library for json (emacs lsp)
     librsvg # for viewing svg images
+    sqlite
     isync
     msmtp
-    # notmuch # Remove this,
-    mu # or remove that ?
+    mu 
     meson # Needed to build mu4e in emacs
     aspellDicts.fr
     aspellDicts.en

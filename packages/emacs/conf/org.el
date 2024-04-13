@@ -134,7 +134,14 @@
   (require 'org-roam-protocol)
   (setq org-roam-dailies-directory "org/daily")
   (setq org-roam-completion-everywhere t)
+  (cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
+    (let ((level (org-roam-node-level node)))
+      (concat
+       (when (> level 0) (concat (org-roam-node-file-title node) " > "))
+       (when (> level 1) (concat (string-join (org-roam-node-olp node) " > ") " > "))
+       (org-roam-node-title node))))
 
+  (setq org-roam-node-display-template "${hierarchy:*} ${tags:20}")
   (setq
    org-roam-dailies-capture-templates
    '(("d"

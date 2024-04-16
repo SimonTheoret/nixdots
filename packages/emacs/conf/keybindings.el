@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 ;; Keybindings
 
@@ -54,7 +54,7 @@
   (evil-snipe-mode +1)
   (evil-snipe-override-mode +1))
 
-;; org evil 
+;; org evil
 (use-package
   evil-org
   :after org
@@ -73,6 +73,10 @@
   :config (which-key-mode) (setq which-key-idle-delay 0.2))
 
 (use-package expreg)
+
+(use-package evil-mc
+  :init
+  (global-evil-mc-mode 1))
 
 (general-def
   :states
@@ -95,11 +99,11 @@
   'normal
   :prefix "<leader> q"
   :prefix-command 'Quit
-  "c" 
+  "c"
   '("Close frame" . delete-frame)
-  "r" 
+  "r"
   '("Restart emacs" . restart-emacs)
-  "K" 
+  "K"
   '("Kill emacs" . save-buffers-kill-emacs)
   )
 

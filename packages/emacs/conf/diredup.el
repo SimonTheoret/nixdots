@@ -33,16 +33,20 @@
   "f"
   '("Find files" . ido-find-file)
   "p"
- '("Search conf" . search-emacs-dir)
- "d"
- '("Create dir" . make-directory)
- "D"
- '("Delete directory" . delete-directory)
- "c"
- '("Copy current file" . crux-copy-file-preserve-attributes)
+  '("Search conf" . search-emacs-dir)
+  "d"
+  '("Create dir" . make-directory)
+  "D"
+  '("Delete directory" . delete-directory)
+  "c"
+  '("Copy current file" . crux-copy-file-preserve-attributes)
   "e"
   '("sudoedit current file" . crux-sudo-edit)
- )
+  "n"
+  '("Create empty file" . dired-create-empty-file)
+  "b"
+  '("Fuzzy search files" . consult-fd)
+  )
 
 (general-def
   :states

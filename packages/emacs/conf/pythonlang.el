@@ -35,4 +35,7 @@
   (python-ts-mode . anaconda-mode)
   (python-ts-mode . anaconda-eldoc-mode))
 
-(use-package poetry)
+;; (use-package poetry
+;;   :hook(python-ts-mode . poetry)
+;;   :config
+;;   (poetry-tracking-mode))

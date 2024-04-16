@@ -1,13 +1,13 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 
 
 ;; Makes emacs good looking
 
 ;; Smooth scrolling
-(use-package smooth-scrolling
-  :init
-  (smooth-scrolling-mode 1))
+;; (use-package smooth-scrolling
+;;   :init
+;;   (smooth-scrolling-mode 1))
 
 ;; Theme
 (use-package doom-themes
@@ -89,6 +89,13 @@
                                        "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
                                        "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
                                        "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
-  
+
   (global-ligature-mode 't))
 
+(use-package writeroom-mode
+  :general
+  (general-def
+    :states 'normal
+    :prefix "<leader> z"
+    :prefix-command 'Zen
+    "z" ' ("Zen mode" . writeroom-mode)))

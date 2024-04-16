@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 
 (use-package vterm
@@ -8,7 +8,6 @@
 (use-package
   vterm-toggle
   :config
-  (setq vterm-kill-buffer-on-exit t)
   (setq vterm-toggle-fullscreen-p nil)
   (add-to-list
    'display-buffer-alist
@@ -26,19 +25,10 @@
      (reusable-frames . visible) (window-height . 0.3))))
 
 (general-def
-    :states 'normal
-    :prefix "<leader> t"
-    :prefix-command 'Term
-    "o" '("Open vterm other window" . vterm-other-window)
-    "h" '("Open vterm here" . vterm)
-   "t" '("Toggle vterm" . vterm-toggle))
-    
-
-;; (defun vterm-toggle-smart ()
-;;   "Toggle vterm in a smart way."
-;;   (interactive)
-;;   (if (get-buffer "*vterm*")
-;;     (vterm-toggle)
-;;     vterm-toggle-cd))
-
-;; (vterm-toggle-smart)
+  :states 'normal
+  :prefix "<leader> t"
+  :prefix-command 'Term
+  "o" '("Open vterm other window" . vterm-other-window)
+  "h" '("Open vterm here" . vterm)
+  "t" '("Toggle vterm" . vterm-toggle)
+  "b" '("Open terminal" . term))

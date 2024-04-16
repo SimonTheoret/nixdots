@@ -23,17 +23,16 @@
     ripgrep
     btop
     discord
-    feh
     # thunderbird
     tldr
     playerctl
     maim
     trashy
     pandoc
-    # obsidian
     sshfs
     nerdfonts
     fd
+    feh
     (pkgs.callPackage ../packages/timer/timer.nix { })
 
     # Python
@@ -57,7 +56,9 @@
     # LaTeX
     # texlive.combined.scheme-full
 
-    # Emacs
+    
+
+# Emacs
     emacs-gtk
     emacs-all-the-icons-fonts
     # emacsPackages.all-the-icons-nerd-fonts
@@ -74,7 +75,8 @@
     meson # Needed to build mu4e in emacs
     aspellDicts.fr
     aspellDicts.en
-
+    nomacs
+    feh
     (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 
     gnupg
@@ -92,6 +94,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
 
   home.sessionVariables = { WEBKIT_DISABLE_COMPOSITING_MODE = 1; };
 
@@ -208,6 +211,11 @@
     "${config.home.homeDirectory}/.config/emacs/true.png".source =
       config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/dotfiles/packages/emacs/true.png";
+    "${config.home.homeDirectory}/.config/pypoetry/config.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/dotfiles/packages/poetry/config.toml";
+      recursive = false;
+    };
   };
 
   # Home Manager can also manage your environment variables through

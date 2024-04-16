@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*- 
+;; -*- lexical-binding: t -*-
 
 ;; ALL THE RESULTS
 
@@ -131,10 +131,25 @@
   '("Filter search current dir" . lgrep)
   "d"
   '("Search current dir" . consult-ripgrep)
-  "f"
-  '("Search file" . consult-fd)
   "i"
   '("Consult IMenu" . consult-imenu)
+  "m"
+  '("Multi occur" . multi-occur-in-matching-buffers)
+  "o"
+  '("Occur" . occur)
+  "l"
+  '("Search for line" . consult-line-multi)
+  "s"
+  '("Search and replace" . query-replace)
+  "t"
+  '("Search todos in dir" . consult-todo-dir)
+  )
+
+(general-def
+  :states
+  'normal
+  :prefix "<leader> h"
+  :prefix-command 'Help
   "r"
   '("Search file on remote" . browse-at-remote)
   "t"
@@ -144,3 +159,8 @@
   "m"
   '("Manual with woman" . man)
   )
+
+;; (general-def
+;;   :states
+;;   'normal
+;;   :pref)

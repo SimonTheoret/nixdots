@@ -57,8 +57,8 @@
 
 (use-package mu4e-alert
   :hook
-  ((after-init . mu4e-alert-enable-notifications)
-   (after-init . mu4e-alert-enable-mode-line-display))
+  (after-init . mu4e-alert-enable-notifications)
+  (after-init . mu4e-alert-enable-mode-line-display)
   :config
   (mu4e-alert-set-default-style 'notifications))
 

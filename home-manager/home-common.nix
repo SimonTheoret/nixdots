@@ -151,10 +151,6 @@
     # extraConfig = "Remove Both";
   };
   programs.msmtp.enable = true;
-  programs.notmuch = {
-    enable = true;
-    hooks = { preNew = "mbsync --all"; };
-  };
 
   accounts.email = (import ../packages/emails/accounts.nix);
 

@@ -3,7 +3,7 @@
     address = "simonteoret@hotmail.com";
     primary = true;
     flavor = "outlook.office365.com"; # this makes it easy
-    imap.host = "outlook.office365.com";
+    # imap.host = "outlook.office365.com";
     mbsync = {
       enable = true;
       create = "maildir";

@@ -63,12 +63,6 @@
         # Print
         "Print" =
           "exec --no-startup-id maim --select | xclip -selection clipboard -t image/png";
-      } // lib.optionalAttrs laptop { # if backlight is needed
-
-        "XF86MonBrightnessUp" =
-          "exec --no-startup-id light -A 5"; # increase screen brightness
-        "XF86MonBrightnessDown" =
-          "exec --no-startup-id light -U 5"; # decrease screen brightness
       };
       startup = [
         {
@@ -106,25 +100,22 @@
           always = false;
           notification = false;
         }
-        lib.optionalAttrs
-        laptop
-        {
-          command = "autorandr --load 3screens";
-          always = false;
-          notification = false;
-        }
-        lib.optionalAttrs
-        laptop
-        {
-          command = "shuf -e -n1 ~/Images/nixart/* | xargs feh --bg-fill";
-          always = true;
-          notification = false;
-        }
         # {
         #   command = "emacs --daemon=utils";
         #   always = false;
         #   notification = false;
         # }
+      ] ++ lib.optionals (!laptop) [
+        {
+          command = "autorandr --load 3screens";
+          always = false;
+          notification = false;
+        }
+        {
+          command = "shuf -e -n1 ~/Images/nixart/* | xargs feh --bg-fill";
+          always = true;
+          notification = false;
+        }
       ];
       defaultWorkspace = "workspace $ws1";
     };
@@ -139,6 +130,7 @@
       set $ws8 "8"
       set $ws9 "9"
       set $ws10 "10"
+    '' + lib.strings.optionalString (!laptop) ''
       workspace $ws1 output DP-2
       workspace $ws2 output DP-0
       workspace $ws3 output HDMI-0

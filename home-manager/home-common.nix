@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, laptop ? false, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "simon";
@@ -123,7 +123,8 @@
     enableZshIntegration = true;
   };
 
-  programs.kitty = import ../packages/kitty/kitty.nix { };
+  programs.kitty = import ../packages/kitty/kitty.nix
+    (pkgs.lib.optionalAttrs (laptop) { fontsize = 11; });
 
   programs.zathura = import ../packages/zathura/zathura.nix;
 

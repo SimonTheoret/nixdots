@@ -12,6 +12,7 @@
     kanshi
   ];
 
+
   wayland.windowManager.sway = {
     enable = true;
     systemd.xdgAutostart = true;

@@ -20,8 +20,10 @@
 
   programs.light = {
     enable = true;
-    brightnessKeys = true;
-    step = 3;
+    brightnessKeys = {
+      enable = true;
+      step = 3;
+    };
   };
 
   environment.pathsToLink = [ "/libexec" ];
@@ -29,7 +31,5 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [ ];
-
-
 
 }

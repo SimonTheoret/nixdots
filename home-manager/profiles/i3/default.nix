@@ -1,4 +1,4 @@
-{ config, lib, pkgs, laptop, ... }: {
+{ config, lib, pkgs, laptop ? false, ... }: {
 
   imports = [ ../../home-common.nix ];
 

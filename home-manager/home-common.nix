@@ -210,6 +210,11 @@
         "${config.home.homeDirectory}/dotfiles/packages/poetry/config.toml";
       recursive = false;
     };
+    "${config.home.homeDirectory}/Images/nixart" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/dotfiles/nixart";
+      recursive = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through

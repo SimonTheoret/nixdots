@@ -56,9 +56,7 @@
     # LaTeX
     # texlive.combined.scheme-full
 
-    
-
-# Emacs
+    # Emacs
     emacs-gtk
     emacs-all-the-icons-fonts
     # emacsPackages.all-the-icons-nerd-fonts
@@ -71,7 +69,7 @@
     sqlite
     isync
     msmtp
-    mu 
+    mu
     meson # Needed to build mu4e in emacs
     aspellDicts.fr
     aspellDicts.en
@@ -94,7 +92,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
 
   home.sessionVariables = { WEBKIT_DISABLE_COMPOSITING_MODE = 1; };
 
@@ -126,7 +123,7 @@
     enableZshIntegration = true;
   };
 
-  programs.kitty = import ../packages/kitty/kitty.nix;
+  programs.kitty = import ../packages/kitty/kitty.nix { };
 
   programs.zathura = import ../packages/zathura/zathura.nix;
 
@@ -158,7 +155,7 @@
     hooks = { preNew = "mbsync --all"; };
   };
 
-  accounts.email = (import ../packages/emails/accounts.nix) { lib = pkgs.lib; };
+  accounts.email = (import ../packages/emails/accounts.nix);
 
   #Starship
   programs.starship = {
@@ -213,7 +210,7 @@
       "${config.home.homeDirectory}/dotfiles/packages/emacs/true.png";
     "${config.home.homeDirectory}/.config/pypoetry/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/dotfiles/packages/poetry/config.toml";
+        "${config.home.homeDirectory}/dotfiles/packages/poetry/config.toml";
       recursive = false;
     };
   };

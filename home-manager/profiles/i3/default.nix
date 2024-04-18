@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, laptop, ... }: {
 
   imports = [ ../../home-common.nix ];
 
@@ -20,6 +18,6 @@
   services.dunst = { enable = true; };
 
   #i3
-  xsession = import (../../../packages/i3/i3.nix) { inherit lib; };
+  xsession = import (../../../packages/i3/i3.nix) { inherit lib laptop; };
 
 }

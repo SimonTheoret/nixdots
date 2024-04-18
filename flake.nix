@@ -92,7 +92,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = inputs // { laptop = true; };
             home-manager.users.simon = import ./home-manager/profiles/i3;
           }
         ];

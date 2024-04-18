@@ -1,5 +1,4 @@
-{ lib }:
-{
+{ lib, laptop ? false }: {
   enable = true;
   windowManager.i3 = {
     enable = true;
@@ -12,7 +11,6 @@
       keybindings = lib.mkOptionDefault {
         "Mod4+m" = "exec kitty";
         "Mod4+g" = "exec firefox";
-        "Mod4+n" = "exec obsidian";
         "Mod4+q" = "kill";
         "Mod4+h" = "focus left";
         "Mod4+j" = "focus down";
@@ -65,6 +63,12 @@
         # Print
         "Print" =
           "exec --no-startup-id maim --select | xclip -selection clipboard -t image/png";
+      } // lib.optionalAttrs laptop { # if backlight is needed
+
+        "XF86MonBrightnessUp" =
+          "exec --no-startup-id light -A 5"; # increase screen brightness
+        "XF86MonBrightnessDown" =
+          "exec --no-startup-id light -U 5"; # decrease screen brightness
       };
       startup = [
         {
@@ -98,18 +102,22 @@
           notification = false;
         }
         {
+          command = "emacs --daemon";
+          always = false;
+          notification = false;
+        }
+        lib.optionalAttrs
+        laptop
+        {
           command = "autorandr --load 3screens";
           always = false;
           notification = false;
         }
+        lib.optionalAttrs
+        laptop
         {
           command = "shuf -e -n1 ~/Images/nixart/* | xargs feh --bg-fill";
           always = true;
-          notification = false;
-        }
-        {
-          command = "emacs --daemon";
-          always = false;
           notification = false;
         }
         # {
@@ -133,6 +141,7 @@
       set $ws10 "10"
       workspace $ws1 output DP-2
       workspace $ws2 output DP-0
-      workspace $ws3 output HDMI-0'';
+      workspace $ws3 output HDMI-0
+    '';
   };
 }

@@ -1,3 +1,4 @@
+{fontsize? 9}:
 {
   enable = true;
   settings = {
@@ -5,7 +6,7 @@
     bold_font = "FiraCode Nerd Font Mono Bold";
     italic_font = "VictorMono NFM SemiBold Italic";
     bold_italic_font = "VictorMono NFM Bold Italic";
-    font_size = 9;
+    font_size = fontsize;
     background_opacity = "0.80";
     background_blur = 32;
   };

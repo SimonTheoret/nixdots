@@ -1,4 +1,4 @@
-{ lib }: {
+ {
   accounts.hotmail = {
     address = "simonteoret@hotmail.com";
     primary = true;

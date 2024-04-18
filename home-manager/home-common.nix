@@ -208,9 +208,8 @@
     "${config.home.homeDirectory}/.config/pypoetry/config.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/dotfiles/packages/poetry/config.toml";
-      recursive = false;
     };
-    "${config.home.homeDirectory}/Images/nixart" = {
+    "${config.home.homeDirectory}/Images/nixart/" = {
       source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/dotfiles/nixart";
       recursive = true;

@@ -116,7 +116,11 @@
           always = true;
           notification = false;
         }
-      ];
+      ] ++ lib.optionals (laptop) [{
+        command = "i3-msg workspace 1";
+        always = false;
+        notification = false;
+      }];
       defaultWorkspace = "workspace $ws1";
     };
     extraConfig = ''

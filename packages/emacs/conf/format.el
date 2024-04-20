@@ -3,7 +3,7 @@
 (use-package
   format-all
   :commands format-all-mode
-  ;; :hook (prog-mode . format-all-mode)
+  :hook (prog-mode . format-all-mode)
   :config
   (setq-default format-all-formatters
 		'(("Rust" (rustfmt))
@@ -12,4 +12,4 @@
                   ("Python" (ruff "format"))
 		  ("Nix" (nixfmt))
 		  ("Lua" (lua-fmt))
-		  ("LaTeX" (auctex latexindent)))))
+		  ("LaTeX" (latexindent) (auctex)))))

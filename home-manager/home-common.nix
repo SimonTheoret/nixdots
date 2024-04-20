@@ -71,6 +71,7 @@
     msmtp
     mu
     meson # Needed to build mu4e in emacs
+    aspell
     aspellDicts.fr
     aspellDicts.en
     nomacs

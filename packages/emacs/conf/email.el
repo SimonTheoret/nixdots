@@ -52,6 +52,8 @@
   'normal
   :keymaps
   '(mu4e-headers-mode-map mu4e-view-mode-map)
+  :prefix "<leader> v"
+  :prefix-command 'Mail
   "o" '("Open message with method" . mu4e-views-view-current-msg-with-method )
   )
 

@@ -74,8 +74,9 @@
     aspell
     aspellDicts.fr
     aspellDicts.en
-    nomacs
+
     feh
+    nomacs
     (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 
     gnupg
@@ -214,6 +215,10 @@
       source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/dotfiles/nixart";
       recursive = true;
+    };
+    "${config.home.homeDirectory}/.aspell.conf" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/dotfiles/packages/aspell/aspell.conf";
     };
   };
 

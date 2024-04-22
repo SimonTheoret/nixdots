@@ -236,7 +236,7 @@
   :keymaps 'org-mode-map
   :prefix "<localleader> i"
   :prefix-command 'Insert
-  "t"
+  "c"
   '("Insert heading/checkbox" . org-insert-todo-heading)
   "h"
   '("Insert heading" . org-insert-heading))

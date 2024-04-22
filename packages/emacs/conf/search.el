@@ -139,6 +139,8 @@
   '("Occur" . occur)
   "l"
   '("Search for line" . consult-line-multi)
+  "b"
+  '("Search in buffer" . consult-line)
   "s"
   '("Search and replace" . query-replace)
   "t"

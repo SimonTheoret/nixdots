@@ -23,6 +23,6 @@
 
 (use-package magit-todos :after magit :config (magit-todos-mode 1))
 
-(use-package git-modes)
+;; (use-package git-modes)
 
-(use-package git-timemachine)
+;; (use-package git-timemachine)

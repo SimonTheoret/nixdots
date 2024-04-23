@@ -47,6 +47,8 @@
 ;; Noice splash screen
 (use-package dashboard
   :after nerd-icons
+  :init
+  (add-hook 'server-after-make-frame-hook 'revert-buffer)
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
@@ -54,7 +56,6 @@
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-startup-banner (concat user-emacs-directory "true.png"))
   (setq dashboard-center-content t)
-  (setq dashboard-set-init-info t)
   )
 
 

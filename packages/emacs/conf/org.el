@@ -2,19 +2,6 @@
 
 ;;;;;;;;; org-mode ;;;;;;;;
 
-;; org-mode prettify
-;; (use-package org-superstar
-;;   :init
-;;   (require 'org-superstar)
-;;   :hook
-;;   (org-mode . (lambda () (org-superstar-mode 1))))
-
-;; (use-package org-fancy-priorities
-;;   :hook
-;;   (org-mode . org-fancy-priorities-mode)
-;;   :config
-;;   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
-
 (defun org--set-latex-scale ()
   (plist-put org-format-latex-options :scale 1.5)
   (message "Setting latex preview options completed"))
@@ -44,7 +31,7 @@
    "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
  org-agenda-current-time-string "◀── now ─────────────────────────────────────────────────"
  org-cycle-hide-block-startup t
- org-startup-folded t
+ org-startup-folded t 
  org-startup-indented t
  org-agenda-files '("~/org/agenda/agenda.org")
  org-directory '("~/org/agenda"))

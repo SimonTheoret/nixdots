@@ -46,18 +46,20 @@
 
 ;; Noice splash screen
 (use-package dashboard
-  :after nerd-icons
+  :after (nerd-icons org)
   :init
-  (add-hook 'server-after-make-frame-hook 'revert-buffer)
-  :config
-  (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*") ;; does not collide with magit
+				(dashboard-mode)
+				(dashboard-insert-startupify-lists)
+				(dashboard-refresh-buffer)))
   (setq dashboard-display-icons-p t) ;; display icons on both GUI and terminal
   (setq dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-startup-banner (concat user-emacs-directory "true.png"))
   (setq dashboard-center-content t)
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-refresh-buffer)
   )
-
 
 ;; cute aestethic plugin
 (use-package solaire-mode

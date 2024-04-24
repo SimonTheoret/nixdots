@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-
-					; loading function
+;;loading function
 (defun config-load-file-no-extension (content)
   "Loads and runs the file contained in the directory user-emacs-directory/conf"
   (let ((path (concat user-emacs-directory "conf/" content ".el")))

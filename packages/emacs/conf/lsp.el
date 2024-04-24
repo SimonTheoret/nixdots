@@ -18,6 +18,7 @@
    (sh-mode . lsp-deferred)
    (nix-mode . lsp-deferred)
    (rustic-mode . lsp-deferred)
+   (kill-emacs . lsp-workspace-remove-all-folders)
    )
   :commands (lsp lsp-deferred)
   :config

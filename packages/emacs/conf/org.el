@@ -2,6 +2,7 @@
 
 ;;;;;;;;; org-mode ;;;;;;;;
 
+
 (defun org--set-latex-scale ()
   (plist-put org-format-latex-options :scale 1.5)
   (message "Setting latex preview options completed"))
@@ -31,7 +32,7 @@
    "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
  org-agenda-current-time-string "◀── now ─────────────────────────────────────────────────"
  org-cycle-hide-block-startup t
- org-startup-folded t 
+ org-startup-folded t
  org-startup-indented t
  org-agenda-files '("~/org/agenda/agenda.org")
  org-directory '("~/org/agenda"))
@@ -49,21 +50,10 @@
 
 (use-package
   org-modern
-  :after org
-  :hook
-  ((org-mode . org-modern-mode)
-   (org-agenda-finalize . org-modern-agenda)))
+  )
 
-;; Prettify windows. Should be in looks.el ?
-;; (modify-all-frames-parameters
-;;  '((right-divider-width . 40)
-;;    (internal-border-width . 40)))
-;; (dolist (face '(window-divider
-;;                 window-divider-first-pixel
-;;                 window-divider-last-pixel))
-;;   (face-spec-reset-face face)
-;;   (set-face-foreground face (face-attribute 'default :background)))
-;; (set-face-background 'fringe (face-attribute 'default :background))
+(add-hook 'org-mode-hook #'org-modern-mode)
+(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
 
 (general-def

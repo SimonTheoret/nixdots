@@ -15,7 +15,6 @@
    ;; if you want which-key integration
    (lsp-mode . lsp-enable-which-key-integration)
    (LaTeX-mode . lsp-deferred)
-   (sh-mode . lsp-deferred)
    (nix-mode . lsp-deferred)
    (rustic-mode . lsp-deferred)
    (kill-emacs . lsp-workspace-remove-all-folders)

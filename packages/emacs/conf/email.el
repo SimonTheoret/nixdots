@@ -30,7 +30,7 @@
 	mu4e-context-policy 'ask-if-none
 	mu4e-compose-context-policy 'always-ask
 	mu4e-get-mail-command "mbsync --all"
-	mu4e-update-interval 300
+	mu4e-update-interval 150
 	user-mail-address "simonteoret@hotmail.com")
   (add-to-list 'mu4e-view-actions
 	       '("View in Browser" . mu4e-action-view-in-browser) t)

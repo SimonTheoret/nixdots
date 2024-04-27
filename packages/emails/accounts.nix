@@ -11,7 +11,7 @@
     msmtp.enable = true;
     notmuch.enable = true;
     realName = "Simon Théorêt";
-    passwordCommand = "cat ~/.mymail";
+    passwordCommand = "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mymail.gpg";
     userName = "simonteoret@hotmail.com";
   };
 }

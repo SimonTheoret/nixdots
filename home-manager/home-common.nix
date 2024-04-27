@@ -80,6 +80,7 @@
     (pkgs.callPackage ../scripts/calc.nix { inherit pkgs; })
 
     gnupg
+    pinentry
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

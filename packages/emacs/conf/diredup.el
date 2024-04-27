@@ -46,6 +46,8 @@
   '("Create empty file" . dired-create-empty-file)
   "b"
   '("Fuzzy search files" . consult-fd)
+  "g"
+  '("Change current dir" . cd)
   )
 
 (general-def

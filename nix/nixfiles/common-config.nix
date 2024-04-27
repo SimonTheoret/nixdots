@@ -103,9 +103,9 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    settings = {
-      default-cache-ttl = 6000;
-    };
+    # settings = { # TODO: uncomment or completely remove
+    #   default-cache-ttl = 6000;
+    # };
   };
 
   # List services that you want to enable:

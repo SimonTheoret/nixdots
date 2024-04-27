@@ -144,7 +144,7 @@
   "s"
   '("Search and replace" . query-replace)
   "t"
-  '("Search todos in dir" . consult-todo-dir)
+  '("Search todos in buffers" . consult-todo-all)
   )
 
 (general-def

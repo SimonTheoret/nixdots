@@ -16,7 +16,8 @@
     "p" '("Project Switch project" . projectile-switch-project)
     "a" '("Project Add project" . projectile-add-known-project)
     "d" '("Project Remove project" . projectile-remove-known-project)
-    "t" '("Search todo in project" . consult-todo-project))
+    ;; "t" '("Search todo in project" . consult-todo-project)
+    )
   (general-def
     :states
     'normal

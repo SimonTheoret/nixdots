@@ -12,7 +12,7 @@
     gits = "git status";
     gitp = "git push";
     update = "sudo nixos-rebuild switch --flake ";
-    rm = "trash";
+    tp = "trash-put";
     ect = "emacsclient -t";
   };
 }

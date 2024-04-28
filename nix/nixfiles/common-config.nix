@@ -88,7 +88,6 @@
     zip
     git
     emacs29
-    gnupg
     pinentry
     pass
   ];
@@ -103,9 +102,9 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    # settings = { # TODO: uncomment or completely remove
-    #   default-cache-ttl = 6000;
-    # };
+    settings = { 
+      default-cache-ttl = 36000; #10 hours
+    };
   };
 
   # List services that you want to enable:

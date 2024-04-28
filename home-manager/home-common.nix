@@ -27,7 +27,7 @@
     tldr
     playerctl
     maim
-    trashy
+    trash-cli
     pandoc
     sshfs
     nerdfonts

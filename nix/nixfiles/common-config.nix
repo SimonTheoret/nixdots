@@ -87,7 +87,6 @@
     man-pages-posix
     zip
     git
-    emacs29
     pinentry
     pass
   ];

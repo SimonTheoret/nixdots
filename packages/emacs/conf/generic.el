@@ -58,3 +58,5 @@
 
 (setq auto-save-file-name-transforms
       `((".*" ,(format "%sbackups" user-emacs-directory) t)))
+
+(epa-file-enable)

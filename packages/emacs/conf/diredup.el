@@ -53,10 +53,10 @@
 (general-def
   :states
   'normal
-  :prefix "<leader> f r"
+  :prefix "<leader> f m"
   :prefix-command 'Modify
-  "r"
+  "n"
   '("Rename current file" . crux-rename-file-and-buffer)
-  "f"
+  "d"
   '("Remove file" . delete-file)
   )

@@ -48,9 +48,8 @@
 ;;   (add-to-list 'org-src-lang-modes '("rust" . rustic) )
 ;;   )
 
-(use-package
-  org-modern
-  )
+(use-package org-modern
+  :after org)
 
 (add-hook 'org-mode-hook #'org-modern-mode)
 (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)

@@ -5,7 +5,11 @@
 ;; projectile
 (use-package
   projectile
-  :config (projectile-mode +1) (setq projectile-project-search-path '("~/Documents"))
+  :config
+  (projectile-mode +1)
+  (setq projectile-project-search-path '("~/Documents"))
+  (add-to-list 'projectile-globally-ignored-directories "nix")
+  (add-to-list 'projectile-globally-ignored-directories ".cargo")
   :general-config
   (general-def
     :states

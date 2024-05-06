@@ -191,7 +191,7 @@
 
 (general-def
   :states 'normal
-  :keymaps 'org-mode-map
+  :keymaps '(org-mode-map mu4e-headers-mode-map)
   :prefix "<localleader> l"
   :prefix-command 'Link
   "s"

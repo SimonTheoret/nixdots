@@ -16,8 +16,7 @@
   :bind
   (:map dired-mode-map ("C-c C-x" . dired-rsync-transient)))
 
-;; (use-package dirvish)
-;; (dirvish-override-dired-mode)
+(use-package casual-dired)
 
 
 (defun search-emacs-dir ()
@@ -48,7 +47,18 @@
   '("Fuzzy search files" . consult-fd)
   "g"
   '("Change current dir" . cd)
+  "o"
+  '("Dired here" . dired-jump)
   )
+
+(general-def
+  :states
+  'normal
+  :keymaps 'dired-mode-map
+  "C-o"
+  '("Casual dired" .  casual-dired-tmenu)
+  )
+
 
 (general-def
   :states
@@ -59,4 +69,4 @@
   '("Rename current file" . crux-rename-file-and-buffer)
   "d"
   '("Remove file" . delete-file)
-  )
+ )

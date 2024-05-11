@@ -20,22 +20,20 @@
           mode = "1920x1080";
           position = "0x0";
           rate = "120.00";
-          rotate = "right";
         };
         DP-0 = {
           enable = true;
           crtc = 0;
           mode = "1920x1080";
-          position = "3000x0";
+          position = "0x1080";
           rate = "144.00";
-          rotate = "left";
         };
         DP-2 = {
           enable = true;
           primary = true;
           crtc = 1;
           mode = "1920x1080";
-          position = "1080x271";
+          position = "1920x1080";
           rate = "165.00";
         };
       };

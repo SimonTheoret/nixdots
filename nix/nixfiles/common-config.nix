@@ -18,7 +18,10 @@
     true; # Easiest to use and most distros use this by default.
 
   # Allow Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enableNvidia = true;
+    enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Montreal";
@@ -71,7 +74,7 @@
 
   users.users.simon.isNormalUser = true;
   users.users.simon.extraGroups =
-    [ "wheel" "video" "docker"]; # Enable ‘sudo’ for the user.
+    [ "wheel" "video" "docker" ]; # Enable ‘sudo’ for the user.
   users.users.simon.packages = with pkgs; [ ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -104,8 +107,8 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    settings = { 
-      default-cache-ttl = 36000; #10 hours
+    settings = {
+      default-cache-ttl = 36000; # 10 hours
     };
   };
 

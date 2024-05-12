@@ -17,6 +17,9 @@
     lib.mkIf (config.networking.hostName != "nixosDesktop")
     true; # Easiest to use and most distros use this by default.
 
+  # Allow Docker
+  virtualisation.docker.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Montreal";
 
@@ -68,7 +71,7 @@
 
   users.users.simon.isNormalUser = true;
   users.users.simon.extraGroups =
-    [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    [ "wheel" "video" "docker"]; # Enable ‘sudo’ for the user.
   users.users.simon.packages = with pkgs; [ ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

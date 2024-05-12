@@ -41,25 +41,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      nixosConfigurations.nixosDesktopSway = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./nix/nixfiles/common-config.nix
-
-          { nix.settings.trusted-users = [ "simon" ]; }
-
-          ./nix/profiles/wayland-desktop/wayland-desktop.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = inputs // {laptop = false;};
-            home-manager.users.simon = import ./home-manager/profiles/sway;
-          }
-        ];
-      };
       nixosConfigurations.nixosDesktopi3 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
@@ -74,7 +55,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.extraSpecialArgs = inputs // {laptop = false;};
+            home-manager.extraSpecialArgs = inputs // { laptop = false; };
             home-manager.users.simon = import ./home-manager/profiles/i3;
           }
         ];

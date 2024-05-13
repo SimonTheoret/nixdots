@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nvidia, ... }:
 
 {
 
@@ -17,9 +17,10 @@
     lib.mkIf (config.networking.hostName != "nixosDesktop")
     true; # Easiest to use and most distros use this by default.
 
+
   # Allow Docker
   virtualisation.docker = {
-    enableNvidia = true;
+    enableNvidia = if nvidia then true else false;
     enable = true;
   };
 

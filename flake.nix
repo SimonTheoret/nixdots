@@ -42,7 +42,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations.nixosDesktopi3 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          nvidia = false;
+        };
         modules = [
           ./nix/nixfiles/common-config.nix
 
@@ -61,7 +64,10 @@
         ];
       };
       nixosConfigurations.nixoslaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          nvidia = false;
+        };
         modules = [
           ./nix/nixfiles/common-config.nix
 

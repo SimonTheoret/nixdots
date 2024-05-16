@@ -25,6 +25,6 @@
   (general-def
     :states
     'normal
-    "<leader> SPC" '("Find file in project" . projectile-find-file)
+    "<leader> SPC" '("Find file in project" . project-find-file)
     )
   )

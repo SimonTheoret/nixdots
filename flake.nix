@@ -44,7 +44,7 @@
       nixosConfigurations.nixosDesktopi3 = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          nvidia = false;
+          nvidia = true;
         };
         modules = [
           ./nix/nixfiles/common-config.nix

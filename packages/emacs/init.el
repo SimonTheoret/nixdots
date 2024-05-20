@@ -45,3 +45,4 @@
 (config-load-file-no-extension "envir")
 (config-load-file-no-extension "email")
 (config-load-file-no-extension "dock")
+(config-load-file-no-extension "filetypes")

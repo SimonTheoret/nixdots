@@ -7,3 +7,4 @@
     "d" '("Docker" . docker)
     )
   )
+(use-package dockerfile-mode)

@@ -26,7 +26,8 @@
       '((python-mode . python-ts-mode)
 	(rust-mode . rustic-mode)
 	(rust-ts-mode . rustic-mode)
-	(go-mode . go-ts-mode)))
+	(go-mode . go-ts-mode)
+	(dockerfile-mode . dockerfile-ts-mode)))
 
 (defun set-font-level-ts (level)
   "Modify font lock level in Tree-sitter."

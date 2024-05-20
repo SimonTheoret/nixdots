@@ -8,7 +8,7 @@
   (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-minimum-prefix-length 1)
-  (setq company-idlle-delay 0.0)
+  (setq company-idle-delay 0.05)
   :general-config
   (general-def company-active-map
     "<backtab>" (lambda () (interactive) (company-complete-common-or-cycle -1))

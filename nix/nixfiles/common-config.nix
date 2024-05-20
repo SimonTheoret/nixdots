@@ -22,8 +22,10 @@
   virtualisation.docker = {
     enableNvidia = if nvidia then true else false;
     enable = true;
+    enableOnBoot = true;
   };
 
+  systemd.enableUnifiedCgroupHierarchy = if nvidia then false else true;
   # Set your time zone.
   time.timeZone = "America/Montreal";
 
@@ -96,6 +98,7 @@
     git
     pinentry
     pass
+    # nvidia-container-toolkit
   ];
 
   programs.zsh.enable = true;

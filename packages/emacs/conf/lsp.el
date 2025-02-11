@@ -1,200 +1,130 @@
 ;; -*- lexical-binding: t -*-
 
-(defun dotfiles--lsp-deferred-if-supported ()
-  "Run `lsp-deferred' if it's a supported mode."
-  (unless (derived-mode-p 'emacs-lisp-mode)
-    (lsp-deferred)))
+(use-package rust-mode)
 
-(use-package
-  lsp-mode
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+;; NOTE: To make the language server functional, I symlinked
+;; `language_server.sh` out of the directory, and into the `bin`
+;; folder. This folder is on the `PATH` env. var.
+(use-package elixir-mode
+  :after (eglot)
   :hook
-  ( ;; replace XXX-mode with concrete major-mode(e. g. python--tsmode)
-   (python-ts-mode . lsp-deferred)
-   (go-ts-mode . lsp-deferred)
-   ;; if you want which-key integration
-   (lsp-mode . lsp-enable-which-key-integration)
-   (LaTeX-mode . lsp-deferred)
-   (nix-mode . lsp-deferred)
-   (rustic-mode . lsp-deferred)
-   (kill-emacs . lsp-workspace-remove-all-folders)
-   )
-  :commands (lsp lsp-deferred)
-  :config
-
-  (setq lsp-ui-sideline-show-code-actions t)
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-lens-enable t)
-  (lsp-signature-mode t)
-  ;; (lsp-ui-peek-enable)
-  ;; (lsp-ui-doc-enable)
-  ;; (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-position 'at-point)
-  ;; (setq lsp-ui-doc-include-signature t)
-  ;; (setq lsp-ui-doc-max-height 8)
-  ;; :global/:workspace/:file
-  (setq lsp-modeline-diagnostics-scope :workspace)
-  (setq lsp-enable-on-type-formatting nil)
-  (setq lsp-idle-delay 0.500)
+  (elixir-mode . eglot-ensure)
+  (elixir-ts-mode . eglot-ensure)
   )
 
-;; Make the help buffer smaller
-(add-to-list 'display-buffer-alist
-             '((lambda (buffer _) (with-current-buffer buffer
-                               (seq-some (lambda (mode)
-                                           (derived-mode-p mode))
-                                         '(help-mode))))
-               (display-buffer-reuse-window display-buffer-below-selected)
-               (reusable-frames . visible)
-               (window-height . 0.33)))
+(use-package gleam-ts-mode
+  :after (eglot projectile)
+  :mode (rx ".gleam" eos)
+  :config
+  (add-to-list 'eglot-server-programs '(gleam-ts-mode . ("gleam" "lsp")))
+  (add-to-list 'eglot-server-programs '(gleam-mode . ("gleam" "lsp")))
+  (projectile-register-project-type 'gleam '("gleam.toml")
+                                    :project-file "gleam.toml"
+				    :compile "gleam build"
+				    :test "gleam test"
+				    :run "gleam run"
+                                    :src-dir "src/"
+                                    :test-dir "test/"
+				    :test-suffix "_test")
+  :hook
+  (gleam-ts-mode . eglot-ensure)
+  (gleam-mode . eglot-ensure)
+  )
+
+(use-package eglot
+  :defer 1
+  :straight (:type built-in)
+  :config
+  (add-hook 'rust-ts-mode-hook 'eglot-ensure)
+  (add-hook 'python-ts-mode-hook 'eglot-ensure)
+  (add-hook 'LaTeX-mode-hook 'eglot-ensure)
+  (add-to-list 'eglot-stay-out-of 'flymake)
+  ;; Disable inlay hints mode by default. Toggle to activate
+  :hook
+  ((eglot-managed-mode . manually-activate-flymake))
+  :custom
+  (eglot-autoshutdown t)  ;; shutdown language server after closing last file
+  (eglot-confirm-server-initiated-edits nil)  ;; allow edits without confirmation
+  )
+
+;; Compromise between having no info and too much info
+(setq eldoc-echo-area-use-multiline-p nil)
+
+(use-package eglot-booster
+  :straight (eglot-booster :type git
+			   :host github
+			   :repo "jdtsmith/eglot-booster"
+			   )
+  :after eglot
+  :config
+  (eglot-booster-mode)
+  )
+
+(use-package flymake
+  :straight (:type built-in)
+  :config
+  :hook
+  (eglot-mode . flymake-mode)
+  ;; (add-hook 'eglot-mode-hook 'flymake-mode)
+  )
+
+(use-package flymake-clippy
+  :hook (rust-mode . flymake-clippy-setup-backend))
+
+(defun manually-activate-flymake ()
+  (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t)
+  (flymake-mode 1))
+
+(use-package flymake-diagnostic-at-point
+  :after flymake
+  :config
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
+  (setq flymake-diagnostic-at-point-display-diagnostic-function #'flymake-diagnostic-at-point-display-minibuffer)
+  )
+
+(use-package consult-eglot
+  :after (:all eglot consult))
 
 (general-def
   :states
   'normal
   :prefix "<leader> c"
   :prefix-command 'Code
-  "d"
-  '("Find definition" . lsp-ui-peek-find-definitions)
   "a"
-  '("Execute action" . lsp-execute-code-action)
+  '("Execute action" . eglot-code-actions)
   "i"
-  '("Find implementation" . lsp-find-implementation)
+  '("Find implementation" . eglot-find-implementation)
   "t"
-  '("Find type def" . lsp-find-type-definition)
+  '("Find type def" . eglot-find-typeDefinition)
   "D"
-  '("Find declaration" . lsp-find-declaration)
+  '("Find declaration" . eglot-find-declaration)
   "b"
-  '("Open doc in buffer" . lsp-describe-thing-at-point)
-  "k"
-  '("Describe" . lsp-ui-doc-glance)
-  "r"
-  '("Find reference" . lsp-ui-peek-find-references)
+  '("Open doc in buffer" . eldoc)
   "n"
-  '("Rename" . lsp-rename)
+  '("Rename" . eglot-rename)
   "f"
-  '("Format buffer" . format-all-buffer)
+  '("Format buffer" .  apheleia-format-buffer)
+  "m"
+  '("Lsp Imenu" . imenu)
+  "h"
+  '("Hinlay hints" . eglot-inlay-hints-mode)
+  "o"
+  '("Casual Overlay" . casual-symbol-overlay-tmenu)
+  "s"
+  '("Consult search symbols" . consult-eglot-symbols)
+  "j"
+  '("Consult IMenu" . consult-imenu)
+  "S"
+  '("Eglot search symbols" . xref-find-apropos)
   )
-
-;; This function filters any diagnostics coming from the virtual env of python
-
-(setf lsp-diagnostic-filter (lambda (param work) ;; params is the hash map containing the diagnostics for a single buffer
-			      ;; (message "%s" param)
-			      (if (string-match (regexp-quote ".venv/") (plist-get param :uri) )
-				  (plist-put param :diagnostics [])
-				param
-				)
-			      ))
-
-
-;; source:
-;; (setf lsp-diagnostic-filter (lambda (param work)
-;; 			      (puthash "diagnostics"
-;; 				       (cl-remove-if (lambda (diag) (gethash "tags" diag))
-;; 						     (gethash "diagnostics" param))
-;; 				       param)
-;; 			      param))
-
-
-;; (defun smart-lsp-ui-doc ()
-;;   (interactive)
-;;   (if lsp-ui-doc-frame-mode
-;;       ((lsp-ui-doc-show)
-;;        (lsp-ui-doc-focus-frame)
-;;        (lsp-ui-doc-enable nil))
-;;     ((lsp-ui-doc-hide)
-;;      (setq lsp-ui-doc-enable t))
-;;     )
-;;   )
 
 (general-def
   :states
   'normal
-  :prefix "<leader> c w"
-  :prefix-command 'Workspace
-  "d"
-  '("LSP Workspace delete" . lsp-workspace-folders-remove)
+  :prefix "<leader> c e"
+  :prefix-command 'Errors
+  "b"
+  '("Flymake buffer" . flymake-show-buffer-diagnostics)
   "a"
-  '("LSP Workspace add" . lsp-workspace-folders-add)
-  "r"
-  '("LSP restart workspace" . lsp-workspace-restart)
+  '("Flymake project" . flymake-show-project-diagnostics)
   )
-
-(use-package all-the-icons)
-
-;; optionally
-;; By default, lsp-mode automatically activates lsp-ui unless lsp-auto-configure is set to nil.
-(use-package lsp-ui :commands lsp-ui-mode)
-
-;;LSP optimizations
-
-(defun lsp-optim ()
-  (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (* 4 (* 1024 1024))) ;; 1mb
-  (setq lsp-use-plists t))
-
-(lsp-optim)
-
-;; Python
-(use-package
-  lsp-pyright
-  :after lsp-mode
-  :init
-  (setq lsp-pyright-diagnostic-mode "workspace")
-  :hook
-  (python-ts-mode
-   .
-   (lambda ()
-     (require 'lsp-pyright)
-     (lsp-deferred)))) ; or lsp-deferred
-
-;; Rust
-
-(use-package rust-mode ;; This mode is only here to make rustic use treesitter!
-  :init
-  (setq rust-mode-treesitter-derive t)
-  )
-
-(use-package rustic
-  ;; :straight (rustic :type git :host github :repo "brotzeit/rustic" :branch "rustic-ts-mode") ;; Gives treesitter integration
-  ;;   :mode "\\.rs\\'"
-  ;; :hook
-  ;; (rust-mode . rustic-mode)
-  ;; (rustic-mode . lsp)
-  :init
-  (setq-default lsp-rust-analyzer-cargo-watch-command "clippy")
-  ;; (setq rust-mode-treesitter-derive t)
-  ;; (add-to-list 'org-src-lang-modes '("rust" . rustic) )
-  )
-
-
-;; Latex
-(use-package
-  lsp-latex
-  :init (setq lsp-latex-forward-search-executable "zathura")
-  (setq lsp-latex-forward-search-args
-	'("--synctex-forward" "%l:1:%f" "%p"))
-  :hook (tex-mode . lsp-deferred) (latex-mode . lsp-deferred) (LaTeX-mode . lsp-deferred))
-
-;; Go
-(use-package
-  go-mode
-  :config (setq-default lsp-go-use-gofumpt t)
-  :hook (go-mode . flycheck-golangci-lint-setup)
-  (go-mode . go-guru-hl-identifier-mode))
-
-(use-package go-eldoc :hook (go-mode . go-eldoc-setup))
-
-(use-package flycheck-golangci-lint)
-
-(eval-after-load
-    'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
-
-(use-package
-  lsp-latex
-  :init (setq lsp-latex-forward-search-executable "zathura")
-  (setq lsp-latex-forward-search-args
-	'("--synctex-forward" "%l:1:%f" "%p")))
-
-;; Nix
-(use-package nix-mode :mode "\\.nix\\'")

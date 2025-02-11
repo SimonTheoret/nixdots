@@ -13,5 +13,4 @@
   (setq word-wrap nil))
 
 (add-hook 'prog-mode-hook 'deactivate-word-wrap)
-(add-hook 'org-mode-hook 'deactivate-word-wrap)
 

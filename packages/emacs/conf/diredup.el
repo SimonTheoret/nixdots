@@ -3,26 +3,49 @@
 
 ;; Makes dired goooood
 
-(use-package diff-hl :config (global-diff-hl-mode))
+(setq dired-listing-switches "-alh")
 
 (use-package diredfl :config (diredfl-global-mode))
 
 (use-package
   dired-rsync
-  :bind (:map dired-mode-map ("C-c C-r" . dired-rsync)))
+  :bind (:map dired-mode-map ("<leader> r r" . dired-rsync)))
 
 (use-package
   dired-rsync-transient
   :bind
-  (:map dired-mode-map ("C-c C-x" . dired-rsync-transient)))
+  (:map dired-mode-map ("<leader> r t" . dired-rsync-transient)))
 
-(use-package casual-dired)
 
+(use-package async
+  :init
+  (dired-async-mode 1))
 
 (defun search-emacs-dir ()
   (interactive)
-  (ido-find-file-in-dir user-emacs-directory))
+  (ido-find-file-in-dir "~/.local/share/chezmoi/dot_config/emacs/" ))
 
+(defun search-emacs-dir-other-window ()
+  (interactive)
+  (ido-file-internal 'other-window 'find-file-other-window  "~/.local/share/chezmoi/dot_config/emacs/" ))
+
+(defun search-chezmoi-dir ()
+  (interactive)
+  (ido-find-file-in-dir "~/.local/share/chezmoi" ))
+
+(defun search-chezmoi-dir-other-window ()
+  (interactive)
+  (ido-file-internal 'other-window 'find-file-other-window  "~/.local/share/chezmoi" ))
+
+(defun search-home-dir ()
+  (interactive)
+  (ido-find-file-in-dir "~/" ))
+
+(defun search-home-dir-other-window ()
+  (interactive)
+  (ido-file-internal 'other-window 'find-file-other-window "~/" ))
+
+(add-hook 'dired-mode-hook (lambda () (setq display-line-numbers 'relative)))
 
 (general-def
   :states
@@ -31,8 +54,12 @@
   :prefix-command 'Files
   "f"
   '("Find files" . ido-find-file)
+  "F"
+  '("Find files other window" . ido-find-file-other-window)
   "p"
   '("Search conf" . search-emacs-dir)
+  "P"
+  '("Search conf other window" . search-emacs-dir-other-window)
   "d"
   '("Create dir" . make-directory)
   "D"
@@ -49,15 +76,18 @@
   '("Change current dir" . cd)
   "o"
   '("Dired here" . dired-jump)
+  "O"
+  '("Dired here other window" . dired-jump-other-window)
+  "l"
+  '("Chezmoi files" . search-chezmoi-dir)
+  "L"
+  '("Chezmoi files other window" . search-chezmoi-dir-other-window)
+  "h"
+  '("Home files" . search-home-dir)
+  "H"
+  '("Home files other window" . search-home-dir-other-window)
   )
 
-(general-def
-  :states
-  'normal
-  :keymaps 'dired-mode-map
-  "C-o"
-  '("Casual dired" .  casual-dired-tmenu)
-  )
 
 
 (general-def
@@ -69,4 +99,4 @@
   '("Rename current file" . crux-rename-file-and-buffer)
   "d"
   '("Remove file" . delete-file)
- )
+  )

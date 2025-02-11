@@ -12,21 +12,23 @@
 
   ;; Show more candidates
   (setq vertico-count 15)
+  (setq vertico-resize 'grow-only)
+  (setq vertico-cycle t)
   :general-config
-  (:keymaps
-   'vertico-map
+  (
+   :keymaps 'vertico-map
+   :states 'insert
    "RET"
    #'vertico-directory-enter
    "DEL"
    #'vertico-directory-delete-char
    "M-DEL"
-   #'vertico-directory-delete-word)
-
-  ;; Grow and shrink the Vertico minibuffer
-  ;; (setq vertico-resize t)
-
-  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  ;; (setq vertico-cycle t)
+   #'vertico-directory-delete-word
+   "C-n"
+   #'vertico-next
+   "C-p"
+   #'vertico-previous
+   )
   )
 
 
@@ -64,34 +66,47 @@
 
 (use-package
   orderless
-  :custom (completion-styles '(orderless basic))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
   (completion-category-overrides
    '((file (styles basic partial-completion)))))
 
 (use-package consult)
 
-(use-package consult-todo :after consult)
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
 
-(use-package marginalia :config (marginalia-mode))
+  ;; The :init section is always executed.
+  :init
 
-(defun search-emacs-dir ()
-  (interactive)
-  (ido-find-file-in-dir user-emacs-directory))
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
 
 
 (use-package
   embark
-
   :general
   (general-def
     :states 'normal
     :prefix "<leader> a"
     :prefix-command 'Actions
     "a" '("Embark act" . embark-act)
-    "d" '("Embark dwim" . embark-dwim)) ;; alternative for `describe-bindings'
-
+    "d" '("Embark dwim" . embark-dwim);; alternative for `describe-bindings'
+    "s" '("Shell project command" . projectile-run-shell-command-in-root)
+    "k" '("Async project command" . projectile-run-async-shell-command-in-root)
+    "w" '("Shell buffer command " . shell-command)
+    "i" '("Async buffer command" . async-shell-command)
+    "v" '("Transient avy" . casual-avy-tmenu)
+    )
   :init
-
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
 
@@ -103,15 +118,15 @@
 
   ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
   ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
-
   :config
-
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list
    'display-buffer-alist
    '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
      nil
      (window-parameters (mode-line-format . none)))))
+
+(setq async-shell-command-display-buffer nil)
 
 ;; Consult users will also want the embark-consult package.
 (use-package
@@ -120,7 +135,9 @@
 
 (use-package browse-at-remote)
 
-(use-package tldr)
+(use-package tldr :defer 1)
+
+(use-package deadgrep)
 
 (general-def
   :states
@@ -131,8 +148,6 @@
   '("Filter search current dir" . lgrep)
   "d"
   '("Search current dir" . consult-ripgrep)
-  "i"
-  '("Consult IMenu" . consult-imenu)
   "m"
   '("Multi occur" . multi-occur-in-matching-buffers)
   "o"
@@ -145,6 +160,14 @@
   '("Search and replace" . query-replace)
   "t"
   '("Search todos in buffers" . consult-todo-all)
+  "h"
+  '("Hide lines" . consult-focus-lines)
+  "r"
+  '("Deadgrep" . deadgrep)
+  "a"
+  '("Locate" . consult-locate)
+  "x"
+  '("Regex Builder" . re-builder)
   )
 
 (general-def
@@ -159,7 +182,7 @@
   "w"
   '("Manual with woman" . woman)
   "m"
-  '("Manual with woman" . man)
+  '("Manual with man" . man)
   )
 
 ;; (general-def

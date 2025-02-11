@@ -12,11 +12,20 @@
 
 ;; font
 ;; (set-frame-font "JetBrainsMono Nerd Font Mono 100" nil t)
-(if (string= "laptop" (system-name))
-    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-9"))
-  (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-11")))
 
-;; (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-11"))
+
+;; Laptop
+(if (and (string= "simon" (system-name)) (string= "gnu/linux" system-type))
+    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-14")))
+;; Desktop
+(if (and (string= "Simon-Ubuntu-24" (system-name)) (string= "gnu/linux" system-type))
+    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-13")))
+;; Serveur druide
+(if (and (string= "stheoret" (system-name)) (string= "gnu/linux" system-type))
+    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-13")))
+;; MacOS Druide
+(if (and (string= "stheoret" (system-name)) (string= "darwin" system-type))
+    (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font Mono-14")))
 
 ;; Scrolling
 (pixel-scroll-mode 1)
@@ -38,6 +47,19 @@
 ;; Nice greek symbols
 (global-prettify-symbols-mode)
 
+(add-hook
+ 'prog-mode-hook
+ (lambda ()
+   (push '(">=" . ?\u2265) prettify-symbols-alist)
+   (push '("<=" . ?\u2264) prettify-symbols-alist)
+   (push '("!=" . ?\u2260) prettify-symbols-alist)
+   (push '("==" . ?\u2A75) prettify-symbols-alist)
+   (push '("=~" . ?\u2245) prettify-symbols-alist)
+   (push '("<-" . ?\u2190) prettify-symbols-alist)
+   (push '("->" . ?\u2192) prettify-symbols-alist)
+   (push '("<-" . ?\u2190) prettify-symbols-alist)
+   (push '("|>" . ?\u25B7) prettify-symbols-alist)))
+
 (setq confirm-kill-emacs #'yes-or-no-p)
 
 ;; The variable redisplay-dont-pause, when set to t, will cause Emacs
@@ -46,7 +68,7 @@
 ;; aggressively mouse scrolling a document or rely on your keyboard’s
 ;; auto repeat feature. For most of us, myself included, it’s probably
 ;; a no-brainer to switch it on.
-(setq redisplay-dont-pause t)
+(setq redisplay-dont-pause nil)
 
 (add-hook 'text-mode-hook #'auto-fill-mode)
 
@@ -59,4 +81,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(format "%sbackups" user-emacs-directory) t)))
 
-(epa-file-enable)
+(defun revert-buffer-fontify()
+  (interactive)
+  (revert-buffer)
+  (font-lock-debug-fontify)
+  (hl-todo-mode)
+  )

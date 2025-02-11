@@ -5,6 +5,7 @@
 ;; projectile
 (use-package
   projectile
+  :defer 0.5
   :config
   (projectile-mode +1)
   (setq projectile-project-search-path '("~/Documents"))
@@ -17,14 +18,20 @@
     :prefix "<leader> p"
     :prefix-command 'Projectile
     "m" '("Projectile command map" . projectile-command-map)
-    "p" '("Project Switch project" . projectile-switch-project)
-    "a" '("Project Add project" . projectile-add-known-project)
-    "d" '("Project Remove project" . projectile-remove-known-project)
-    ;; "t" '("Search todo in project" . consult-todo-project)
+    "p" '("Project switch project" . projectile-switch-project)
+    "a" '("Project add project" . projectile-add-known-project)
+    "d" '("Project remove project" . projectile-remove-known-project)
     )
   (general-def
     :states
     'normal
-    "<leader> SPC" '("Find file in project" . project-find-file)
+    "<leader> SPC" '("Find file in project" . projectile-find-file)
+    "<leader> M-SPC" '("Find file in project" . projectile-find-file-other-window)
+    )
+  (general-def
+    :states
+    'normal
+    "<leader> y" '("Projectile commands" . projectile-command-map)
     )
   )
+

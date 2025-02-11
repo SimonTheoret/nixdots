@@ -26,24 +26,21 @@
     '("Latex master" . TeX-command-master)
     )
   )
+(add-to-list 'auto-mode-alist '("\\.tex\\'" . LaTeX-mode))
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-;; (use-package auctex-latexmk
-;;   :after latex
-;;   :init
-;;   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
-;;   :hook
-;;   (LaTeX-mode . (lambda () (setq TeX-command-default "LaTeXmk")))
-;;   :config
-;;   (auctex-latexmk-setup))
+(global-auto-revert-mode)
+
+;; (add-to-list `TeX-command-list `("LaTeXMkServer"
+;; 				 "latexmk -pvc -view=none %(latexmk-out) %(file-line-error) %(output-dir) %`%(extraopts) %S%(mode)%' %t"
+;; 				 TeX-run-format nil (LaTeX-mode docTeX-mode)
+;; 				 :help "Run LaTeXMk Continuously"))
 
 (use-package cdlatex
   :hook
   (LaTeX-mode . cdlatex-mode)
-  (org-mode . org-cdlatex-mode))
+  )
 
-;; (general-def
-;;   :states 'normal
-;;   :keymaps '(latex-mode-map)
-;;   :prefix "<localleader>"
-;;   :prefix-command 'Local
-;;   )
+
+(use-package evil-tex
+  ;; :defer t
+  :hook (LaTeX-mode . evil-tex-mode))

@@ -1,6 +1,6 @@
 return {
     'ggandor/flit.nvim',
-    dependencies = {'ggandor/leap.nvim'},
+    dependencies = { 'ggandor/leap.nvim' },
     config = function()
         require('flit').setup({
             keys = { f = 'f', F = 'F', t = 't', T = 'T' },
@@ -13,5 +13,5 @@ return {
         })
     end,
     lazy = false
-     -- keys = {"f", "F", "T", "t"}
+    -- keys = {"f", "F", "T", "t"}
 }

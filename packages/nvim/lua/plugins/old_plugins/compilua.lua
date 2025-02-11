@@ -56,7 +56,19 @@ local compilua = function()
         input:unmount()
     end)
 end
+
+local recompilua = function()
+    local def
+    if New_default_completion_compilua ~= "" then
+        def = New_default_completion_compilua
+    else
+        def = "make "
+    end
+    run(def)
+end
+
 M.compilua = compilua
+M.recompilua = recompilua
 
 
 return M

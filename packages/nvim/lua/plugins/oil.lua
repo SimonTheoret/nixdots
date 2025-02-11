@@ -1,11 +1,21 @@
 return {
     'stevearc/oil.nvim',
-    config = true,
+    config = function()
+        require('oil').setup {
+            columns = {
+                "icon",
+                "permissions",
+                "size",
+                "mtime",
+            },
+            delete_to_trash = true
+        }
+    end,
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
-            "<leader>to",
+            "<leader>fo",
             ":Oil<CR> --float .",
             desc = "Toggle Oil"
         }

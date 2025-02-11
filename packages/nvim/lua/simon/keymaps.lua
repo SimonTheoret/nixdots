@@ -13,10 +13,6 @@ vmap.set("n", "<C-u>", "<C-u>zz")
 vmap.set("n", "n", "nzzzv")
 vmap.set("n", "N", "Nzzzv")
 
--- Going down a page keeps the cursor centered
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 -- Copy the clipboard content into system clipboard
 vmap.set({ "n", "v" }, "<leader>y", [["+y]],
     { desc = "Copy clipboard into system clipboard" })
@@ -28,17 +24,18 @@ vmap.set("n", "<leader>mod",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Modify word in whole file" })
 
+-- Emacs
+vmap.set("n", "<M-x>", "q:", { desc = "Commands" })
+
 -- Insert blank lines
 vmap.set("n", "<leader>o", "o<Esc>k", { desc = "Whitespace under cursor" })
 vmap.set("n", "<leader>O", 'O<Esc>j', { desc = "Whitespace above cursor" })
 
 vmap.set("n", "<leader>cd", ":cd %:h<CR>", { desc = "Make file's path as working dir" })
 
-vmap.set("n", "<tab>", "%", { desc = "Switch delimiters" })
-
-vmap.set("n", "<leader>cc", function() require("simon.compilua").compilua() end, { desc = "Fast compile" })
 
 vmap.set("n", "<leader>sr", function() require("simon.neosearch").search() end, { desc = "Search and replace" })
+vmap.set("n", "<leader>bb", ":only<CR>", { desc = "Focus buffer" })
 
 function _G.set_terminal_keymaps()
     local opts = { buffer = 0 }
@@ -51,6 +48,9 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
+vim.cmd('autocmd! TermOpen term://*bash* lua set_terminal_keymaps()')
+vim.cmd('autocmd! TermOpen term://*zsh* lua set_terminal_keymaps()')
+vim.cmd('autocmd! TermOpen term://*sh* lua set_terminal_keymaps()')
 
 vmap.set("n", "<leader>cln", function()
     local search = "%s/\\s\\+$//e"

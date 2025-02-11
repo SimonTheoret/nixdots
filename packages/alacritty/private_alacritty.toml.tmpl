@@ -1,0 +1,42 @@
+# [general]
+general.import = [ "theme.toml" ]
+general.live_config_reload = true
+
+[font]
+{{ if eq .chezmoi.os "darwin"  }}
+## Macos
+size=13
+{{else if (and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "simon") (eq .chezmoi.osRelease.name "Arch Linux"))}}
+## Laptop
+size=9
+{{else if (and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "Simon-Ubuntu-24") (eq .chezmoi.osRelease.name "Ubuntu"))}}
+## Desktop
+size=10
+{{else if (and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "stheoret") )}}
+## Serveur druide
+size=13
+{{else}}
+## Autre
+size=10
+{{end}}
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 0.80
+blur = true
+

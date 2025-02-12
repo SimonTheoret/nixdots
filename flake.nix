@@ -13,7 +13,7 @@
       specialArgs = {
         system = "x86_64-linux";
 	self = self;
-	inherit nixpkgs, home-manager;
+	inherit nixpkgs home-manager;
 	pkgs = nixpkgs;
         userName="simon"; # What is the user's name
         config = {

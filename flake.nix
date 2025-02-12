@@ -10,11 +10,9 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
   {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
       specialArgs = {
-        system = "x86_64-linux";
-	self = self;
-	inherit nixpkgs home-manager;
-	pkgs = nixpkgs;
+	inherit inputs;
         userName="simon"; # What is the user's name
         config = {
           myAudio.enable = true;

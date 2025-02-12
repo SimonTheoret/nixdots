@@ -38,6 +38,7 @@
         ./modules/commons.nix 
         ./modules/devtools.nix
         ./modules/docker.nix
+        ./modules/hardware-configuration.nix
         ./modules/home-manager.nix
         ./modules/light.nix
         ./modules/nixconf.nix
@@ -52,46 +53,5 @@
         }
       ];
     };
-
-    # nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {inherit inputs;};
-      #   modules = [
-        #     ./nix/nixfiles/common-config.nix
-
-        #     { nix.settings.trusted-users = [ "simon" ]; }
-        #     ./nix/profiles/laptop/laptop.nix
-
-        #     home-manager.nixosModules.home-manager
-        #     {
-          #       home-manager.useGlobalPkgs = true;
-          #       home-manager.useUserPackages = true;
-
-          #       home-manager.extraSpecialArgs = inputs // { laptop = true; };
-          #       home-manager.users.simon = import ./home-manager/profiles/i3;
-          #     }
-          #   ];
-          # };
-
-          # nixosConfigurations.server = nixpkgs.lib.nixosSystem {
-            #   specialArgs = {
-              #     inherit inputs;
-              #   };
-              #   modules = [
-                #     ./nix/nixfiles/common-config.nix
-
-                #     { nix.settings.trusted-users = [ "simon" ]; }
-
-                #     ./nix/profiles/i3-desktop/i3-desktop.nix
-
-                #     home-manager.nixosModules.home-manager
-                #     {
-                  #       home-manager.useGlobalPkgs = true;
-                  #       home-manager.useUserPackages = true;
-
-                  #       home-manager.extraSpecialArgs = inputs // { laptop = false; server = false };
-                  #       home-manager.users.simon = import ./home-manager/profiles/i3;
-                  #     }
-                  #   ];
-                  # };
   };
 }

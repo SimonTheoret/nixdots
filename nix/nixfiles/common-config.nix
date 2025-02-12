@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 30;
 
-  networking.hostName = "nixosDesktop"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 
   networking.networkmanager.enable =
     lib.mkIf (config.networking.hostName != "nixosDesktop")

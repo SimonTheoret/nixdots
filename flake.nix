@@ -7,14 +7,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, config={}, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {
         system = "x86_64-linux";
         inherit inputs;
         userName="simon"; # What is the user's name
-        config = inputs.config // {
+        config = {
           myAudio.enable = true;
           myBluetooth.enable = true;
           myChezMoi.enable = true;

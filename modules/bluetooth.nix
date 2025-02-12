@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, inputs, ...}:
 {
   options.myBluetooth = {
     enable = pkgs.lib.mkOption {

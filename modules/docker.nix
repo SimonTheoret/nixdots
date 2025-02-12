@@ -11,7 +11,7 @@ in {
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Allow to use Docker" ;
+      description = "Configure Docker and Docker-Compose" ;
     };
   };
 

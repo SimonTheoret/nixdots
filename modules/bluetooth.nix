@@ -1,7 +1,7 @@
 {config, pkgs, ...}:
 {
   options.myBluetooth = {
-    menable = pkgs.lib.mkOption {
+    enable = pkgs.lib.mkOption {
       type = pkgs.lib.types.bool;
       default = false;
       example = true;
@@ -18,7 +18,7 @@
   config = pkgs.lib.mkIf config.myBluetooth.enable {
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    services.blueman.enable = config.myBluetooth.guiControls; # enables gui with blueman
+    services.blueman.enable = config.myUi.useGUI; # enables gui with blueman
     services.mpris-proxy.enable = true; # enable headsets buttons
   };
 }

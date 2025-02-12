@@ -13,7 +13,23 @@
       specialArgs = {
         system = "x86_64-linux";
         inherit inputs;
-        userName="simon";
+        userName="simon"; # What is the user's name
+        config = inputs.config // {
+          myAudio.enable = true;
+          myBluetooth.enable = true;
+          myChezMoi.enable = true;
+          myCommons.enable = true;
+          myDevTools.enable = true;
+          myDocker.enable = true;
+          myHomeManager.enable = true;
+          myLight.enable = false; # false by default
+          myNvidia.enable = false; 
+          myUi = {
+            enable = true;
+            monitorsConfig = true;
+            useGUI = true;
+          }; 
+        };
       };
       modules = [
         ./modules/audio.nix
@@ -32,9 +48,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
           home-manager.extraSpecialArgs = inputs;
-          home-manager.users.simon = import ./modules/home-manager.nix;
         }
       ];
     };

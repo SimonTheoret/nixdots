@@ -1,7 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, userName, home-manager, ... }:
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myHomeManager;
+  inherit userName;
 in {
   options.myHomeManager = {
     enable = mkOption {
@@ -13,26 +14,30 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.stateVersion = "24.11";
-    programs.home-manager.enable = true;
+    home-manager.users.${userName} = {
+      home.stateVersion = "24.11";
+      programs.home-manager.enable = true;
+      home.username = "${userName}";
+      home.homeDirectory = "/home/${userName}";
 
-    programs.mbsync.enable = true;
-    programs.msmtp.enable = true;
+      programs.mbsync.enable = true;
+      programs.msmtp.enable = true;
 
-    accounts.email = {
-      accounts.hotmail = {
-        address = "simonteoret@hotmail.com";
-        primary = true;
-        flavor = "outlook.office365.com"; # this makes it easy
-        mbsync = {
-          enable = true;
-          create = "maildir";
-          expunge = "both";
+      accounts.email = {
+        accounts.hotmail = {
+          address = "simonteoret@hotmail.com";
+          primary = true;
+          flavor = "outlook.office365.com"; # this makes it easy
+          mbsync = {
+            enable = true;
+            create = "maildir";
+            expunge = "both";
+          };
+          msmtp.enable = true;
+          realName = "Simon Théorêt";
+          passwordCommand = "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mymail.gpg";
+          userName = "simonteoret@hotmail.com";
         };
-        msmtp.enable = true;
-        realName = "Simon Théorêt";
-        passwordCommand = "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mymail.gpg";
-        userName = "simonteoret@hotmail.com";
       };
     };
   };

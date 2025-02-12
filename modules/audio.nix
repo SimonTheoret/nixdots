@@ -10,7 +10,7 @@ in
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Use pavucontrol in a GUI to control audio" ;
+      description = "Use pavucontrol in a GUI to control audio. This option is set automatically if `config.myUi.useGUI=true`" ;
     };
     enable = mkOption {
       type = lib.types.bool;

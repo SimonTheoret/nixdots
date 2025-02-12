@@ -5,6 +5,7 @@ let
   cfg = config.myAudio;
 in
 {
+  imports = [];
   options.myAudio = {
     guiControls = mkOption {
       type = lib.types.bool;

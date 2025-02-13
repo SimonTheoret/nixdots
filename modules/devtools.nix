@@ -23,6 +23,7 @@ in {
         enable = true;
         package = pkgs.nix-direnv;
       };
+    };
       environment.systemPackages = with pkgs; [
         emacs
         eza

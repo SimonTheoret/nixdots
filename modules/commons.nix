@@ -32,8 +32,10 @@ in {
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
     };
+    programs.bash.enable = true;
+    programs.fish.enable = true;
 
-    users.users.${userName}.shell = pkgs.zsh;
+    users.users.${userName}.shell = pkgs.fish;
 
 
     services.syncthing.enable = config.myUi.useGUI;
@@ -55,7 +57,6 @@ in {
 
     environment.systemPackages = with pkgs; [
       bash
-      fish
       zoxide
       wget
       curl

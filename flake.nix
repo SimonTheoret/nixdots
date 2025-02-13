@@ -14,7 +14,7 @@
       specialArgs = {
 	inherit inputs;
 	pkgs = import nixpkgs {
-	  system = "x86_64-linux"
+	  system = "x86_64-linux";
 	  config = {allowUnfree = true;};
 	};
         userName="simon"; # What is the user's name

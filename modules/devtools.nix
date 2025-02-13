@@ -27,6 +27,8 @@ in {
       environment.systemPackages = with pkgs; [
         emacs
         eza
+        make
+        cmake
         zathura
         direnv
         fd

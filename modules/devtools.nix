@@ -49,5 +49,4 @@ in {
       ]
       ++ optionals (config.myDocker.enable) [lazydocker];
     };
-  };
-}
+  }

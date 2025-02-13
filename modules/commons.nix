@@ -39,14 +39,6 @@ in {
       enable = true;
     };
 
-    programs.gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-      settings = {
-        default-cache-ttl = 36000; # 10 hours
-      };
-    };
-
     fonts.fontconfig.enable = true;
     fonts.packages = with pkgs; [
       noto-fonts

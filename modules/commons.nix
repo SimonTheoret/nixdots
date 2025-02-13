@@ -53,9 +53,8 @@ in {
       nerdfonts
     ];
 
-    programs.bash.enable = true;
-
     environment.systemPackages = with pkgs; [
+      bash
       zim
       wget
       curl

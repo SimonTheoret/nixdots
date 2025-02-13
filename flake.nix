@@ -13,7 +13,7 @@
       system = "x86_64-linux";
       specialArgs = {
 	inherit inputs;
-	pkgs = nixpkgs.legacyPackage.x86_64-linux;
+	pkgs = nixpkgs.legacyPackages.x86_64-linux;
         userName="simon"; # What is the user's name
 
         config = {

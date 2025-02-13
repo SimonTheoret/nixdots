@@ -38,7 +38,9 @@ myUi = {
   monitorsConfig = true;
   useGUI = true;
 }; 
-users.users.${userName}.isNormalUser = true;
-users.users.${userName}.extraGroups = [ "docker" "wheel"];
+users.users.${userName} = {
+  isNormalUser = true;
+   extraGroups = [ "docker" "wheel"];
+  };
 }
 

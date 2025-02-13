@@ -1,9 +1,9 @@
-{ config, pkgs, lib, currentUser, ... }:
+{ config, pkgs, lib, userName, ... }:
 
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myDocker;
-  inherit currentUser;
+  inherit userName;
 in {
   options.myDocker = {
 
@@ -21,7 +21,7 @@ in {
       enableNvidia = config.myNvidia.enable;
     };
 
-    users.users.${currentUser}.extraGroups = [ "docker" ];
+    users.users.${userName}.extraGroups = [ "docker" ];
     virtualisation.docker.rootless = {
       enable = true;
       setSocketVariable = true;

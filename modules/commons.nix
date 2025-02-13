@@ -33,7 +33,7 @@ in {
     users.users.${userName}.shell = pkgs.zsh;
 
 
-    services.syncthing.enable = mkIf (config.myUi.useGUI);
+    services.syncthing.enable = config.myUi.useGUI;
 
     programs.git = {
       enable = true;

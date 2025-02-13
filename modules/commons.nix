@@ -28,6 +28,10 @@ in {
 
     programs.zsh = {
       enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+      enableZshIntegration = true;
     };
 
     users.users.${userName}.shell = pkgs.zsh;

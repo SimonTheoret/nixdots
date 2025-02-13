@@ -2,11 +2,11 @@
 
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myAudio;
+  cfg = config.services.myAudio;
 in
 {
   imports = [];
-  options.myAudio = {
+  options.services.myAudio = {
     guiControls = mkOption {
       type = lib.types.bool;
       default = false;

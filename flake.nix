@@ -18,25 +18,7 @@
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs outputs; config = {};};
       modules = [
-        ./modules/audio.nix
-        ./modules/bluetooth.nix
-        ./modules/chezmoi.nix
-        ./modules/commons.nix 
-        ./modules/devtools.nix
-        ./modules/docker.nix
-        ./modules/hardware-configuration.nix
-        ./modules/home-manager.nix
-        ./modules/light.nix
-        ./modules/nixconf.nix
-        ./modules/nvidia.nix
-        ./modules/ui.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = inputs;
-        }
+	profiles/desktop.nix
       ];
   };
 };

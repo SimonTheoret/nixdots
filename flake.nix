@@ -16,7 +16,7 @@
   {
     #packages = forAllSystems(system: import ./pkgs nixpkgs.legacyPackages.${system});
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs outputs;};
+      specialArgs = {inherit inputs outputs; config = {};};
 
 #        config = {
 #          myAudio.enable = true;

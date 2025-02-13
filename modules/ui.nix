@@ -25,21 +25,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver = {
-      desktopManager.xterm.enable = false;
-      windowManager.i3 = {
-        enable = true;
-      };
+    services.xserver.windowManager.i3.enable = true;
+    services.xserver.desktopManager.xterm.enable = true;
 
-      services.picom = {
-        enable = cfg.useGUI;
-        vSync = true;
-        backend = "xrender";
-        settings = { unredir-if-possible = false; };
-      };
-
-      services.dunst = { enable = cfg.useGUI; };
+    services.picom = {
+      enable = cfg.useGUI;
+      vSync = true;
+      backend = "xrender";
+      settings = { unredir-if-possible = false; };
     };
+
+    services.dunst = { enable = cfg.useGUI; };
 
     environment.systemPackages = with pkgs; [
       i3status-rust

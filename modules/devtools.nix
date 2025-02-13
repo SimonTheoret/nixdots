@@ -26,7 +26,7 @@ in {
     };
     environment.systemPackages = with pkgs; [
       # Emacs
-      emacs
+      emacs30
       emacs-lsp-booster
       emacsPackages.vterm
       emacsPackages.pdf-tools
@@ -37,7 +37,7 @@ in {
       aspell
       aspellDicts.fr
       aspellDicts.en
-      jansson # library for json (emacs lsp)
+      # jansson # library for json in emacs<30
       # misc
       eza
       gnumake

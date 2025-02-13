@@ -13,12 +13,12 @@ imports = [
 ../modules/nixconf.nix
 ../modules/nvidia.nix
 ../modules/ui.nix
-home-manager.nixosModules.home-manager {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.${userName} = import ../modules/home-manager.nix;
-  home-manager.extrSpecialArgs = {inherit inputs;};
-}
+#home-manager.nixosModules.home-manager {
+#  home-manager.useGlobalPkgs = true;
+#  home-manager.useUserPackages = true;
+#  home-manager.users.${userName} = import ../modules/home-manager.nix;
+#  home-manager.extrSpecialArgs = {inherit inputs;};
+#}
 ];
 myAudio.enable = true;
 myAudio.guiControls = true;

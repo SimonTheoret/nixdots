@@ -35,8 +35,6 @@ in {
       settings = { unredir-if-possible = false; };
     };
 
-    services.dunst = { enable = cfg.useGUI; };
-
     environment.systemPackages = with pkgs; [
       i3status-rust
     ]

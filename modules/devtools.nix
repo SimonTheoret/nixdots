@@ -46,7 +46,7 @@ in {
         zellij
         neovim
       ]
-      ++ optionals (cfg.myDocker.enable) [lazydocker];
+      ++ optionals (config.myDocker.enable) [lazydocker];
     };
   };
 }

@@ -40,6 +40,7 @@
       ];
   };
 }
+}
 
 #        config = {
 #          myAudio.enable = true;

@@ -13,7 +13,12 @@
       system = "x86_64-linux";
       specialArgs = {
 	inherit inputs;
+	pkgs = import nixpkgs {
+	  system = "x86_64-linux"
+	  config.allowUnfree = true;
+	};
         userName="simon"; # What is the user's name
+
         config = {
           myAudio.enable = true;
           myBluetooth.enable = true;

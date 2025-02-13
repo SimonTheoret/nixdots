@@ -5,8 +5,9 @@ let
   cfg = config.services.myAudio;
 in
 {
-  imports = [];
-  options.services.myAudio = {
+  imports = [./ui.nix];
+
+  options.myAudio = {
     guiControls = mkOption {
       type = lib.types.bool;
       default = false;
@@ -33,7 +34,7 @@ in
       wireplumber.enable = true;
     };
 
-    cfg.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
+    #cfg.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
 
     services.playerctld.enable=true;
 

@@ -65,7 +65,7 @@ in {
       zip
       zoxide
       nil
-    ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura];
+    ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura thunderbird obsidian ];
   };
 }
 

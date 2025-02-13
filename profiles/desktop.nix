@@ -15,6 +15,7 @@ imports = [
 ../modules/ui.nix
 ];
 myAudio.enable = true;
+myAudio.guiControls = true;
 myBluetooth.enable = true;
 myChezMoi.enable = true;
 myCommons.enable = true;

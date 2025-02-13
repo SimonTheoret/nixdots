@@ -25,7 +25,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
+    services.xserver = {
+      enable = true;
+      displayManager.defaultSession = "none+i3";
+    };
     services.xserver.windowManager.i3.enable = true;
     services.xserver.desktopManager.xterm.enable = true;
 
@@ -38,6 +41,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       i3status-rust
+      i3lock
     ]
     ++ pkgs.lib.optionals (cfg.monitorsConfig) [autorandr]
     ++ pkgs.lib.optionals (cfg.useGUI) [maim dunst];

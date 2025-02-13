@@ -25,10 +25,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver = {
-      enable = true;
-      displayManager.defaultSession = "none+i3";
-    };
+    services.xserver.enable = true;
+    services.displayManager.defaultSession = "none+i3";
     services.xserver.windowManager.i3.enable = true;
     services.xserver.desktopManager.xterm.enable = true;
 

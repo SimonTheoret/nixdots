@@ -53,7 +53,6 @@ in {
       nerdfonts
     ];
 
-    programs.zoxide.enableZshIntegration = true;
     programs.bash.enable = true;
 
     environment.systemPackages = with pkgs; [

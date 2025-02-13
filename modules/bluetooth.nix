@@ -1,7 +1,10 @@
 {config, lib, pkgs, ...}:
+let
+  inherit (lib) mkOption mkIf;
+  cfg = config.myBluetooth;
+in
 {
   imports = [];
-
   options.myBluetooth = {
     enable = pkgs.lib.mkOption {
       type = pkgs.lib.types.bool;
@@ -17,7 +20,7 @@
     };
   };
 
-  config = pkgs.lib.mkIf config.myBluetooth.enable {
+  config = mkIf cfg.enable {
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     services.blueman.enable = config.myUi.useGUI; # enables gui with blueman

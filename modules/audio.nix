@@ -23,6 +23,7 @@ in
 
   config = mkIf cfg.enable {
     security.rtkit.enable = true;
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -32,11 +33,11 @@ in
       wireplumber.enable = true;
     };
 
-  cfg.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
+    cfg.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
 
-  services.playerctld.enable=true;
+    services.playerctld.enable=true;
 
-  environment.systemPackages = with pkgs; [] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
+    environment.systemPackages = with pkgs; [] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
   };
 }
 

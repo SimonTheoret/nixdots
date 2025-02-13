@@ -33,7 +33,6 @@ in {
 
     users.users.${userName}.shell = pkgs.zsh;
 
-    programs.zoxide = { enable = true; };
 
     services.syncthing.enable = mkIf (config.myUi.useGUI);
 
@@ -71,7 +70,7 @@ in {
       man-pages
       man-pages-posix
       zip
-      zip
+      zoxide
     ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura];
   };
 }

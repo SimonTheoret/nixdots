@@ -1,5 +1,7 @@
 {config, lib, pkgs, ...}:
 {
+  imports = [];
+
   options.myBluetooth = {
     enable = pkgs.lib.mkOption {
       type = pkgs.lib.types.bool;

@@ -34,7 +34,7 @@ in
       wireplumber.enable = true;
     };
 
-    # cfg.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
+    myAudio.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
 
     services.playerctld.enable=true;
 

@@ -16,10 +16,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    virtualisation.docker = {
-      enable = true;   
-      enableNvidia = config.myNvidia.enable;
-    };
+    virtualisation.docker.enable = true;   
+    hardware.nvidia-container-toolkit.enable = config.myNvidia.enable;
 
     hardware.graphics.enable32Bit = config.myNvidia.enable; # Necessary for enableNvidia
 

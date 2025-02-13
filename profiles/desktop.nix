@@ -13,7 +13,7 @@ imports = [
 ../modules/nixconf.nix
 ../modules/nvidia.nix
 ../modules/ui.nix
-];/modules
+];
 myAudio.enable = true;
 myBluetooth.enable = true;
 myChezMoi.enable = true;

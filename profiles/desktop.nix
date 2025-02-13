@@ -1,19 +1,19 @@
 {...}:
 {
 imports = [
-../audio.nix
-../bluetooth.nix
-../chezmoi.nix
-../commons.nix
-../devtools.nix
-../docker.nix
-../hardware-configuration.nix
-../home-manager.nix
-../light.nix
-../nixconf.nix
-../nvidia.nix
-../ui.nix
-];
+../modules/audio.nix
+../modules/bluetooth.nix
+../modules/chezmoi.nix
+../modules/commons.nix
+../modules/devtools.nix
+../modules/docker.nix
+../modules/hardware-configuration.nix
+../modules/home-manager.nix
+../modules/light.nix
+../modules/nixconf.nix
+../modules/nvidia.nix
+../modules/ui.nix
+];/modules
 myAudio.enable = true;
 myBluetooth.enable = true;
 myChezMoi.enable = true;

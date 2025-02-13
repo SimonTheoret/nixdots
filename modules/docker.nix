@@ -21,6 +21,8 @@ in {
       enableNvidia = config.myNvidia.enable;
     };
 
+    hardware.graphics.enable32Bit = config.myNvidia.enable; # Necessary for enableNvidia
+
     virtualisation.docker.rootless = {
       enable = true;
       setSocketVariable = true;

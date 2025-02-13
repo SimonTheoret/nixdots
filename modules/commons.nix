@@ -40,19 +40,21 @@ in {
     };
 
     fonts.fontconfig.enable = true;
+
     fonts.packages = with pkgs; [
       noto-fonts
       noto-fonts-emoji
       victor-mono
       fira-code
       fira-code-symbols
+      nerdfonts
     ];
 
     environment.systemPackages = with pkgs; [
+      zim
       wget
       curl
       pinentry
-      nerdfonts
       alacritty
       zimfw
       rsync
@@ -62,6 +64,7 @@ in {
       man-pages-posix
       zip
       zoxide
+      nil
     ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura];
   };
 }

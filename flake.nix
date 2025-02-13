@@ -15,7 +15,7 @@
 	inherit inputs;
 	pkgs = import nixpkgs {
 	  system = "x86_64-linux"
-	  config.allowUnfree = true;
+	  config = {allowUnfree = true;};
 	};
         userName="simon"; # What is the user's name
 

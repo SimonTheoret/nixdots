@@ -46,9 +46,6 @@ in {
       enable = true;
       userName = "Simon Théorêt";
       userEmail = "simonteoret@hotmail.com";
-      extraConfig = {
-        init = { defaultBranch = "main"; };
-      };
     };
 
     programs.gnupg.agent = {

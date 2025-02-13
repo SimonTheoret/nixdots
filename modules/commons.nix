@@ -17,11 +17,7 @@ in {
     services.ssh-agent.enable = true;
     programs.ssh = {
       enable = true;
-      addKeysToAgent = "yes";
-      extraConfig = ''
-        Match all
-        ServerAliveInterval 60
-        ServerAliveCountMax 5'';
+      startAgent = true;
     };
 
     programs.firefox = mkIf (config.myUi.useGUI) {

@@ -8,10 +8,15 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  let 
+	inherit (self) outputs;
+	systems = ["aarch64-linux" "i686-linux" "x86_64-linux" "aarch64-darwin" "x86_64-darwin"];
+	forAllSystems = nixpkgs.lib.genAttrs systems;
+  in
   {
+    packages = forAllSystems(system: import ./pkgs nixpkgs.legacyPackages.${system});
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = inputs // { userName="simon"; };
+      specialArgs = {inherit inputs outputs;};
 
 #        config = {
 #          myAudio.enable = true;

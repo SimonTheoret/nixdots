@@ -26,10 +26,6 @@ in {
 
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
-      profiles.default = {
-        name = "default";
-        isDefault = true;
-      };
     };
 
     programs.starship = {

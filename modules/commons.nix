@@ -55,7 +55,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       bash
-      zim
+      zoxide
       wget
       curl
       pinentry

@@ -53,6 +53,9 @@ in {
       nerdfonts
     ];
 
+    programs.zoxide.enableZshIntegration = true;
+    programs.bash.enable = true;
+
     environment.systemPackages = with pkgs; [
       zim
       wget
@@ -66,7 +69,6 @@ in {
       man-pages
       man-pages-posix
       zip
-      zoxide
       nil
     ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura thunderbird obsidian ];
   };

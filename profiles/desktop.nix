@@ -8,7 +8,7 @@ imports = [
 ../modules/devtools.nix
 ../modules/docker.nix
 ../modules/hardware-configuration.nix
-../modules/home-manager.nix
+#../modules/home-manager.nix
 ../modules/light.nix
 ../modules/nixconf.nix
 ../modules/nvidia.nix

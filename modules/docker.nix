@@ -21,7 +21,6 @@ in {
       enableNvidia = config.myNvidia.enable;
     };
 
-    users.users.${userName}.extraGroups = [ "docker" ];
     virtualisation.docker.rootless = {
       enable = true;
       setSocketVariable = true;

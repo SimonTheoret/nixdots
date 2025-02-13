@@ -1,4 +1,7 @@
 {config, lib, userName, home-manager, ...}@inputs:
+let 
+  inherit userName;
+in
 {
 imports = [
 ../modules/audio.nix
@@ -35,4 +38,7 @@ myUi = {
   monitorsConfig = true;
   useGUI = true;
 }; 
+users.users.${userName}.isNormalUser = true;
+users.users.${userName}.extraGroups = [ "docker" "wheel"];
 }
+

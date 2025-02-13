@@ -4,6 +4,7 @@ let
   cfg = config.myHomeManager;
   inherit userName;
 in {
+  imports = [];
   options.myHomeManager = {
     enable = mkOption {
       type = lib.types.bool;
@@ -14,9 +15,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.home-manager.enable = true;
     home-manager.users.${userName} = {
       home.stateVersion = "24.11";
-      programs.home-manager.enable = true;
       home.username = "${userName}";
       home.homeDirectory = "/home/${userName}";
 

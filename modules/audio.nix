@@ -2,7 +2,7 @@
 
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.services.myAudio;
+  cfg = config.myAudio;
 in
 {
   imports = [./ui.nix];

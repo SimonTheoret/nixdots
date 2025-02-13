@@ -55,6 +55,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       bash
+      fish
       zoxide
       wget
       curl

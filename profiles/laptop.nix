@@ -35,7 +35,7 @@ myLight.enable = true; # false by default
 myNvidia.enable = false; 
 myUi = {
   enable = true;
-  monitorsConfig = true;
+  monitorsConfig = false; # My laptop has a single screen
   useGUI = true;
 }; 
 users.users.${userName} = {

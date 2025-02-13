@@ -32,7 +32,6 @@ in {
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
     };
-    programs.bash.enable = true;
     programs.fish.enable = true;
 
     users.users.${userName}.shell = pkgs.fish;

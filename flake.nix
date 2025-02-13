@@ -14,7 +14,7 @@
 	forAllSystems = nixpkgs.lib.genAttrs systems;
   in
   {
-    packages = forAllSystems(system: import ./pkgs nixpkgs.legacyPackages.${system});
+    #packages = forAllSystems(system: import ./pkgs nixpkgs.legacyPackages.${system});
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs outputs;};
 

@@ -44,8 +44,6 @@ in {
 
     programs.git = {
       enable = true;
-      userName = "Simon Théorêt";
-      userEmail = "simonteoret@hotmail.com";
     };
 
     programs.gnupg.agent = {

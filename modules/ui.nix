@@ -41,7 +41,7 @@ in {
       i3status-rust
     ]
     ++ pkgs.lib.optionals (cfg.monitorsConfig) [autorandr]
-    ++ pkgs.lib.optionals (cfg.useGUI) [maim];
+    ++ pkgs.lib.optionals (cfg.useGUI) [maim dunst];
   };
 }
 

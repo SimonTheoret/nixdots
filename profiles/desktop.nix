@@ -39,4 +39,4 @@ in
     isNormalUser = true;
     extraGroups = [ "docker" "wheel" "video" "audio"];
   };
-};
+}

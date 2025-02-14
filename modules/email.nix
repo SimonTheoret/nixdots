@@ -17,6 +17,6 @@ in {
       isync
       msmtp
     ]
-    ++ pkgs.lib.optionals (cfg.useGUI) [thunderbird];
+    ++ pkgs.lib.optionals (config.myUi.useGUI) [thunderbird];
   };
 }

@@ -18,25 +18,18 @@
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs outputs; userName="simon";};
       modules = [
-	profiles/desktop.nix
-      ];
-  };
-};
-}
+	      profiles/desktop.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.simon = import ./modules/home-manager.nix;
 
-#        config = {
-#          myAudio.enable = true;
-#          myBluetooth.enable = true;
-#          myChezMoi.enable = true;
-#          myCommons.enable = true;
-#          myDevTools.enable = true;
-#          myDocker.enable = true;
-#          myHomeManager.enable = true;
-#          myLight.enable = false; # false by default
-#          myNvidia.enable = false; 
-#          myUi = {
-#            enable = true;
-#            monitorsConfig = true;
-#            useGUI = true;
-#          }; 
-#        };
+          home-manager.extraSpecialArgs = { userName = "simon"; };
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+        }
+      ];
+    };
+  };
+}

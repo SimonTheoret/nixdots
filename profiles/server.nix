@@ -12,11 +12,11 @@ in
     ../modules/devtools.nix
     ../modules/docker.nix
     ../modules/email.nix
-    ../hardware/laptop-hardware-configuration.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/ui.nix
+    ../hardware/server-hardware-configuration.nix
   ];
 
   myAudio.enable = false;

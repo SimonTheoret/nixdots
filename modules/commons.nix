@@ -60,6 +60,7 @@ in {
       wget
       curl
       pinentry
+      pinentry-tty
       alacritty
       zimfw
       rsync

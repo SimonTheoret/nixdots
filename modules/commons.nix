@@ -62,7 +62,6 @@ in {
       xbindkeys
       pinentry-all
       alacritty
-      zimfw
       rsync
       xclip
       unzip

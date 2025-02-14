@@ -69,7 +69,7 @@ in {
       man-pages-posix
       zip
       nil
-    ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura thunderbird obsidian ];
+    ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura obsidian ];
   };
 }
 

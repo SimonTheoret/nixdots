@@ -24,6 +24,6 @@ in
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     services.blueman.enable = config.myUi.useGUI; # enables gui with blueman
-    # services.mpris-proxy.enable = true; # enable headsets buttons #Move that to HM
+    # services.mpris-proxy.enable = true; # enable headsets buttons #Move that to HM?
   };
 }

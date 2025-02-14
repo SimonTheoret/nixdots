@@ -1,4 +1,4 @@
-{config, lib, userName, home-manager, ...}@inputs:
+{config, lib, userName, ...}@inputs:
 let 
   inherit userName;
 in
@@ -11,18 +11,10 @@ imports = [
 ../modules/devtools.nix
 ../modules/docker.nix
 ../modules/hardware-configuration.nix
-#../modules/home-manager.nix
 ../modules/light.nix
 ../modules/nixconf.nix
 ../modules/nvidia.nix
 ../modules/ui.nix
-#home-manager.nixosModules.home-manager {
-#  home-manager.useGlobalPkgs = true;
-#  home-manager.useUserPackages = true;
-#  home-manager.users.${userName} = import ../modules/home-manager.nix;
-#  home-manager.extrSpecialArgs = {inherit inputs;};
-#}
-];
 myAudio.enable = true;
 myAudio.guiControls = true;
 myBluetooth.enable = true;
@@ -30,7 +22,6 @@ myChezMoi.enable = true;
 myCommons.enable = true;
 myDevTools.enable = true;
 myDocker.enable = true;
-#myHomeManager.enable = true;
 myLight.enable = true; # false by default
 myNvidia.enable = false; 
 myUi = {

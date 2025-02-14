@@ -36,7 +36,7 @@ in
 
     myAudio.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
 
-    services.playerctld.enable=true;
+    services.playerctld.enable = true;
 
     environment.systemPackages = with pkgs; [] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
   };

@@ -42,7 +42,7 @@ in {
       i3lock
     ]
     ++ pkgs.lib.optionals (cfg.monitorsConfig) [autorandr]
-    ++ pkgs.lib.optionals (cfg.useGUI) [maim dunst flashfocus];
+    ++ pkgs.lib.optionals (cfg.useGUI) [maim dunst flashfocus autotiling];
   };
 }
 

@@ -30,19 +30,12 @@ in {
     services.xserver.windowManager.i3.enable = true;
     services.xserver.desktopManager.xterm.enable = true;
 
-    services.picom = {
-      enable = cfg.useGUI;
-      vSync = true;
-      backend = "xrender";
-      settings = { unredir-if-possible = false; };
-    };
-
     environment.systemPackages = with pkgs; [
       i3status-rust
       i3lock
     ]
     ++ pkgs.lib.optionals (cfg.monitorsConfig) [autorandr]
-    ++ pkgs.lib.optionals (cfg.useGUI) [maim dunst flashfocus autotiling];
+    ++ pkgs.lib.optionals (cfg.useGUI) [picom maim dunst flashfocus autotiling];
   };
 }
 

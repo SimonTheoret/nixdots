@@ -1,6 +1,6 @@
 {config, lib, userName, ...}@inputs:
 let 
-inherit (lib) mkOption mkIf;
+inherit (lib) mkOption mkIf optionals;
 inherit userName;
 in
 {

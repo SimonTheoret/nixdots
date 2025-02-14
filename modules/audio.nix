@@ -38,7 +38,7 @@ in
 
     services.playerctld.enable = true;
 
-    environment.systemPackages = with pkgs; [] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
+    environment.systemPackages = with pkgs; [pamixer] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
   };
 }
 

@@ -59,7 +59,7 @@ in {
       zoxide
       wget
       curl
-      pinentry
+      xbindkeys
       pinentry-all
       alacritty
       zimfw

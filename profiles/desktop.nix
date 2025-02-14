@@ -36,6 +36,8 @@ in
   }; 
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio"] ++ optionals (config.myDocker.enable) ["docker"] ;
+    extraGroups = [ "wheel" "video"] ++
+                  optionals (config.myDocker.enable) ["docker"] ++
+                  optionals (config.myAudio.enable) ["audio"] ;
   };
 }

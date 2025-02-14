@@ -11,13 +11,14 @@
 python3.pkgs.buildPythonApplication rec {
   pname = "autorandr";
   version = "1.15";
+  rev = "d9f7d77a8f3744d6c4af1fec2827aedb7d9dc821";
   format = "other";
 
   src = fetchFromGitHub {
     owner = "simontheoret";
     repo = "autorandr";
-    tag = version;
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    rev = rev;
+    hash = "sha256-QFuZgeMLCxd0oXU12jSh0VwPlS71GFS8kHBt/c+Inng=";
   };
 
   nativeBuildInputs = [

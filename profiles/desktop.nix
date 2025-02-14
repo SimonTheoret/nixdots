@@ -1,10 +1,9 @@
 {config, lib, userName, ...}@inputs:
 let 
-inherit (lib) mkOption mkIf optionals;
 inherit userName;
+inherit (lib) mkOption mkIf optionals;
 in
 {
-
   imports = [
     ../modules/audio.nix
     ../modules/bluetooth.nix
@@ -13,7 +12,7 @@ in
     ../modules/devtools.nix
     ../modules/docker.nix
     ../modules/email.nix
-    ../modules/hardware-configuration.nix
+    ../hardware/laptop-hardware-configuration.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix

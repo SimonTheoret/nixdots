@@ -40,7 +40,7 @@ myUi = {
 }; 
 users.users.${userName} = {
   isNormalUser = true;
-   extraGroups = [ "docker" "wheel" "video"];
+   extraGroups = [ "docker" "wheel" "video" "audio"];
   };
 }
 

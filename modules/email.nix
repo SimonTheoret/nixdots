@@ -16,6 +16,7 @@ in {
     environment.systemPackages = with pkgs; [
       isync
       msmtp
+      gnupg
     ]
     ++ pkgs.lib.optionals (config.myUi.useGUI) [thunderbird];
   };

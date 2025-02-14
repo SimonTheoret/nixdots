@@ -21,7 +21,7 @@ myBluetooth.enable = true;
 myChezMoi.enable = true;
 myCommons.enable = true;
 myDevTools.enable = true;
-myDocker.enable = true;
+myDocker.enable = false;
 myLight.enable = true; # false by default
 myNvidia.enable = false; 
 myUi = {
@@ -29,9 +29,9 @@ myUi = {
   monitorsConfig = false; # My laptop has a single screen
   useGUI = true;
 }; 
-users.users.${userName} = {
-  isNormalUser = true;
-   extraGroups = [ "docker" "wheel" "video"];
+  users.users.${userName} = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "video" "audio"] ++ optionals (config.myDocker.enable) ["docker"] ;
   };
 }
 

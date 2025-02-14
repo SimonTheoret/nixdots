@@ -27,7 +27,7 @@ in
   myCommons.enable = true;
   myEmail.enable = true;
   myDevTools.enable = true;
-  myDocker.enable = true;
+  myDocker.enable = false;
   myLight.enable = false; # false by default
   myNvidia.enable = true; 
   myUi = {
@@ -37,6 +37,6 @@ in
   }; 
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "docker" "wheel" "video" "audio"];
+    extraGroups = [ "wheel" "video" "audio"] ++ optionals (config.myDocker.enable) ["docker"] ;
   };
 }

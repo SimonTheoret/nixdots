@@ -16,9 +16,9 @@ in
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/ui.nix
+    ../modules/wireless.nix
     ../hardware/desktop-hardware-configuration.nix
   ];
-
   myAudio.enable = true;
   myAudio.guiControls = true;
   myBluetooth.enable = true;
@@ -34,10 +34,14 @@ in
     monitorsConfig = true;
     useGUI = true;
   }; 
+  myWireless.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video"] ++
-                  optionals (config.myDocker.enable) ["docker"] ++
-                  optionals (config.myAudio.enable) ["audio"] ;
+    optionals (config.myDocker.enable) ["docker"] ++
+    optionals (config.myAudio.enable) ["audio"] ;
+  };
+  environment.variables = {
+    NIXOS_CONF = "desktop";
   };
 }

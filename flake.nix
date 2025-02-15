@@ -18,5 +18,13 @@
 	      ./profiles/desktop.nix
       ];
     };
+
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs outputs; userName="simon";};
+      modules = [
+	      ./profiles/laptop.nix
+      ];
+    };
+
   };
 }

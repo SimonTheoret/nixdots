@@ -38,7 +38,10 @@ in
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video"] ++
-                  optionals (config.myDocker.enable) ["docker"] ++
-                  optionals (config.myAudio.enable) ["audio"] ;
+    optionals (config.myDocker.enable) ["docker"] ++
+    optionals (config.myAudio.enable) ["audio"] ;
+  };
+  environment.variables = {
+    NIXOS_CONF = "desktop";
   };
 }

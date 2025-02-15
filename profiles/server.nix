@@ -41,4 +41,7 @@ in
                   optionals (config.myDocker.enable) ["docker"] ++
                   optionals (config.myAudio.enable) ["audio"] ;
   };
+  environment.variables = {
+    NIXOS_CONF = "server";
+  };
 }

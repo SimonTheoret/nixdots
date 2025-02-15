@@ -16,9 +16,9 @@ in
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/ui.nix
+    ../modules/wireless.nix
     ../hardware/server-hardware-configuration.nix
   ];
-
   myAudio.enable = false;
   myAudio.guiControls = false;
   myBluetooth.enable = true;
@@ -34,6 +34,7 @@ in
     monitorsConfig = false; # My laptop has a single screen
     useGUI = false;
   }; 
+  myWireless.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video"] ++

@@ -35,7 +35,7 @@ in
 
     environment.systemPackages = with pkgs; [
       cmake # Needed to build some plugins
-      # (pkgs.callPackage ../packages/json5/json5.nix {}) # Needed for json5 parsing in DAP
+      cargo # Needed to build nvim Lua-Json5 plugin
       tree-sitter
       nodejs_23
       gccgo14

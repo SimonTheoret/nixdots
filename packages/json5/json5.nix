@@ -11,10 +11,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-+s5RBC3XSgb8omTbUNLywZnP6jSxZBKSS1BmXOjRF8M=";
   };
 
-  cargoPatches = [
-    # a patch file to add/update Cargo.lock in the source code
-    ./add-Cargo.lock.patch
-  ];
+  cargoLock.lockFile = ./Cargo.lock
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-rLJ1/zY82dWap3N1sbOsf9jg/SnvVWDils8Rt7f2tj0=";

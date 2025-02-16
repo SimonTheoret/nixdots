@@ -55,6 +55,10 @@ in {
       meson # Needed to build mu4e in emacs
       zellij
       neovim
+      (pkgs.callPackage ../packages/json5.nix {})
+      vimPlugins.nvim-treesitter
+      tldr
+      libgcc
     ]
     ++ optionals (config.myDocker.enable) [lazydocker];
   };

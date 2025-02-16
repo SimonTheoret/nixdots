@@ -1,7 +1,7 @@
-{config, lib, userName, ...}@inputs:
+{config, lib, userName, ...}:
 let
 inherit userName;
-inherit (lib) mkOption mkIf optionals;
+inherit (lib) optionals;
 in
 {
   imports = [

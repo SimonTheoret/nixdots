@@ -15,6 +15,12 @@
     }@inputs:
     let
       inherit (self) outputs;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
     in
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -37,9 +43,14 @@
         ];
       };
 
-      # devShells.default = pkgs.mkShell {
-      #   name = "Nixdots Shell";
-      #   buildInputs = with pkgs; [ ];
-      # };
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = [ ];
+        }
+      );
     };
 }

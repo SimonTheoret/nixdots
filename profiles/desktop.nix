@@ -32,7 +32,7 @@ in
   };
   myEmail.enable = false;
   myDevTools.enable = true;
-  myDocker.enable = false;
+  myDocker.enable = true;
   myLight.enable = false; # false by default
   myNvidia.enable = true;
   myNeovim = {

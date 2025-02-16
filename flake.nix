@@ -13,37 +13,33 @@
       flake-utils,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        inherit (self) outputs;
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            userName = "simon";
-          };
-          modules = [
-            ./profiles/desktop.nix
-          ];
+    let
+      inherit (self) outputs;
+    in
+    {
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+          userName = "simon";
         };
+        modules = [
+          ./profiles/desktop.nix
+        ];
+      };
 
-        nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            userName = "simon";
-          };
-          modules = [
-            ./profiles/laptop.nix
-          ];
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+          userName = "simon";
         };
+        modules = [
+          ./profiles/laptop.nix
+        ];
+      };
 
-        devShells.default = pkgs.mkShell {
-          name = "Nixdots Shell";
-          buildInputs = with pkgs; [ ];
-        };
-      }
-    );
+      # devShells.default = pkgs.mkShell {
+      #   name = "Nixdots Shell";
+      #   buildInputs = with pkgs; [ ];
+      # };
+    };
 }

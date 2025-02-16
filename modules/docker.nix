@@ -1,22 +1,29 @@
-{ config, pkgs, lib, userName, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  userName,
+  ...
+}:
 
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myDocker;
   inherit userName;
-in {
+in
+{
   options.myDocker = {
 
     enable = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Configure Docker and Docker-Compose" ;
+      description = "Configure Docker and Docker-Compose";
     };
   };
 
   config = mkIf cfg.enable {
-    virtualisation.docker.enable = true;   
+    virtualisation.docker.enable = true;
     hardware.nvidia-container-toolkit.enable = config.myNvidia.enable;
 
     hardware.graphics.enable32Bit = config.myNvidia.enable; # Necessary for enableNvidia
@@ -27,7 +34,6 @@ in {
     };
     environment.systemPackages = with pkgs; [
       docker-compose
-    ]; 
+    ];
   };
 }
-

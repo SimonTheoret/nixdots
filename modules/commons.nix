@@ -1,9 +1,16 @@
-{ config, pkgs, lib, userName, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  userName,
+  ...
+}:
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myCommons;
   inherit userName;
-in {
+in
+{
   options.myCommons = {
     enable = mkOption {
       type = lib.types.bool;
@@ -36,7 +43,6 @@ in {
 
     users.users.${userName}.shell = pkgs.fish;
 
-
     services.syncthing.enable = config.myUi.useGUI;
 
     programs.git = {
@@ -54,22 +60,30 @@ in {
       nerdfonts
     ];
 
-    environment.systemPackages = with pkgs; [
-      bash
-      zoxide
-      wget
-      curl
-      xbindkeys
-      pinentry-all
-      alacritty
-      rsync
-      xclip
-      unzip
-      man-pages
-      man-pages-posix
-      zip
-      nil
-    ] ++ pkgs.lib.optionals (config.myUi.useGUI) [ discord feh zathura obsidian ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        bash
+        zoxide
+        wget
+        curl
+        xbindkeys
+        pinentry-all
+        alacritty
+        rsync
+        xclip
+        unzip
+        man-pages
+        man-pages-posix
+        zip
+        nil
+        nixfmt-rfc-style
+      ]
+      ++ pkgs.lib.optionals (config.myUi.useGUI) [
+        discord
+        feh
+        zathura
+        obsidian
+      ];
   };
 }
-

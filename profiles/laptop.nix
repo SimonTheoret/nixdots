@@ -1,5 +1,5 @@
 {config, lib, userName, ...}@inputs:
-let 
+let
 inherit userName;
 inherit (lib) mkOption mkIf optionals;
 in
@@ -12,9 +12,11 @@ in
     ../modules/devtools.nix
     ../modules/docker.nix
     ../modules/email.nix
+    ../modules/emacs.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
+    ../modules/nvim.nix
     ../modules/ui.nix
     ../modules/wireless.nix
     ../hardware/laptop-hardware-configuration.nix
@@ -24,16 +26,24 @@ in
   myBluetooth.enable = true;
   myChezMoi.enable = true;
   myCommons.enable = true;
-  myEmail.enable = true;
+  myEmacs = {
+    enable = false;
+    mainEditor = false;
+  };
+  myEmail.enable = false;
   myDevTools.enable = true;
   myDocker.enable = false;
   myLight.enable = true; # false by default
-  myNvidia.enable = false; 
+  myNvidia.enable = false;
+  myNeovim = {
+    enable = true;
+    mainEditor = true;
+  };
   myUi = {
     enable = true;
     monitorsConfig = false; # My laptop has a single screen
     useGUI = true;
-  }; 
+  };
   myWireless.enable = true;
   users.users.${userName} = {
     isNormalUser = true;

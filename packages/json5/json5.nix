@@ -11,10 +11,16 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-+s5RBC3XSgb8omTbUNLywZnP6jSxZBKSS1BmXOjRF8M=";
   };
 
-  cargoLock.lockFile = ./Cargo.lock
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-rLJ1/zY82dWap3N1sbOsf9jg/SnvVWDils8Rt7f2tj0=";
+  # cargoHash = "";
+  cargoHash = lib.fakeHash; 
+
+  cargoLock.lockFile = ./Cargo.lock;
+
+  postPatch = ''
+    ln -s ${./Cargo.lock} Cargo.lock
+  '';
 
   meta = {
     description = "JSON5 for LuaJIT, written in Rust ";

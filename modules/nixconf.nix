@@ -1,7 +1,5 @@
-{...}:
+{ ... }:
 {
-
-
   nix.settings.substituters = [
     "https://nix-community.cachix.org"
     "https://cache.nixos.org"
@@ -24,7 +22,10 @@
   services.openssh.enable = true;
 
   #flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Automation
   nix.settings.auto-optimise-store = true;
 

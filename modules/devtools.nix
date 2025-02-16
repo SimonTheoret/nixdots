@@ -1,9 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkOption mkIf;
-  inherit (pkgs.lib)  optionals;
+  inherit (pkgs.lib) optionals;
   cfg = config.myDevTools;
-in {
+in
+{
   options.myDevTools = {
     enable = mkOption {
       type = lib.types.bool;
@@ -24,42 +30,21 @@ in {
         package = pkgs.nix-direnv;
       };
     };
-    environment.systemPackages = with pkgs; [
-      # Emacs
-      emacs30
-      emacs-lsp-booster
-      emacsPackages.vterm
-      emacsPackages.pdf-tools
-      emacsPackages.mu4e
-      emacs-all-the-icons-fonts
-      mu
-      ispell
-      aspell
-      aspellDicts.fr
-      aspellDicts.en
-      # jansson # library for json in emacs<30
-      # misc
-      eza
-      gnumake
-      cmake
-      zathura
-      direnv
-      fd
-      fzf
-      bat
-      yarn
-      ripgrep
-      btop
-      librsvg # for viewing svg images
-      sqlite
-      meson # Needed to build mu4e in emacs
-      zellij
-      neovim
-      (pkgs.callPackage ../packages/json5/json5.nix {})
-      vimPlugins.nvim-treesitter
-      tldr
-      libgcc
-    ]
-    ++ optionals (config.myDocker.enable) [lazydocker];
+    environment.systemPackages =
+      with pkgs;
+      [
+        eza
+        gnumake
+        zathura
+        direnv
+        fd
+        fzf
+        bat
+        ripgrep
+        btop
+        zellij
+        tldr
+      ]
+      ++ optionals (config.myDocker.enable) [ lazydocker ];
   };
 }

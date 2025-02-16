@@ -34,7 +34,7 @@ in {
       i3status-rust
       i3lock
     ]
-    ++ pkgs.lib.optionals (cfg.monitorsConfig) [(pkgs.callPackage ../packages/autorandr.nix {})]
+    ++ pkgs.lib.optionals (cfg.monitorsConfig) [(pkgs.callPackage ../packages/autorandr/autorandr.nix {})]
     ++ pkgs.lib.optionals (cfg.useGUI) [picom maim dunst flashfocus autotiling];
   };
 }

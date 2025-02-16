@@ -55,7 +55,7 @@ in {
       meson # Needed to build mu4e in emacs
       zellij
       neovim
-      (pkgs.callPackage ../packages/json5.nix {})
+      (pkgs.callPackage ../packages/json5/json5.nix {})
       vimPlugins.nvim-treesitter
       tldr
       libgcc

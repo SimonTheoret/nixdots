@@ -38,7 +38,7 @@ in
       cargo # Needed to build nvim Lua-Json5 plugin
       tree-sitter
       nodejs_23
-      gccgo14
+      gcc
       lua-language-server
     ];
   };

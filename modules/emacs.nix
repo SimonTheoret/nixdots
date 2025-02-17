@@ -16,13 +16,6 @@ in
       example = true;
       description = "Configure Emacs for development";
     };
-
-    mainEditor = mkOption {
-      type = lib.types.bool;
-      default = false;
-      example = true;
-      description = "Configure Emacs to be the main editor";
-    };
   };
 
   config = mkIf cfg.enable {

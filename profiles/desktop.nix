@@ -28,7 +28,6 @@ in
   myCommons.enable = true;
   myEmacs = {
     enable = false;
-    mainEditor = false;
   };
   myEmail.enable = false;
   myDevTools.enable = true;

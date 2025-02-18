@@ -52,5 +52,6 @@ in
   };
   environment.variables = {
     NIXOS_CONF = "server";
+    IS_ON_NIX = "true";
   };
 }

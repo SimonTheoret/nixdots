@@ -52,5 +52,6 @@ in
   };
   environment.variables = {
     NIXOS_CONF = "desktop";
+    IS_ON_NIX = "true";
   };
 }

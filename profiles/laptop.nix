@@ -52,6 +52,7 @@ in
   };
   environment.variables = {
     NIXOS_CONF = "laptop";
+    IS_ON_NIX = "true";
   };
 }
 

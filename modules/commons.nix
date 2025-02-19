@@ -72,6 +72,7 @@ in
         xbindkeys
         pinentry-all
         alacritty
+        kitty
         rsync
         xclip
         unzip

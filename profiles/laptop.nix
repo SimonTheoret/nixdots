@@ -29,7 +29,10 @@ in
   myEmacs = {
     enable = false;
   };
-  myEmail.enable = false;
+  myEmail = {
+    enable = true;
+    guiOnly = true;
+  };
   myDevTools.enable = true;
   myDocker.enable = false;
   myLight.enable = true; # false by default

@@ -1,7 +1,12 @@
-{config, lib, userName, ...}:
+{
+  config,
+  lib,
+  userName,
+  ...
+}:
 let
-inherit userName;
-inherit (lib) optionals;
+  inherit userName;
+  inherit (lib) optionals;
 in
 {
   imports = [
@@ -29,7 +34,10 @@ in
   myEmacs = {
     enable = false;
   };
-  myEmail.enable = false;
+  myEmail = {
+    enable = true;
+    guiOnly = true;
+  };
   myDevTools.enable = true;
   myDocker.enable = true;
   myLight.enable = false; # false by default
@@ -46,9 +54,13 @@ in
   myWireless.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video"] ++
-    optionals (config.myDocker.enable) ["docker"] ++
-    optionals (config.myAudio.enable) ["audio"] ;
+    extraGroups =
+      [
+        "wheel"
+        "video"
+      ]
+      ++ optionals (config.myDocker.enable) [ "docker" ]
+      ++ optionals (config.myAudio.enable) [ "audio" ];
   };
   environment.variables = {
     NIXOS_CONF = "desktop";

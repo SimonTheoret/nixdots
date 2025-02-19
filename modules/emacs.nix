@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myDevTools;
+  cfg = config.myEmacs;
 in
 {
   options.myEmacs = {
@@ -19,17 +19,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      emacs30
-      emacs-lsp-booster
-      emacsPackages.vterm
-      emacsPackages.pdf-tools
-      emacs-all-the-icons-fonts
-      mu
-      ispell
-      aspell
-      aspellDicts.fr
-      aspellDicts.en
-    ];
+    environment.systemPackages =
+      [ ]
+      ++ pkgs.lib.optionals (cfg.enable) [
+        pkgs.emacs30
+        pkgs.emacs-lsp-booster
+        pkgs.emacsPackages.vterm
+        pkgs.emacsPackages.pdf-tools
+        pkgs.emacs-all-the-icons-fonts
+        pkgs.mu
+        pkgs.ispell
+        pkgs.aspell
+        pkgs.aspellDicts.fr
+        pkgs.aspellDicts.en
+      ];
   };
 }

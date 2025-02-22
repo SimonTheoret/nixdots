@@ -96,6 +96,7 @@ in
         discord
         feh
         zathura
+        newsboat
         obsidian
       ];
   };

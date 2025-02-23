@@ -36,8 +36,7 @@
                   isort
                 ]
                 ++ (with pkgs.python313Packages; [
-                  pip
-                  virtualenv
+                  uv
                 ])
               );
           }).env;

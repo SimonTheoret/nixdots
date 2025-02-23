@@ -49,7 +49,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          default = [ ];
+          default = pkgs.mkShell { };
         }
       );
     };

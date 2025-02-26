@@ -27,7 +27,7 @@ in
   myChezMoi.enable = true;
   myCommons.enable = true;
   myEmacs = {
-    enable = false;
+    enable = true;
   };
   myEmail.enable = false;
   myDevTools.enable = true;

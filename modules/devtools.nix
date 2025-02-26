@@ -44,6 +44,7 @@ in
         ripgrep
         btop
         zellij
+        tmux
         tldr
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

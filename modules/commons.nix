@@ -62,16 +62,14 @@ in
 
     fonts.fontconfig.enable = true;
 
-    fonts.packages =
-      with pkgs;
-      [
-        noto-fonts
-        noto-fonts-emoji
-        victor-mono
-        fira-code
-        fira-code-symbols
-      ]
-      ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts); # This little trick add every nerd-font
+    fonts.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      victor-mono
+      fira-code
+      fira-code-symbols
+      nerdfonts
+    ];
 
     environment.systemPackages =
       with pkgs;

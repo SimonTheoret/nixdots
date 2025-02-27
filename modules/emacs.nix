@@ -22,7 +22,7 @@ in
     environment.systemPackages =
       [ ]
       ++ pkgs.lib.optionals (cfg.enable) [
-        pkgs.emacs
+        pkgs.emacs30
         pkgs.emacs-lsp-booster
         pkgs.emacsPackages.vterm
         pkgs.emacsPackages.pdf-tools

@@ -43,6 +43,7 @@ in
         bat
         ripgrep
         btop
+        htop
         zellij
         tmux
         tldr

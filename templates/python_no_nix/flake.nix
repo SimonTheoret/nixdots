@@ -22,7 +22,7 @@
       in
       {
         devShells.default =
-          (pkgs.buildFHSUserEnv {
+          (pkgs.buildFHSEnv {
             name = "fhs-shell";
             targetPkgs =
               pkgs:
@@ -36,8 +36,7 @@
                   isort
                 ]
                 ++ (with pkgs.python313Packages; [
-                  pip
-                  virtualenv
+                  uv
                 ])
               );
           }).env;

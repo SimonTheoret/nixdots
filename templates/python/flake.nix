@@ -43,14 +43,13 @@
             packages =
               with pkgs;
               [
-                python
-                nodePackages_latest.pyright
+                python313Full
+                pyright
                 ruff
                 ruff-lsp
                 isort
-
               ]
-              ++ (with pkgs.pythonPackages; [
+              ++ (with pkgs.python313Packages; [
                 pip
                 virtualenv
               ]);

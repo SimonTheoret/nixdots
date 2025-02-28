@@ -24,6 +24,7 @@ in
       package = pkgs.direnv;
       silent = false;
       loadInNixShell = true;
+      enableFishIntegration = true;
       direnvrcExtra = "";
       nix-direnv = {
         enable = true;
@@ -43,6 +44,7 @@ in
         ripgrep
         btop
         zellij
+        tmux
         tldr
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

@@ -40,6 +40,7 @@ in
       nodejs_23
       gcc
       lua-language-server
+      pandoc # For feed.nvim
     ];
   };
 }

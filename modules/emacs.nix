@@ -24,6 +24,7 @@ in
       ++ pkgs.lib.optionals (cfg.enable) [
         pkgs.emacs
         pkgs.emacs-lsp-booster
+        pkgs.libtool # To compile vterm
         # pkgs.emacsPackages.vterm
         # pkgs.emacsPackages.pdf-tools
         pkgs.emacs-all-the-icons-fonts

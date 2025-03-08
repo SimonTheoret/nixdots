@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myDevTools;
+  cfg = config.myNeovim;
 in
 {
   options.myNeovim = {

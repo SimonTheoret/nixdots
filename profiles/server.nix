@@ -1,7 +1,12 @@
-{config, lib, userName, ...}@inputs:
+{
+  config,
+  lib,
+  userName,
+  ...
+}@inputs:
 let
-inherit userName;
-inherit (lib) mkOption mkIf optionals;
+  inherit userName;
+  inherit (lib) mkOption mkIf optionals;
 in
 {
   imports = [
@@ -21,8 +26,11 @@ in
     ../modules/wireless.nix
     ../hardware/server-hardware-configuration.nix
   ];
-  myAudio.enable = false;
-  myAudio.guiControls = false;
+  myAudio = {
+    enable = false;
+    guiControls = false;
+    noiseCanceling = false;
+  };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
   myCommons.enable = true;
@@ -47,9 +55,13 @@ in
   myWireless.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video"] ++
-                  optionals (config.myDocker.enable) ["docker"] ++
-                  optionals (config.myAudio.enable) ["audio"] ;
+    extraGroups =
+      [
+        "wheel"
+        "video"
+      ]
+      ++ optionals (config.myDocker.enable) [ "docker" ]
+      ++ optionals (config.myAudio.enable) [ "audio" ];
   };
   environment.variables = {
     NIXOS_CONF = "server";

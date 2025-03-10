@@ -26,8 +26,11 @@ in
     ../modules/wireless.nix
     ../hardware/desktop-hardware-configuration.nix
   ];
-  myAudio.enable = true;
-  myAudio.guiControls = true;
+  myAudio = {
+    enable = true;
+    guiControls = true;
+    noiseCanceling = true;
+  };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
   myCommons.enable = true;

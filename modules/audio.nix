@@ -20,6 +20,13 @@ in
       example = true;
       description = "Activate and configure audio.";
     };
+
+    noiseCanceling = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Activate and configure noise canceling with NoiseTorch.";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -37,6 +44,8 @@ in
     myAudio.guiControls = config.myUi.useGUI; # Used by default pavucontrol in a GUI environment
 
     services.playerctld.enable = true;
+
+    progams.noisetorch.enable = cfg.noiseCanceling && cfg.enable;
 
     environment.systemPackages = with pkgs; [pamixer] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
   };

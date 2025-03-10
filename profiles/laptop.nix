@@ -1,7 +1,12 @@
-{config, lib, userName, ...}:
+{
+  config,
+  lib,
+  userName,
+  ...
+}:
 let
-inherit userName;
-inherit (lib) optionals;
+  inherit userName;
+  inherit (lib) optionals;
 in
 {
   imports = [
@@ -21,8 +26,11 @@ in
     ../modules/wireless.nix
     ../hardware/laptop-hardware-configuration.nix
   ];
-  myAudio.enable = true;
-  myAudio.guiControls = true;
+  myAudio = {
+    enable = true;
+    guiControls = true;
+    noiseCanceling = true;
+  };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
   myCommons.enable = true;
@@ -49,13 +57,16 @@ in
   myWireless.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video"] ++
-                  optionals (config.myDocker.enable) ["docker"] ++
-                  optionals (config.myAudio.enable) ["audio"] ;
+    extraGroups =
+      [
+        "wheel"
+        "video"
+      ]
+      ++ optionals (config.myDocker.enable) [ "docker" ]
+      ++ optionals (config.myAudio.enable) [ "audio" ];
   };
   environment.variables = {
     NIXOS_CONF = "laptop";
     IS_ON_NIX = "true";
   };
 }
-

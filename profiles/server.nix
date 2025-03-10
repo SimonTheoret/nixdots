@@ -19,7 +19,7 @@ in
     ../modules/nvim.nix
     ../modules/ui.nix
     ../modules/wireless.nix
-    ../hardware/desktop-hardware-configuration.nix
+    ../hardware/server-hardware-configuration.nix
   ];
   myAudio.enable = false;
   myAudio.guiControls = false;
@@ -27,7 +27,7 @@ in
   myChezMoi.enable = true;
   myCommons.enable = true;
   myEmacs = {
-    enable = true;
+    enable = false;
   };
   myEmail.enable = false;
   myDevTools.enable = true;
@@ -35,12 +35,13 @@ in
   myLight.enable = false; # false by default
   myNvidia.enable = false;
   myNeovim = {
-    enable = false;
-    mainEditor = false;
+    enable = true;
+    mainEditor = true;
   };
+  myBootLoader.enable = false; # true by default
   myUi = {
     enable = false;
-    monitorsConfig = false; # My laptop has a single screen
+    monitorsConfig = false; # My laptop/server has a single screen
     useGUI = false;
   };
   myWireless.enable = true;

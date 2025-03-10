@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myDevTools;
+  cfg = config.myNeovim;
 in
 {
   options.myNeovim = {
@@ -41,6 +41,7 @@ in
       gcc
       lua-language-server
       pandoc # For feed.nvim
+      lua-language-server
     ];
   };
 }

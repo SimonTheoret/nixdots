@@ -43,6 +43,16 @@
         ];
       };
 
+      nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+          userName = "simon";
+        };
+        modules = [
+          ./profiles/server.nix
+        ];
+      };
+
       devShells = forAllSystems (
         system:
         let

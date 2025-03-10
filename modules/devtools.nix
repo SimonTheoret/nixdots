@@ -47,6 +47,7 @@ in
         zellij
         tmux
         tldr
+        nodePackages.prettier
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };

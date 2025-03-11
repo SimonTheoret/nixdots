@@ -45,7 +45,7 @@ in
 
     services.playerctld.enable = true;
 
-    progams.noisetorch.enable = cfg.noiseCanceling && cfg.enable;
+    programs.noisetorch.enable = cfg.noiseCanceling && cfg.enable;
 
     environment.systemPackages = with pkgs; [pamixer] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
   };

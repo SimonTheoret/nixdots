@@ -35,7 +35,7 @@ in
   myChezMoi.enable = true;
   myCommons.enable = true;
   myEmacs = {
-    enable = true;
+    enable = false;
   };
   myEmail = {
     enable = true;

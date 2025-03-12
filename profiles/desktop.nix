@@ -63,7 +63,8 @@ in
         "video"
       ]
       ++ optionals (config.myDocker.enable) [ "docker" ]
-      ++ optionals (config.myAudio.enable) [ "audio" ];
+      ++ optionals (config.myAudio.enable) [ "audio" ]
+      ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };
   environment.variables = {
     NIXOS_CONF = "desktop";

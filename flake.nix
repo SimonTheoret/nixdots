@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -10,6 +11,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       flake-utils,
       ...
     }@inputs:
@@ -27,6 +29,9 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          pkgsUnstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
         };
         modules = [
           ./profiles/desktop.nix
@@ -37,6 +42,9 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          pkgsUnstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
         };
         modules = [
           ./profiles/laptop.nix
@@ -47,6 +55,9 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          pkgsUnstable = import nixpkgs-unstable {
+            system = "aarch64-linux";
+          };
         };
         modules = [
           ./profiles/server.nix

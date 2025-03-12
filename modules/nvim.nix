@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgsUnstable,
   ...
 }:
 let
@@ -31,6 +32,7 @@ in
       defaultEditor = true && cfg.enable;
       viAlias = true;
       vimAlias = true;
+      package = pkgsUnstable.neovim-unwrapped;
     };
 
     environment.systemPackages = with pkgs; [

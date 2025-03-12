@@ -26,6 +26,7 @@ in
     ../modules/wireless.nix
     ../hardware/laptop-hardware-configuration.nix
   ];
+
   myAudio = {
     enable = true;
     guiControls = true;

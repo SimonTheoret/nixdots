@@ -48,6 +48,8 @@ in
         tmux
         tldr
         nodePackages.prettier
+        shellharden
+        shfmt
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };

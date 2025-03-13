@@ -48,6 +48,7 @@ in
         tmux
         tldr
         nodePackages.prettier
+        bash-language-server
         shellharden
         shfmt
         sqruff

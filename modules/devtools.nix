@@ -50,7 +50,6 @@ in
         nodePackages.prettier
         shellharden
         shfmt
-        sqls
         sqruff
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

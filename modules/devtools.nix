@@ -50,6 +50,8 @@ in
         nodePackages.prettier
         shellharden
         shfmt
+        sqls
+        python312Packages.sqlfmt
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };

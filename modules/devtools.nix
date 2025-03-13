@@ -51,7 +51,7 @@ in
         shellharden
         shfmt
         sqls
-        python312Packages.sqlfmt
+        sqruff
       ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };

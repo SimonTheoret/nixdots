@@ -35,7 +35,7 @@ in
       package = pkgsUnstable.neovim-unwrapped;
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgsUnstable; [
       cmake # Needed to build some plugins
       cargo # Needed to build nvim Lua-Json5 plugin
       tree-sitter

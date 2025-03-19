@@ -53,7 +53,8 @@ in
         shellharden
         shfmt
         sqruff
-      ] ++ [pkgsUnstable.lazygit]
+      ]
+      ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };
 }

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgsUnstable,
   userName,
   ...
 }:
@@ -81,9 +82,6 @@ in
         wget
         curl
         xbindkeys
-        pinentry-all
-        alacritty
-        kitty
         rsync
         xclip
         unzip
@@ -93,6 +91,7 @@ in
         nil
         nixfmt-rfc-style
       ]
+      ++ [ pkgsUnstable.kitty ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [
         discord
         feh

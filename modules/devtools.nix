@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgsUnstable,
   ...
 }:
 let
@@ -52,7 +53,7 @@ in
         shellharden
         shfmt
         sqruff
-      ]
+      ] ++ [pkgsUnstable.lazygit]
       ++ optionals (config.myDocker.enable) [ lazydocker ];
   };
 }

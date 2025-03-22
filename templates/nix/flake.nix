@@ -15,7 +15,7 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             nil
-            nixfmt
+            nixfmt-classic
             nodePackages_latest.bash-language-server
             shellcheck
             shfmt

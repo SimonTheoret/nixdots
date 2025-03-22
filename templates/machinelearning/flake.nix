@@ -52,9 +52,9 @@
             shellcheck
             shfmt
             isort
-            nixfmt
             nil 
           ];
+              nixfmt-classic
 
           shellHook = ''
             export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib"

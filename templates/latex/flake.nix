@@ -20,7 +20,7 @@
             nodePackages_latest.bash-language-server
             shellcheck
             shfmt
-            nixfmt
+            nixfmt-classic
             nil
           ];
         };

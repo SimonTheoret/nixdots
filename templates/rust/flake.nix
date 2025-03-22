@@ -36,7 +36,7 @@
             [ rust ]
             ++ (with pkgs; [
               pkg-config
-              nixfmt
+              nixfmt-classic
               nil
               shellcheck
               shfmt

@@ -39,6 +39,7 @@ in
       cargo # Needed to build nvim Lua-Json5 plugin
       tree-sitter
       nodejs_23
+      glib
       gcc
       lua-language-server
       pandoc # For feed.nvim

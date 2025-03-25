@@ -53,7 +53,7 @@ in
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
-    mainEditor = true;
+    mainEditor = false;
   };
   myUi = {
     enable = true;

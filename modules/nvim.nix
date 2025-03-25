@@ -28,7 +28,7 @@ in
   config = mkIf cfg.enable {
     programs.neovim = {
       enable = true;
-      defaultEditor = true && cfg.enable;
+      defaultEditor = cfg.mainEditor && cfg.enable;
       viAlias = true;
       vimAlias = true;
       package = pkgsUnstable.neovim-unwrapped;

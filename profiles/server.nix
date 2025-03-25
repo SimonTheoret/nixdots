@@ -49,7 +49,7 @@ in
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
-    mainEditor = true;
+    mainEditor = false;
   };
   myBootLoader.enable = false; # true by default
   myUi = {

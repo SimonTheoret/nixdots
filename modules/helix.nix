@@ -28,8 +28,9 @@ in
     environment.systemPackages = with pkgsUnstable; [
       helix
     ];
-  environment.variables = {
-    EDITOR = "hx";
+    
+    environment.variables = mkIf cfg.mainEditor {
+      EDITOR = "hx";
     };
   };
 }

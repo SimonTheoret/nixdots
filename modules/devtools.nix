@@ -22,15 +22,10 @@ in
 
   config = mkIf cfg.enable {
     programs.direnv = {
-      package = pkgs.direnv;
       silent = false;
       loadInNixShell = true;
       enableFishIntegration = true;
-      direnvrcExtra = "";
-      nix-direnv = {
-        enable = true;
-        package = pkgs.nix-direnv;
-      };
+      nix-direnv.enable = true;
     };
     environment.systemPackages =
       with pkgs;

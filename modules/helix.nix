@@ -16,21 +16,11 @@ in
       example = true;
       description = "Configure Helix for development";
     };
-    mainEditor = mkOption {
-      type = lib.types.bool;
-      default = false;
-      example = true;
-      description = "Configure Helix to be the main editor";
-    };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgsUnstable; [
       helix
     ];
-    
-    environment.variables = mkIf cfg.mainEditor {
-      EDITOR = "hx";
-    };
   };
 }

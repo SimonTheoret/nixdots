@@ -16,19 +16,11 @@ in
       example = true;
       description = "Configure Neovim for development";
     };
-
-    mainEditor = mkOption {
-      type = lib.types.bool;
-      default = false;
-      example = true;
-      description = "Configure Neovim to be the main editor";
-    };
   };
 
   config = mkIf cfg.enable {
     programs.neovim = {
       enable = true;
-      defaultEditor = cfg.mainEditor && cfg.enable;
       viAlias = true;
       vimAlias = true;
       package = pkgsUnstable.neovim-unwrapped;

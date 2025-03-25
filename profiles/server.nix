@@ -43,13 +43,11 @@ in
   myDocker.enable = true;
   myHelix= {
     enable = true;
-    mainEditor = true;
   };
   myLight.enable = false; # false by default
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
-    mainEditor = false;
   };
   myBootLoader.enable = false; # true by default
   myUi = {

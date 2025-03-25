@@ -45,7 +45,10 @@ in
   };
   myDevTools.enable = true;
   myDocker.enable = false;
-  myHelix.enable = true; 
+  myHelix= {
+    enable = true;
+    mainEditor = true;
+  };
   myLight.enable = true; # false by default
   myNvidia.enable = false;
   myNeovim = {

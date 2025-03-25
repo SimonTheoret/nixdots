@@ -41,7 +41,10 @@ in
   myEmail.enable = false;
   myDevTools.enable = true;
   myDocker.enable = true;
-  myHelix.enable = true;
+  myHelix= {
+    enable = true;
+    mainEditor = true;
+  };
   myLight.enable = false; # false by default
   myNvidia.enable = false;
   myNeovim = {

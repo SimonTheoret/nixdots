@@ -54,6 +54,7 @@ in
         shfmt
         sqruff
         calc
+        delta
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

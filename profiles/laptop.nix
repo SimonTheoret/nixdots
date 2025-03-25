@@ -18,6 +18,7 @@ in
     ../modules/docker.nix
     ../modules/email.nix
     ../modules/emacs.nix
+    ../modules/helix.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
@@ -44,6 +45,7 @@ in
   };
   myDevTools.enable = true;
   myDocker.enable = false;
+  myHelix.enable = true; 
   myLight.enable = true; # false by default
   myNvidia.enable = false;
   myNeovim = {

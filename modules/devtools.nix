@@ -50,6 +50,7 @@ in
         sqruff
         calc
         delta
+        yazi
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

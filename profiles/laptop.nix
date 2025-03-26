@@ -57,6 +57,8 @@ in
     enable = true;
     monitorsConfig = false; # My laptop has a single screen
     useGUI = true;
+    hyprland = true;
+    i3WM = false;
   };
   myWireless.enable = true;
   users.users.${userName} = {

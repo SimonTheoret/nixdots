@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{  config, pkgs, lib, ... }:
 
 let
   inherit (lib) mkOption mkIf;
@@ -9,6 +9,18 @@ in {
       type = lib.types.bool;
       default = false;
       example = true; description = "Configure the UI. Can activate i3WM, monitor configuration and specify if in a GUI environment" ;
+    };
+    i3WM = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure i3WM" ; 
+    };
+    hyprland = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure HyprlandWM" ; 
     };
     monitorsConfig = mkOption {
       type = lib.types.bool;
@@ -25,17 +37,40 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.displayManager.defaultSession = "none+i3";
-    services.xserver.windowManager.i3.enable = true;
-    services.xserver.desktopManager.xterm.enable = true;
+      # services = mkIf (cfg.i3WM || cfg.hyprland) {
+      #   xserver.enable = true;
+      #   displayManager.defaultSession = "none+i3";
+      #   xserver.windowManager.i3.enable = true;
+      #   xserver.desktopManager.xterm.enable = true;
+      # };
+      services.xserver.enable = cfg.i3WM || cfg.hyprland;        
+      services.displayManager.defaultSession =
+      if cfg.i3WM then
+        "none+i3"
+      else if cfg.hyprland then
+        "hyprland"
+      else
+        abort "Unsupported default session for displayManager";
+      services.displayManager.sddm = mkIf cfg.hyprland {
+        enable = true;
+        wayland.enable = true;
+      };
 
-    environment.systemPackages = with pkgs; [
-      i3status-rust
-      i3lock
-    ]
-    ++ pkgs.lib.optionals (cfg.monitorsConfig) [(pkgs.callPackage ../packages/autorandr/autorandr.nix {})]
-    ++ pkgs.lib.optionals (cfg.useGUI) [picom maim dunst flashfocus autotiling];
-  };
+      programs.hyprland = mkIf cfg.hyprland {
+          enable = true;
+          xwayland.enable = true;
+        };
+
+      xdg.portal.enable = cfg.hyprland;
+      environment.sessionVariables = {
+        WLR_NO_HARDWARE_CURSORS = lib.optionals cfg.hyprland "1";
+        NIXOS_OZONE_WL =  lib.optionals cfg.hyprland "1";
+      };
+      environment.systemPackages = with pkgs; []
+      ++ pkgs.lib.optionals (cfg.i3WM) [i3status-rust i3lock picom maim dunst flashfocus autotiling]
+      ++ pkgs.lib.optionals (cfg.hyprland) [xdg-desktop-portal-gtk]
+      ++ pkgs.lib.optionals (cfg.monitorsConfig) [(pkgs.callPackage ../packages/autorandr/autorandr.nix {})]
+      ++ pkgs.lib.optionals (cfg.hyprland) [hyprpaper waybar];
+    };
 }
 

@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-
+    hardware.opengl.enable = config.myUi.hyprland;
     services.xserver.videoDrivers = [ "nvidia" ]; 
     hardware.graphics.enable = true;
     hardware.nvidia = {

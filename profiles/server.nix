@@ -52,7 +52,7 @@ in
   myBootLoader.enable = false; # true by default
   myUi = {
     enable = false;
-    monitorsConfig = false; # My laptop/server has a single screen
+    monitorsConfig = false; # My server has a single screen
     useGUI = false;
     hyprland = false;
     i3WM = false;

@@ -44,7 +44,7 @@ in
   };
   myDevTools.enable = true;
   myDocker.enable = true;
-  myHelix= {
+  myHelix = {
     enable = true;
   };
   myLight.enable = false; # false by default
@@ -54,7 +54,7 @@ in
   };
   myUi = {
     enable = true;
-    monitorsConfig = false; # No need for it when using hyprland
+    monitorsConfig = false;
     useGUI = true;
     hyprland = true;
     i3WM = false;

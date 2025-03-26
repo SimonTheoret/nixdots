@@ -54,8 +54,10 @@ in
   };
   myUi = {
     enable = true;
-    monitorsConfig = true;
+    monitorsConfig = false; # No need for it when using hyprland
     useGUI = true;
+    hyprland = true;
+    i3WM = false;
   };
   myWireless.enable = false;
   users.users.${userName} = {

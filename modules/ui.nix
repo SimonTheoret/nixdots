@@ -67,10 +67,11 @@ in {
         NIXOS_OZONE_WL =  lib.optionals cfg.hyprland "1";
       };
       environment.systemPackages = with pkgs; []
-      ++ pkgs.lib.optionals (cfg.i3WM) [i3status-rust i3lock picom maim dunst flashfocus autotiling]
       ++ pkgs.lib.optionals (cfg.hyprland) [xdg-desktop-portal-gtk]
       ++ pkgs.lib.optionals (cfg.monitorsConfig) [(pkgs.callPackage ../packages/autorandr/autorandr.nix {})]
-      ++ pkgs.lib.optionals (cfg.hyprland) [hyprpaper waybar];
+      ++ pkgs.lib.optionals (cfg.hyprland) [hyprpaper waybar hyprshot]
+      ++ pkgs.lib.optionals (cfg.i3WM) [i3status-rust i3lock picom maim dunst flashfocus autotiling]
+      ++ pkgs.lib.optionals (cfg.useGUI) [ dunst wl-clipboard wofi];
     };
 }
 

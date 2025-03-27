@@ -91,7 +91,7 @@ in
         nil
         nixfmt-rfc-style
       ]
-      ++ [ pkgsUnstable.kitty ]
+      ++ [ pkgsUnstable.kitty pkgsUnstable.alacritty ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [
         discord
         feh

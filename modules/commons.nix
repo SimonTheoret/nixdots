@@ -90,6 +90,7 @@ in
         zip
         nil
         nixfmt-rfc-style
+        fishPlugins.fzf-fish
       ]
       ++ [ pkgsUnstable.kitty pkgsUnstable.alacritty ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [

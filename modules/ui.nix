@@ -72,6 +72,7 @@ in
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = lib.optionals cfg.hyprland "1";
       NIXOS_OZONE_WL = lib.optionals cfg.hyprland "1";
+      ELECTRON_OZONE_PLATFORM_HINT = lib.optionals cfg.hyprland "1";
     };
     environment.systemPackages =
       with pkgs;

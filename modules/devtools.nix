@@ -51,8 +51,7 @@ in
         calc
         delta
         yazi
-        commitlint
-        husky
+        nodejs_23
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

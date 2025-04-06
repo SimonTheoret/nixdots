@@ -27,6 +27,9 @@ in
       enableFishIntegration = true;
       nix-direnv.enable = true;
     };
+
+    services.lorri.enable = true;
+
     environment.systemPackages =
       with pkgs;
       [

@@ -50,10 +50,10 @@ in
     services.syncthing = {
       enable = true;
       openDefaultPorts = true;
-      settings.gui = {
-        user = "simon";
-        password = "admin";
-      };
+      guiAddress = "127.0.0.1:8384";
+      user = "${userName}";
+      group = "users";
+      dataDir = "/home/${userName}";
     };
 
     programs.git = {

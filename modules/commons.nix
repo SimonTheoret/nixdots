@@ -47,7 +47,16 @@ in
 
     users.users.${userName}.shell = pkgs.fish;
 
-    services.syncthing.enable = config.myUi.useGUI;
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      guiAddress = "127.0.0.1:8384";
+      user = "${userName}";
+      group = "users";
+      dataDir = "/home/${userName}";
+      overrideDevices = false;
+      overrideFolders = false;
+    };
 
     programs.git = {
       enable = true;
@@ -92,7 +101,10 @@ in
         nixfmt-rfc-style
         fishPlugins.fzf-fish
       ]
-      ++ [ pkgsUnstable.kitty pkgsUnstable.alacritty ]
+      ++ [
+        pkgsUnstable.kitty
+        pkgsUnstable.alacritty
+      ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [
         discord
         feh

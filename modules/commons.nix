@@ -54,8 +54,8 @@ in
       user = "${userName}";
       group = "users";
       dataDir = "/home/${userName}";
-      services.syncthing.declarative.overrideDevices = false;
-      services.syncthing.declarative.overrideFolders = false;
+      overrideDevices = false;
+      overrideFolders = false;
     };
 
     programs.git = {

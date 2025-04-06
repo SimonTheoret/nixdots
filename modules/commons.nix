@@ -47,7 +47,17 @@ in
 
     users.users.${userName}.shell = pkgs.fish;
 
-    services.syncthing.enable = config.myUi.useGUI;
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      # Optional: GUI credentials (can be set in the browser instead if you don't want plaintext credentials in your configuration.nix file)
+      # or the password hash can be generated with "syncthing generate --config <path> --gui-password=<password>"
+    environment.STNODEFAULTFOLDER = "true";
+      settings.gui = {
+        user = "simon";
+        password = "admin";
+      };
+    };
 
     programs.git = {
       enable = true;
@@ -92,7 +102,10 @@ in
         nixfmt-rfc-style
         fishPlugins.fzf-fish
       ]
-      ++ [ pkgsUnstable.kitty pkgsUnstable.alacritty ]
+      ++ [
+        pkgsUnstable.kitty
+        pkgsUnstable.alacritty
+      ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [
         discord
         feh

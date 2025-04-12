@@ -28,7 +28,7 @@ in
       nix-direnv.enable = true;
     };
 
-    services.lorri.enable = true;
+    services.lorri.enable = false;
 
     environment.systemPackages =
       with pkgs;

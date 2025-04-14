@@ -44,7 +44,7 @@ in
     guiOnly = true;
   };
   myDevTools.enable = true;
-  myDocker.enable = false;
+  myDocker.enable = true;
   myHelix= {
     enable = true;
   };

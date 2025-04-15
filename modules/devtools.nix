@@ -29,6 +29,7 @@ in
     };
 
     services.lorri.enable = false;
+    services.atuin.enable = true;
 
     environment.systemPackages =
       with pkgs;
@@ -55,6 +56,7 @@ in
         delta
         yazi
         nodejs_23
+
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

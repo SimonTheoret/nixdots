@@ -38,6 +38,7 @@ in
   myCommons.enable = true;
   myEmacs = {
     enable = false;
+    pgtk = true;
   };
   myEmail = {
     enable = true;

@@ -16,12 +16,6 @@ in
       example = true;
       description = "Configure Emacs for development";
     };
-    pgtk = mkOption {
-      type = lib.types.bool;
-      default = false;
-      example = true;
-      description = "Configure Emacs for development on Wayland";
-    };
   };
 
   config = mkIf cfg.enable {
@@ -35,11 +29,12 @@ in
         pkgs.aspell
         pkgs.aspellDicts.fr
         pkgs.aspellDicts.en
+        pkgs.pandoc_3_5
       ]
-      ++ pkgs.lib.optionals (!cfg.pgtk && cfg.enable) [
+      ++ pkgs.lib.optionals (!config.myUi.hyprland) [
         pkgs.emacs
       ]
-      ++ pkgs.lib.optionals (cfg.pgtk && cfg.enable) [
+      ++ pkgs.lib.optionals (config.myUi.hyprland) [
         pkgs.emacs-pgtk
       ];
   };

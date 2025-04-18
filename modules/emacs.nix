@@ -30,6 +30,7 @@ in
         pkgs.aspellDicts.fr
         pkgs.aspellDicts.en
         pkgs.pandoc_3_5
+        pkgs.tree-sitter
       ]
       ++ pkgs.lib.optionals (!config.myUi.hyprland) [
         pkgs.emacs

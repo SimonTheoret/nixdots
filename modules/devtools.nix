@@ -56,6 +56,7 @@ in
         yazi
         nodejs_23
         mcfly
+        python3Full
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

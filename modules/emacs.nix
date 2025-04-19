@@ -31,6 +31,9 @@ in
         pkgs.aspellDicts.en
         pkgs.pandoc_3_5
         pkgs.tree-sitter
+        pkgs.msmtp
+        pkgs.isync
+        pkgs.emacsPackages.mu4e
       ]
       ++ pkgs.lib.optionals (!config.myUi.hyprland) [
         pkgs.emacs

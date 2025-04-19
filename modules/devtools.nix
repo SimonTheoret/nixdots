@@ -30,6 +30,12 @@ in
 
     services.lorri.enable = false;
 
+    services.pcscd.enable = true;
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = false;
+    };
+
     environment.systemPackages =
       with pkgs;
       [
@@ -57,6 +63,8 @@ in
         nodejs_23
         mcfly
         python3Full
+        gnupg
+        pinentry-all
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ];

@@ -33,6 +33,7 @@ in
         isync
         msmtp
         gnupg
+        neomutt
       ]
       ++ pkgs.lib.optionals (config.myUi.useGUI || cfg.guiOnly) [ thunderbird ];
   };

@@ -40,7 +40,7 @@ in
   };
   myEmail = {
     enable = true;
-    guiOnly = true;
+    gui = true;
   };
   myDevTools.enable = true;
   myDocker.enable = true;

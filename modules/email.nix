@@ -17,7 +17,7 @@ in
       example = true;
       description = "Setup email applications";
     };
-    guiOnly = mkOption {
+    gui = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
@@ -28,13 +28,14 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages =
       with pkgs;
-      [ ]
-      ++ pkgs.lib.optionals (!cfg.guiOnly) [
+      [
         isync
         msmtp
         gnupg
         neomutt
+        notmuch
+        lynx
       ]
-      ++ pkgs.lib.optionals (config.myUi.useGUI || cfg.guiOnly) [ thunderbird ];
+      ++ pkgs.lib.optionals (config.myUi.useGUI || cfg.gui) [ thunderbird ];
   };
 }

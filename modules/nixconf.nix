@@ -57,6 +57,10 @@ in
       dates = "*-*-* 18:00:00";
       options = "--delete-older-than 14d";
     };
+
+    environment.variables = {
+      NIX_CONFIG = "download-buffer-size = 335544320";
+    };
   };
 
 }

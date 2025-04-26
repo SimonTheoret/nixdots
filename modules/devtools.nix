@@ -63,7 +63,6 @@ in
         nodejs_23
         mcfly
         python3Full
-        gnupg
         pinentry-all
       ]
       ++ [ pkgsUnstable.lazygit ]

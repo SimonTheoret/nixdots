@@ -66,6 +66,8 @@ in
         pinentry-all
       ]
       ++ [ pkgsUnstable.lazygit ]
-      ++ optionals (config.myDocker.enable) [ lazydocker ];
+      ++ optionals (config.myDocker.enable) [ lazydocker ]
+      ++ optionals (config.myUi.useGUI && !config.myUi.hyprland)[ drawio ]
+      ;
   };
 }

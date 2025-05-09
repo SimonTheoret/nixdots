@@ -30,7 +30,7 @@ in
       cmake # Needed to build some plugins
       cargo # Needed to build nvim Lua-Json5 plugin
       tree-sitter
-      nodejs_23
+      nodejs_24
       glib
       gcc
       lua-language-server

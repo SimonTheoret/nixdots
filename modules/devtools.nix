@@ -64,6 +64,7 @@ in
         mcfly
         python3Full
         pinentry-all
+        rs-git-fsmonitor
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

@@ -60,7 +60,7 @@ in
         calc
         delta
         yazi
-        nodejs_23
+        nodejs_24
         mcfly
         python3Full
         pinentry-all

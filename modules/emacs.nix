@@ -29,7 +29,7 @@ in
         pkgs.aspell
         pkgs.aspellDicts.fr
         pkgs.aspellDicts.en
-        pkgs.pandoc_3_5
+        pkgs.pandoc
         pkgs.tree-sitter
         pkgs.msmtp
         pkgs.isync

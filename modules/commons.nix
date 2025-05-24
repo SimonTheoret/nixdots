@@ -81,8 +81,7 @@ in
       victor-mono
       fira-code
       fira-code-symbols
-      nerdfonts
-    ];
+    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     environment.systemPackages =
       with pkgs;

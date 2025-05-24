@@ -24,6 +24,7 @@ in
   config = mkIf cfg.enable {
     programs.ssh = {
       startAgent = true;
+      enableAskPassword = true;
     };
 
     programs.firefox = mkIf (config.myUi.useGUI) {

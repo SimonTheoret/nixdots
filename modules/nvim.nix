@@ -36,6 +36,7 @@ in
       lua-language-server
       pandoc # For feed.nvim
       lua-language-server
+      ast-grep
     ];
   };
 }

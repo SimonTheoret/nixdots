@@ -6,6 +6,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     hyprland.url = "github:hyprwm/Hyprland";
+    helix-master.url = "github:helix-editor/helix/master";
+    helix-master.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs =
@@ -14,6 +16,7 @@
       nixpkgs,
       nixpkgs-unstable,
       flake-utils,
+      helix-master,
       ...
     }@inputs:
     let
@@ -33,6 +36,7 @@
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
           };
+          helix-master = helix-master;
         };
         modules = [
           ./profiles/desktop.nix
@@ -46,6 +50,7 @@
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
           };
+          helix-master = helix-master;
         };
         modules = [
           ./profiles/laptop.nix
@@ -59,6 +64,7 @@
           pkgsUnstable = import nixpkgs-unstable {
             system = "aarch64-linux";
           };
+          helix-master = helix-master;
         };
         modules = [
           ./profiles/server.nix

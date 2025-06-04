@@ -2,6 +2,7 @@
   config,
   lib,
   pkgsUnstable,
+  helix-master,
   ...
 }:
 let
@@ -19,8 +20,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgsUnstable; [
-      helix
+    environment.systemPackages = [
+      helix-master.packages.${pkgsUnstable.system}.default      
     ];
   };
 }

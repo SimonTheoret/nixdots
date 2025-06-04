@@ -65,6 +65,7 @@ in
         python3Full
         pinentry-all
         rs-git-fsmonitor
+        scooter
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

@@ -39,7 +39,10 @@ in
     enable = false;
   };
   myEmail.enable = false;
-  myDevTools.enable = true;
+  myDevTools = {
+    enable = true;
+    useLLM = false;
+  };
   myDocker.enable = true;
   myHelix= {
     enable = true;

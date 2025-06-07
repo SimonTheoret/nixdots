@@ -18,6 +18,13 @@ in
       example = false;
       description = "Packages used to create a development environment";
     };
+    useLLM = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Enable integration with Ollama";
+    };
+
   };
 
   config = mkIf cfg.enable {
@@ -70,6 +77,8 @@ in
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland)[ drawio ]
+      ++ optionals (config.myDevTools.useLLM && config.myNividia.enable)[ ollama-cuda ]
+      ++ optionals (config.myDevTools.useLLM && !config.myNividia.enable)[ ollama ]
       ;
   };
 }

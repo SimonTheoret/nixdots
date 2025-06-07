@@ -42,7 +42,10 @@ in
     enable = true;
     gui = true;
   };
-  myDevTools.enable = true;
+  myDevTools = {
+    enable = true;
+    useLLM = true;
+  };
   myDocker.enable = true;
   myHelix = {
     enable = true;

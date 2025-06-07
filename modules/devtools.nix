@@ -77,8 +77,8 @@ in
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland)[ drawio ]
-      ++ optionals (config.myDevTools.useLLM && config.myNividia.enable)[ ollama-cuda ]
-      ++ optionals (config.myDevTools.useLLM && !config.myNividia.enable)[ ollama ]
+      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable)[ ollama-cuda ]
+      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable)[ ollama ]
       ;
   };
 }

@@ -73,6 +73,7 @@ in
         pinentry-all
         rs-git-fsmonitor
         scooter
+        mosh
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

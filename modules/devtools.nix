@@ -22,7 +22,7 @@ in
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Enable integration with Ollama";
+      description = "Enable integration with Ollama and AIChat";
     };
 
   };
@@ -78,8 +78,8 @@ in
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland)[ drawio ]
-      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable)[ ollama-cuda ]
-      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable)[ ollama ]
+      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable)[ ollama-cuda aichat ]
+      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable)[ ollama aichat]
       ;
   };
 }

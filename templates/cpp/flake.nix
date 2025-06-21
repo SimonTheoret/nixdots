@@ -21,8 +21,11 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              llvmPackages_19.libcxxClang
+              llvmPackages_20.libcxxClang
               cmake
+              cmake-language-server
+              cmake-format
+              cmake-lint
             ];
           };
         }

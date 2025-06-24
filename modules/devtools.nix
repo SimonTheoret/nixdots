@@ -75,6 +75,7 @@ in
         scooter
         mosh
         commitizen
+        pre-commit
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

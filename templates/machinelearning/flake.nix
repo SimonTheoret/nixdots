@@ -62,12 +62,7 @@
               nodePackages_latest.pyright
               ruff
               ruff-lsp
-              nodePackages_latest.bash-language-server
-              shellcheck
-              shfmt
               isort
-              nixfmt-classic
-              nil
             ];
 
             shellHook = ''

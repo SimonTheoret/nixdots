@@ -48,11 +48,6 @@
               ruff
               ruff-lsp
               isort
-              nodePackages_latest.bash-language-server
-              shellcheck
-              shfmt
-              nixfmt-classic
-              nil
             ];
           };
         }

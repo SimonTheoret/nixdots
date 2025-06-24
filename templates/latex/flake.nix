@@ -30,11 +30,6 @@
               texlive.combined.scheme-full
               texlab
               tectonic
-              nodePackages_latest.bash-language-server
-              shellcheck
-              shfmt
-              nixfmt-classic
-              nil
             ];
           };
         }

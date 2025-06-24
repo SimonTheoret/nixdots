@@ -21,11 +21,7 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              nil
-              nixfmt-classic
-              nodePackages_latest.bash-language-server
-              shellcheck
-              shfmt
+              lua-language-server
             ];
           };
         }

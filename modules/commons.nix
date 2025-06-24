@@ -76,13 +76,16 @@ in
 
     fonts.fontconfig.enable = true;
 
-    fonts.packages = with pkgs; [
-      noto-fonts
-      noto-fonts-emoji
-      victor-mono
-      fira-code
-      fira-code-symbols
-    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    fonts.packages =
+      with pkgs;
+      [
+        noto-fonts
+        noto-fonts-emoji
+        victor-mono
+        fira-code
+        fira-code-symbols
+      ]
+      ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     environment.systemPackages =
       with pkgs;
@@ -97,13 +100,13 @@ in
         man-pages
         man-pages-posix
         zip
-        nil
         nixfmt-rfc-style
         fishPlugins.fzf-fish
       ]
       ++ [
         pkgsUnstable.kitty
         pkgsUnstable.alacritty
+        pkgsUnstable.nil
       ]
       ++ pkgs.lib.optionals (config.myUi.useGUI) [
         discord

@@ -74,6 +74,7 @@ in
         rs-git-fsmonitor
         scooter
         mosh
+        commitizen
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

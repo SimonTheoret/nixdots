@@ -37,6 +37,16 @@ in
 
     services.lorri.enable = false;
 
+    services.ollama = {
+      enable = cfg.useLLM;
+      loadModels = [
+        "qwen2.5-coder:7b"
+        "qwen2.5-coder:32b"
+        "devstral:24b"
+      ];
+      package = if config.myNvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
+    };
+
     services.pcscd.enable = true;
     programs.gnupg.agent = {
       enable = true;
@@ -79,9 +89,12 @@ in
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
-      ++ optionals (config.myUi.useGUI && !config.myUi.hyprland)[ drawio ]
-      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable)[ ollama-cuda aichat ]
-      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable)[ ollama aichat]
-      ;
+      ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
+      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable) [
+        aichat
+      ]
+      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable) [
+        aichat
+      ];
   };
 }

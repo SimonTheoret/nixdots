@@ -3,10 +3,10 @@
   lib,
   userName,
   ...
-}@inputs:
+}:
 let
   inherit userName;
-  inherit (lib) mkOption mkIf optionals;
+  inherit (lib) optionals;
 in
 {
   imports = [
@@ -14,6 +14,7 @@ in
     ../modules/bluetooth.nix
     ../modules/chezmoi.nix
     ../modules/commons.nix
+    ../modules/cron.nix
     ../modules/devtools.nix
     ../modules/docker.nix
     ../modules/email.nix
@@ -36,6 +37,7 @@ in
   myBluetooth.enable = true;
   myChezMoi.enable = true;
   myCommons.enable = true;
+  myCron.enable = true;
   myEmacs = {
     enable = false;
   };

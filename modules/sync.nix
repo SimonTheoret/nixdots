@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myHelix;
+  cfg = config.mySync;
 in
 {
   options.mySync = {
@@ -21,7 +21,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       rclone
-      cron
     ];
   };
 }

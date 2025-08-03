@@ -1,10 +1,15 @@
-{config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  inherit (lib) mkOption mkIf;
+  inherit (lib) mkIf;
   cfg = config.myBluetooth;
 in
 {
-  imports = [];
+  imports = [ ];
   options.myBluetooth = {
     enable = pkgs.lib.mkOption {
       type = pkgs.lib.types.bool;

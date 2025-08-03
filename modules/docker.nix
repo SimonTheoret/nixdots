@@ -2,14 +2,12 @@
   config,
   pkgs,
   lib,
-  userName,
   ...
 }:
 
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myDocker;
-  inherit userName;
 in
 {
   options.myDocker = {

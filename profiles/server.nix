@@ -23,6 +23,7 @@ in
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/nvim.nix
+    ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
     ../hardware/server-hardware-configuration.nix
@@ -44,7 +45,7 @@ in
     useLLM = false;
   };
   myDocker.enable = true;
-  myHelix= {
+  myHelix = {
     enable = true;
   };
   myLight.enable = false; # false by default
@@ -61,16 +62,16 @@ in
     i3WM = false;
   };
   myWireless.enable = true;
+  mySync.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups =
-      [
-        "wheel"
-        "video"
-      ]
-      ++ optionals (config.myDocker.enable) [ "docker" ]
-      ++ optionals (config.myAudio.enable) [ "audio" ]
-      ++ optionals (config.myWireless.enable) [ "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "video"
+    ]
+    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myAudio.enable) [ "audio" ]
+    ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };
   environment.variables = {
     NIXOS_CONF = "server";

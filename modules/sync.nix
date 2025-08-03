@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  pkgsUnstable,
-  helix-master,
+  pkgs,
   ...
 }:
 let
@@ -10,19 +9,19 @@ let
   cfg = config.myHelix;
 in
 {
-  options.myHelix = {
+  options.mySync = {
     enable = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Configure Helix for development";
+      description = "Configure RClone for sync";
     };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgsUnstable.helix
-      # helix-master.packages.${pkgsUnstable.system}.default
+    environment.systemPackages = with pkgs; [
+      rclone
+      cron
     ];
   };
 }

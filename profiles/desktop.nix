@@ -23,6 +23,7 @@ in
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/nvim.nix
+    ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
     ../hardware/desktop-hardware-configuration.nix
@@ -36,7 +37,7 @@ in
   myChezMoi.enable = true;
   myCommons.enable = true;
   myEmacs = {
-    enable = true;
+    enable = false;
   };
   myEmail = {
     enable = true;
@@ -63,16 +64,16 @@ in
     i3WM = false;
   };
   myWireless.enable = false;
+  mySync.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups =
-      [
-        "wheel"
-        "video"
-      ]
-      ++ optionals (config.myDocker.enable) [ "docker" ]
-      ++ optionals (config.myAudio.enable) [ "audio" ]
-      ++ optionals (config.myWireless.enable) [ "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "video"
+    ]
+    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myAudio.enable) [ "audio" ]
+    ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };
   environment.variables = {
     NIXOS_CONF = "desktop";

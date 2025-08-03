@@ -25,7 +25,7 @@ in
       systemCronJobs =
         [ ]
         ++ optionals (config.mySync.enable) [
-          "*/15 * * * * ${userName}  $HOME/bin/sync.sh | tee $HOME/.sync.log"
+          "*/15 * * * * ${userName}  . $HOME/.aws_env; $HOME/bin/sync.sh | tee $HOME/.sync.log"
         ];
     };
   };

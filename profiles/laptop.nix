@@ -47,7 +47,7 @@ in
   };
   myDevTools = {
     enable = true;
-    useLLM = false;
+    useLLM = true;
   };
   myDocker.enable = true;
   myHelix = {

@@ -90,11 +90,9 @@ in
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
-      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable) [
+      ++ optionals (config.myDevTools.useLLM) [
         aichat
-      ]
-      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable) [
-        aichat
+        aider-chat-full
       ];
   };
 }

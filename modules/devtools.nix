@@ -86,6 +86,7 @@ in
         mosh
         commitizen
         pre-commit
+        dust
       ]
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]

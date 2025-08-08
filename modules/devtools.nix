@@ -66,7 +66,6 @@ in
         ripgrep
         btop
         htop
-        zellij
         tmux
         tldr
         nodePackages.prettier
@@ -86,13 +85,18 @@ in
         mosh
         commitizen
         pre-commit
+        dust
       ]
-      ++ [ pkgsUnstable.lazygit ]
+      ++ [
+        pkgsUnstable.lazygit
+        pkgsUnstable.zellij
+      ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
       ++ optionals (config.myDevTools.useLLM) [
         aichat
         claude-code
+        aider-chat-full
       ];
   };
 }

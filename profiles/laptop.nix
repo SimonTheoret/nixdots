@@ -47,7 +47,7 @@ in
   };
   myDevTools = {
     enable = true;
-    useLLM = false;
+    useLLM = true;
   };
   myDocker.enable = true;
   myHelix = {
@@ -66,7 +66,7 @@ in
     i3WM = false;
   };
   myWireless.enable = true;
-  mySync.enable = true;
+  mySync.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [

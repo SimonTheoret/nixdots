@@ -66,7 +66,7 @@ in
     i3WM = false;
   };
   myWireless.enable = false;
-  mySync.enable = true;
+  mySync.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [

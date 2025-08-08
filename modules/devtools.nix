@@ -22,7 +22,7 @@ in
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Enable integration with Ollama and AIChat";
+      description = "Enable integration with Ollama, AIChat, Aider and Claude Code";
     };
 
   };
@@ -90,11 +90,9 @@ in
       ++ [ pkgsUnstable.lazygit ]
       ++ optionals (config.myDocker.enable) [ lazydocker ]
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
-      ++ optionals (config.myDevTools.useLLM && config.myNvidia.enable) [
+      ++ optionals (config.myDevTools.useLLM) [
         aichat
-      ]
-      ++ optionals (config.myDevTools.useLLM && !config.myNvidia.enable) [
-        aichat
+        claude-code
       ];
   };
 }

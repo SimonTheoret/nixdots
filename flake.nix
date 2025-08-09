@@ -29,12 +29,14 @@
       ];
     in
     {
+
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
+            config.allowUnfree = true;
           };
           helix-master = helix-master;
         };
@@ -49,6 +51,7 @@
           userName = "simon";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
+            config.allowUnfree = true;
           };
           helix-master = helix-master;
         };
@@ -63,6 +66,8 @@
           userName = "simon";
           pkgsUnstable = import nixpkgs-unstable {
             system = "aarch64-linux";
+            config.allowUnfree = true;
+
           };
           helix-master = helix-master;
         };

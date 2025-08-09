@@ -95,8 +95,10 @@ in
       ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
       ++ optionals (config.myDevTools.useLLM) [
         aichat
-        claude-code
         aider-chat-full
+      ]
+      ++ optionals (config.myDevTools.useLLM) [
+        pkgsUnstable.claude-code
       ];
   };
 }

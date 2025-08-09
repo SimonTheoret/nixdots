@@ -18,7 +18,7 @@
           system:
           f {
             pkgs = import nixpkgs {
-              inherit system ;
+              inherit system;
               config = {
                 allowUnfree = true;
                 cudaSupport = true;
@@ -32,11 +32,13 @@
         { pkgs }:
         {
           default = pkgs.mkShell {
-            packages =
-              with pkgs;
-              [
-                nodejs_24
-              ];
+            packages = with pkgs; [
+              nodejs_24
+              typescript
+              typescript-language-server
+              prettier
+
+            ];
           };
         }
       );

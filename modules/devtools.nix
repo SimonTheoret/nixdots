@@ -53,52 +53,50 @@ in
       enableSSHSupport = false;
     };
 
-    environment.systemPackages =
-      with pkgs;
-      [
-        eza
-        gnumake
-        zathura
-        direnv
-        fd
-        fzf
-        bat
-        ripgrep
-        btop
-        htop
-        tmux
-        tldr
-        nodePackages.prettier
-        bash-language-server
-        shellharden
-        shfmt
-        sqruff
-        calc
-        delta
-        yazi
-        nodejs_24
-        mcfly
-        python3Full
-        pinentry-all
-        rs-git-fsmonitor
-        scooter
-        mosh
-        commitizen
-        pre-commit
-        dust
-      ]
-      ++ [
-        pkgsUnstable.lazygit
-        pkgsUnstable.zellij
-      ]
-      ++ optionals (config.myDocker.enable) [ lazydocker ]
-      ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ drawio ]
-      ++ optionals (config.myDevTools.useLLM) [
-        aichat
-        aider-chat-full
-      ]
-      ++ optionals (config.myDevTools.useLLM) [
-        pkgsUnstable.claude-code
-      ];
+    environment.systemPackages = [
+      pkgs.eza
+      pkgs.gnumake
+      pkgs.zathura
+      pkgs.direnv
+      pkgs.fd
+      pkgs.fzf
+      pkgs.bat
+      pkgs.ripgrep
+      pkgs.btop
+      pkgs.htop
+      pkgs.tmux
+      pkgs.tldr
+      pkgs.nodePackages.prettier
+      pkgs.bash-language-server
+      pkgs.shellharden
+      pkgs.shfmt
+      pkgs.sqruff
+      pkgs.calc
+      pkgs.delta
+      pkgs.yazi
+      pkgs.nodejs_24
+      pkgs.mcfly
+      pkgs.python3Full
+      pkgs.pinentry-all
+      pkgs.rs-git-fsmonitor
+      pkgs.scooter
+      pkgs.mosh
+      pkgs.commitizen
+      pkgs.pre-commit
+      pkgs.dust
+    ]
+    ++ [
+      pkgsUnstable.lazygit
+      pkgsUnstable.zellij
+    ]
+    ++ optionals (config.myDocker.enable) [ pkgs.lazydocker ]
+    ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ pkgs.drawio ]
+    ++ optionals (config.myDevTools.useLLM) [
+      pkgs.aichat
+      pkgs.aider-chat-full
+    ]
+    ++ optionals (config.myDevTools.useLLM) [
+      pkgsUnstable.claude-code
+    ];
   };
 }

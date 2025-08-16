@@ -40,11 +40,13 @@ in
     services.ollama = {
       enable = cfg.useLLM;
       loadModels = [
+        "qwen3:4b"
         "qwen2.5-coder:7b"
         "qwen2.5-coder:32b"
         "devstral:24b"
       ];
       package = if config.myNvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
+      acceleration = if config.myNvidia.enable then "cuda" else false;
     };
 
     services.pcscd.enable = true;

@@ -77,6 +77,8 @@ in
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
   environment.variables = {
     NIXOS_CONF = "desktop";
     IS_ON_NIX = "true";

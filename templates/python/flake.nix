@@ -6,7 +6,7 @@
   outputs =
     { self, nixpkgs }:
     let
-      pyVersion = 311; # version without any dot
+      pyVersion = 313; # version without any dot
       overlays = [
         (final: prev: {
           # Makes it easier to change python version, and its related packages.
@@ -46,7 +46,6 @@
                 python313Full
                 pyright
                 ruff
-                ruff-lsp
                 isort
               ]
               ++ (with pkgs.python313Packages; [

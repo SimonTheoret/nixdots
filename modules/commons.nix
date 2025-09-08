@@ -107,7 +107,9 @@ in
         man-pages-posix
         zip
         nixfmt-rfc-style
-        fishPlugins.fzf-fish
+        file
+        fishPlugins.fifc
+        chafa
       ]
       ++ [
         pkgsUnstable.kitty

@@ -37,6 +37,7 @@
 
               # LSP
               gopls
+              gdb
             ];
           };
         }

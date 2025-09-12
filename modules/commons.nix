@@ -110,6 +110,7 @@ in
         file
         fishPlugins.fifc
         chafa
+        tree
       ]
       ++ [
         pkgsUnstable.kitty

@@ -43,15 +43,12 @@
             packages =
               with pkgs;
               [
-                python313Full
-                pyright
+                python
+                basedpyright
                 ruff
                 isort
-              ]
-              ++ (with pkgs.python313Packages; [
-                pip
-                virtualenv
-              ]);
+                uv
+              ];
           };
         }
       );

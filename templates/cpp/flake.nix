@@ -21,7 +21,7 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              llvmPackages_20.libcxxClang
+              clang-tools
               cmake
               cmake-language-server
               cmake-format

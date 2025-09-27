@@ -29,6 +29,7 @@ in
 
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
+      package = pkgs.firefox-bin;
     };
 
     programs.starship = {

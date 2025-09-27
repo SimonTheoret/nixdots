@@ -22,7 +22,7 @@ in
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Enable integration with Ollama, AIChat, Aider and Claude Code";
+      description = "Enable integration with Ollama, AIChat and Claude Code";
     };
 
   };
@@ -95,7 +95,6 @@ in
     ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ pkgs.drawio ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgs.aichat
-      pkgs.aider-chat-full
     ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgsUnstable.claude-code

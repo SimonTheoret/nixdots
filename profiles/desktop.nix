@@ -82,5 +82,8 @@ in
   environment.variables = {
     NIXOS_CONF = "desktop";
     IS_ON_NIX = "true";
+  }
+  // optionals (config.myNvidia.enable) {
+    GSK_RENDERER = "ngl";
   };
 }

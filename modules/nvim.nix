@@ -23,7 +23,7 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
-      package = pkgsUnstable.neovim-unwrapped;
+      # package = pkgsUnstable.neovim-unwrapped;
     };
 
     environment.systemPackages = with pkgsUnstable; [
@@ -33,10 +33,10 @@ in
       nodejs_24
       glib
       gcc
-      lua-language-server
       pandoc # For feed.nvim
       lua-language-server
       ast-grep
+      # luajitPackages.luarocks
     ];
   };
 }

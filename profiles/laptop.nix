@@ -72,6 +72,7 @@ in
     extraGroups = [
       "wheel"
       "video"
+      "dialout"
     ]
     ++ optionals (config.myDocker.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]

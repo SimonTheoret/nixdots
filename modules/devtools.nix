@@ -86,6 +86,7 @@ in
       pkgs.commitizen
       pkgs.pre-commit
       pkgs.dust
+      pkgs.bazecor
     ]
     ++ [
       pkgsUnstable.lazygit

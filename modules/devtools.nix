@@ -90,6 +90,7 @@ in
     ]
     ++ [
       pkgsUnstable.lazygit
+      pkgsUnstable.gitui
       pkgsUnstable.zellij
     ]
     ++ optionals (config.myDocker.enable) [ pkgs.lazydocker ]

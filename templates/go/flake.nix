@@ -1,12 +1,12 @@
 {
-  description = "A Nix-flake-based Go 1.22 development environment";
+  description = "A Nix-flake-based Go 1.25 development environment";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   outputs =
     { self, nixpkgs }:
     let
-      goVersion = 22; # Change this to update the whole stack
+      goVersion = 25; # Change this to update the whole stack
       overlays = [ (final: prev: { go = prev."go_1_${toString goVersion}"; }) ];
       supportedSystems = [
         "x86_64-linux"

@@ -72,19 +72,12 @@ in
       pkgs.bash-language-server
       pkgs.shellharden
       pkgs.shfmt
-      pkgs.sqruff
       pkgs.calc
       pkgs.delta
       pkgs.yazi
       pkgs.nodejs_24
-      pkgs.mcfly
       pkgs.python3Full
-      pkgs.pinentry-all
-      pkgs.rs-git-fsmonitor
       pkgs.scooter
-      pkgs.mosh
-      pkgs.commitizen
-      pkgs.pre-commit
       pkgs.dust
       pkgs.bazecor
     ]

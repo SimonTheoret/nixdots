@@ -83,6 +83,24 @@ in
 
     fonts.fontconfig.enable = true;
 
+    services.keyd = {
+      enable = true;
+
+      keyboards.default = {
+        ids = [ "*" ];
+        settings = {
+          altgr = {
+            "e" = "G-'";
+            "u" = "G-S-'";
+            "c" = "G-S-5";
+            # "c" = "G-,";
+            # "altgr" = {
+            # };
+          };
+        };
+      };
+    };
+
     fonts.packages =
       with pkgs;
       [

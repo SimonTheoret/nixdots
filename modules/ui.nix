@@ -44,12 +44,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    # services = mkIf (cfg.i3WM || cfg.hyprland) {
-    #   xserver.enable = true;
-    #   displayManager.defaultSession = "none+i3";
-    #   xserver.windowManager.i3.enable = true;
-    #   xserver.desktopManager.xterm.enable = true;
-    # };
     services.xserver.enable = cfg.i3WM || cfg.hyprland;
     services.displayManager.defaultSession =
       if cfg.i3WM then

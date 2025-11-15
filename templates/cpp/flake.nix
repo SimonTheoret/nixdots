@@ -22,6 +22,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               clang-tools
+              libclang
               cmake
               cmake-language-server
               cmake-format

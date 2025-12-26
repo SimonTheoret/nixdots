@@ -17,8 +17,6 @@
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "nvme"
-    "usb_storage"
-    "usbhid"
     "uas"
     "sd_mod"
   ];
@@ -27,28 +25,27 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/85c809f7-4ae6-422a-bf54-5ac95dadc065";
+    device = "/dev/disk/by-uuid/eb2f8f99-abcc-4c7b-af16-b84c38c63f6c";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/837C-A854";
+    device = "/dev/disk/by-uuid/8ECA-532E";
     fsType = "vfat";
     options = [
-      "fmask=0077"
-      "dmask=0077"
+      "fmask=0022"
+      "dmask=0022"
     ];
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/1acd7225-79dc-4e64-948d-a1e0b138b52a"; }
-  ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 

@@ -34,7 +34,10 @@ in
     guiControls = true;
     noiseCanceling = true;
   };
-  myBluetooth.enable = true;
+  myBluetooth = {
+    enable = true;
+    driver = true;
+  };
   myChezMoi.enable = true;
   myCommons.enable = true;
   myCron.enable = true;

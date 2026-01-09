@@ -33,7 +33,6 @@ in
         pkgs.tree-sitter
         pkgs.msmtp
         pkgs.isync
-        pkgs.emacsPackages.mu4e
       ]
       ++ pkgs.lib.optionals (!config.myUi.hyprland) [
         pkgs.emacs

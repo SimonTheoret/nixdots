@@ -12,12 +12,20 @@ let
   inherit userName;
 in
 {
+
   options.myCommons = {
     enable = mkOption {
       type = lib.types.bool;
       default = true;
       example = false;
       description = "Common functionalities of all possible configs. Enabled by default.";
+    };
+
+    firefoxResize = mkOption {
+      type = lib.types.str;
+      default = "1.00";
+      example = "1.25";
+      description = "Modify the firefox font size by changing the `layout.css.devPixelsPerPx` value.";
     };
   };
 
@@ -29,7 +37,9 @@ in
 
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
-      package = pkgs.firefox-bin;
+      preferences = {
+        "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
+      };
     };
 
     programs.starship = {

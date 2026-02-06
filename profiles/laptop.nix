@@ -36,7 +36,10 @@ in
   };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
-  myCommons.enable = true;
+  myCommons = {
+    enable = true;
+    firefoxResize = "1.25";
+  };
   myCron.enable = true;
   myEmacs = {
     enable = false;

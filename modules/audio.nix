@@ -1,18 +1,23 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myAudio;
 in
 {
-  imports = [];
+  imports = [ ];
 
   options.myAudio = {
     guiControls = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Use pavucontrol in a GUI to control audio. This option is set automatically if `config.myUi.useGUI=true`" ;
+      description = "Use pavucontrol in a GUI to control audio. This option is set automatically if `config.myUi.useGUI=true`";
     };
     enable = mkOption {
       type = lib.types.bool;
@@ -47,7 +52,8 @@ in
 
     programs.noisetorch.enable = cfg.noiseCanceling && cfg.enable;
 
-    environment.systemPackages = with pkgs; [pamixer] ++ pkgs.lib.optionals (cfg.guiControls) [pavucontrol];
+    environment.systemPackages =
+      with pkgs;
+      [ pamixer ] ++ pkgs.lib.optionals (cfg.guiControls) [ pavucontrol ];
   };
 }
-

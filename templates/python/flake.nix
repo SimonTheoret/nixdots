@@ -40,15 +40,13 @@
         { pkgs }:
         {
           default = pkgs.mkShell {
-            packages =
-              with pkgs;
-              [
-                python
-                basedpyright
-                ruff
-                isort
-                uv
-              ];
+            packages = with pkgs; [
+              python
+              basedpyright
+              ruff
+              isort
+              uv
+            ];
           };
         }
       );

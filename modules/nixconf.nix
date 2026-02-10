@@ -61,7 +61,10 @@ in
     environment.variables = {
       NIX_CONFIG = "download-buffer-size = 335544320";
     };
-    nix.settings.trusted-users = ["root" "@wheel"];
+    nix.settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
 
 }

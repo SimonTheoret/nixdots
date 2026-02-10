@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgsUnstable,
   ...
 }:
 
@@ -21,7 +22,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    virtualisation.docker.enable = true;
+    virtualisation.docker = {
+      enable = true;
+      package = pkgsUnstable.docker;
+    };
     hardware.nvidia-container-toolkit.enable = config.myNvidia.enable;
 
     hardware.graphics.enable32Bit = config.myNvidia.enable; # Necessary for enableNvidia
@@ -30,7 +34,7 @@ in
     #   enable = true;
     #   setSocketVariable = true;
     # };
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgsUnstable; [
       docker-compose
     ];
   };

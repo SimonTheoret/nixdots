@@ -39,6 +39,7 @@ in
       enable = true;
       preferences = {
         "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
+        "browser.fullscreen.autohide" = false;
       };
     };
 

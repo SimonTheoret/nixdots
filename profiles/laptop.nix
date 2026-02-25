@@ -51,6 +51,7 @@ in
   myDevTools = {
     enable = true;
     useLLM = false;
+    kbConfigSoftware = false;
   };
   myDocker.enable = true;
   myHelix = {

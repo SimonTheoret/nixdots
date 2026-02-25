@@ -12,17 +12,26 @@ let
 in
 {
   options.myDevTools = {
+
     enable = mkOption {
       type = lib.types.bool;
       default = true;
       example = false;
       description = "Packages used to create a development environment";
     };
+
     useLLM = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
       description = "Enable integration with Ollama, AIChat and Claude Code";
+    };
+
+    kbConfigSoftware = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Enable Bazecore for configuring a dygma keyboard";
     };
 
   };
@@ -79,7 +88,6 @@ in
       pkgs.python3Full
       pkgs.scooter
       pkgs.dust
-      pkgs.bazecor
     ]
     ++ [
       pkgsUnstable.lazygit
@@ -90,6 +98,9 @@ in
     ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ pkgs.drawio ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgs.aichat
+    ]
+    ++ optionals (config.myDevTools.useLLM) [
+      pkgs.bazecor
     ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgsUnstable.claude-code

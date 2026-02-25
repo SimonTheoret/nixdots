@@ -37,6 +37,7 @@ in
 
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
+      package = pkgs.firefox;
       preferences = {
         "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
         "browser.fullscreen.autohide" = false;

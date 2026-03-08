@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-nix flake check . --no-build
+nix flake check . --no-build "$@"

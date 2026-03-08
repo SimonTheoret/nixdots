@@ -36,6 +36,7 @@ in
   };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
+  myCleanup.enable = true;
   myCommons = {
     enable = true;
     firefoxResize = "1.25";

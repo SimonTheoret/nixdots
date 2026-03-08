@@ -9,14 +9,23 @@ let
   cfg = config.myBootLoader;
 in
 {
-  options.myBootLoader = {
-    enable = mkOption {
-      type = lib.types.bool;
-      default = true;
-      example = false;
-      description = "Configure Systemd bootloader";
+  options = {
+    myBootLoader = {
+      enable = mkOption {
+        type = lib.types.bool;
+        default = true;
+        example = false;
+        description = "Configure Systemd bootloader";
+      };
     };
-
+    myCleanup = {
+      enable = mkOption {
+        type = lib.types.bool;
+        default = true;
+        example = false;
+        description = "Enable nix maintenance as cron job";
+      };
+    };
   };
 
   config = {

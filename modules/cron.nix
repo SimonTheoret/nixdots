@@ -26,6 +26,9 @@ in
         [ ]
         ++ optionals (config.mySync.enable) [
           "*/15 * * * * ${userName}  . $HOME/.aws_env; $HOME/bin/sync.sh | tee $HOME/.sync.log"
+        ]
+        ++ optionals (config.myCleanup.enable) [
+          "* * 5 * * root  nix-store --verify --check-contents --repair"
         ];
     };
   };

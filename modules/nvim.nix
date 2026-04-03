@@ -19,13 +19,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      # package = pkgsUnstable.neovim-unwrapped;
-    };
-
     environment.systemPackages = with pkgsUnstable; [
       cmake # Needed to build some plugins
       cargo # Needed to build nvim Lua-Json5 plugin
@@ -36,6 +29,7 @@ in
       pandoc # For feed.nvim
       lua-language-server
       ast-grep
+      neovim
       # luajitPackages.luarocks
     ];
   };

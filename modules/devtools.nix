@@ -85,7 +85,7 @@ in
       pkgs.delta
       pkgs.yazi
       pkgs.nodejs_24
-      pkgs.python3Full
+      pkgs.python314
       pkgs.scooter
       pkgs.dust
     ]

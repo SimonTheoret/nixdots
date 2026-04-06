@@ -29,7 +29,7 @@
               (
                 with pkgs;
                 [
-                  python313Full
+                  python314
                   pyright
                   ruff
                   ruff-lsp

@@ -37,7 +37,7 @@ in
 
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
-      package = pkgs.firefox;
+      package = pkgs.firefox-bin;
       preferences = {
         "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
         "browser.fullscreen.autohide" = false;
@@ -117,7 +117,7 @@ in
       with pkgs;
       [
         noto-fonts
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         victor-mono
         fira-code
         fira-code-symbols

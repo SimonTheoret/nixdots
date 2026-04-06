@@ -36,6 +36,6 @@ in
         notmuch
         lynx
       ]
-      ++ pkgs.lib.optionals (config.myUi.useGUI || cfg.gui) [ thunderbird ];
+      ++ pkgs.lib.optionals (config.myUi.useGUI || cfg.gui) [ thunderbird-bin ];
   };
 }

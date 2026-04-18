@@ -65,29 +65,29 @@ in
     };
 
     environment.systemPackages = [
-      pkgs.eza
-      pkgs.gnumake
-      pkgs.zathura
-      pkgs.direnv
-      pkgs.fd
-      pkgs.fzf
-      pkgs.bat
-      pkgs.ripgrep
-      pkgs.btop
-      pkgs.htop
-      pkgs.tmux
-      pkgs.tldr
-      pkgs.nodePackages.prettier
-      pkgs.bash-language-server
-      pkgs.shellharden
-      pkgs.shfmt
-      pkgs.calc
-      pkgs.delta
-      pkgs.yazi
-      pkgs.nodejs_24
-      pkgs.python314
-      pkgs.scooter
-      pkgs.dust
+      pkgsUnstable.eza
+      pkgsUnstable.gnumake
+      pkgsUnstable.zathura
+      pkgsUnstable.direnv
+      pkgsUnstable.fd
+      pkgsUnstable.fzf
+      pkgsUnstable.bat
+      pkgsUnstable.ripgrep
+      pkgsUnstable.btop
+      pkgsUnstable.htop
+      pkgsUnstable.tmux
+      pkgsUnstable.tldr
+      pkgsUnstable.prettier
+      pkgsUnstable.bash-language-server
+      pkgsUnstable.shellharden
+      pkgsUnstable.shfmt
+      pkgsUnstable.calc
+      pkgsUnstable.delta
+      pkgsUnstable.yazi
+      pkgsUnstable.nodejs_24
+      pkgsUnstable.python314
+      pkgsUnstable.scooter
+      pkgsUnstable.dust
     ]
     ++ [
       pkgsUnstable.lazygit

@@ -63,6 +63,10 @@ in
       enable = true;
       enableSSHSupport = false;
     };
+    programs.fzf = {
+      keybindings = true;
+      fuzzyCompletion = true;
+    };
 
     environment.systemPackages = [
       pkgsUnstable.eza

@@ -83,6 +83,7 @@ in
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };
+  hardware.system76.enableAll = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = false;
   environment.variables = {

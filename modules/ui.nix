@@ -29,6 +29,12 @@ in
       example = true;
       description = "Configure HyprlandWM";
     };
+    cosmic = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure Cosmic";
+    };
     monitorsConfig = mkOption {
       type = lib.types.bool;
       default = false;
@@ -45,6 +51,11 @@ in
 
   config = mkIf cfg.enable {
     services.xserver.enable = cfg.i3WM || cfg.hyprland;
+
+    services.displayManager.cosmic-greeter.enable = cfg.cosmic;
+    services.desktopManager.cosmic.enable = cfg.cosmic;
+
+    services.desktopManager.cosmic.xwayland.enable = cfg.cosmic;
     services.displayManager.defaultSession =
       if cfg.i3WM then
         "none+i3"
@@ -62,7 +73,7 @@ in
       xwayland.enable = true;
     };
 
-    xdg.portal.enable = cfg.hyprland;
+    xdg.portal = mkIf cfg.hyprland { enable = true; };
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = lib.optionals cfg.hyprland "1";
       NIXOS_OZONE_WL = lib.optionals cfg.hyprland "1";

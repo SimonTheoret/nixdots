@@ -68,6 +68,7 @@ in
     monitorsConfig = false; # My laptop has a single screen
     useGUI = true;
     hyprland = true;
+    cosmic = false;
     i3WM = false;
   };
   myWireless.enable = true;

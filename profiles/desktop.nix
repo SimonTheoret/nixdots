@@ -44,7 +44,7 @@ in
     enable = true;
     firefoxResize = "1.0";
   };
-  myCron.enable = true;
+  myCron.enable = false;
   myEmacs = {
     enable = false;
   };

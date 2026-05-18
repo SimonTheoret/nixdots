@@ -21,8 +21,9 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
+      pkgsUnstable.helix
       # helix-master.helix.packages.
-      helix-master.packages.${pkgsUnstable.stdenv.hostPlatform.system}.default
+      # helix-master.packages.${pkgsUnstable.stdenv.hostPlatform.system}.default
     ];
   };
 }

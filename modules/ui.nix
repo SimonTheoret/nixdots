@@ -93,10 +93,8 @@ in
     # lets niri inherit the full PATH set up by niri-session.
     systemd.user.services.niri.enableDefaultPath = false;
 
-    services.gnome.gnome-keyring.enable = cfg.niri; # secret service
-    security.pam.services.swaylock = mkIf cfg.niri { };
-
-    programs.waybar.enable = cfg.hyprland || cfg.niri; # top bar
+    services.gnome.gnome-keyring.enable = cfg.niri || cfg.hyprland; # secret service
+    security.pam.services.swaylock = mkIf (cfg.niri || cfg.hyprland) { };
 
     programs.hyprland = mkIf cfg.hyprland {
       enable = true;
@@ -118,10 +116,14 @@ in
       ]
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.hyprland) [ ]
       ++ pkgs.lib.optionals (cfg.hyprland) [
+        waybar
         hyprpaper
         hyprshot
+        swaylock
+        swayidle
       ]
       ++ pkgs.lib.optionals (cfg.niri) [
+        waybar
         fuzzel
         swaylock
         mako

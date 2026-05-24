@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+nh os build . -H "$NIXOS_CONF"

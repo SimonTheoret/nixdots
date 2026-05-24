@@ -67,8 +67,8 @@ in
     enable = true;
     monitorsConfig = false; # My laptop has a single screen
     useGUI = true;
-    hyprland = false;
-    niri = true;
+    hyprland = true;
+    niri = false;
     cosmic = false;
     i3WM = false;
   };

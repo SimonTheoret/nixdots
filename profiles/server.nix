@@ -66,6 +66,7 @@ in
     monitorsConfig = false; # My server has a single screen
     useGUI = false;
     hyprland = false;
+    niri = false;
     i3WM = false;
   };
   myWireless.enable = true;

@@ -72,6 +72,7 @@ in
     useGUI = true;
     hyprland = true;
     i3WM = false;
+    niri = false;
   };
   myWireless.enable = false;
   mySync.enable = false;

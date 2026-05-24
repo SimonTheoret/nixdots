@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  userName,
   ...
 }:
 
@@ -29,12 +30,19 @@ in
       example = true;
       description = "Configure HyprlandWM";
     };
+    niri = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure Niri";
+    };
     cosmic = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
       description = "Configure Cosmic";
     };
+
     monitorsConfig = mkOption {
       type = lib.types.bool;
       default = false;
@@ -68,6 +76,28 @@ in
       wayland.enable = true;
     };
 
+    programs.niri.enable = cfg.niri;
+
+    services.greetd = mkIf cfg.niri {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${config.programs.niri.package}/bin/niri-session";
+          user = "${userName}";
+        };
+      };
+    };
+
+    # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
+    # unit which shadows the imported user-manager PATH. Disabling the default
+    # lets niri inherit the full PATH set up by niri-session.
+    systemd.user.services.niri.enableDefaultPath = false;
+
+    services.gnome.gnome-keyring.enable = cfg.niri; # secret service
+    security.pam.services.swaylock = mkIf cfg.niri { };
+
+    programs.waybar.enable = cfg.hyprland || cfg.niri; # top bar
+
     programs.hyprland = mkIf cfg.hyprland {
       enable = true;
       xwayland.enable = true;
@@ -89,8 +119,13 @@ in
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.hyprland) [ ]
       ++ pkgs.lib.optionals (cfg.hyprland) [
         hyprpaper
-        waybar
         hyprshot
+      ]
+      ++ pkgs.lib.optionals (cfg.niri) [
+        fuzzel
+        swaylock
+        mako
+        swayidle
       ]
       ++ pkgs.lib.optionals (cfg.i3WM) [
         i3status-rust

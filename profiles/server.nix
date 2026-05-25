@@ -24,6 +24,7 @@ in
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/nvim.nix
+    ../modules/spotify.nix
     ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
@@ -70,6 +71,9 @@ in
     i3WM = false;
   };
   myWireless.enable = true;
+  mySpotify = {
+    enable = false;
+  };
   mySync.enable = false;
   users.users.${userName} = {
     isNormalUser = true;

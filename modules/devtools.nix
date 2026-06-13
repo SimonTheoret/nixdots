@@ -55,7 +55,6 @@ in
         "devstral:24b"
       ];
       package = if config.myNvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
-      acceleration = if config.myNvidia.enable then "cuda" else false;
     };
 
     services.pcscd.enable = true;

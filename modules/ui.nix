@@ -70,7 +70,7 @@ in
       else if cfg.hyprland then
         "hyprland"
       else
-        abort "Unsupported default session for displayManager";
+        null;
     services.displayManager.sddm = mkIf cfg.hyprland {
       enable = true;
       wayland.enable = true;

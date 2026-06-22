@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) mkOption mkIf;
@@ -14,13 +19,8 @@ in
     };
   };
   config = mkIf cfg.enable {
-    programs.light = {
-      enable = true;
-      brightnessKeys = {
-        enable = true;
-        step = 3;
-      };
-    };
+    environment.systemPackages = with pkgs; [
+      brightnessctl
+    ];
   };
-
 }

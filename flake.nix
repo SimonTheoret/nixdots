@@ -8,6 +8,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     helix-master.url = "github:helix-editor/helix/master";
     helix-master.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    niri-wallpaper.url = "git+https://codeberg.org/IceShuttle/niri-wallpaper";
   };
 
   outputs =
@@ -17,6 +18,7 @@
       nixpkgs-unstable,
       flake-utils,
       helix-master,
+      niri-wallpaper,
       ...
     }@inputs:
     let
@@ -38,7 +40,6 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          helix-master = helix-master;
         };
         modules = [
           ./profiles/desktop.nix
@@ -53,7 +54,6 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          helix-master = helix-master;
         };
         modules = [
           ./profiles/laptop.nix
@@ -69,7 +69,6 @@
             config.allowUnfree = true;
 
           };
-          helix-master = helix-master;
         };
         modules = [
           ./profiles/server.nix

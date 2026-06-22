@@ -71,9 +71,9 @@ in
     enable = true;
     monitorsConfig = false;
     useGUI = true;
-    hyprland = true;
+    hyprland = false;
     i3WM = false;
-    niri = false;
+    niri = true;
   };
   myWireless.enable = false;
   mySpotify = {

@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   lib,
   userName,
@@ -128,6 +129,10 @@ in
         swaylock
         mako
         swayidle
+        inputs.niri-wallpaper.packages.${pkgs.system}.default
+        swaybg
+        imagemagick
+        awww
       ]
       ++ pkgs.lib.optionals (cfg.i3WM) [
         i3status-rust

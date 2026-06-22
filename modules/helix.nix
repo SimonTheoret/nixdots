@@ -2,10 +2,11 @@
   config,
   lib,
   pkgsUnstable,
-  helix-master,
+  # inputs,
   ...
 }:
 let
+  # helix-master = inputs.helix-master;
   inherit (lib) mkOption mkIf;
   cfg = config.myHelix;
 in

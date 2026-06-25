@@ -79,15 +79,21 @@ in
 
     programs.niri.enable = cfg.niri;
 
+    programs.regreet = mkIf cfg.niri {
+      enable = true;
+    };
     services.greetd = mkIf cfg.niri {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${config.programs.niri.package}/bin/niri-session";
-          user = "${userName}";
-        };
-      };
     };
+    # services.greetd = mkIf cfg.niri {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${config.programs.niri.package}/bin/niri-session";
+    #       user = "${userName}";
+    #     };
+    #   };
+    # };
 
     # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
     # unit which shadows the imported user-manager PATH. Disabling the default

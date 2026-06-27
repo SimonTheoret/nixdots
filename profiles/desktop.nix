@@ -50,8 +50,8 @@ in
     enable = false;
   };
   myEmail = {
-    enable = true;
-    gui = true;
+    enable = false;
+    gui = false;
   };
   myDevTools = {
     enable = true;

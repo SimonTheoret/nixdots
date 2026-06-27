@@ -121,7 +121,10 @@ in
     };
     environment.systemPackages =
       with pkgs;
-      [ ]
+      [
+
+        (pkgs.callPackage ../packages/wallpaper/wallpaper.nix { })
+      ]
       ++ pkgs.lib.optionals (cfg.hyprland) [ xdg-desktop-portal-gtk ]
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.i3WM) [
         (pkgs.callPackage ../packages/autorandr/autorandr.nix { })

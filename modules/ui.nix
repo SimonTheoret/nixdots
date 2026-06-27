@@ -81,6 +81,11 @@ in
 
     programs.regreet = mkIf cfg.niri {
       enable = true;
+      cageArgs = [
+        "-s"
+        "-d"
+        "-mlast"
+      ];
     };
     services.greetd = mkIf cfg.niri {
       enable = true;

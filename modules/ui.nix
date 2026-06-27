@@ -3,7 +3,6 @@
   inputs,
   pkgs,
   lib,
-  userName,
   ...
 }:
 
@@ -81,6 +80,13 @@ in
 
     programs.regreet = mkIf cfg.niri {
       enable = true;
+      settings = {
+        skip_selection = true;
+        background = {
+          path = "${(pkgs.callPackage ../packages/wallpaper/wallpaper.nix { })}/wallpaper.jpg";
+          fit = "Fille";
+        };
+      };
       cageArgs = [
         "-s"
         "-d"
@@ -90,15 +96,6 @@ in
     services.greetd = mkIf cfg.niri {
       enable = true;
     };
-    # services.greetd = mkIf cfg.niri {
-    #   enable = true;
-    #   settings = {
-    #     default_session = {
-    #       command = "${config.programs.niri.package}/bin/niri-session";
-    #       user = "${userName}";
-    #     };
-    #   };
-    # };
 
     # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
     # unit which shadows the imported user-manager PATH. Disabling the default

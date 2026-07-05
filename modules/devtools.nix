@@ -70,34 +70,32 @@ in
     environment.systemPackages = [
       pkgsUnstable.eza
       pkgsUnstable.gnumake
-      pkgsUnstable.zathura
       pkgsUnstable.direnv
       pkgsUnstable.fd
       pkgsUnstable.fzf
       pkgsUnstable.bat
       pkgsUnstable.ripgrep
       pkgsUnstable.btop
-      pkgsUnstable.htop
-      pkgsUnstable.tmux
       pkgsUnstable.tldr
       pkgsUnstable.prettier
       pkgsUnstable.bash-language-server
       pkgsUnstable.shellharden
       pkgsUnstable.shfmt
-      pkgsUnstable.calc
       pkgsUnstable.delta
       pkgsUnstable.yazi
-      pkgsUnstable.nodejs_24
       pkgsUnstable.python314
       pkgsUnstable.scooter
       pkgsUnstable.dust
+      pkgsUnstable.yaml-language-server
+      pkgsUnstable.docker-language-server
+      pkgsUnstable.systemctl-tui
     ]
     ++ [
       pkgsUnstable.lazygit
       pkgsUnstable.gitui
       pkgsUnstable.zellij
     ]
-    ++ optionals (config.myDocker.enable) [ pkgs.lazydocker ]
+    ++ optionals (config.myVirtualization.enable) [ pkgs.lazydocker ]
     ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ pkgs.drawio ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgs.aichat

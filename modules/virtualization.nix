@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   pkgsUnstable,
   ...
@@ -8,20 +7,26 @@
 
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myDocker;
+  cfg = config.myVirtualization;
 in
 {
-  options.myDocker = {
+  options.myVirtualization = {
 
     enable = mkOption {
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Configure Docker and Docker-Compose";
+      description = "Configure Docker, Docker-Compose and Podman";
     };
   };
 
   config = mkIf cfg.enable {
+
+    virtualisation.podman = {
+      enable = true;
+      autoPrune.enable = true;
+    };
+
     virtualisation.docker = {
       enable = true;
       package = pkgsUnstable.docker;

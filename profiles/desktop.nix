@@ -16,10 +16,11 @@ in
     ../modules/commons.nix
     ../modules/cron.nix
     ../modules/devtools.nix
-    ../modules/docker.nix
     ../modules/email.nix
     ../modules/emacs.nix
+    ../modules/gitlab.nix
     ../modules/helix.nix
+    ../modules/lab.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
@@ -27,6 +28,7 @@ in
     ../modules/spotify.nix
     ../modules/sync.nix
     ../modules/ui.nix
+    ../modules/virtualization.nix
     ../modules/wireless.nix
     ../hardware/desktop-hardware-configuration.nix
   ];
@@ -53,16 +55,20 @@ in
     enable = false;
     gui = false;
   };
+  myGitlab = {
+    enable = false;
+  };
   myDevTools = {
     enable = true;
     useLLM = false;
     kbConfigSoftware = true;
   };
-  myDocker.enable = true;
+  myVirtualization.enable = true;
   myHelix = {
     enable = true;
   };
   myLight.enable = false; # false by default
+  myLab.enable = true;
   myNvidia.enable = true;
   myNeovim = {
     enable = true;
@@ -86,7 +92,7 @@ in
       "wheel"
       "video"
     ]
-    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myVirtualization.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

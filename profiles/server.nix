@@ -16,7 +16,7 @@ in
     ../modules/commons.nix
     ../modules/cron.nix
     ../modules/devtools.nix
-    ../modules/docker.nix
+    ../modules/virtualization.nix
     ../modules/email.nix
     ../modules/emacs.nix
     ../modules/helix.nix
@@ -52,7 +52,7 @@ in
     useLLM = false;
     kbConfigSoftware = true;
   };
-  myDocker.enable = true;
+  myVirtualization.enable = true;
   myHelix = {
     enable = true;
   };
@@ -81,7 +81,7 @@ in
       "wheel"
       "video"
     ]
-    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myVirtualization.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

@@ -16,10 +16,11 @@ in
     ../modules/commons.nix
     ../modules/cron.nix
     ../modules/devtools.nix
-    ../modules/docker.nix
     ../modules/email.nix
     ../modules/emacs.nix
+    ../modules/gitlab.nix
     ../modules/helix.nix
+    ../modules/lab.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
@@ -27,6 +28,7 @@ in
     ../modules/spotify.nix
     ../modules/sync.nix
     ../modules/ui.nix
+    ../modules/virtualization.nix
     ../modules/wireless.nix
     ../hardware/laptop-hardware-configuration.nix
   ];
@@ -43,6 +45,12 @@ in
     firefoxResize = "1.25";
   };
   myCron.enable = false;
+  myDevTools = {
+    enable = true;
+    useLLM = false;
+    kbConfigSoftware = false;
+  };
+  myVirtualization.enable = true;
   myEmacs = {
     enable = false;
   };
@@ -50,16 +58,17 @@ in
     enable = false;
     gui = false;
   };
-  myDevTools = {
-    enable = true;
-    useLLM = false;
-    kbConfigSoftware = false;
+  myGitlab = {
+    enable = false;
   };
-  myDocker.enable = true;
   myHelix = {
     enable = true;
   };
   myLight.enable = true; # false by default
+  myLab = {
+    enable = true;
+    plane = true;
+  };
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
@@ -85,7 +94,7 @@ in
       "video"
       "dialout"
     ]
-    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myVirtualization.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

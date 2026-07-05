@@ -19,6 +19,7 @@ in
     ../modules/docker.nix
     ../modules/email.nix
     ../modules/emacs.nix
+    ../modules/gitlab.nix
     ../modules/helix.nix
     ../modules/light.nix
     ../modules/nixconf.nix
@@ -43,6 +44,12 @@ in
     firefoxResize = "1.25";
   };
   myCron.enable = false;
+  myDevTools = {
+    enable = true;
+    useLLM = false;
+    kbConfigSoftware = false;
+  };
+  myDocker.enable = true;
   myEmacs = {
     enable = false;
   };
@@ -50,12 +57,9 @@ in
     enable = false;
     gui = false;
   };
-  myDevTools = {
+  myGitlab = {
     enable = true;
-    useLLM = false;
-    kbConfigSoftware = false;
   };
-  myDocker.enable = true;
   myHelix = {
     enable = true;
   };

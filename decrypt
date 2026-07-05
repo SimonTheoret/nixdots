@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+source ./routines/lib.sh
+
+DIR=${HOME}/.config/sops/age
+FILE=keys.txt
+DEST="${DIR}/${FILE}"
+SRC="key.gpg"
+
+if [[ -f "$DEST" ]]; then
+	failure "File ${DEST} already exists. This script should not be run if the ${FILE} is already present at $DEST."
+fi
+
+if ! command -v gpg >/dev/null 2>&1; then
+	failure "gpg must be installed and in the \$PATH."
+fi
+
+mkdir -p "$DIR"
+unset -v password
+set +o allexport
+IFS= read -rsp 'Password:' password </dev/tty
+gpg --batch -d --passphrase "$password" --output "$DEST" "$SRC"

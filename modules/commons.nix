@@ -128,6 +128,9 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        age
+        ssh-to-age
+        sops
         zoxide
         wget
         curl

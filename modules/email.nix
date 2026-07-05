@@ -31,7 +31,6 @@ in
       [
         isync
         msmtp
-        gnupg
         neomutt
         notmuch
         lynx

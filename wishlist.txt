@@ -1,0 +1,17 @@
+proxmox
+coolify
+searxng
+deepseek api?
+immich
+tailscale
+headscale
+wireguard
+wolnut
+jellyfin
+navidrome
+pihole
+vpn (netbird ou tailscale)
+vpn (pour les isos)
+grapheneOS
+rockbox?
+clé 2fa

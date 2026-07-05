@@ -49,6 +49,7 @@ in
     enable = true;
     useLLM = false;
     kbConfigSoftware = false;
+    drawingTools = true;
   };
   myVirtualization.enable = true;
   myEmacs = {

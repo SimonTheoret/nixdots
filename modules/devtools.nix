@@ -33,6 +33,12 @@ in
       example = true;
       description = "Enable Bazecore for configuring a dygma keyboard";
     };
+    drawingTools = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Enable Draw.io and Drawy";
+    };
 
   };
 
@@ -96,7 +102,10 @@ in
       pkgsUnstable.zellij
     ]
     ++ optionals (config.myVirtualization.enable) [ pkgs.lazydocker ]
-    ++ optionals (config.myUi.useGUI && !config.myUi.hyprland) [ pkgs.drawio ]
+    ++ optionals (config.myUi.useGUI && cfg.drawingTools) [
+      pkgs.drawio
+      pkgs.drawy
+    ]
     ++ optionals (config.myDevTools.useLLM) [
       pkgs.aichat
     ]

@@ -62,13 +62,17 @@ in
     enable = true;
     useLLM = false;
     kbConfigSoftware = true;
+    drawingTools = true;
   };
   myVirtualization.enable = true;
   myHelix = {
     enable = true;
   };
   myLight.enable = false; # false by default
-  myLab.enable = true;
+  myLab = {
+    enable = true;
+    plane = true;
+  };
   myNvidia.enable = true;
   myNeovim = {
     enable = true;

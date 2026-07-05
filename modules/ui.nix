@@ -84,7 +84,7 @@ in
         skip_selection = true;
         background = {
           path = "${(pkgs.callPackage ../packages/wallpaper/wallpaper.nix { })}/wallpaper.jpg";
-          fit = "Fille";
+          fit = "Fill";
         };
       };
       cageArgs = [

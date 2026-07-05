@@ -21,6 +21,7 @@ in
     ../modules/emacs.nix
     ../modules/gitlab.nix
     ../modules/helix.nix
+    ../modules/lab.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
@@ -63,6 +64,7 @@ in
   myHelix = {
     enable = true;
   };
+  myLab.enable = true;
   myLight.enable = true; # false by default
   myNvidia.enable = false;
   myNeovim = {

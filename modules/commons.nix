@@ -138,7 +138,7 @@ in
         man-pages
         man-pages-posix
         zip
-        nixfmt-rfc-style
+        nixfmt
         file
         fishPlugins.fifc
         chafa

@@ -16,7 +16,6 @@ in
     ../modules/commons.nix
     ../modules/cron.nix
     ../modules/devtools.nix
-    ../modules/docker.nix
     ../modules/email.nix
     ../modules/emacs.nix
     ../modules/gitlab.nix
@@ -29,6 +28,7 @@ in
     ../modules/spotify.nix
     ../modules/sync.nix
     ../modules/ui.nix
+    ../modules/virtualization.nix
     ../modules/wireless.nix
     ../hardware/laptop-hardware-configuration.nix
   ];
@@ -50,7 +50,7 @@ in
     useLLM = false;
     kbConfigSoftware = false;
   };
-  myDocker.enable = true;
+  myVirtualization.enable = true;
   myEmacs = {
     enable = false;
   };
@@ -59,13 +59,16 @@ in
     gui = false;
   };
   myGitlab = {
-    enable = true;
+    enable = false;
   };
   myHelix = {
     enable = true;
   };
-  myLab.enable = true;
   myLight.enable = true; # false by default
+  myLab = {
+    enable = true;
+    plane = true;
+  };
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
@@ -91,7 +94,7 @@ in
       "video"
       "dialout"
     ]
-    ++ optionals (config.myDocker.enable) [ "docker" ]
+    ++ optionals (config.myVirtualization.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

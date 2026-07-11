@@ -86,6 +86,7 @@ in
       pkgsUnstable.prettier
       pkgsUnstable.bash-language-server
       pkgsUnstable.shellharden
+      pkgsUnstable.shellcheck
       pkgsUnstable.shfmt
       pkgsUnstable.delta
       pkgsUnstable.yazi

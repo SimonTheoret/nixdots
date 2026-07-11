@@ -39,10 +39,34 @@ in
     programs.firefox = mkIf (config.myUi.useGUI) {
       enable = true;
       package = pkgs.firefox-bin;
-      preferences = {
-        "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
-        "browser.fullscreen.autohide" = false;
-      };
+      policies =
+        { }
+        // lib.attrsets.optionalAttrs (config.myLab.searxng) {
+          SearchEngines = {
+            Remove = [
+              "eBay"
+              "Google"
+              "Bing"
+              "Ecosia"
+              "Wikipedia"
+              "Perplexity"
+            ];
+            Add = [
+              {
+                "Name" = "Searxng";
+                "URLTemplate" = "http:://localhost:8080/search";
+
+                "IconURL" = "http://localhost:8080/static/themes/simple/img/searxng.png";
+                "Alias" = "Searxng";
+              }
+            ];
+            Default = "Searxng";
+          };
+          preferences = {
+            "layout.css.devPixelsPerPx" = "${cfg.firefoxResize}";
+            "browser.fullscreen.autohide" = false;
+          };
+        };
     };
 
     programs.starship = {

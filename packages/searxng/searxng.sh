@@ -1,8 +1,7 @@
-#! /usr/bin/env bash
-
 PROJECT="searxng"
 VERBOSE="false"
 CMD="start"
+DOCKER_COMPOSE=@DOCKER@
 
 usage() {
 	echo "Usage: $0 [OPTIONS] <CMD>"
@@ -16,11 +15,11 @@ usage() {
 }
 
 start() {
-	docker compose -p searxng up
+	docker compose -p searxng -f $DOCKER_COMPOSE up
 }
 
 stop() {
-	docker compose -p searxng down
+	docker compose -p searxng -f $DOCKER_COMPOSE down
 }
 
 if [[ $# -eq 0 ]]; then
@@ -35,6 +34,7 @@ while [[ $# -gt 0 ]]; do
 		;;
 	-v | --verbose)
 		VERBOSE=true
+		set -x
 		shift
 		;;
 	*)

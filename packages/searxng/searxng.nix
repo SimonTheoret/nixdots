@@ -1,29 +1,38 @@
 {
-  stdenv,
-  version ? "latest",
-  host ? "localhost",
-  port ? "8080",
+  lib,
+  writeShellApplication,
+  docker,
+  docker-compose,
+  bash,
+  searxngVersion ? "latest",
+  searxngPort ? "8080",
+  searxngAddress ? null,
 }:
 
-stdenv.mkDerivation {
-  pname = "searxng";
-  src = ./.;
-  version = "${version}";
-  installPhase = ''
+let
+  fs = lib.fileset;
+  dockerComposeFile = fs.toSource {
+    root = ./.;
+    fileset = ./docker-compose.yml;
+  };
+in
 
-    runHook preInstall
-
-    mkdir -p $out/bin
-    cp  ./searxng $out/bin/searxng
-    cp ./docker-compose.yaml $out/
-
-    echo "SEARXNG_VERSION=${version}>>.env"
-    echo "SEARXNG_PORT=${port}>>.env"
-    echo "SEARXNG_HOST=${host}>>.env"
-
-    patchShebangs --host $out/bin/searxng
-
-    runHook postInstall
-  '';
-
+writeShellApplication {
+  name = "searxng";
+  text = builtins.replaceStrings [ "@DOCKER@" ] [ "${dockerComposeFile}/docker-compose.yml" ] (
+    builtins.readFile ./searxng.sh
+  );
+  runtimeEnv = {
+    SEARXNG_VERSION = "${searxngVersion}";
+    SEARXNG_PORT = "${searxngPort}";
+  }
+  // lib.attrsets.optionalAttrs (searxngAddress != null) {
+    SEARXNG_HOST = "${searxngAddress}";
+  };
+  runtimeInputs = [
+    docker
+    bash
+    docker-compose
+  ];
+  excludeShellChecks = [ ];
 }

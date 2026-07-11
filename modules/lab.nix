@@ -9,6 +9,7 @@ let
   inherit (lib) mkOption mkIf optionals;
   cfg = config.myLab;
   plane = (pkgs.callPackage ../packages/plane/plane.nix { });
+  searxng = (pkgs.callPackage ../packages/searxng/searxng.nix { });
 in
 {
 
@@ -25,6 +26,12 @@ in
       example = true;
       description = "Configure Plane";
     };
+    searxng = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure Searxng";
+    };
   };
 
   config = mkIf (cfg.enable && config.myVirtualization.enable) {
@@ -40,7 +47,20 @@ in
       };
 
     };
-    environment.systemPackages = [ ] ++ optionals (cfg.plane) [ plane ];
+    systemd.services.searxng = mkIf (cfg.searxng) {
+      wantedBy = [ "multi-user.target" ];
+      after = [
+        "docker.service"
+        "docker.socket"
+      ];
+      serviceConfig = {
+        ExecStart = "${searxng}/bin/searxng -v start";
+      };
+
+    };
+
+    environment.systemPackages =
+      [ ] ++ optionals (cfg.plane) [ plane ] ++ optionals (cfg.searxng) [ searxng ];
 
   };
 }

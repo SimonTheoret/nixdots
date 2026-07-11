@@ -72,6 +72,7 @@ in
   myLab = {
     enable = true;
     plane = true;
+    searxng = true;
   };
   myNvidia.enable = true;
   myNeovim = {

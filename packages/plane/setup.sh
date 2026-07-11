@@ -1,6 +1,6 @@
+set -x
 VERSION=@VERSION@
 BRANCH=${BRANCH:-master}
-ASSET_DIR=@ASSET_DIR@
 COMPOSE_PROJECT_NAME=plane-app
 PLANE_INSTALL_DIR=$PWD/$COMPOSE_PROJECT_NAME
 export APP_RELEASE=$VERSION
@@ -11,12 +11,11 @@ export RELEASE_DOWNLOAD_URL="https://github.com/$GH_REPO/releases/download"
 export FALLBACK_DOWNLOAD_URL="https://raw.githubusercontent.com/$GH_REPO/$BRANCH/deployments/cli/community"
 
 CPU_ARCH=$(uname -m)
-OS_NAME=$(uname)
 UPPER_CPU_ARCH=$(tr '[:lower:]' '[:upper:]' <<<"$CPU_ARCH")
 
-mkdir -p $PLANE_INSTALL_DIR/archive
-DOCKER_FILE_PATH="$ASSET_DIR/docker-compose.yaml"
-DOCKER_ENV_PATH="$ASSET_DIR/plane.env"
+mkdir -p "$PLANE_INSTALL_DIR"/archive
+DOCKER_FILE_PATH="@ASSET_DIR@/docker-compose.yaml"
+DOCKER_ENV_PATH="@ASSET_DIR@/plane.env"
 
 function print_header() {
 	:
@@ -27,7 +26,7 @@ function spinner() {
 }
 
 function initialize() {
-	printf "Please wait while we check the availability of Docker images for the selected release ($APP_RELEASE) with ${UPPER_CPU_ARCH} support." >&2
+	printf "Please wait while we check the availability of Docker images for the selected release (%s) with ${UPPER_CPU_ARCH} support." "$APP_RELEASE" >&2
 
 	if [ "$CUSTOM_BUILD" == "true" ]; then
 		echo "" >&2
@@ -45,9 +44,7 @@ function initialize() {
 
 	echo "" >&2
 
-	wait "$pid"
-
-	if [ $? -eq 0 ]; then
+	if [ "$(wait "$pid")" -eq 0 ]; then
 		echo "Plane supports ${CPU_ARCH}" >&2
 		echo "available"
 		return 0
@@ -113,16 +110,17 @@ function download() {
 	:
 }
 function startServices() {
+	bash -c "$COMPOSE_CMD -f $DOCKER_FILE_PATH --env-file=$DOCKER_ENV_PATH pull"
 	bash -c "$COMPOSE_CMD -f $DOCKER_FILE_PATH --env-file=$DOCKER_ENV_PATH up -d --pull if_not_present --quiet-pull"
 
 	local migrator_container_id=$(docker container ls -aq -f "name=$COMPOSE_PROJECT_NAME-migrator")
 	if [ -n "$migrator_container_id" ]; then
-		local idx=0
+		# local idx=0
 		while docker inspect --format='{{.State.Status}}' $migrator_container_id | grep -q "running"; do
 			local message=">> Waiting for Data Migration to finish"
-			local dots=$(printf '%*s' $idx | tr ' ' '.')
-			echo -ne "\r$message$dots"
-			((idx++))
+			# local dots=$(printf '%*s' $idx | tr ' ' '.')
+			# echo -ne "\r$message$dots"
+			# ((idx++))
 			sleep 1
 		done
 	fi
@@ -151,7 +149,7 @@ function startServices() {
 		exit 1
 	fi
 
-	local idx2=0
+	# local idx2=0
 	local api_ready=true    # assume success, flip on timeout
 	local max_wait_time=300 # 5 minutes timeout
 	local start_time=$(date +%s)
@@ -176,9 +174,9 @@ function startServices() {
 		fi
 
 		local message=">> Waiting for API Service to Start (${elapsed_time}s)"
-		local dots=$(printf '%*s' $idx2 | tr ' ' '.')
-		echo -ne "\r$message$dots"
-		((idx2++))
+		# local dots=$(printf '%*s' $idx2 | tr ' ' '.')
+		# echo -ne "\r$message$dots"
+		# ((idx2++))
 		sleep 1
 	done
 	printf "\r\033[K"
@@ -361,17 +359,14 @@ function askForAction() {
 		echo "   7) Backup Data"
 		echo "   8) Exit"
 		echo
-		read -p "Action [2]: " ACTION
+		read -pr "Action [2]: " ACTION
+		echo "$ACTION"
 		until [[ -z "$ACTION" || "$ACTION" =~ ^[1-8]$ ]]; do
 			echo "$ACTION: invalid selection."
-			read -p "Action [2]: " ACTION
+			read -pr "Action [2]: " ACTION
 		done
-
-		if [ -z "$ACTION" ]; then
-			ACTION=2
-		fi
-		echo
 	fi
+	ACTION=""
 
 	if [ "$ACTION" == "1" ] || [ "$DEFAULT_ACTION" == "install" ]; then
 		install

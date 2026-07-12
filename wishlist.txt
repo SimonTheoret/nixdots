@@ -1,6 +1,6 @@
 proxmox
 coolify
-searxng
+~searxng~
 deepseek api?
 immich
 tailscale
@@ -18,3 +18,4 @@ clé 2fa
 keepass(XC?)
 DNS
 headscale
+~plane~

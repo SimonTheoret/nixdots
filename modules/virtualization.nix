@@ -30,6 +30,7 @@ in
     virtualisation.docker = {
       enable = true;
       package = pkgsUnstable.docker;
+      rootless.enable = true;
     };
     hardware.nvidia-container-toolkit.enable = config.myNvidia.enable;
 

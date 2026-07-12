@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkOption mkIf;
-  cfg = config.myVirtualization;
+  cfg = config.myVirtualisation;
 in
 {
-  options.myVirtualization = {
+  options.myVirtualisation = {
 
     enable = mkOption {
       type = lib.types.bool;

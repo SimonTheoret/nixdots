@@ -51,7 +51,7 @@ in
     kbConfigSoftware = false;
     drawingTools = true;
   };
-  myVirtualization.enable = true;
+  myVirtualisation.enable = true;
   myEmacs = {
     enable = false;
   };
@@ -95,7 +95,7 @@ in
       "video"
       "dialout"
     ]
-    ++ optionals (config.myVirtualization.enable) [ "docker" ]
+    ++ optionals (config.myVirtualisation.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

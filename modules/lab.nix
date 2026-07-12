@@ -34,7 +34,7 @@ in
     };
   };
 
-  config = mkIf (cfg.enable && config.myVirtualization.enable) {
+  config = mkIf (cfg.enable && config.myVirtualisation.enable) {
 
     systemd.services.plane = mkIf (cfg.plane) {
       wantedBy = [ "multi-user.target" ];

@@ -64,7 +64,7 @@ in
     kbConfigSoftware = true;
     drawingTools = true;
   };
-  myVirtualization.enable = true;
+  myVirtualisation.enable = true;
   myHelix = {
     enable = true;
   };
@@ -97,7 +97,7 @@ in
       "wheel"
       "video"
     ]
-    ++ optionals (config.myVirtualization.enable) [ "docker" ]
+    ++ optionals (config.myVirtualisation.enable) [ "docker" ]
     ++ optionals (config.myAudio.enable) [ "audio" ]
     ++ optionals (config.myWireless.enable) [ "networkmanager" ];
   };

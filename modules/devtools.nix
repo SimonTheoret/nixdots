@@ -102,7 +102,7 @@ in
       pkgsUnstable.gitui
       pkgsUnstable.zellij
     ]
-    ++ optionals (config.myVirtualization.enable) [ pkgs.lazydocker ]
+    ++ optionals (config.myVirtualisation.enable) [ pkgs.lazydocker ]
     ++ optionals (config.myUi.useGUI && cfg.drawingTools) [
       pkgs.drawio
       pkgs.drawy

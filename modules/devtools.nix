@@ -96,6 +96,7 @@ in
       pkgsUnstable.yaml-language-server
       pkgsUnstable.docker-language-server
       pkgsUnstable.systemctl-tui
+      pkgsUnstable.nix-fast-build
     ]
     ++ [
       pkgsUnstable.lazygit

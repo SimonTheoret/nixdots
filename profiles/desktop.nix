@@ -73,6 +73,7 @@ in
     enable = true;
     plane = true;
     searxng = true;
+    appflowy = true;
   };
   myNvidia.enable = true;
   myNeovim = {

@@ -10,6 +10,7 @@ let
   cfg = config.myLab;
   plane = (pkgs.callPackage ../packages/plane/plane.nix { });
   searxng = (pkgs.callPackage ../packages/searxng/searxng.nix { });
+  appflowy = (pkgs.callPackage ../packages/appflowy/appflowy.nix { });
 in
 {
 
@@ -31,6 +32,12 @@ in
       default = false;
       example = true;
       description = "Configure Searxng";
+    };
+    appflowy = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure appflowy";
     };
   };
 
@@ -58,9 +65,22 @@ in
       };
 
     };
+    systemd.services.appflowy = mkIf (cfg.appflowy) {
+      wantedBy = [ "multi-user.target" ];
+      after = [
+        "docker.service"
+        "docker.socket"
+      ];
+      serviceConfig = {
+        ExecStart = "${appflowy}/bin/appflowy -v start";
+      };
+    };
 
     environment.systemPackages =
-      [ ] ++ optionals (cfg.plane) [ plane ] ++ optionals (cfg.searxng) [ searxng ];
+      [ ]
+      ++ optionals (cfg.plane) [ plane ]
+      ++ optionals (cfg.searxng) [ searxng ]
+      ++ optionals (cfg.appflowy) [ appflowy ];
 
   };
 }

@@ -9,6 +9,7 @@
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myUi;
+  wallpaper = pkgs.callPackage ../packages/wallpaper/wallpaper.nix { };
 in
 {
   options.myUi = {
@@ -83,7 +84,7 @@ in
       settings = {
         skip_selection = true;
         background = {
-          path = "${(pkgs.callPackage ../packages/wallpaper/wallpaper.nix { })}/wallpaper.jpg";
+          path = "${wallpaper}/wallpaper.jpg";
           fit = "Fill";
         };
       };
@@ -118,9 +119,9 @@ in
     };
     environment.systemPackages =
       with pkgs;
-      [
-
-        (pkgs.callPackage ../packages/wallpaper/wallpaper.nix { })
+      [ ]
+      ++ pkgs.lib.optionals (config.services.greetd.enable) [
+        wallpaper
       ]
       ++ pkgs.lib.optionals (cfg.hyprland) [ xdg-desktop-portal-gtk ]
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.i3WM) [

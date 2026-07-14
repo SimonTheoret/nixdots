@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  hostName,
   ...
 }:
 
@@ -45,7 +46,7 @@ in
 
     nixpkgs.config.allowUnfree = true;
     time.timeZone = "America/Montreal";
-    networking.hostName = "nixos"; # Define your hostname.
+    networking.hostName = "${hostName}"; # Define your hostname.
     boot.loader.systemd-boot.enable = mkIf cfg.enable true;
     boot.loader.efi.canTouchEfiVariables = mkIf cfg.enable true;
     boot.loader.systemd-boot.configurationLimit = mkIf cfg.enable 30;

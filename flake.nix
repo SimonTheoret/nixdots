@@ -38,6 +38,7 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          hostName = "desktop";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
@@ -52,6 +53,7 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          hostName = "laptop";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
@@ -66,6 +68,7 @@
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
+          hostName = "server";
           pkgsUnstable = import nixpkgs-unstable {
             system = "aarch64-linux";
             config.allowUnfree = true;

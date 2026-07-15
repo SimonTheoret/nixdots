@@ -4,6 +4,7 @@
   lib,
   pkgsUnstable,
   userName,
+  colmena,
   ...
 }:
 let
@@ -153,6 +154,7 @@ in
       with pkgs;
       [
         age
+        colmena.packages.${pkgs.system}.colmena
         ssh-to-age
         sops
         zoxide

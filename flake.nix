@@ -11,6 +11,7 @@
     niri-wallpaper.url = "git+https://codeberg.org/IceShuttle/niri-wallpaper";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    colmena.url = "github:zhaofengli/colmena";
   };
 
   outputs =
@@ -21,6 +22,7 @@
       flake-utils,
       helix-master,
       niri-wallpaper,
+      colmena,
       ...
     }@inputs:
     let
@@ -33,10 +35,37 @@
       ];
     in
     {
+      colmenaHive = colmena.lib.makeHive self.outputs.colmena;
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [ ];
+          };
+          specialArgs = {
+            inherit inputs outputs colmena;
+            userName = "simon";
+            hostName = "server";
+            pkgsUnstable = import nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+
+          };
+        };
+        slow = {
+          deployment = {
+            targetHost = "192.168.18.14";
+          };
+          imports = [
+            ./profiles/server.nix
+          ];
+        };
+      };
 
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs colmena;
           userName = "simon";
           hostName = "desktop";
           pkgsUnstable = import nixpkgs-unstable {
@@ -51,7 +80,7 @@
 
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs colmena;
           userName = "simon";
           hostName = "laptop";
           pkgsUnstable = import nixpkgs-unstable {
@@ -66,11 +95,11 @@
 
       nixosConfigurations.server = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs colmena;
           userName = "simon";
           hostName = "server";
           pkgsUnstable = import nixpkgs-unstable {
-            system = "aarch64-linux";
+            system = "x86_64-linux";
             config.allowUnfree = true;
 
           };

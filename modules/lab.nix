@@ -37,7 +37,19 @@ in
       type = lib.types.bool;
       default = false;
       example = true;
-      description = "Configure appflowy";
+      description = "Configure Appflowy";
+    };
+    tailscale = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure Tailscale";
+    };
+    gitea = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Configure Gitea";
     };
   };
 
@@ -75,7 +87,21 @@ in
         ExecStart = "${appflowy}/bin/appflowy -v start";
       };
     };
+    services.tailscale = mkIf (cfg.tailscale) {
+      enable = true;
+    };
 
+    services.gitea = mkIf (cfg.gitea) {
+      enable = true;
+      database = {
+        type = "sqlite";
+      };
+      settings = {
+        server.PROTOCOL = "http+unix";
+        server.ROOT_URL = "https://git.mezon.com/";
+        server.DOMAIN = "git.mezon.com";
+      };
+    };
     environment.systemPackages =
       [ ]
       ++ optionals (cfg.plane) [ plane ]

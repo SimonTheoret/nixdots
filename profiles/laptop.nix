@@ -68,7 +68,10 @@ in
   myLight.enable = true; # false by default
   myLab = {
     enable = true;
-    plane = true;
+    plane = false;
+    searxng = true;
+    appflowy = false;
+    tailscale = true;
   };
   myNvidia.enable = false;
   myNeovim = {

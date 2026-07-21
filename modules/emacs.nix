@@ -34,10 +34,10 @@ in
         pkgs.msmtp
         pkgs.isync
       ]
-      ++ pkgs.lib.optionals (!config.myUi.hyprland) [
+      ++ pkgs.lib.optionals (!(config.myUi.hyprland || config.myUi.niri)) [
         pkgs.emacs
       ]
-      ++ pkgs.lib.optionals (config.myUi.hyprland) [
+      ++ pkgs.lib.optionals (config.myUi.hyprland || config.myUi.niri) [
         pkgs.emacs-pgtk
       ];
   };

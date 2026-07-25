@@ -53,7 +53,7 @@ in
   };
   myVirtualisation.enable = true;
   myEmacs = {
-    enable = false;
+    enable = true;
   };
   myEmail = {
     enable = false;

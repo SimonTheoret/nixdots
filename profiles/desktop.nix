@@ -49,7 +49,7 @@ in
   };
   myCron.enable = false;
   myEmacs = {
-    enable = false;
+    enable = true;
   };
   myEmail = {
     enable = false;

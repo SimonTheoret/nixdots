@@ -2,6 +2,7 @@
   config,
   lib,
   userName,
+  serverName,
   ...
 }:
 let
@@ -28,7 +29,7 @@ in
     ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
-    ../hardware/server-hardware-configuration.nix
+    ../hardware/${serverName}-hardware-configuration.nix
   ];
   myAudio = {
     enable = false;
@@ -61,7 +62,7 @@ in
   myNeovim = {
     enable = true;
   };
-  myBootLoader.enable = false; # true by default
+  myBootLoader.enable = true; # true by default
   myUi = {
     enable = false;
     monitorsConfig = false; # My server has a single screen

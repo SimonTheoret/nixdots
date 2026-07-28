@@ -72,6 +72,7 @@ in
       NIX_CONFIG = "download-buffer-size = 335544320";
     };
     nix.settings.trusted-users = [
+      "simon"
       "root"
       "@wheel"
     ];

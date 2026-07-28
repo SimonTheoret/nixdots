@@ -11,6 +11,7 @@
     niri-wallpaper.url = "git+https://codeberg.org/IceShuttle/niri-wallpaper";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   outputs =
@@ -21,7 +22,7 @@
       flake-utils,
       helix-master,
       niri-wallpaper,
-
+      deploy-rs,
       ...
     }@inputs:
     let
@@ -40,6 +41,7 @@
           inherit inputs outputs;
           userName = "simon";
           hostName = "desktop";
+
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
@@ -65,11 +67,12 @@
         ];
       };
 
-      nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.slowServer = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs outputs;
           userName = "simon";
           hostName = "server";
+          serverName = "slow-server";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;
@@ -80,6 +83,31 @@
           ./profiles/server.nix
         ];
       };
+      # nixosConfigurations.verySlowServer = nixpkgs.lib.nixosSystem {
+      #   specialArgs = {
+      #     inherit inputs outputs;
+      #     userName = "simon";
+      #     hostName = "server";
+      #     serverName = "very-slow-server";
+      #     pkgsUnstable = import nixpkgs-unstable {
+      #       system = "x86_64-linux";
+      #       config.allowUnfree = true;
+
+      #     };
+      #   };
+      #   modules = [
+      #     ./profiles/server.nix
+      #   ];
+      # };
+
+      deploy.nodes.slowServer = {
+        hostname = "192.168.18.14";
+        profiles.system = {
+          user = "simon";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.slowServer;
+        };
+      };
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShells = forAllSystems (
         system:

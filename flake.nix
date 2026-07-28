@@ -72,7 +72,7 @@
           inherit inputs outputs;
           userName = "simon";
           hostName = "server";
-          serverName = "slow-server";
+          serverName = "slowServer";
           pkgsUnstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;

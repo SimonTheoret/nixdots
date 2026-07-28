@@ -89,7 +89,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = false;
   environment.variables = {
-    NIXOS_CONF = "server";
+    NIXOS_CONF = "${serverName}";
     IS_ON_NIX = "true";
   };
 }

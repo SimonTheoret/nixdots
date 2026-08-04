@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgsUnstable,
+  pkgs,
   inputs,
   ...
 }:
@@ -24,7 +24,7 @@ in
     environment.systemPackages = [
       # pkgsUnstable.helix
       # helix-master.helix.packages.
-      helix-master.packages.${pkgsUnstable.system}.default
+      helix-master.packages.${pkgs.system}.default
     ];
   };
 }

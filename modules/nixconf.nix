@@ -57,7 +57,15 @@ in
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
+      "auto-allocate-uids"
+      "cgroups"
     ];
+    nix.settings.auto-allocate-uids = true;
+    nix.settings.extra-system-features = [ "uid-range" ];
+
+    # Only needed for networking between VMs and containers
+    nix.settings.sandbox-paths = [ "/dev/net" ];
+
     # Automation
     nix.settings.auto-optimise-store = true;
 

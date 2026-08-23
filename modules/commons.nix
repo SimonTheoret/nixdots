@@ -30,6 +30,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    documentation.enable = false;
     programs.ssh = {
       startAgent = true;
       enableAskPassword = true;

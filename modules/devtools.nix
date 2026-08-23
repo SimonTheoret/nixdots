@@ -97,7 +97,6 @@ in
       pkgsUnstable.docker-language-server
       pkgsUnstable.systemctl-tui
       pkgsUnstable.nix-fast-build
-      pkgsUnstable.openssh-askpass
     ]
     ++ [
       pkgsUnstable.lazygit

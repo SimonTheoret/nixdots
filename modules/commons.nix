@@ -33,7 +33,6 @@ in
     documentation.enable = true;
     programs.ssh = {
       startAgent = true;
-      enableAskPassword = true;
     };
     services.gnome.gcr-ssh-agent.enable = false;
 

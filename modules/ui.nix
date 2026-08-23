@@ -9,7 +9,7 @@
 let
   inherit (lib) mkOption mkIf;
   cfg = config.myUi;
-  # wallpaper = pkgs.callPackage ../packages/wallpaper/wallpaper.nix { };
+  wallpaper = pkgs.callPackage ../packages/wallpaper/wallpaper.nix { };
 in
 {
   options.myUi = {
@@ -83,10 +83,10 @@ in
       enable = true;
       settings = {
         skip_selection = true;
-        # background = {
-        #   path = "${wallpaper}/wallpaper.jpg";
-        #   fit = "Fill";
-        # };
+        background = {
+          path = "${wallpaper}/wallpaper.jpg";
+          fit = "Fill";
+        };
       };
       cageArgs = [
         "-s"
@@ -121,7 +121,7 @@ in
       with pkgs;
       [ ]
       ++ pkgs.lib.optionals (config.services.greetd.enable) [
-        # wallpaper
+        wallpaper
       ]
       ++ pkgs.lib.optionals (cfg.hyprland) [ xdg-desktop-portal-gtk ]
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.i3WM) [

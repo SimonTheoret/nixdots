@@ -108,7 +108,7 @@ in
     NIXOS_CONF = "desktop";
     IS_ON_NIX = "true";
   }
-  // optionals (config.myNvidia.enable) {
+  // lib.attrsets.optionalAttrs (config.myNvidia.enable) {
     GSK_RENDERER = "ngl";
   };
 }

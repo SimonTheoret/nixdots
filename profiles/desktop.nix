@@ -39,7 +39,6 @@ in
   };
   myBluetooth = {
     enable = true;
-    driver = true;
   };
   myChezMoi.enable = true;
   myCleanup.enable = true;

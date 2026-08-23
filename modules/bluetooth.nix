@@ -17,12 +17,6 @@ in
       example = true;
       description = "Activate bluetooth";
     };
-    driver = pkgs.lib.mkOption {
-      type = pkgs.lib.types.bool;
-      default = false;
-      example = true;
-      description = "Activate rtl8821ce driver";
-    };
   };
 
   config = mkIf cfg.enable {
@@ -47,8 +41,6 @@ in
       }; # services.mpris-proxy.enable = true; # enable headsets buttons #Move that to HM?
     };
     # Add bluez, the official linux bluetooth protocol stack:
-    environment.systemPackages =
-      with pkgs;
-      [ bluez ] ++ pkgs.lib.optionals (cfg.driver) [ linuxKernel.packages.linux_6_12.rtl8821ce ];
+    environment.systemPackages = with pkgs; [ bluez ];
   };
 }

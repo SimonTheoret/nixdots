@@ -69,7 +69,7 @@ in
   myLab = {
     enable = true;
     plane = false;
-    searxng = true;
+    searxng = false;
     appflowy = false;
     tailscale = true;
   };

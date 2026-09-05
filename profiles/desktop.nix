@@ -89,7 +89,7 @@ in
   };
   myWireless.enable = false;
   mySpotify = {
-    enable = true;
+    enable = false;
   };
   mySync.enable = false;
   users.users.${userName} = {

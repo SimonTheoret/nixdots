@@ -8,7 +8,6 @@
 
 let
   inherit (lib) mkOption mkIf optionals;
-  deploy-rs = inputs.deploy-rs;
   cfg = config.myLab;
   plane = (pkgs.callPackage ../packages/plane/plane.nix { });
   searxng = (pkgs.callPackage ../packages/searxng/searxng.nix { });
@@ -105,7 +104,6 @@ in
       };
     };
     environment.systemPackages = [
-      deploy-rs.packages.${pkgs.system}.default
     ]
     ++ optionals (cfg.plane) [ plane ]
     ++ optionals (cfg.searxng) [ searxng ]

@@ -98,6 +98,7 @@ in
       pkgsUnstable.systemctl-tui
       pkgsUnstable.nix-fast-build
       pkgsUnstable.charles
+      pkgsUnstable.opencode
     ]
     ++ [
       pkgsUnstable.lazygit

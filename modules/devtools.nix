@@ -99,6 +99,7 @@ in
       pkgsUnstable.nix-fast-build
       pkgsUnstable.charles
       pkgsUnstable.opencode
+      pkgsUnstable.tuicr
     ]
     ++ [
       pkgsUnstable.lazygit

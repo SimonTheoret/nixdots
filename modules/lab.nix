@@ -51,6 +51,12 @@ in
       example = true;
       description = "Configure Gitea";
     };
+    giteaRunner = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Activate a Gitea runner";
+    };
   };
 
   config = mkIf (cfg.enable && config.myVirtualisation.enable) {
@@ -95,7 +101,7 @@ in
       enable = true;
       dump.enable = true;
       database = {
-        type = "sqlite";
+        type = "sqlite3";
       };
     };
     environment.systemPackages = [

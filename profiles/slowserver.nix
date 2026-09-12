@@ -24,6 +24,12 @@ in
     ../modules/helix.nix
     ../modules/lab.nix
     ../modules/light.nix
+    (import ../modules/giteaRunner.nix {
+      active = true;
+      name = "GiteaSlowRunner";
+      token = "test token";
+      serverUrl = "http://192.168.18.15:3000";
+    })
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/nvim.nix
@@ -57,6 +63,7 @@ in
   myLab = {
     enable = true;
     gitea = true;
+    giteaRunner = true;
   };
   myBootLoader.enable = true;
   myUi.enable = false;

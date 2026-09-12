@@ -20,13 +20,6 @@ in
       description = "Packages used to create a development environment";
     };
 
-    useLLM = mkOption {
-      type = lib.types.bool;
-      default = false;
-      example = true;
-      description = "Enable integration with Ollama, AIChat and Claude Code";
-    };
-
     kbConfigSoftware = mkOption {
       type = lib.types.bool;
       default = false;
@@ -51,17 +44,6 @@ in
     };
 
     services.lorri.enable = false;
-
-    services.ollama = {
-      enable = cfg.useLLM;
-      loadModels = [
-        "qwen3:4b"
-        "qwen2.5-coder:7b"
-        "qwen2.5-coder:32b"
-        "devstral:24b"
-      ];
-      package = if config.myNvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
-    };
 
     services.pcscd.enable = true;
     programs.gnupg.agent = {
@@ -111,14 +93,8 @@ in
       pkgs.drawio
       pkgs.drawy
     ]
-    ++ optionals (config.myDevTools.useLLM) [
-      pkgs.aichat
-    ]
-    ++ optionals (config.myDevTools.useLLM) [
+    ++ optionals (config.myDevTools.kbConfigSoftware) [
       pkgs.bazecor
-    ]
-    ++ optionals (config.myDevTools.useLLM) [
-      pkgsUnstable.claude-code
     ];
   };
 }

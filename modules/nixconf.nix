@@ -19,14 +19,7 @@ in
         description = "Configure Systemd bootloader";
       };
     };
-    myCleanup = {
-      enable = mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-        description = "Enable nix maintenance as cron job";
-      };
-    };
+
   };
 
   config = {

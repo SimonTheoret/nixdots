@@ -26,7 +26,6 @@ in
     ../modules/nvidia.nix
     ../modules/nvim.nix
     ../modules/spotify.nix
-    ../modules/sync.nix
     ../modules/ui.nix
     ../modules/virtualization.nix
     ../modules/wireless.nix
@@ -39,7 +38,6 @@ in
   };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
-  myCleanup.enable = true;
   myCommons = {
     enable = true;
     firefoxResize = "1.25";
@@ -48,7 +46,6 @@ in
   myCron.enable = false;
   myDevTools = {
     enable = true;
-    useLLM = false;
     kbConfigSoftware = false;
     drawingTools = true;
   };
@@ -91,7 +88,6 @@ in
   mySpotify = {
     enable = false;
   };
-  mySync.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [

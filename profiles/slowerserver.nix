@@ -26,7 +26,6 @@ in
     ../modules/nvidia.nix
     ../modules/nvim.nix
     ../modules/spotify.nix
-    ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
     ../hardware/${serverName}-hardware-configuration.nix
@@ -38,44 +37,19 @@ in
   };
   myBluetooth.enable = true;
   myChezMoi.enable = true;
-  myCleanup.enable = true;
-  myCommons = {
-    enable = true;
-    firefoxResize = "1.0";
-  };
-  myCron.enable = false;
-  myEmacs = {
-    enable = false;
-  };
-  myEmail.enable = false;
+  myCommons.enable = true;
   myDevTools = {
     enable = true;
-    useLLM = false;
-    kbConfigSoftware = true;
+    kbConfigSoftware = false;
   };
   myVirtualisation.enable = true;
-  myHelix = {
-    enable = true;
-  };
-  myLight.enable = false; # false by default
+  myHelix.enable = true;
+  myLight.enable = false;
   myNvidia.enable = false;
-  myNeovim = {
-    enable = true;
-  };
-  myBootLoader.enable = true; # true by default
-  myUi = {
-    enable = false;
-    monitorsConfig = false; # My server has a single screen
-    useGUI = false;
-    hyprland = false;
-    niri = false;
-    i3WM = false;
-  };
-  myWireless.enable = true;
-  mySpotify = {
-    enable = false;
-  };
-  mySync.enable = false;
+  myNeovim.enable = true;
+  myBootLoader.enable = true;
+  myUi.enable = false;
+  myWireless.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [

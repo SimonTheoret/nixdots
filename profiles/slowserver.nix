@@ -26,23 +26,14 @@ in
     ../modules/nvidia.nix
     ../modules/nvim.nix
     ../modules/spotify.nix
-    ../modules/sync.nix
     ../modules/ui.nix
     ../modules/wireless.nix
     ../hardware/${serverName}-hardware-configuration.nix
   ];
-  myAudio = {
-    enable = false;
-    guiControls = false;
-    noiseCanceling = false;
-  };
-  myBluetooth.enable = true;
+  myAudio.enable = false;
+  myBluetooth.enable = false;
   myChezMoi.enable = true;
-  myCleanup.enable = true;
-  myCommons = {
-    enable = true;
-    firefoxResize = "1.0";
-  };
+  myCommons.enable = true;
   myCron.enable = false;
   myEmacs = {
     enable = false;
@@ -50,7 +41,6 @@ in
   myEmail.enable = false;
   myDevTools = {
     enable = true;
-    useLLM = false;
     kbConfigSoftware = true;
   };
   myVirtualisation.enable = true;
@@ -75,7 +65,6 @@ in
   mySpotify = {
     enable = false;
   };
-  mySync.enable = false;
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [

@@ -78,7 +78,7 @@
           };
         };
         modules = [
-          ./profiles/server.nix
+          ./profiles/slowserver.nix
         ];
       };
 

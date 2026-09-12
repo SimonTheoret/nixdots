@@ -12,10 +12,11 @@
 {
   imports = [ ];
   config = lib.mkIf active {
-    services.gitea-actions-runner.instances.${name}.enable = true;
-    services.gitea-actions-runner.instances.name.name = "${name}";
-    services.gitea-actions-runner.instances.token.token = "${token}";
-    services.gitea-actions-runner.instances.token.url = "${serverUrl}";
-
+    services.gitea-actions-runner.instances.${name} = {  
+      enable = true;
+      name = "${name}";
+      token = "${token}";
+      url = "${serverUrl}";
+    };
   };
 }

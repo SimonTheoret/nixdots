@@ -27,9 +27,29 @@ in
       example = "1.25";
       description = "Modify the firefox font size by changing the `layout.css.devPixelsPerPx` value.";
     };
+
+    enableSyncthing = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Activate syncthing";
+    };
+
+    serverNames = mkOption {
+      type = lib.types.bool;
+      default = false;
+      example = true;
+      description = "Set the names of the local cluster.";
+    };
   };
 
   config = mkIf cfg.enable {
+
+    networking.hosts = mkIf cfg.serverNames {
+      "192.168.18.15" = [ "server1" ];
+      "192.168.18.14" = [ "server2" ];
+    };
+
     documentation.enable = true;
     programs.ssh = {
       startAgent = true;
@@ -87,7 +107,7 @@ in
     users.users.${userName}.shell = pkgs.fish;
 
     services.syncthing = {
-      enable = true;
+      enable = cfg.enableSyncthing;
       openDefaultPorts = true;
       guiAddress = "127.0.0.1:8384";
       user = "${userName}";
@@ -115,7 +135,6 @@ in
     programs.nh = {
       enable = true;
       clean.enable = false;
-      # clean.extraArgs = "--keep-since 4d --keep 3";
     };
 
     fonts.fontconfig.enable = true;
@@ -180,8 +199,6 @@ in
         discord
         feh
         zathura
-        newsboat
-        obsidian
       ];
   };
 }

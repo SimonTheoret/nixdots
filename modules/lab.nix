@@ -98,6 +98,7 @@ in
         type = "sqlite";
       };
       settings = {
+        settings.service.DISABLE_REGISTRATION = true;
         server.PROTOCOL = "http+unix";
         server.ROOT_URL = "https://git.mezon.com/";
         server.DOMAIN = "git.mezon.com";

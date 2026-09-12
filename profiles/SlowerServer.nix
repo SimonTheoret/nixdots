@@ -42,7 +42,6 @@ in
   myCommons = {
     enable = true;
     firefoxResize = "1.0";
-    enableSyncthing = false;
   };
   myCron.enable = false;
   myEmacs = {

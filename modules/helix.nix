@@ -1,12 +1,13 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
+  # pkgs,
+  pkgsUnstable,
+  # inputs,
   ...
 }:
 let
-  helix-master = inputs.helix-master;
+  # helix-master = inputs.helix-master;
   inherit (lib) mkOption mkIf;
   cfg = config.myHelix;
 in
@@ -22,9 +23,9 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      # pkgsUnstable.helix
+      pkgsUnstable.helix
       # helix-master.helix.packages.
-      helix-master.packages.${pkgs.system}.default
+      # helix-master.packages.${pkgs.system}.default
     ];
   };
 }

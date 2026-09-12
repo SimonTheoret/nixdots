@@ -18,7 +18,6 @@ in
     ../modules/devtools.nix
     ../modules/email.nix
     ../modules/emacs.nix
-    ../modules/gitlab.nix
     ../modules/helix.nix
     ../modules/lab.nix
     ../modules/light.nix
@@ -56,9 +55,6 @@ in
   myEmail = {
     enable = false;
     gui = false;
-  };
-  myGitlab = {
-    enable = false;
   };
   myHelix = {
     enable = true;

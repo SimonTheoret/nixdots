@@ -104,6 +104,9 @@ in
         type = "sqlite3";
       };
     };
+    networking.firewall.allowedTCPPorts = [ ] ++ pkgs.lib.optionals (cfg.gitea) [ 3000 ];
+    networking.firewall.enable = true;
+
     environment.systemPackages = [
     ]
     ++ optionals (cfg.plane) [ plane ]

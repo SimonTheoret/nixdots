@@ -42,6 +42,7 @@ in
   myCommons = {
     enable = true;
     firefoxResize = "1.0";
+    serverNames = true;
     enableSyncthing = false;
   };
   myCron.enable = false;

@@ -6,6 +6,7 @@
   ...
 }:
 let
+
   inherit userName;
   inherit (lib) optionals;
 in
@@ -21,6 +22,7 @@ in
     ../modules/email.nix
     ../modules/emacs.nix
     ../modules/helix.nix
+    ../modules/lab.nix
     ../modules/light.nix
     ../modules/nixconf.nix
     ../modules/nvidia.nix
@@ -47,20 +49,17 @@ in
   myHelix = {
     enable = true;
   };
-  myLight.enable = false; # false by default
+  myLight.enable = false;
   myNvidia.enable = false;
   myNeovim = {
     enable = true;
   };
-  myBootLoader.enable = true; # true by default
-  myUi = {
-    enable = false;
-    monitorsConfig = false; # My server has a single screen
-    useGUI = false;
-    hyprland = false;
-    niri = false;
-    i3WM = false;
+  myLab = {
+    enable = true;
+    gitea = true;
   };
+  myBootLoader.enable = true;
+  myUi.enable = false;
   myWireless.enable = true;
   mySpotify = {
     enable = false;

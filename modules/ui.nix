@@ -98,6 +98,10 @@ in
       enable = true;
     };
 
+    programs.waybar = mkIf (cfg.niri || cfg.hyprland) {
+      enable = true;
+    };
+
     # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
     # unit which shadows the imported user-manager PATH. Disabling the default
     # lets niri inherit the full PATH set up by niri-session.
@@ -129,14 +133,12 @@ in
       ]
       ++ pkgs.lib.optionals (cfg.monitorsConfig && cfg.hyprland) [ ]
       ++ pkgs.lib.optionals (cfg.hyprland) [
-        waybar
         hyprpaper
         hyprshot
         swaylock
         swayidle
       ]
       ++ pkgs.lib.optionals (cfg.niri) [
-        waybar
         fuzzel
         swaylock
         mako

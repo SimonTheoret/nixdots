@@ -106,7 +106,9 @@ in
         type = "sqlite3";
       };
       settings = {
-        SSH_USER = if serverName != null then "${serverName}" else "localhost";
+        server = {
+          SSH_DOMAIN = if serverName != null then "${serverName}" else "localhost";
+        };
       };
     };
     networking.firewall.allowedTCPPorts = [ ] ++ pkgs.lib.optionals (cfg.gitea) [ 3000 ];

@@ -109,6 +109,7 @@ in
         server = {
           SSH_DOMAIN = if serverName != null then "${serverName}" else "localhost";
           START_SSH_SERVER = "true";
+          SSH_PORT = 2222;
         };
       };
     };

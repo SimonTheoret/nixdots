@@ -2,7 +2,7 @@
   active ? false,
   name ? "GiteaRunner",
   token ? null,
-  serverUrl ? "http://192.168.18.15:3000",
+  serverUrl ? "http://192.168.18.14:3000",
 
 }:
 {
@@ -12,7 +12,7 @@
 {
   imports = [ ];
   config = lib.mkIf active {
-    services.gitea-actions-runner.instances.${name} = {  
+    services.gitea-actions-runner.instances.${name} = {
       enable = true;
       name = "${name}";
       token = "${token}";

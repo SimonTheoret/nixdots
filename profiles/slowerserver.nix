@@ -22,6 +22,12 @@ in
     ../modules/emacs.nix
     ../modules/helix.nix
     ../modules/light.nix
+    (import ../modules/giteaRunner.nix {
+      active = true;
+      name = "GiteaSlowerRunner";
+      token = "test token";
+      serverUrl = "http://192.168.18.14:3000";
+    })
     ../modules/nixconf.nix
     ../modules/nvidia.nix
     ../modules/nvim.nix

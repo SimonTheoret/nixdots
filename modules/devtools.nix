@@ -80,7 +80,7 @@ in
       pkgsUnstable.systemctl-tui
       pkgsUnstable.nix-fast-build
       pkgsUnstable.charles
-      pkgsUnstable.opencode
+      pkgsUnstable.claude-code
       pkgsUnstable.tuicr
     ]
     ++ [

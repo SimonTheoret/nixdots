@@ -106,7 +106,7 @@ in
         type = "sqlite3";
       };
       settings.server = {
-        HTTP_PORT = "3000";
+        HTTP_PORT = 3000;
         server.DOMAIN = if serverName != null then "${serverName}" else "localhost";
       };
     };

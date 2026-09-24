@@ -28,7 +28,7 @@ in
       active = true;
       name = "GiteaSlowRunner";
       token = "test token";
-      serverUrl = "http://192.168.18.15:3000";
+      serverUrl = "http://192.168.18.14:3000";
     })
     ../modules/nixconf.nix
     ../modules/nvidia.nix

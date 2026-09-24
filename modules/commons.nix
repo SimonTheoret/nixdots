@@ -46,8 +46,8 @@ in
   config = mkIf cfg.enable {
 
     networking.hosts = mkIf cfg.serverNames {
-      "192.168.18.15" = [ "server1" ];
-      "192.168.18.14" = [ "server2" ];
+      "192.168.18.15" = [ "slowerserver" ];
+      "192.168.18.14" = [ "slowserver" ];
     };
 
     documentation.enable = true;

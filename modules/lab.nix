@@ -107,7 +107,7 @@ in
       };
       settings.server = {
         HTTP_PORT = 3000;
-        server.DOMAIN = if serverName != null then "${serverName}" else "localhost";
+        DOMAIN = if serverName != null then "${serverName}" else "localhost";
       };
     };
     networking.firewall.allowedTCPPorts = [ ] ++ pkgs.lib.optionals (cfg.gitea) [ 3000 ];

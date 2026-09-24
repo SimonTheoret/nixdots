@@ -107,7 +107,7 @@ in
       };
       settings = {
         server = {
-          DOMAIN = if serverName != null then "${serverName}" else "localhost";
+          SSH_DOMAIN = if serverName != null then "${serverName}" else "localhost";
         };
       };
     };

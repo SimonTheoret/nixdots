@@ -105,13 +105,15 @@ in
       database = {
         type = "sqlite3";
       };
-      settings = {
-        server = {
-          SSH_DOMAIN = if serverName != null then "${serverName}" else "localhost";
-          START_SSH_SERVER = "true";
-          SSH_PORT = 2222;
-        };
-      };
+      httpAddress = "127.0.0.1";
+      domain = "git.slowserver";
+      settings.server.ROOT_URL = lib.mkForce "https://git.slowserver/";
+      # settings = {
+      #   server = {
+      #     SSH_DOMAIN = if serverName != null then "${serverName}" else "localhost";
+      #     START_SSH_SERVER = "true";
+      #     SSH_PORT = 2222;
+      #   };
     };
     networking.firewall.allowedTCPPorts = [ ] ++ pkgs.lib.optionals (cfg.gitea) [ 3000 ];
     networking.firewall.enable = true;

@@ -81,6 +81,9 @@ in
       pkgsUnstable.nix-fast-build
       pkgsUnstable.charles
       pkgsUnstable.claude-code
+      pkgsUnstable.codex
+      pkgsUnstable.herdr
+      pkgsUnstable.gh
       pkgsUnstable.tuicr
     ]
     ++ [

@@ -35,10 +35,9 @@
           ]
           ++ (with pkgs; [
             pkg-config
-            cargo-expand
+            clippy
             cargo-nextest
             cargo-expand
-            cargo-nextest
             cargo-insta
             gdb
           ]);

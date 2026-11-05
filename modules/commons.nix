@@ -188,6 +188,7 @@ in
         fishPlugins.fifc
         chafa
         tree
+        md-tui
       ]
       ++ [
         pkgsUnstable.kitty

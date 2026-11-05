@@ -164,6 +164,7 @@ in
       nerd-fonts.victor-mono
       nerd-fonts.fira-code
       fira-code-symbols
+      nerd-fonts.jetbrains-mono
     ];
 
     environment.systemPackages =

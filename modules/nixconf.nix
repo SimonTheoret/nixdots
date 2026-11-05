@@ -26,7 +26,6 @@ in
     nix.settings.substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos-cuda.org"
-      "https://cuda-maintainers.cachix.org"
       "https://hyprland.cachix.org"
     ];
 

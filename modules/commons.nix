@@ -157,16 +157,14 @@ in
       };
     };
 
-    fonts.packages =
-      with pkgs;
-      [
-        noto-fonts
-        noto-fonts-color-emoji
-        victor-mono
-        fira-code
-        fira-code-symbols
-      ]
-      ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    fonts.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      nerd-fonts.victor-mono
+      nerd-fonts.fira-code
+      fira-code-symbols
+    ];
 
     environment.systemPackages =
       with pkgs;

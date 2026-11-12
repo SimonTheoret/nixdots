@@ -56,32 +56,41 @@ in
     };
 
     environment.systemPackages = [
-      pkgs.eza
-      pkgs.gnumake
-      pkgs.direnv
-      pkgs.fd
-      pkgs.fzf
-      pkgs.bat
-      pkgs.ripgrep
-      pkgs.btop
-      pkgs.tldr
-      pkgs.bash-language-server
-      pkgs.shellcheck
-      pkgs.shfmt
-      pkgs.delta
-      pkgs.yazi
-      pkgs.python314
-      pkgs.nix-fast-build
-      pkgs.charles
-      pkgs.gh
-      pkgs.tuicr
-      pkgs.scooter
+      pkgsUnstable.eza
+      pkgsUnstable.gnumake
+      pkgsUnstable.direnv
+      pkgsUnstable.fd
+      pkgsUnstable.fzf
+      pkgsUnstable.bat
+      pkgsUnstable.ripgrep
+      pkgsUnstable.btop
+      pkgsUnstable.tldr
+      pkgsUnstable.prettier
+      pkgsUnstable.bash-language-server
+      pkgsUnstable.shellharden
+      pkgsUnstable.shellcheck
+      pkgsUnstable.shfmt
+      pkgsUnstable.delta
+      pkgsUnstable.yazi
+      pkgsUnstable.python314
+      pkgsUnstable.dust
+      pkgsUnstable.yaml-language-server
+      pkgsUnstable.docker-language-server
+      pkgsUnstable.systemctl-tui
+      pkgsUnstable.nix-fast-build
+      pkgsUnstable.charles
+      pkgsUnstable.claude-code
+      pkgsUnstable.codex
+      pkgsUnstable.herdr
+      pkgsUnstable.gh
+      pkgsUnstable.tuicr
     ]
     ++ [
       pkgsUnstable.lazygit
       pkgsUnstable.zellij
-      pkgsUnstable.claude-code
-      pkgsUnstable.codex
+    ]
+    ++ [
+      pkgs.scooter
     ]
     ++ optionals (config.myVirtualisation.enable) [ pkgs.lazydocker ]
     ++ optionals (config.myUi.useGUI && cfg.drawingTools) [

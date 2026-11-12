@@ -8,7 +8,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     helix-master.url = "github:helix-editor/helix/master";
     helix-master.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    niri-wallpaper.url = "git+https://codeberg.org/IceShuttle/niri-wallpaper";
+    niri-wallpaper.url = "git+https://codeberg.org/noify/niri-wallpaper.git";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -88,7 +88,13 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          default = pkgs.mkShell { };
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              docker-language-server
+              yaml-language-server
+              prettier
+            ];
+          };
         }
       );
     };

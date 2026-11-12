@@ -73,7 +73,6 @@ in
       pkgsUnstable.delta
       pkgsUnstable.yazi
       pkgsUnstable.python314
-      pkgsUnstable.scooter
       pkgsUnstable.dust
       pkgsUnstable.yaml-language-server
       pkgsUnstable.docker-language-server
@@ -88,8 +87,10 @@ in
     ]
     ++ [
       pkgsUnstable.lazygit
-      pkgsUnstable.gitui
       pkgsUnstable.zellij
+    ]
+    ++ [
+      pkgs.scooter
     ]
     ++ optionals (config.myVirtualisation.enable) [ pkgs.lazydocker ]
     ++ optionals (config.myUi.useGUI && cfg.drawingTools) [

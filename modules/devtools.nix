@@ -74,14 +74,14 @@ in
       pkgs.nix-fast-build
       pkgs.charles
       pkgs.gh
+      pkgs.tuicr
       pkgs.scooter
-      pkgs.codex
-      (pkgs.callPackage ../packages/tuicr/default.nix { })
     ]
     ++ [
       pkgsUnstable.lazygit
       pkgsUnstable.zellij
       pkgsUnstable.claude-code
+      pkgsUnstable.codex
     ]
     ++ optionals (config.myVirtualisation.enable) [ pkgs.lazydocker ]
     ++ optionals (config.myUi.useGUI && cfg.drawingTools) [

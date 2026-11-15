@@ -83,6 +83,8 @@ in
       pkgsUnstable.claude-code
       pkgsUnstable.codex
       pkgsUnstable.herdr
+      pkgsUnstable.herdr-core
+      pkgsUnstable.herdr-desktop
       pkgsUnstable.gh
       pkgsUnstable.tuicr
     ]
